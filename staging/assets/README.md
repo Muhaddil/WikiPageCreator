@@ -1,0 +1,1 @@
+Esta carpeta contiene imágenes y otros recursos como fuentes.
