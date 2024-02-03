@@ -24,15 +24,11 @@ addStaticPageData('galleryExplanationExternal', `
 Hay un orden preferido de imágenes:
 <div class='dialog-center'>
 	<ol class='dialog-list'>
-		<li>Genero 1</li>
-		<li>Genero 2</li>
-		<li>Escaneo Genero 1 </li>
-		<li>Escaneo Genero 2 </li>
+    <li>Escaneo de la criatura</li>
 		<li>Menu de descubrimiento</li>
-		<li>Página de la luna</li>
 		<li>Página del planeta</li>
 		<li>Página del sistema</li>
-		<li>Página de la galaxia</li>
+		<li>Mapa galáctico</li>
 	</ol>
 </div>`)
 

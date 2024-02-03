@@ -112,13 +112,30 @@ export function albumLinkGen() {
  * @function generateGalleryArray
  * @returns {Array} - An array of gallery items that are unique to the page
  */
+// Mapeo de nombres en inglés a español
+const sandwormMap: Record<string, string> = {
+	'Worm scan': 'Escaneo de gusano',
+	'Moon Page': 'Página de la Luna',
+	'Planet Page': 'Página del Planeta',
+	'System Page': 'Página del Sistema',
+	'Galaxy Map': 'Mapa galáctico'
+};
+
 export function generateGalleryArray() {
-  const array = ['', 'Worm scan', 'Moon Page', 'Planet Page', 'System Page', 'Galaxy Map'];
+	const array = [
+		'',
+		sandwormMap['Worm scan'],
+		sandwormMap['Moon Page'],
+		sandwormMap['Planet Page'],
+		sandwormMap['System Page'],
+		sandwormMap['Galaxy Map']
+	];
 
-  if (!pageData.moon) {
-    const index = array.findIndex((item) => item.toLowerCase().includes('moon'));
-    array.splice(index, 1);
-  }
+	if (!pageData.moon) {
+		const index = array.findIndex(item => item.toLowerCase().includes('luna'));
+		array.splice(index, 1);
+	}
 
-  pageData.galleryArray = array;
+	pageData.galleryArray = array;
 }
+

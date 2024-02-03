@@ -437,23 +437,36 @@ export function albumLinkGen() {
  * @example
  * generateGalleryArray();
  */
+const multitoolMap: Record<string, string> = {
+	'Discovery Menu': 'Menú de descubrimiento',
+	'Price Page': 'Página de precios',
+	'Base Stats': 'Estadísticas base',
+	'Minor Settlement': 'Asentamiento menor',
+	'Sentinel Pillar': 'Pilar de centinela',
+	'Harmonic Camp': 'Campamento armónico',
+	'Monolith': 'Monolito',
+	'Tool in Hand': 'Herramienta en mano',
+	'First Person View': 'Vista en primera persona'
+};
+
 export function generateGalleryArray() {
 	const array = [
 		'',
-		'Discovery Menu',
-		'Price Page',
-		'Base Stats',
-		'Minor Settlement',
-		'Sentinel Pillar',
-		'Harmonic Camp',
-		'Monolith',
-		'Tool in Hand',
-		'First Person View'
+		multitoolMap['Discovery Menu'],
+		multitoolMap['Price Page'],
+		multitoolMap['Base Stats'],
+		multitoolMap['Minor Settlement'],
+		multitoolMap['Sentinel Pillar'],
+		multitoolMap['Harmonic Camp'],
+		multitoolMap['Monolith'],
+		multitoolMap['Tool in Hand'],
+		multitoolMap['First Person View']
 	];
 
-	const location = pageData.location as string;
-	const locs = ['Minor Settlement', 'Sentinel Pillar', 'Harmonic Camp', 'Monolith'];
-	if (locs.includes(location)) {
+	// Locations which apply to a living ship
+	const locs = ['Asentamiento menor', 'Pilar de centinela', 'Campamento armónico', 'Monolito'];
+	const location = multitoolMap[pageData.location as string];
+	if (location && locs.includes(location)) {
 		const rmLocs = locs.filter(loc => loc !== location);
 		rmLocs.forEach(loc => {
 			const index = array.indexOf(loc);
@@ -467,3 +480,4 @@ export function generateGalleryArray() {
 
 	pageData.galleryArray = array;
 }
+

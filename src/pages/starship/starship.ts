@@ -431,20 +431,34 @@ export function albumTypeExternal() {
  * @function
  * @returns {void}
  */
+// Mapeo de nombres en inglés a español
+const shipMap = {
+	'Rear view of ship': 'Vista trasera de la nave',
+	'Rear view of freighter': 'Vista trasera del carguero',
+	'Inventory screen': 'Pantalla de inventario',
+	'NPC freighter captain': 'Capitán de carguero NPC',
+	'NPC ship pilot': 'Piloto de nave NPC',
+	'Analysis Visor Scan': 'Escaneo con visor de análisis',
+	'Crash site': 'Lugar del accidente',
+	'Moon Page': 'Página de la Luna',
+	'Planet Page': 'Página del Planeta',
+	'System Page': 'Página del Sistema',
+};
+
 export function generateGalleryArray() {
 	// Array of default gallery images
 	const array = [
 		'',
-		'Rear view of ship',
-		'Rear view of freighter',
-		'Inventory screen',
-		'NPC freighter captain',
-		'NPC ship pilot',
-		'Analysis Visor Scan',
-		'Crash site',
-		'Moon Page',
-		'Planet Page',
-		'System Page',
+		shipMap['Rear view of ship'],
+		shipMap['Rear view of freighter'],
+		shipMap['Inventory screen'],
+		shipMap['NPC freighter captain'],
+		shipMap['NPC ship pilot'],
+		shipMap['Analysis Visor Scan'],
+		shipMap['Crash site'],
+		shipMap['Moon Page'],
+		shipMap['Planet Page'],
+		shipMap['System Page'],
 	];
 
 	// Locations which apply to a living ship
@@ -463,7 +477,7 @@ export function generateGalleryArray() {
 
 	// Remove 'Moon Page' from the array if there is no moon in the page data
 	if (!pageData.moon) {
-		const index = array.findIndex(item => item.toLowerCase().includes('moon'));
+		const index = array.findIndex(item => item.toLowerCase().includes('luna'));
 		array.splice(index, 1);
 	}
 
@@ -481,6 +495,7 @@ export function generateGalleryArray() {
 	// Update page data with the new gallery array
 	pageData.galleryArray = array;
 }
+
 
 /**
  * Redirects to a new page if the page name contains any Greek letters.

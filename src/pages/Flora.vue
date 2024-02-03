@@ -43,7 +43,17 @@ const wikiText = ref<HTMLDivElement | null>(null);
 onMounted(() => {
   fullArticleElement.value = wikiText.value;
   // TODO: gallery should be integrated natively, not as separate Vue app
-  addStaticPageData('galleryArray', ['', 'Scanner view', 'Discovery Menu']);
+const floraMap = {
+	'Scanner view': 'Vista del escáner',
+	'Discovery Menu': 'Menú de descubrimiento'
+};
+
+addStaticPageData('galleryArray', [
+	'',
+	floraMap['Scanner view'],
+	floraMap['Discovery Menu']
+]);
+
   addStaticPageData(
     'galleryExplanationExternal',
     `

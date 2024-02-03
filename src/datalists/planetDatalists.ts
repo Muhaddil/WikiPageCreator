@@ -71,10 +71,51 @@ export function getSentinelData(): Sentinels {
   return sentinels;
 }
 
+// Objeto de mapeo de inglés a español
+export const resourceNamesInSpanish: { [key: string]: string } = {
+	'Copper': 'Cobre',
+	'Cadmium': 'Cadmio',
+	'Emeril': 'Emerilio',
+	'Indium': 'Indio',
+	'Activated Copper': 'Cobre Activado',
+	'Activated Cadmium': 'Cadmio Activado',
+	'Activated Emeril': 'Emerilio Activado',
+	'Activated Indium': 'Indio Activado',
+	'Ammonia': 'Amonio',
+	'Dioxite': 'Dioxita',
+	'Paraffinium': 'Parafinio',
+	'Phosphorus': 'Fósforo',
+	'Pyrite': 'Pirita',
+	'Uranium': 'Uranio',
+	'Silver': 'Plata',
+	'Gold': 'Oro',
+	'Magnetised Ferrite': 'Ferrita imantada',
+	'Sodium': 'Sodio',
+	'Cobalt': 'Cobalto',
+	'Salt': 'Sal',
+	'Star Bulb': 'Bulbo Estelar',
+	'Cactus Flesh': 'Carne de Cactus',
+	'Gamma Root': 'Raíz de gamma',
+	'Fungal Mould': 'Moho fúngico',
+	'Frost Crystal': 'Cristal de escarcha',
+	'Solanium': 'Solanio',
+	'Mordite': 'Mordita',
+	'Faecium': 'Hecesio',
+	'Ancient Bones': 'Huesos antiguos',
+	'Salvageable Scrap': 'Chatarra recuperable',
+	'Rusted Metal': 'Metal oxidado',
+	'Basalt': 'Basalto',
+};
+
+// Objeto de mapeo de español a inglés
+export const resourceNamesInEnglish: { [key: string]: string } = {};
+for (let resource in resourceNamesInSpanish) {
+	resourceNamesInEnglish[resourceNamesInSpanish[resource]] = resource;
+}
+
+// Función original
 export function getResourceData() {
-	const resources: {
-		[key: string]: string
-	} = {
+	const resources = {
 		'Copper': 'Cu',
 		'Cadmium': 'Cd',
 		'Emeril': 'Em',
@@ -107,7 +148,7 @@ export function getResourceData() {
 		'Salvageable Scrap': 'Sa',
 		'Rusted Metal': 'Jn',
 		'Basalt': 'B',
-	}
+	};
 	return resources;
 };
 

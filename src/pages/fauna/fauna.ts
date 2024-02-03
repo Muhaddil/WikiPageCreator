@@ -337,42 +337,30 @@ export function noLineBreak() {
  * @function
  * @returns {Array<string>} An array of strings representing the different pages in the gallery.
  */
-export function generateGalleryArray() {
-	let gender1, gender2;
-	if (pageData.gender2) {
-		const prio = creaturePrio();
-		if (prio === 'gender2') {
-			gender1 = pageData.gender2;
-			gender2 = pageData.gender;
-		} else {
-			gender1 = pageData.gender;
-			gender2 = pageData.gender2;
-		}
-	}
+// Mapeo de nombres en inglés a español
+const faunaMap: Record<string, string> = {
+	'Creature scan': 'Escaneo de la criatura',
+	'Discovery Menu': 'Menú de descubrimiento',
+	'Planet Page': 'Página del Planeta',
+	'System Page': 'Página del Sistema',
+	'Galaxy Map': 'Mapa galáctico',
+  'Moon Page': 'Página de la Luna'
+};
 
-	const array = [
-		'',
-		`${gender1} gender`,
-		`${gender1} gender scan`,
-		`${gender2} gender`,
-		`${gender2} gender scan`,
-		'Creature scan',
-		'Discovery Menu',
-		'Moon Page',
-		'Planet Page',
-		'System Page',
-		'Mapa de galaxias'
-	];
+export function generateGalleryArray() {
+  const array = [
+    '',
+    faunaMap['Creature scan'],
+    faunaMap['Discovery Menu'],
+    faunaMap['Planet Page'],
+    faunaMap['System Page'],
+    faunaMap['Galaxy Map'],
+    faunaMap['Moon Page'],
+  ];
 
 	if (!pageData.moon) {
-		const index = array.findIndex(item => item.toLowerCase().includes('moon'));
+		const index = array.findIndex(item => item.toLowerCase().includes('luna'));
 		array.splice(index, 1);
-	}
-
-	const lowerCase = structuredClone(array).map((item: string) => item.toLowerCase());
-	for (let i = array.length - 1; i >= 0; i--) {
-		const element = lowerCase[i];
-		if (element.includes(gender2 ? 'creature' : 'gender')) array.splice(i, 1);
 	}
 
 	pageData.galleryArray = array;

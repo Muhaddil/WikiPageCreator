@@ -35,12 +35,11 @@ Existe un orden preferido de imágenes de la galería, según el tipo de nave:
 				<li>Pantalla de inventario</li>
 				<li>Escaneo de visor de análisis</li>
 				<li>Lugar del accidente</li>
-				<li>Página Planeta/Luna</li>
 				<li>Página del sistema</li>
 			</ol>
 		</div>
 		<div>
-			<div class='has-text-weight-bold'>Freighters:</div>
+			<div class='has-text-weight-bold'>Cargueros:</div>
 			<ol class='dialog-list mt-1'>
 				<li>Vista trasera del carguero</li>
 				<li>Pantalla de inventario</li>

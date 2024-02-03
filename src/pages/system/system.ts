@@ -841,21 +841,21 @@ export function addTemplate(element: HTMLInputElement | undefined = undefined) {
 	outputElement.style.display = element.checked ? '' : 'none';
 }
 
-/**
- * Generates an array for the page gallery based on the faction of the current page.
- * If the faction is 'Uncharted' or includes 'Abandoned', the last element is removed.
- *
- * @function
- * @name generateGalleryArray
- * @returns {void}
- */
+// Mapeo de nombres en inglés a español
+const systemMap = {
+	'Analysis Visor': 'Visor de Análisis',
+	'System Exploration Guide': 'Guía de Exploración del Sistema',
+	'System Page': 'Página del Sistema',
+	'Default Space Station Multi-Tool': 'Multiherramienta Predeterminada de la Estación Espacial',
+};
+
 export function generateGalleryArray() {
 	const array: Array<string> = [
 		'',
-		'Analysis Visor',
-		'System Exploration Guide',
-		'System Page',
-		'Default Space Station Multi-Tool',
+		systemMap['Analysis Visor'],
+		systemMap['System Exploration Guide'],
+		systemMap['System Page'],
+		systemMap['Default Space Station Multi-Tool'],
 	];
 
 	if (pageData.faction === 'Uncharted' || (pageData.faction as string).includes('Abandoned')) {
@@ -864,6 +864,7 @@ export function generateGalleryArray() {
 
 	pageData.galleryArray = array;
 }
+
 
 /**
  * Searches for and highlights checkboxes based on a search term.

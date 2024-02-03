@@ -20,7 +20,6 @@ El orden preferido de las imágenes es el siguiente:
 <div class='dialog-center'>
 <ol class='dialog-list'>
 <li>Escaneo de gusanos</li>
-<li>Página de la Luna</li>
 <li>Página del planeta</li>
 <li>Página del sistema</li>
 <li>Mapa de galaxias</li>

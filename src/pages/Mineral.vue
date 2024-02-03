@@ -39,8 +39,16 @@ const wikiText = ref<HTMLDivElement | null>(null);
 onMounted(() => {
   fullArticleElement.value = wikiText.value;
   // TODO: gallery should be integrated natively, not as separate Vue app
-  addStaticPageData('galleryArray', ['', 'Scanner view', 'Discovery Menu']);
-  addStaticPageData(
+  const mineralMap = {
+	'Scanner view': 'Vista del escáner',
+	'Discovery Menu': 'Menú de descubrimiento'
+};
+
+addStaticPageData('galleryArray', [
+	'',
+	mineralMap['Scanner view'],
+	mineralMap['Discovery Menu']
+]);  addStaticPageData(
     'galleryExplanationExternal',
     `
     Hay un orden preferido de imágenes de la galería:

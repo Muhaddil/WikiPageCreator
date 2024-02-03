@@ -13,7 +13,8 @@ import {
 } from '../../common';
 import { plural } from '../../miscLogic/planetMoonLogic';
 import type { ElementFunctions } from '../../types/elements';
-import { globalElements, pageData } from '../../variables/objects';
+import { globalElements, pageData, globalFunctions } from '../../variables/objects';
+import galleryDropdownItems from '../../modules/gallery/components/GalleryItem.vue'
 
 /**
  * Add a new section for adding a moon to a planet.
@@ -109,29 +110,71 @@ function moonSentence() {
   wikiCode(output, 'moonSentence');
 }
 
+export const planetmap: { [key: string]: string } = {
+  '': '',
+  'Paisaje': 'Landscape',
+  'Vista Nocturna': 'Night View',
+  'Sistema de Cuevas': 'Cave System',
+  'Visor de Análisis': 'Analysis Visor',
+  'Guía de exploración planetaria': 'Planet Exploration Guide',
+  'Página del Planeta': 'Planet Page',
+  'Página del Sistema': 'System Page',
+  'Mapa galáctico': 'Galaxy Map',
+  'Área Costera': 'Coast Area',
+  'Subacuático': 'Underwater',
+  'Guía de Exploración del Sistema': 'System Exploration Guide',
+  'Multiherramienta Predeterminada de la Estación Espacial': 'Default Space Station Multi-Tool',
+  'Página de la Luna': 'Moon Page',
+  'Escaneo de la criatura': 'Creature scan',
+  'Menú de descubrimiento': 'Discovery Menu',
+  'Escaneo de gusano': 'Worm scan',
+  'Vista del escáner': 'Scanner view',
+  'Vista trasera de la nave': 'Rear view of ship',
+  'Vista trasera del carguero': 'Rear view of freighter',
+  'Pantalla de inventario': 'Inventory screen',
+  'Capitán de carguero NPC': 'NPC freighter captain',
+  'Piloto de nave NPC': 'NPC ship pilot',
+  'Escaneo con visor de análisis': 'Analysis Visor Scan',
+  'Lugar del accidente': 'Crash site',
+  'Página de precios': 'Price Page',
+	'Estadísticas base': 'Base Stats',
+	'Asentamiento menor': 'Minor Settlement',
+	'Pilar de centinela': 'Sentinel Pillar',
+	'Campamento armónico': 'Harmonic Camp',
+	'Monolito': 'Monolith',
+	'Herramienta en mano': 'Tool in Hand',
+	'Vista en primera persona': 'First Person View',
+  'Vista trasera de la fragata': 'Rear view of frigate',
+	'Pantalla de interacción': 'Interaction screen',
+};
+
 export function generateGalleryArray() {
-  const captions = [
+  const spanishCaptions = [
     '',
-    'Landscape',
-    'Night View',
-    'Cave System',
-    'Analysis Visor',
-    'Planet Exploration Guide',
-    'Planet Page',
-    'System Page',
-    'Galaxy Map',
+    'Paisaje',
+    'Vista Nocturna',
+    'Sistema de Cuevas',
+    'Visor de Análisis',
+    'Guía de exploración planetaria',
+    'Página del Planeta',
+    'Página del Sistema',
+    'Mapa galáctico',
   ];
 
-  const waterCaptions = ['Coast Area', 'Underwater'];
+  const waterCaptions = ['Área Costera', 'Subacuático'];
 
   // add water pics before AV
   if (pageData.terrain !== 'Pangean') {
-    const avIndex = captions.indexOf('Analysis Visor');
-    captions.splice(avIndex, 0, ...waterCaptions);
+    const avIndex = spanishCaptions.indexOf('Visor de Análisis');
+    spanishCaptions.splice(avIndex, 0, ...waterCaptions);
   }
 
-  pageData.galleryArray = captions;
+  pageData.galleryArray = spanishCaptions;
+  globalFunctions.generateGalleryArray = () => {
+    galleryDropdownItems.value = Array.isArray(pageData.galleryArray) ? pageData.galleryArray.map(caption => planetmap[caption] || caption) : [];
+  };
 }
+
 
 export function autoWater() {
   const terrain = pageData.terrain;

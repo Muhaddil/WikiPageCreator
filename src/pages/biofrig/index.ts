@@ -13,18 +13,26 @@ addStaticPageData('galleryExplanationExternal', `
 Hay un orden preferido de imágenes de la galería:
 	<div class='dialog-center'>
 		<ol class='dialog-list'>
-			<li>Vista trasera de la fragata/Rear view of frigate</li>
-			<li>Pantalla de interacción/Interaction screen</li>
-			<li>Página del sistema/System Page</li>
+			<li>Vista trasera de la fragata</li>
+			<li>Pantalla de interacción</li>
+			<li>Página del sistema</li>
 		</ol>
  	</div>`)
 
+// Mapeo de nombres en inglés a español
+const biofrigMap = {
+	'Rear view of frigate': 'Vista trasera de la fragata',
+	'Interaction screen': 'Pantalla de interacción',
+	'System Page': 'Página del Sistema'
+};
+
 addStaticPageData('galleryArray', [
 	'',
-	'Rear view of frigate',
-	'Interaction screen',
-	'System Page'
-])
+	biofrigMap['Rear view of frigate'],
+	biofrigMap['Interaction screen'],
+	biofrigMap['System Page']
+]);
+
 
 assignElementFunctions(frigateElementFunctions);
 

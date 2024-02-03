@@ -30,7 +30,7 @@ import { addAllTooltips } from '../modules/tooltip';
 import { updateGlobalElements } from '../commonElements/elementBackend/elementStore';
 import { buildDescriptor, initialiseSectionInputs, wikiCodePercentage } from './celestialobjectslogic';
 import type { ElementFunctions, ElementIds } from '../types/elements';
-import { getResourceData, getSentinelData } from '../datalists/planetDatalists';
+import { getResourceData, getSentinelData, resourceNamesInSpanish, resourceNamesInEnglish } from '../datalists/planetDatalists';
 import creatureData from './creatureData';
 import type { LinkObjValues, PlanetPropResourceLinks } from '../types/links';
 import type { StdObj } from '../types/objects';
@@ -101,13 +101,23 @@ export function addResource(
 
   const sectionName = 'section' + childIndex;
 
-  // Creates HTML code for a new resource input section
+  // Crea un datalist con los nombres de los recursos en español
+  let datalist = document.createElement('datalist');
+  datalist.id = 'resourcesInSpanish';
+  for (let resource in resourceNamesInSpanish) {
+    let option = document.createElement('option');
+    option.value = resourceNamesInSpanish[resource];
+    datalist.appendChild(option);
+  }
+  document.body.appendChild(datalist);
+
+  // Modifica el HTML del input para usar el datalist
   const inputHTML = `<div class="table-cell text removable" data-resource="section${childIndex}">
-		<button class="button is-outlined is-danger icon is-small" title="Remove resource" type="button" disabled data-evt-id="removeButton">&#10006</button>
-		<label for="${resource_input}">Nombre del recúrso:</label>
+	<button class="button is-outlined is-danger icon is-small" title="Remover recúrso" type="button" disabled data-evt-id="removeButton">✖</button>
+	<label for="${resource_input}">Nombre del recúrso:</label>
 	</div>
 	<div class="table-cell data" data-resource="section${childIndex}">
-		<input type="text" list="resources" id="${resource_input}" data-evt-id="resourceInput" placeholder="Traducción de los recursos en el ?">
+		<input type="text" list="resourcesInSpanish" id="${resource_input}" data-evt-id="resourceInput" placeholder="Nombre de los recursos del planeta/luna">
 	</div>`;
 
   const eventListeners: ElementFunctions = [
@@ -196,11 +206,11 @@ export function enableResourceAdd() {
  * @returns {void}
  */
 function resourceList() {
-  const resourceShorts = getResourceData();
+  const resourceShorts: { [key: string]: string } = getResourceData();
   const resourceInputs: NodeListOf<HTMLInputElement> = document.querySelectorAll('[data-resource] input');
   const resources: Set<string> = new Set();
   for (const input of Array.from(resourceInputs)) {
-    if (input.value) resources.add(input.value);
+    if (input.value) resources.add(resourceNamesInEnglish[input.value] || input.value);
   }
   const resourceData: { [key: string]: string } = {};
   for (const resource of Array.from(resources)) {

@@ -3,6 +3,7 @@ import { storeToRefs } from 'pinia';
 import { useGalleryStore, type FileItem } from '../stores/gallery';
 import { globalFunctions, pageData } from '../../../variables/objects';
 import { onMounted, ref } from 'vue';
+import { planetmap } from '../../../pages/planet/planet'
 
 defineProps<{
   fileItem: FileItem;
@@ -65,21 +66,17 @@ function moveItem(fileItem: FileItem, direction: 'up' | 'down') {
       />
     </a>
     <div class="gallery-meta">
-      <p style="word-break: break-all"><span class="has-text-weight-bold">Nombre: </span>{{ fileItem.file.name }}</p>
-      <div v-show="galleryDropdownItems.length">
-        <select
-          v-model="fileItem.desc"
-          @mousedown="updateGalleryDropdown"
-          @touchstart="updateGalleryDropdown"
-        >
-          <option
-            v-for="desc in galleryDropdownItems"
-            :value="desc"
-            :key="desc"
-          >
-            {{ desc }}
-          </option>
-        </select>
+  <p style="word-break: break-all"><span class="has-text-weight-bold">Nombre: </span>{{ fileItem.file.name }}</p>
+  <div v-show="galleryDropdownItems.length">
+    <select v-model="fileItem.desc" @change="fileItem.desc = planetmap[fileItem.desc]">
+      <option
+        v-for="desc in galleryDropdownItems"
+        :value="desc"
+        :key="desc"
+      >
+        {{ desc }}
+      </option>
+    </select>
       </div>
       <div>
         <input
