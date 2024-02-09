@@ -29,6 +29,32 @@ export function switchTheme(): void {
   }, 400); // NoSonar wait 400ms so Chrome can finish its transition
 }
 
+// document.addEventListener('DOMContentLoaded', () => {
+//   loadTheme();
+// });
+
+// export function loadTheme(): void {
+//   const theme = localStorage.getItem('theme') ?? 'light';
+//   document.documentElement.dataset.theme = theme;
+// }
+
+// export function switchTheme(): void {
+//   document.documentElement.dataset.transition = 'true';
+//   const theme = document.documentElement.dataset.theme ?? 'light';
+
+//   if (theme === 'light') {
+//     localStorage.setItem('theme', 'dark');
+//     document.documentElement.dataset.theme = 'dark';
+//   } else {
+//     localStorage.setItem('theme', 'light');
+//     document.documentElement.dataset.theme = 'light';
+//   }
+
+//   setTimeout(() => {
+//     delete document.documentElement.dataset.transition;
+//   }, 400);
+// }
+
 /**
  * Displays the settings modal and restores default values.
  * @function
