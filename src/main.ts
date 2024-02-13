@@ -1,4 +1,5 @@
 import './startup/minimal';
+import './scss/styles.scss';
 
 import App from './App.vue';
 import { createApp } from 'vue';
