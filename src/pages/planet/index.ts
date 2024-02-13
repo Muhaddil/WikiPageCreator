@@ -19,7 +19,7 @@ autoWater();
 addStaticPageData(
   'galleryExplanationExternal',
   `
-  Hay un orden preferido de imágenes.:
+  Hay un orden preferido de imágenes:
 	<div class='dialog-center'>
 		<ol class='dialog-list'>
 			<li>Paisaje</li>
