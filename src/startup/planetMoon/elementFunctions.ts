@@ -1,6 +1,6 @@
 import { image, toggleSection } from "../../common";
 import { autoInfested } from "../../miscLogic/celestialobjectslogic";
-import { addFauna, addFlora, addMineral, addResource, addSandwormTemplate, locationSentence, plural, sentinelSentence, sentinelName, wormAutoSpawn } from "../../miscLogic/planetMoonLogic";
+import { addFauna, addFlora, addMineral, addResource, addSandwormTemplate, locationSentence, plural, sentinelSentence, wormAutoSpawn } from "../../miscLogic/planetMoonLogic";
 import type { ElementFunctions } from "../../types/elements";
 import { pageData } from "../../variables/objects";
 
@@ -16,10 +16,6 @@ const planetMoonElementFunctions: ElementFunctions = [
 	{
 		element: 'sentinelInput',
 		func: () => sentinelSentence()
-	},
-  {
-		element: 'sentinelInput',
-		func: () => sentinelName()
 	},
 	{
 		element: ['descriptionInput', 'wormmaxdepthInput'],

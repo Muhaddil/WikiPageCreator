@@ -34,13 +34,6 @@ body {
   }
 }
 
-// body {
-//   background-image: var(--body-backgroundimage);
-//   background-repeat: no-repeat;
-//   background-position: center top;
-//   background-size: 1400px;
-// }
-
 // TODO: remove this when ported to Vue
 html[data-debug='true']::before {
   display: block;

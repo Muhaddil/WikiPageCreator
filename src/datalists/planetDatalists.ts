@@ -1,119 +1,75 @@
 /**
  * @fileoverview Provides data for planet datalists
  */
-export function getSentinelData() {
-	const sentinels: {
-		[key: string]: Array<string>;
-	} = {
-		low: [
-			'Absent',
-			'Few',
-			'Infrequent',
-			'Intermittent',
-			'Irregular Patrols',
-			'Isolated',
-			'Limited',
-			'Low',
-			'Low Security',
-			'Minimal',
-			'Missing',
-			'None',
-			'None Present',
-			'Not Present',
-			'Remote',
-			'Sparse',
-			'Spread Thin',
-		],
-		high: [
-			'Attentive',
-			'Enforcing',
-			'Ever-present',
-			'Frequent',
-			'Observant',
-			'Regular Patrols',
-			'Require Obedience',
-			'Require Orthodoxy',
-			'Unwavering',
-		],
-		aggressive: [
-			'Aggressive',
-			'Frenzied',
-			'Hateful',
-			'High Security',
-			'Hostile Patrols',
-			'Inescapable',
-			'Malicious',
-			'Threatening',
-			'Zealous',
-		],
-		corrupted: [
-			'Corrupted',
-			'Forsaken',
-			'Rebellious',
-			'Answer To None',
-			'Sharded from the Atlas',
-			'Dissonant',
-			'De-Harmonised',
-		]
-	}
-	return sentinels;
+interface Sentinel {
+  [key: string]: string;
 }
 
-// Tus nombres en español e inglés
-const spanishSentinels: { [key: string]: string[] } = {
-	low: [
-		'Ausente',
-		'Pocos',
-		'Infrecuentes',
-		'Intermitentes',
-		'Patrullas Irregulares',
-		'Aislados',
-		'Limitados',
-		'Baja',
-		'Baja Seguridad',
-		'Mínimo',
-		'Faltantes',
-		'Ninguno',
-		'Ninguno Presente',
-		'No Presente',
-		'Remoto',
-		'Escasos',
-		'Dispersos',
-	],
-	high: [
-		'Atento',
-		'Aplicando',
-		'Siempre Presente',
-		'Frecuentes',
-		'Observador',
-		'Patrullas Regulares',
-		'Requiere Obediencia',
-		'Requiere Ortodoxia',
-		'Inquebrantable',
-	],
-	aggressive: [
-		'Agresivo',
-		'Frenético',
-		'Odioso',
-		'Alta Seguridad',
-		'Patrullas Hostiles',
-		'Ineludible',
-		'Malicioso',
-		'Amenazante',
-		'Entusiasta',
-	],
-	corrupted: [
-		'Corrupto',
-		'Abandonado',
-		'Rebelde',
-		'No Responde a Nadie',
-		'Desgajado del Atlas',
-		'Dissonante',
-		'Desarmónico',
-	]
-};
+interface Sentinels {
+  [key: string]: Sentinel;
+}
 
-const englishSentinels: { [key: string]: string[] } = getSentinelData();
+export function getSentinelData(): Sentinels {
+  const sentinels: Sentinels = {
+      low: {
+          'Absent': 'Ausentes',
+          'Few':'Exiguo',
+          'Infrequent':'Poco frecuente',
+          'Intermittent':'Intermitente',
+          'Irregular Patrols':'Patrullas irregulares',
+          'Isolated':'Aislado',
+          'Limited':'Limitados',
+          'Low':'Bajo',
+          'Low Security':'Seguridad baja',
+          'Minimal':'Mínimo',
+          'Missing':'Desaparecido',
+          'None':'Ninguno',
+          'None Present':'Ninguno presente',
+          'Not Present':'No presente',
+          'Remote':'Remoto',
+          'Sparse':'Disperso',
+          'Spread Thin':'Abarca demasiado',
+          // Agrega aquí el resto de tus traducciones para la categoría 'low'
+      },
+      high: {
+        'Attentive':'Atento',
+        'Enforcing':'Ejecutor',
+        'Ever-present':'Constante',
+        'Frequent':'Frecuente',
+        'Observant':'Observador',
+        'Regular Patrols':'Patrullas regulares',
+        'Require Obedience':'Requieren obediencia',
+        'Require Orthodoxy':'Requieren ortodoxia',
+        'Unwavering':'Inquebrantable',
+          // Agrega aquí tus traducciones para la categoría 'high'
+      },
+      aggressive: {
+        'Aggressive':'Agresivo',
+        'Frenzied':'Enloquecido',
+        'Hateful':'Detestable',
+        'High Security':'Seguridad alta',
+        'Hostile Patrols':'Patrullas hostiles',
+        'Inescapable':'Inevitable',
+        'Malicious':'Malicioso',
+        'Threatening':'Amenazante',
+        'Zealous':'Fervoroso',
+          // Agrega aquí tus traducciones para la categoría 'aggressive'
+      },
+      corrupted: {
+        'Corrupted':'Corrupto',
+        'Forsaken':'Abandonado',
+        'Rebellious':'Rebelde',
+        'Answer To None':'Responder a nadie',
+        'Sharded from the Atlas':'Fragmentado del Atlas',
+        'Dissonant':'Disonante',
+        'De-Harmonised':'Desarmonizado',
+          // Agrega aquí tus traducciones para la categoría 'corrupted'
+      }
+      // Agrega aquí cualquier otra categoría que necesites
+  };
+
+  return sentinels;
+}
 
 // Objeto de mapeo de inglés a español
 export const resourceNamesInSpanish: { [key: string]: string } = {
@@ -901,39 +857,47 @@ export function getRareza2Data(): Rarezas2 {
   return rarezas2;
 }
 
-// Crear un objeto de mapeo entre los nombres en español e inglés
-export const sentinelMap: { [key: string]: { [key: string]: string } } = Object.keys(spanishSentinels).reduce((obj: { [key: string]: { [key: string]: string } }, level: keyof typeof spanishSentinels) => {
-  obj[level] = spanishSentinels[level].reduce((levelObj: { [key: string]: string }, sentinel: string, index: number) => {
-    levelObj[sentinel] = englishSentinels[level][index];
-    return levelObj;
-  }, {});
-  return obj;
-}, {});
-
-export function translateSentinelName(spanishName: string): string {
-    for (const level in sentinelMap) {
-      if (sentinelMap[level][spanishName]) {
-        return sentinelMap[level][spanishName];
-      }
-    }
-    return ''; // Retorna una cadena vacía si no se encuentra el nombre en español
-  }
 
 // Populates `planetDatalists.sentinels` with the data from `getSentinelData()`.
 planetDatalists.sentinels = [];
-for (const level in spanishSentinels) {
-	planetDatalists.sentinels.push(
-    ...spanishSentinels[level as keyof typeof spanishSentinels]
-  );
+const sentinels = getSentinelData();
+const keyToValueMap: Record<string, string> = {};
+
+for (const level in sentinels) {
+    for (const key in sentinels[level]) {
+        const value = sentinels[level][key];
+        if (value) {
+            planetDatalists.sentinels.push(key);
+            keyToValueMap[key] = value;
+        }
+    }
 }
 
-// // Populates `planetDatalists.sentinels` with the data from `getSentinelData()`.
-// planetDatalists.sentinels = [];
-// const sentinels = getSentinelData();
-// for (const level in sentinels) {
-// 	planetDatalists.sentinels.push(...sentinels[level]);
-// }
+export function datalists5(object: { [key: string]: string; }): string {
+  let selectedValue = '';
+  const datalist = document.createElement('datalist');
+  datalist.id = 'sentinelsDatalist';
+  for (const id in object) {
+    const optionElement = document.createElement('option');
+    optionElement.value = object[id];
+    datalist.appendChild(optionElement);
+  }
+  document.body.appendChild(datalist);
+const input = document.querySelector('input[list="sentinelsDatalist"]');
+if (input) {
+  input.addEventListener('input', function(e) {
+    const selectedOption = Object.keys(object).find(key => object[key] === (e.target as HTMLInputElement).value);
+    if (selectedOption) {
+      e.preventDefault();
+      (e.target as HTMLInputElement).value = selectedOption;
+      selectedValue = selectedOption;
+    }
+  });
+}
+return selectedValue;
+}
 
+datalists5(keyToValueMap);
 
 // Populates `planetDatalists.planetDescriptors` with the unique descriptors in `getDescriptorData()`.
 const descriptors: Set<string> = new Set()
@@ -949,6 +913,9 @@ planetDatalists.planetDescriptors = Array.from(descriptors);
 planetDatalists.resources = Object.keys(getResourceData());
 
 
+
+
+// Populates `planetDatalists.sentinels` with the data from `getSentinelData()`.
 planetDatalists.rarezas = [];
 const rarezas = getRarezaData();
 const keyToValueMap2: Record<string, string> = {};

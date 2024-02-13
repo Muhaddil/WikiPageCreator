@@ -30,7 +30,7 @@ import { addAllTooltips } from '../modules/tooltip';
 import { updateGlobalElements } from '../commonElements/elementBackend/elementStore';
 import { buildDescriptor, initialiseSectionInputs, wikiCodePercentage } from './celestialobjectslogic';
 import type { ElementFunctions, ElementIds } from '../types/elements';
-import { getResourceData, getSentinelData, resourceNamesInSpanish, resourceNamesInEnglish, translateSentinelName } from '../datalists/planetDatalists';
+import { getResourceData, getSentinelData, resourceNamesInSpanish, resourceNamesInEnglish } from '../datalists/planetDatalists';
 import creatureData from './creatureData';
 import type { LinkObjValues, PlanetPropResourceLinks } from '../types/links';
 import type { StdObj } from '../types/objects';
@@ -233,39 +233,26 @@ export function sentinelSentence() {
   // Assigns the descriptor of the sentinel activity on this page.
   const sentDescriptor = pageData.sentinel as string;
 
-  // Translates the sentinel descriptor to English.
-  const englishSentDescriptor = translateSentinelName(sentDescriptor);
-
   // Retrieves data about the available sentinel activities.
   const sentinels = getSentinelData();
 
   // Identifies the level of sentinel activity on this page.
-  const sentLevel = Object.keys(sentinels).find(level => sentinels[level].includes(englishSentDescriptor)) || '';
+  const sentLevel = (() => {
+    for (const level in sentinels) {
+      if (sentinels[level]) return level;
+    }
+    return '';
+  })();
 
   // Constructs a sentence describing Sentinel activity on this page.
   const output = `[[Sentinel]] activity on this ${(
     pageData.pageType as string
-  ).toLowerCase()} is classified as: ''${englishSentDescriptor}''. The sentinels ${
-    ['high', 'aggressive', 'corrupted'].includes(sentLevel) ? '' : "don't"
+  ).toLowerCase()} is classified as: ''${sentDescriptor}''. The sentinels ${
+    sentLevel === 'aggressive' ? '' : "don't"
   } present an immediate threat.`;
 
   // Assigns the constructed sentence to the corresponding HTML element.
   (globalElements.output.sentinelSentence as HTMLOutputElement).innerText = output;
-}
-
-
-export function sentinelName() {
-  // Assigns the descriptor of the sentinel activity on this page.
-  const sentDescriptor = pageData.sentinel as string;
-
-  // Translates the sentinel descriptor to English.
-  const englishSentDescriptor = translateSentinelName(sentDescriptor);
-
-  // Assigns the English name of the sentinel to globalElements.output.innerText
-  (globalElements.output.sentinelName as HTMLOutputElement).innerText = englishSentDescriptor;
-
-  // Returns the English name of the sentinel.
-  return englishSentDescriptor;
 }
 
 /**
