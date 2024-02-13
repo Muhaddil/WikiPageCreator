@@ -901,38 +901,38 @@ export function getRareza2Data(): Rarezas2 {
   return rarezas2;
 }
 
-// // Crear un objeto de mapeo entre los nombres en español e inglés
-// export const sentinelMap: { [key: string]: { [key: string]: string } } = Object.keys(spanishSentinels).reduce((obj: { [key: string]: { [key: string]: string } }, level: keyof typeof spanishSentinels) => {
-//   obj[level] = spanishSentinels[level].reduce((levelObj: { [key: string]: string }, sentinel: string, index: number) => {
-//     levelObj[sentinel] = englishSentinels[level][index];
-//     return levelObj;
-//   }, {});
-//   return obj;
-// }, {});
+// Crear un objeto de mapeo entre los nombres en español e inglés
+export const sentinelMap: { [key: string]: { [key: string]: string } } = Object.keys(spanishSentinels).reduce((obj: { [key: string]: { [key: string]: string } }, level: keyof typeof spanishSentinels) => {
+  obj[level] = spanishSentinels[level].reduce((levelObj: { [key: string]: string }, sentinel: string, index: number) => {
+    levelObj[sentinel] = englishSentinels[level][index];
+    return levelObj;
+  }, {});
+  return obj;
+}, {});
 
-// export function translateSentinelName(spanishName: string): string {
-//     for (const level in sentinelMap) {
-//       if (sentinelMap[level][spanishName]) {
-//         return sentinelMap[level][spanishName];
-//       }
-//     }
-//     return ''; // Retorna una cadena vacía si no se encuentra el nombre en español
-//   }
-
-// // Populates `planetDatalists.sentinels` with the data from `getSentinelData()`.
-// planetDatalists.sentinels = [];
-// for (const level in spanishSentinels) {
-// 	planetDatalists.sentinels.push(
-//     ...spanishSentinels[level as keyof typeof spanishSentinels]
-//   );
-// }
+export function translateSentinelName(spanishName: string): string {
+    for (const level in sentinelMap) {
+      if (sentinelMap[level][spanishName]) {
+        return sentinelMap[level][spanishName];
+      }
+    }
+    return ''; // Retorna una cadena vacía si no se encuentra el nombre en español
+  }
 
 // Populates `planetDatalists.sentinels` with the data from `getSentinelData()`.
 planetDatalists.sentinels = [];
-const sentinels = getSentinelData();
-for (const level in sentinels) {
-	planetDatalists.sentinels.push(...sentinels[level]);
+for (const level in spanishSentinels) {
+	planetDatalists.sentinels.push(
+    ...spanishSentinels[level as keyof typeof spanishSentinels]
+  );
 }
+
+// // Populates `planetDatalists.sentinels` with the data from `getSentinelData()`.
+// planetDatalists.sentinels = [];
+// const sentinels = getSentinelData();
+// for (const level in sentinels) {
+// 	planetDatalists.sentinels.push(...sentinels[level]);
+// }
 
 
 // Populates `planetDatalists.planetDescriptors` with the unique descriptors in `getDescriptorData()`.
