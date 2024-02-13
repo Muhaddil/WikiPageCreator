@@ -17,10 +17,10 @@ const planetMoonElementFunctions: ElementFunctions = [
 		element: 'sentinelInput',
 		func: () => sentinelSentence()
 	},
-  // {
-	// 	element: 'sentinelInput',
-	// 	func: () => sentinelName()
-	// },
+  {
+		element: 'sentinelInput',
+		func: () => sentinelName()
+	},
 	{
 		element: ['descriptionInput', 'wormmaxdepthInput'],
 		func: function () { autoInfested(this as unknown as HTMLInputElement) }
