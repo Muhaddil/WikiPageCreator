@@ -30,7 +30,7 @@ import { addAllTooltips } from '../modules/tooltip';
 import { updateGlobalElements } from '../commonElements/elementBackend/elementStore';
 import { buildDescriptor, initialiseSectionInputs, wikiCodePercentage } from './celestialobjectslogic';
 import type { ElementFunctions, ElementIds } from '../types/elements';
-import { getResourceData, getSentinelData, resourceNamesInSpanish, resourceNamesInEnglish, translateSentinelName } from '../datalists/planetDatalists';
+import { getResourceData, getSentinelData, resourceNamesInSpanish, resourceNamesInEnglish } from '../datalists/planetDatalists';
 import creatureData from './creatureData';
 import type { LinkObjValues, PlanetPropResourceLinks } from '../types/links';
 import type { StdObj } from '../types/objects';

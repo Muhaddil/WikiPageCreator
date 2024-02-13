@@ -59,61 +59,61 @@ export function getSentinelData() {
 	return sentinels;
 }
 
-// Tus nombres en español e inglés
-const spanishSentinels: { [key: string]: string[] } = {
-	low: [
-		'Ausente',
-		'Pocos',
-		'Infrecuentes',
-		'Intermitentes',
-		'Patrullas Irregulares',
-		'Aislados',
-		'Limitados',
-		'Baja',
-		'Baja Seguridad',
-		'Mínimo',
-		'Faltantes',
-		'Ninguno',
-		'Ninguno Presente',
-		'No Presente',
-		'Remoto',
-		'Escasos',
-		'Dispersos',
-	],
-	high: [
-		'Atento',
-		'Aplicando',
-		'Siempre Presente',
-		'Frecuentes',
-		'Observador',
-		'Patrullas Regulares',
-		'Requiere Obediencia',
-		'Requiere Ortodoxia',
-		'Inquebrantable',
-	],
-	aggressive: [
-		'Agresivo',
-		'Frenético',
-		'Odioso',
-		'Alta Seguridad',
-		'Patrullas Hostiles',
-		'Ineludible',
-		'Malicioso',
-		'Amenazante',
-		'Entusiasta',
-	],
-	corrupted: [
-		'Corrupto',
-		'Abandonado',
-		'Rebelde',
-		'No Responde a Nadie',
-		'Desgajado del Atlas',
-		'Dissonante',
-		'Desarmónico',
-	]
-};
+// // Tus nombres en español e inglés
+// const spanishSentinels: { [key: string]: string[] } = {
+// 	low: [
+// 		'Ausente',
+// 		'Pocos',
+// 		'Infrecuentes',
+// 		'Intermitentes',
+// 		'Patrullas Irregulares',
+// 		'Aislados',
+// 		'Limitados',
+// 		'Baja',
+// 		'Baja Seguridad',
+// 		'Mínimo',
+// 		'Faltantes',
+// 		'Ninguno',
+// 		'Ninguno Presente',
+// 		'No Presente',
+// 		'Remoto',
+// 		'Escasos',
+// 		'Dispersos',
+// 	],
+// 	high: [
+// 		'Atento',
+// 		'Aplicando',
+// 		'Siempre Presente',
+// 		'Frecuentes',
+// 		'Observador',
+// 		'Patrullas Regulares',
+// 		'Requiere Obediencia',
+// 		'Requiere Ortodoxia',
+// 		'Inquebrantable',
+// 	],
+// 	aggressive: [
+// 		'Agresivo',
+// 		'Frenético',
+// 		'Odioso',
+// 		'Alta Seguridad',
+// 		'Patrullas Hostiles',
+// 		'Ineludible',
+// 		'Malicioso',
+// 		'Amenazante',
+// 		'Entusiasta',
+// 	],
+// 	corrupted: [
+// 		'Corrupto',
+// 		'Abandonado',
+// 		'Rebelde',
+// 		'No Responde a Nadie',
+// 		'Desgajado del Atlas',
+// 		'Dissonante',
+// 		'Desarmónico',
+// 	]
+// };
 
-const englishSentinels: { [key: string]: string[] } = getSentinelData();
+// const englishSentinels: { [key: string]: string[] } = getSentinelData();
 
 // Objeto de mapeo de inglés a español
 export const resourceNamesInSpanish: { [key: string]: string } = {
