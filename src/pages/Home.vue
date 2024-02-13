@@ -1,7 +1,8 @@
 <script setup lang="ts">
+import { reactive, onMounted } from 'vue';
 import PageLink from '@/components/structure/PageLink.vue';
 import CivImage from '@/components/structure/CivImage.vue';
-import type {CivImageProps, PageLinkProps } from '@/types/objects';
+import type { CivImageProps, PageLinkProps } from '@/types/objects';
 
 const links: PageLinkProps[] = [
   {
@@ -16,14 +17,14 @@ const links: PageLinkProps[] = [
   //   text: 'Bases (TESTING)',
   //   url: './basepruebas.html',
   // },
-   {
-     text: 'Circuitos',
-     url: './racetrack.html',
-   },
-   {
-     text: 'Asentamientos',
-     url: './settlement.html',
-   },
+  {
+    text: 'Circuitos',
+    url: './racetrack.html',
+  },
+  {
+    text: 'Asentamientos',
+    url: './settlement.html',
+  },
   {
     text: 'Fauna',
     url: './fauna.html',
@@ -74,40 +75,84 @@ const links: PageLinkProps[] = [
   },
 ];
 
+function getCssVarValue(varName: string) {
+  // Get the value of the CSS variable, which will be something like 'url("...")'
+  let cssValue = getComputedStyle(document.documentElement).getPropertyValue(varName).trim();
 
-const images: CivImageProps[] = [
-  {
+  // Remove 'url(' from the start and ')' from the end to get only the image URL
+  if (cssValue.startsWith('url(') && cssValue.endsWith(')')) {
+    let imageUrl = cssValue.slice(4, -1);
+
+    // If the URL is between quotes, also remove them
+    if (imageUrl.startsWith('"') && imageUrl.endsWith('"')) {
+      imageUrl = imageUrl.slice(1, -1);
+    }
+
+    return imageUrl;
+  }
+
+  // If the value does not have the expected format, return the value as is
+  return cssValue;
+}
+
+const images = reactive<CivImageProps[]>([]);
+
+// Reactive variable to store the value of the CSS variable
+const hubLogo = reactive({ value: '' });
+
+onMounted(() => {
+  // Update the value of hubLogo with the current value of the CSS variable
+  hubLogo.value = getCssVarValue('--hublogo');
+
+  images.push({
     link: 'https://nomanssky.fandom.com/es/wiki/Royal_Space_Society',
     imgAlt: 'Royal Space Society logo',
-    img: 'https://static.wikia.nocookie.net/nomanssky_gamepedia/images/5/51/RSS_Emblem_Hub.png',
-  },
-];
+    img: hubLogo.value,
+  });
+
+  // Set up an interval to check if the value of the CSS variable has changed
+  setInterval(() => {
+    const newHubLogoValue = getCssVarValue('--hublogo');
+    if (newHubLogoValue !== hubLogo.value) {
+      hubLogo.value = newHubLogoValue;
+      images[0].img = hubLogo.value;
+    }
+  }, 10);  // Determines how often it checks (ms)
+});
+
 </script>
+
+<style>
+.boton {
+  background: linear-gradient(135deg, #000000, #434343);
+  color: white;
+  font-weight: bold;
+  padding: 10px 20px;
+  text-decoration: none;
+  border-radius: 5px;
+  box-shadow: 2px 2px 4px rgba(167, 166, 177, 0.5);
+  transition: all 0.5s ease;
+  margin-bottom: 20px;
+  display: inline-block;
+}
+
+.boton:hover {
+  background: linear-gradient(135deg, rgb(197, 0, 1), rgb(255, 0, 0));
+  transform: scale(1.1);
+}
+</style>
 
 <template>
   <h1 class="title is-spaced">Creador de páginas Wiki</h1>
   <div class="subtitle is-4">Elija qué tipo de página desea crear:</div>
-  <nav
-    aria-label="Subpages"
-    class="page-options"
-  >
-    <PageLink
-      v-for="link in links"
-      :url="link.url"
-      :text="link.text"
-      :disabled="link.inactive"
-    />
+  <nav aria-label="Subpages" class="page-options">
+    <PageLink v-for="link in links" :url="link.url" :text="link.text" :disabled="link.inactive" />
   </nav>
   <div class="built-by">
     <div>Traído a usted por:</div>
   </div>
   <div class="images">
-    <CivImage
-      v-for="image in images"
-      :img="image.img"
-      :img-alt="image.imgAlt"
-      :link="image.link"
-    />
+    <CivImage v-for="image in images" :img="image.img" :img-alt="image.imgAlt" :link="image.link" />
   </div>
   <div><b>Royal Space Society</b></div>
 </template>

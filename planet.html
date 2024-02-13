@@ -597,10 +597,10 @@
               <option value="Occasional Radiation Outbursts">Descargas radiactivas casuales</option>
               <option value="Irradiated Storms">Tormentas irradiadas</option>
               <option value="Unstable Fog">Niebla inestable</option>
-              <option value="Reactive Rain">Reactive Rain</option>
-              <option value="Radioactive Humidity">Radioactive Humidity</option>
-              <option value="Radioactive Damp">Radioactive Damp</option>
-              <option value="Irradiated Winds">Lluvia reactiva</option>
+              <option value="Reactive Rain">Lluvia reactiva</option>
+              <option value="Radioactive Humidity">Humedad radiactiva</option>
+              <option value="Radioactive Damp">Vaho radiactivo</option>
+              <option value="Irradiated Winds">Vientos irradiados</option>
               <option value="Contaminated Puddles">Charcos contaminados</option>
               <option value="Volatile Winds">Vientos volátiles</option>
               <option value="Unstable Atmosphere">Atmósfera inestable</option>
@@ -739,7 +739,8 @@
 						</button>
 					</div>
 					<div class="table-cell data">
-              <select type="text" id="sentinelInput" data-dest="sentinel" placeholder="Escribe el nombre en español y dale a la opcion de debajo">
+            <input type="text" data-dest="sentinel" list="sentinels" id="sentinelInput">
+              <!-- <select type="text" id="sentinelInput" data-dest="sentinel" placeholder="Escribe el nombre en español y dale a la opcion de debajo">
               <optgroup label="Bajo">
                 <option value="Absent">Ausentes</option>
                 <option value="Few">Exiguo</option>
@@ -790,9 +791,9 @@
                 <option value="Dissonant">Disonante</option>
                 <option value="De-Harmonised">Desarmonizado</option>
               </optgroup>
-              </select>
+              </select> -->
   					</div>
-            <div class="table-cell text">
+            <!-- <div class="table-cell text">
               <label>¿Como se categoriza la actividad centinela?</label>
               <button class="tooltip">
                 <data>Dependiendo de que categoria haya elegido.</data>
@@ -809,7 +810,7 @@
                 <option value="The sentinels present an immediate threat.">Agresivo</option>
                 <option value="The sentinels don't present an immediate threat.">Corrupto</option>
               </select>
-            </div>
+            </div> -->
 					<div class="table-cell text">
 						<label for="floraInput">Nivel de flora del planeta:</label>
 						<button class="tooltip">
@@ -1230,7 +1231,7 @@
 					<div>| water = <output id="water"></output></div>
 					<div>| weather = <output id="weather"></output></div>
 					<div>| resources = <output id="resourceList"></output></div>
-					<div>| sentinel = <output id="sentinel" name="sentinel"></output></div>
+					<div>| sentinel = <output id="sentinelName"></output></div>
 					<div>| flora = <output id="flora"></output></div>
 					<div>| fauna = <output id="fauna"></output> (<output id="faunaNumber" name="faunaNumber"></output>)</div>
 					<div>| mode = <output id="mode"></output></div>
@@ -1363,7 +1364,7 @@
 					<br>
 
 					<div>==Additional Information==</div>
-					<div>[[Sentinel]] activity on this planet is classified as: ''<output id="sentinel" name="sentinel"></output>''. <output id="sentinelCategory"></output></div>
+					<div><output id="sentinelSentence"></output></div>
 					<br>
 
 					<div id="gallery"></div>
