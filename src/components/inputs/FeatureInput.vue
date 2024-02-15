@@ -89,9 +89,6 @@ watchEffect(() => {
   ></Multiselect>
 </template>
 
-
-
-
 <!-- <script setup lang="ts">
 import '@suadelabs/vue3-multiselect/dist/vue3-multiselect.css';
 import { ref, watchEffect } from 'vue';
