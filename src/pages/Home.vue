@@ -6,72 +6,102 @@ import type { CivImageProps, PageLinkProps } from '@/types/objects';
 
 const links: PageLinkProps[] = [
   {
-    text: 'Bases Censo',
+    text: '',
     url: './base.html',
+    img: './assets/images/buttons/1_001.png',
+    imgAlt: 'Bases Censo',
   },
   {
-    text: 'Bases Normales',
+    text: '',
     url: './basenocensus.html',
+    img: './assets/images/buttons/1_002.png',
+    imgAlt: 'Bases Normales',
   },
   // {
   //   text: 'Bases (TESTING)',
   //   url: './basepruebas.html',
   // },
   {
-    text: 'Circuitos',
+    text: '',
     url: './racetrack.html',
+    img: './assets/images/buttons/1_003.png',
+    imgAlt: 'Circuitos',
   },
   {
-    text: 'Asentamientos',
+    text: '',
     url: './settlement.html',
+    img: './assets/images/buttons/1_004.png',
+    imgAlt: 'Asentamientos',
   },
   {
-    text: 'Fauna',
+    text: '',
     url: './fauna.html',
+    img: './assets/images/buttons/1_012_2.png',
+    imgAlt: 'Fauna',
   },
   {
-    text: 'Gusano de Arena',
+    text: '',
     url: './sandworm.html',
+    img: './assets/images/buttons/1_015.png',
+    imgAlt: 'Gusano de Arena',
   },
   {
-    text: 'Flora',
+    text: '',
     url: './flora.html',
+    img: './assets/images/buttons/1_006.png',
+    imgAlt: 'Flora',
   },
   {
-    text: 'Naves',
+    text: '',
     url: './starship.html',
+    img: './assets/images/buttons/1_013.png',
+    imgAlt: 'Naves',
   },
   {
-    text: 'Multiherramientas',
+    text: '',
     url: './multitool.html',
+    img: './assets/images/buttons/1_007.png',
+    imgAlt: 'Multiherramientas',
   },
   {
-    text: 'Mineral',
+    text: '',
     url: './mineral.html',
+    img: './assets/images/buttons/1_005.png',
+    imgAlt: 'Mineral',
   },
   {
-    text: 'Carguero Abandonado',
+    text: '',
     url: './derelict.html',
+    img: './assets/images/buttons/1_014.png',
+    imgAlt: 'Carguero Abandonado',
   },
   {
-    text: 'Fragatas Organicas',
+    text: '',
     url: './biofrig.html',
+    img: './assets/images/buttons/1_009.png',
+    imgAlt: 'Fragatas Organicas',
   },
   // {
   //   text: 'Artifact',
   //   url: './artifact.html',
   // },
   {
-    text: 'Sistemas',
+    text: '',
     url: './system.html',
+    img: './assets/images/buttons/1_008.png',
+    imgAlt: 'Sistemas',
   },
   {
-    text: 'Planetas',
+    text: '',
     url: './planet.html',
+    img: './assets/images/buttons/1_010.png',
+    imgAlt: 'Planetas',
   },
   {
-    text: 'Lunas',
+    text: '',
     url: './moon.html',
+    img: './assets/images/buttons/1_011.png',
+    imgAlt: 'Lunas',
   },
 ];
 
@@ -146,7 +176,7 @@ onMounted(() => {
   <h1 class="title is-spaced">Creador de páginas Wiki</h1>
   <div class="subtitle is-4">Elija qué tipo de página desea crear:</div>
   <nav aria-label="Subpages" class="page-options">
-    <PageLink v-for="link in links" :url="link.url" :text="link.text" :disabled="link.inactive" />
+    <PageLink v-for="link in links" :url="link.url" :text="link.text" :img="link.img" :imgAlt="link.imgAlt" :disabled="link.inactive" />
   </nav>
   <div class="built-by">
     <div>Traído a usted por:</div>
@@ -171,10 +201,10 @@ onMounted(() => {
 }
 
 .page-options {
-  max-width: 800px;
+  max-width: 3300px;
   margin: 1em auto;
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
   gap: 1.5em;
 }
 </style>

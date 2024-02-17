@@ -43,6 +43,8 @@ export interface PicObj {
 export interface PageLinkProps {
   text: string;
   url: string;
+  imgAlt?: string;
+  img?: string;
   inactive?: boolean;
 }
 
