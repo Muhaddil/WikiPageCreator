@@ -5,7 +5,7 @@ const mineralResourcesDatalist: {
   [key: string]: string
   } = {
       '':'',
-      'Ferrite dust': 'Polvo de ferrita',
+      'Ferrite Dust': 'Polvo de ferrita',
       'Pure Ferrite':'Ferrita pura',
       'Di-hydrogen':'Dihidrogeno',
       'Chromatic Metal':'Metal cromatico',
