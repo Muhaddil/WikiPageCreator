@@ -207,36 +207,38 @@ function addResourceInput(element: HTMLButtonElement, sectionTarget: number) {
 	<div class="table-cell data ${oddEvenClass}" data-section="resource${sectionTarget} planet${sectionTarget}" data-resource="section${childIndex}" data-planet="planet${sectionTarget}">
 		<input type="text" list="${resource_input}-list" id="${resource_input}" data-dest-noauto="${resource}" data-evt-id="addButton" placeholder="Escribe el nombre en español y dale a la opcion de debajo">
     <datalist id="${resource_input}-list" data-dest-noauto="${resource}" data-evt-id="addButton">
-    <option value="">Nada</option>
-    <option value="Cactus Flesh">Carne de cactus</option>
-    <option value="Frost Crystal">Cristal de escarcha</option>
-    <option value="Fungal Mould">Moho fúngico</option>
-    <option value="Gamma Root">Raíz de gamma</option>
-    <option value="Solanium">Solanio</option>
-    <option value="Star Bulb">Bulbo estelar</option>
     <option value="Copper">Cobre</option>
     <option value="Cadmium">Cadmio</option>
     <option value="Emeril">Emerilio</option>
     <option value="Indium">Indio</option>
+    <option value="Activated Copper">Cobre Activado</option>
+    <option value="Activated Cadmium">Cadmio Activado</option>
+    <option value="Activated Emeril">Emerilio Activado</option>
+    <option value="Activated Indium">Indio Activado</option>
     <option value="Ammonia">Amonio</option>
-    <option value="Basalt">Basalto</option>
     <option value="Dioxite">Dioxita</option>
-    <option value="Faecium">Hecesio</option>
-    <option value="Gold">Oro</option>
-    <option value="Mordite">Mordita</option>
     <option value="Paraffinium">Parafinio</option>
-    <option value="Phosphorus">Fosforo</option>
+    <option value="Phosphorus">Fósforo</option>
     <option value="Pyrite">Pirita</option>
-    <option value="Cobalt">Cobalto</option>
-    <option value="Rusted Metal">Metal oxidado</option>
     <option value="Uranium">Uranio</option>
     <option value="Silver">Plata</option>
+    <option value="Gold">Oro</option>
     <option value="Magnetised Ferrite">Ferrita imantada</option>
-    <option value="Silver">Plata</option>
-    <option value="Salt">Sal</option>
     <option value="Sodium">Sodio</option>
-    <option value="Salvageable Scrap ">Chatarra recuperable</option>
+    <option value="Cobalt">Cobalto</option>
+    <option value="Salt">Sal</option>
+    <option value="Star Bulb">Bulbo Estelar</option>
+    <option value="Cactus Flesh">Carne de Cactus</option>
+    <option value="Gamma Root">Raíz de gamma</option>
+    <option value="Fungal Mould">Moho fúngico</option>
+    <option value="Frost Crystal">Cristal de escarcha</option>
+    <option value="Solanium">Solanio</option>
+    <option value="Mordite">Mordita</option>
+    <option value="Faecium">Hecesio</option>
     <option value="Ancient Bones">Huesos antiguos</option>
+    <option value="Salvageable Scrap">Chatarra recuperable</option>
+    <option value="Rusted Metal">Metal oxidado</option>
+    <option value="Basalt">Basalto</option>
   </datalist>
 
 	</div>`;
