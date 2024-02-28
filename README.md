@@ -1,3 +1,5 @@
+[![Build](https://github.com/Muhaddil/RSSWikiPageCreator/actions/workflows/build-deploy.yml/badge.svg)](https://github.com/Muhaddil/RSSWikiPageCreator/actions/workflows/build-deploy.yml)
+
 # No Man's Sky - Página para crear paginas en la wiki (valga la redundancia)!
 
 Este es un sitio web destinado a facilitar la creación de páginas wiki en [No Man's Sky Wiki](https://nomanssky.fandom.com).
