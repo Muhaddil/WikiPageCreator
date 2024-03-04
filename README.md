@@ -1,4 +1,5 @@
 [![Build](https://github.com/Muhaddil/RSSWikiPageCreator/actions/workflows/build-deploy.yml/badge.svg)](https://github.com/Muhaddil/RSSWikiPageCreator/actions/workflows/build-deploy.yml)
+[![pages-build-deployment](https://github.com/Muhaddil/RSSWikiPageCreator/actions/workflows/pages/pages-build-deployment/badge.svg)](https://github.com/Muhaddil/RSSWikiPageCreator/actions/workflows/pages/pages-build-deployment)
 
 # No Man's Sky - Página para crear paginas en la wiki (valga la redundancia)!
 
