@@ -87,13 +87,14 @@ const {
   researchteam,
   appearance,
   ecosystem,
-  sanitisedName: creatureName,
-  discoveredName,
-  discoveredlinkName,
-  systemName,
-  planetName,
-  moonName,
-  originalName,
+  sanitisedStrings,
+  // sanitisedName: creatureName,
+  // discoveredName,
+  // discoveredlinkName,
+  // systemName,
+  // planetName,
+  // moonName,
+  // originalName,
   docBySentence,
 } = storeToRefs(pageData);
 
@@ -102,13 +103,16 @@ const isRootsInvalid = ref('');
 const isNutrientsInvalid = ref('');
 const isNotesInvalid = ref('');
 
-
 watchDebounced(age, () => (isAgeInvalid.value = forceDatalistComponent(age.value, Object.keys(floraageDatalist))), {
   debounce: 500,
 });
-watchDebounced(roots, () => (isRootsInvalid.value = forceDatalistComponent(roots.value, Object.keys(florarootDatalist))), {
-  debounce: 500,
-});
+watchDebounced(
+  roots,
+  () => (isRootsInvalid.value = forceDatalistComponent(roots.value, Object.keys(florarootDatalist))),
+  {
+    debounce: 500,
+  }
+);
 watchDebounced(
   nutrients,
   () => (isNutrientsInvalid.value = forceDatalistComponent(nutrients.value, Object.keys(floranutSourceDatalist))),
@@ -141,24 +145,55 @@ function markCopy() {
 
 <template>
   <InputColumn>
-    <form class="table" @submit.prevent>
+    <form
+      class="table"
+      @submit.prevent
+    >
       <ReleaseInput />
-      <SimpleInput label="Nombre de la criatura:" identifier="nameInput" v-model="name" img="creature/creatureName">
+      <SimpleInput
+        label="Nombre de la criatura:"
+        identifier="nameInput"
+        v-model="name"
+        img="creature/creatureName"
+      >
         Introduzca exactamente como se ve en el juego. Cuidado con 0 (cero) y O (o).
         <template #heading>Nombre de la Planta</template>
         <template #content>Introduzca exactamente como se ve en el juego. Cuidado con 0 (cero) y O (o).</template>
       </SimpleInput>
-    <!--  <SimpleInput label="Nombre del Hub:" identifier="hubInput" v-model="hub" />-->
-      <SimpleInput label="Nombre original antes de registrar (si está disponible):" identifier="orgNameInput"
-        v-model="orgName" />
-      <SimpleInput label="Nombre de la Galaxia:" identifier="galaxyInput" v-model="galaxy" />
-      <SimpleInput label="Nombre de la region:" identifier="regionInput" v-model="region" />
+      <!--  <SimpleInput label="Nombre del Hub:" identifier="hubInput" v-model="hub" />-->
+      <SimpleInput
+        label="Nombre original antes de registrar (si está disponible):"
+        identifier="orgNameInput"
+        v-model="orgName"
+      />
+      <SimpleInput
+        label="Nombre de la Galaxia:"
+        identifier="galaxyInput"
+        v-model="galaxy"
+      />
+      <SimpleInput
+        label="Nombre de la region:"
+        identifier="regionInput"
+        v-model="region"
+      />
       <InfoboxImageInput />
-      <SimpleInput label="Nombre del sistema:" identifier="systemInput" v-model="system" />
-      <SimpleInput label="Nombre del planeta:" identifier="planetInput" v-model="planet">
+      <SimpleInput
+        label="Nombre del sistema:"
+        identifier="systemInput"
+        v-model="system"
+      />
+      <SimpleInput
+        label="Nombre del planeta:"
+        identifier="planetInput"
+        v-model="planet"
+      >
         Nombre del planeta O el planeta rodeado por la luna donde se puede encontrar la planta.
       </SimpleInput>
-      <SimpleInput label="Nombre de la luna (si la planta está en la luna):" identifier="moonInput" v-model="moon">
+      <SimpleInput
+        label="Nombre de la luna (si la planta está en la luna):"
+        identifier="moonInput"
+        v-model="moon"
+      >
         Si la planta está ubicada en una luna. Déjelo en blanco si la planta está en un planeta.
       </SimpleInput>
       <GlyphInput />
@@ -169,15 +204,22 @@ function markCopy() {
             Consulte la wiki para obtener una lista de géneros.
             <template #heading>Hemisferio</template>
             <template #content>
-              Consulte la wiki para obtener una lista de géneros.
-              El género se define por la apariencia general de una criatura.<br>
-              Consulte la wiki para obtener una <a href="Genus#Genus_List" data-wiki>lista de los genuses</a>
+              Consulte la wiki para obtener una lista de géneros. El género se define por la apariencia general de una
+              criatura.<br />
+              Consulte la wiki para obtener una
+              <a
+                href="Genus#Genus_List"
+                data-wiki
+                >lista de los genuses</a
+              >
             </template>
           </Explanation>
         </template>
         <template #input>
-          <select v-model="hemisphere" id="genusInput">
-          </select>
+          <select
+            v-model="hemisphere"
+            id="genusInput"
+          ></select>
         </template>
       </InputRow>
       <InputRow>
@@ -197,7 +239,10 @@ function markCopy() {
           </Explanation>
         </template>
         <template #input>
-          <select v-model="hemisphere" id="hemisphere">
+          <select
+            v-model="hemisphere"
+            id="hemisphere"
+          >
             <option value=""></option>
             <option value="North">Norte</option>
             <option value="South">Sur</option>
@@ -218,7 +263,10 @@ function markCopy() {
           </Explanation>
         </template>
         <template #input>
-          <select v-model="rarity" id="rarity">
+          <select
+            v-model="rarity"
+            id="rarity"
+          >
             <option value="Common">Común</option>
             <option value="Uncommon">No común</option>
             <option value="Rare">Raro</option>
@@ -231,13 +279,14 @@ function markCopy() {
           <Explanation img="creature/creatureEcosystem">
             Encontrado en el menú de descubrimiento de criaturas.
             <template #heading>Ecosistema</template>
-            <template #content>
-              Encontrado en el menú de descubrimiento de criaturas.
-            </template>
+            <template #content> Encontrado en el menú de descubrimiento de criaturas. </template>
           </Explanation>
         </template>
         <template #input>
-          <select v-model="ecosystem" id="ecosystem">
+          <select
+            v-model="ecosystem"
+            id="ecosystem"
+          >
             <option value="Ground">Terrestre</option>
             <option value="Flying">Voladora</option>
             <option value="Underwater">Submarina</option>
@@ -251,13 +300,14 @@ function markCopy() {
           <Explanation img="creature/creatureActivity">
             Encontrado en el menú de descubrimiento de criaturas.
             <template #heading>Actividad</template>
-            <template #content>
-              Encontrado en el menú de descubrimiento de criaturas.
-            </template>
+            <template #content> Encontrado en el menú de descubrimiento de criaturas. </template>
           </Explanation>
         </template>
         <template #input>
-          <select v-model="activity" id="activity">
+          <select
+            v-model="activity"
+            id="activity"
+          >
             <option value="Always Active">Siempre activa</option>
             <option value="Diurnal">Diurna</option>
             <option value="Nocturnal">Nocturna</option>
@@ -275,13 +325,14 @@ function markCopy() {
           <Explanation img="creature/creatureGender">
             Encontrado en el menú de descubrimiento de criaturas.
             <template #heading>Género</template>
-            <template #content>
-              Encontrado en el menú de descubrimiento de criaturas.
-            </template>
+            <template #content> Encontrado en el menú de descubrimiento de criaturas. </template>
           </Explanation>
         </template>
         <template #input>
-          <select v-model="gender" id="gender1">
+          <select
+            v-model="gender"
+            id="gender1"
+          >
             <option value="Asynchronous">Asíncrono</option>
             <option value="Circular">Circular</option>
             <option value="Electronic">Electrónico</option>
@@ -315,14 +366,17 @@ function markCopy() {
             Sólo se aplica a ciertos géneros. Se puede encontrar en el escaneo de criaturas.
             <template #heading>Segundo Género</template>
             <template #content>
-              Algunos géneros tienen dos géneros, mientras que otros tienen un solo género.<br>
-              Las aves, los peces y la fauna rara/anómala, por ejemplo, tienen un solo género.<br>
+              Algunos géneros tienen dos géneros, mientras que otros tienen un solo género.<br />
+              Las aves, los peces y la fauna rara/anómala, por ejemplo, tienen un solo género.<br />
               Pueden aparecer como dos géneros, pero tendrán exactamente la misma apariencia.
             </template>
           </Explanation>
         </template>
         <template #input>
-          <select v-model="gender2" id="gender2">
+          <select
+            v-model="gender2"
+            id="gender2"
+          >
             <option value="- None">Ninguno</option>
             <option value="- Asynchronous">Asíncrono</option>
             <option value="- Circular">Circular</option>
@@ -351,81 +405,136 @@ function markCopy() {
       </InputRow>
       <creatureBehavioursInput />
       <creatureDietsInput />
-      <SimpleInput v-model="hemisphere" identifier="weight" label="Peso:" maxlength="5">
+      <SimpleInput
+        v-model="hemisphere"
+        identifier="weight"
+        label="Peso:"
+        maxlength="5"
+      >
         <Explanation img="creature/creatureWeight">
           Encontrado en el escaneo de criaturas. No se necesitan "kg".
           <template #heading>Peso</template>
-          <template #content>
-            Encontrado en el escaneo de criaturas. No se necesitan "kg".
-          </template>
+          <template #content> Encontrado en el escaneo de criaturas. No se necesitan "kg". </template>
         </Explanation>
       </SimpleInput>
-      <SimpleInput v-model="hemisphere" identifier="height" label="Altura:" maxlength="3">
+      <SimpleInput
+        v-model="hemisphere"
+        identifier="height"
+        label="Altura:"
+        maxlength="3"
+      >
         <Explanation img="creature/creatureWeight">
           Encontrado en el escaneo de criaturas. No se necesitan "m".
           <template #heading>Altura</template>
-          <template #content>
-            Encontrado en el escaneo de criaturas. No se necesitan "m".
-          </template>
+          <template #content> Encontrado en el escaneo de criaturas. No se necesitan "m". </template>
         </Explanation>
       </SimpleInput>
-      <SimpleInput v-model="hemisphere" identifier="weight2" label="Peso del genero 2: (si hay)" maxlength="5">
+      <SimpleInput
+        v-model="hemisphere"
+        identifier="weight2"
+        label="Peso del genero 2: (si hay)"
+        maxlength="5"
+      >
         <Explanation img="creature/creatureWeight">
           Encontrado en el escaneo de criaturas. No se necesitan "kg".
           <template #heading>Peso</template>
-          <template #content>
-            Encontrado en el escaneo de criaturas. No se necesitan "kg".
-          </template>
+          <template #content> Encontrado en el escaneo de criaturas. No se necesitan "kg". </template>
         </Explanation>
       </SimpleInput>
-      <SimpleInput v-model="hemisphere" identifier="height2" label="Altura del genero 2: (si hay)" maxlength="3">
+      <SimpleInput
+        v-model="hemisphere"
+        identifier="height2"
+        label="Altura del genero 2: (si hay)"
+        maxlength="3"
+      >
         <Explanation img="creature/creatureWeight">
           Encontrado en el escaneo de criaturas. No se necesitan "m".
           <template #heading>Altura</template>
-          <template #content>
-            Encontrado en el escaneo de criaturas. No se necesitan "m".
-          </template>
+          <template #content> Encontrado en el escaneo de criaturas. No se necesitan "m". </template>
         </Explanation>
       </SimpleInput>
       <creatureNotesInput />
       <creatureProducesInput />
-  <Subgrid>
+      <Subgrid>
         <DiscovererInputs />
-        <SimpleInput label="Nombre del documentador si no es el descubridor:" identifier="docBy" v-model="docBy" />
+        <SimpleInput
+          label="Nombre del documentador si no es el descubridor:"
+          identifier="docBy"
+          v-model="docBy"
+        />
         <ResearchteamInput />
       </Subgrid>
       <InputRow>
         <label for="appearance">Apariencia:</label>
-        <textarea v-model="appearance" id="appearance" placeholder="Esta flora es una <size> <colour> <type>."></textarea>
+        <textarea
+          v-model="appearance"
+          id="appearance"
+          placeholder="Esta flora es una <size> <colour> <type>."
+        ></textarea>
       </InputRow>
     </form>
 
     <div id="galleryInput"></div>
-    <div id="galleryItems" class="gallery-items-wrapper"></div>
+    <div
+      id="galleryItems"
+      class="gallery-items-wrapper"
+    ></div>
 
     <Actions />
   </InputColumn>
 
-  <ExplanationError v-model:open="openErrorModal" :error-message="errorMessage" />
+  <ExplanationError
+    v-model:open="openErrorModal"
+    :error-message="errorMessage"
+  />
 
   <OutputColumn @mousedown="markCopy">
-    <div ref="wikiText" class="wikiText" id="fullArticle" @mouseup="dataValidationStore.getSelectedText"
-      @touchend="dataValidationStore.getSelectedText">
+    <div
+      ref="wikiText"
+      class="wikiText"
+      id="fullArticle"
+      @mouseup="dataValidationStore.getSelectedText"
+      @touchend="dataValidationStore.getSelectedText"
+    >
       <div>
         <WikiTemplate template-name="Version">{{ release }}</WikiTemplate>
       </div>
-      <FaunaInfobox :creatureName="creatureName" :image="image" :hub="hub" :galaxy="galaxy" :region="region"
-        :system-name="systemName" :planet-name="planetName" :moon-name="moonName" :type="type" :glyphs="glyphs"
-        :behaviours="behaviours" :polymorphic="polymorphic" :age="age" :gender="gender" :gender2="gender2" :roots="roots"
-        :nutrients="nutrients" :notes="notes" :rarity="rarity" :ecosystem="ecosystem" :activity="activity"
-        :hemisphere="hemisphere" :elem-primary="elements[0]" :elem-secondary="elements[1]"
-        :disc-date="discDate.replaceAll('-', '/')" :discovered-name="discoveredName"
-        :discoveredlink-name="discoveredlinkName" :researchteam="researchteam" :release="release" />
-      <div>'''{{ creatureName }}''' is a species of flora.</div>
+      <FaunaInfobox
+        :creatureName="sanitisedStrings.name"
+        :image="image"
+        :hub="hub"
+        :galaxy="galaxy"
+        :region="region"
+        :system-name="sanitisedStrings.system"
+        :planet-name="sanitisedStrings.planet"
+        :moon-name="sanitisedStrings.moon"
+        :type="type"
+        :glyphs="glyphs"
+        :behaviours="behaviours"
+        :polymorphic="polymorphic"
+        :age="age"
+        :gender="gender"
+        :gender2="gender2"
+        :roots="roots"
+        :nutrients="nutrients"
+        :notes="notes"
+        :rarity="rarity"
+        :ecosystem="ecosystem"
+        :activity="activity"
+        :hemisphere="hemisphere"
+        :elem-primary="elements[0]"
+        :elem-secondary="elements[1]"
+        :disc-date="discDate.replaceAll('-', '/')"
+        :discovered-name="sanitisedStrings.discovered"
+        :discoveredlink-name="sanitisedStrings.discoveredlink"
+        :researchteam="researchteam"
+        :release="release"
+      />
+      <div>'''{{ sanitisedStrings.name }}''' is a species of flora.</div>
       <br />
 
       <div>==Summary==</div>
-      <div>'''{{ creatureName }}''' is a [[creature]], a member of the {{ hemisphere }} [[genus]]. </div>
+      <div>'''{{ sanitisedStrings.name }}''' is a [[creature]], a member of the {{ hemisphere }} [[genus]].</div>
       <br />
       <div>==Appearance==</div>
       {{ appearance }}
@@ -435,18 +544,18 @@ function markCopy() {
       <br />
       <div>==Alias Names==</div>
       <div v-if="orgName">
-        <WikiTemplate template-name="aliasc">text=Original|name={{ originalName }}</WikiTemplate>
+        <WikiTemplate template-name="aliasc">text=Original|name={{ sanitisedStrings.orgName }}</WikiTemplate>
       </div>
       <div>
-        <WikiTemplate template-name="aliasc">text=Current|name={{ creatureName }}</WikiTemplate>
+        <WikiTemplate template-name="aliasc">text=Current|name={{ sanitisedStrings.name }}</WikiTemplate>
       </div>
       <br />
 
       <div>==Location==</div>
       <div>
         It can be found on the
-        <span v-if="moon">[[moon]] [[{{ moonName }}]] of the</span> [[planet]] [[{{ planetName }}]] in the [[{{
-          systemName
+        <span v-if="moon">[[moon]] [[{{ sanitisedStrings.moon }}]] of the</span> [[planet]] [[{{ sanitisedStrings.planet }}]] in the [[{{
+          sanitisedStrings.system
         }}]] [[star system]].
       </div>
       <div>

@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Generador de Glifos NMS</title>
+    <style>
+        @font-face {
+            font-family: 'NMS Glyphs';
+            src: url('https://nomanssky.gamepedia.com/media/hydra/fonts/NMS-Glyphs-Mono.ttf') format('truetype');
+        }
+        .glyph {
+            font-family: 'NMS Glyphs';
+        }
+    </style>
+    <script src="glyphgenerator.js"></script>
+</head>
+<body>
+    <h1>Generador de Glifos NMS</h1>
+    <button onclick="displayRandomGlyphs()">Generar Glifos</button>
+    <p id="glyphOutput" class="glyph"></p>
+    <p id="regionOutput"></p>
+    <p id="galaxyOutput"></p>
+    <script>
+        function displayRandomGlyphs() {
+            const glyphOutput = document.getElementById('glyphOutput');
+            const regionOutput = document.getElementById('regionOutput');
+            const galaxyOutput = document.getElementById('galaxyOutput');
+            const glyphs = generateGlyphs();
+            const region = regions[glyphs.slice(4, 12)];
+            const galaxy = galaxies[glyphs.slice(4, 12)];
+            glyphOutput.textContent = glyphs;
+            regionOutput.textContent = 'Región: ' + region;
+            galaxyOutput.textContent = 'Galaxia: ' + galaxy;
+        }
+    </script></body>
+</html>
