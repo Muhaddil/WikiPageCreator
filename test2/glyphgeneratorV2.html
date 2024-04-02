@@ -7,15 +7,19 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@picocss/pico@1/css/pico.min.css">
     <link rel="stylesheet" href="./generator.css">
     <title>Generador de Glifos NMS</title>
-    <script src="glyphgenerator.js" type="module"></script>
+    <script src="glyphgeneratorV2.js" type="module"></script>
 </head>
 
 <body>
     <h1>Generador de Glifos NMS</h1>
+    <select id="regionSelect">
+        <option value="">Selecciona una región</option>
+        <!-- Las opciones se llenarán dinámicamente con JavaScript -->
+    </select>
     <button onclick="displayRandomGlyphs()">Generar Glifos</button>
     <p id="glyphOutput" class="glyph"></p>
     <p id="regionOutput"></p>
     <p id="galaxyOutput"></p>
-    <footer id="footer" class="footer"></footer>
 </body>
+
 </html>

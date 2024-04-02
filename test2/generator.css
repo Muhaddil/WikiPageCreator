@@ -1,0 +1,26 @@
+@font-face {
+    font-family: 'NMS-Glyphs';
+    src: url('/assets/fonts/NMS-Glyphs-Mono.ttf') format('truetype');
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    margin: 0;
+}
+.glyph {
+    font-family: 'NMS-Glyphs';
+    font-size: 3em; 
+}
+
+button {
+width: auto; 
+padding: 10px 20px; 
+}
+select {
+width: auto; 
+padding: 10px 20px; 
+}
