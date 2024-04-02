@@ -1,7 +1,7 @@
-import { regions, galaxies } from "../src/variables/regions"
+import { regions, galaxies } from "./regions.ts"
 
 // Llena el menú desplegable con las regiones
-function fillRegionSelect() {
+export function fillRegionSelect() {
   const regionSelect = document.getElementById('regionSelect');
   for (let region in regions) {
       let option = document.createElement('option');
@@ -15,13 +15,13 @@ function fillRegionSelect() {
 window.onload = fillRegionSelect;
 
 // Función para generar un glifo aleatorio
-function randomGlyph() {
+export function randomGlyph() {
   const glyphs = '0123456789ABCDEF'; // Asume que estos son tus glifos
   return glyphs[Math.floor(Math.random() * glyphs.length)];
 }
 
 // Función para generar glifos aleatorios
-function generateGlyphs(selectedRegion) {
+export function generateGlyphs(selectedRegion) {
   let glyphs = '0'; // Comienza siempre con 0
 
   // Genera los glifos del 2 al 4
@@ -35,7 +35,7 @@ function generateGlyphs(selectedRegion) {
   return glyphs;
 }
 
-function displayRandomGlyphs() {
+export function displayRandomGlyphs() {
   const glyphOutput = document.getElementById('glyphOutput');
   const regionOutput = document.getElementById('regionOutput');
   const galaxyOutput = document.getElementById('galaxyOutput');
@@ -47,3 +47,4 @@ function displayRandomGlyphs() {
   regionOutput.textContent = 'Región: ' + region;
   galaxyOutput.textContent = 'Galaxia: ' + galaxy;
 }
+window.displayRandomGlyphs = displayRandomGlyphs;
