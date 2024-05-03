@@ -17,28 +17,44 @@
   <style>
     @media (min-width: 1216px) {
       nav {
-        text-align: center;
-        margin-right: 60%;
-      }
+    display: flex;
+    justify-content: space-between;
+}
+
+nav a:first-child {
+    order: 1;
+}
+
+nav a:last-child {
+    order: 2;
+}
+
     }
 
     img {
       vertical-align: middle;
     }
-    html, body {
-  position: relative;
-  background-size: cover;
-  background-position: center;
-  background-image: var(--body-backgroundimage);
-}
+
+    html,
+    body {
+      position: relative;
+      background-size: cover;
+      background-position: center;
+      background-image: var(--body-backgroundimage);
+    }
   </style>
 </head>
 
 <body>
   <div class="container">
-    <nav aria-label="Otras páginas"><a href=".." title="Otras páginas">&larr; Ver otras páginas</a></nav>
-  <main class="home" id="app"></main>
+    <nav aria-label="Otras páginas">
+      <a href=".." title="Otras páginas">← Ver otras páginas</a>
+      <a href="./glyphgeneratorV2.html" title="Generador de Glifos de la RSS">Generador de Glifos de la RSS →</a>
+  </nav>
+
+      <main class="home" id="app"></main>
   </div>
   <footer id="footer" class="footer"></footer>
 </body>
+
 </html>
