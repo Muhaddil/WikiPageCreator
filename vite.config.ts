@@ -37,7 +37,6 @@ export default defineConfig({
         settlement: resolve(__dirname, 'settlement.html'),
         starship: resolve(__dirname, 'starship.html'),
         system: resolve(__dirname, 'system.html'),
-        glyphgeneratorV2: resolve(__dirname, 'glyphgeneratorV2.html'),
         test1: resolve(__dirname, 'test1.html'),
       },
     },
