@@ -1,1 +1,1 @@
-import '../../startup/glyphgenerator';
+import '../../startup/minimal2';
