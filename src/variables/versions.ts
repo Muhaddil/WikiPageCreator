@@ -6,6 +6,7 @@
 export const versions: {
 [key: string]: string
 } = {
+  'Adrift': 'Adrift',
   'Orbital': 'Orbital',
   'Omega': 'Omega',
 	'Echoes': 'Echoes',
