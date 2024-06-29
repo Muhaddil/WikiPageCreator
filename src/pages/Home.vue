@@ -158,32 +158,12 @@ onMounted(() => {
 
 </script>
 
-<style>
-.boton {
-  background: linear-gradient(135deg, #000000, #434343);
-  color: white;
-  font-weight: bold;
-  padding: 10px 20px;
-  text-decoration: none;
-  border-radius: 5px;
-  box-shadow: 2px 2px 4px rgba(167, 166, 177, 0.5);
-  transition: all 0.5s ease;
-  margin-bottom: 20px;
-  display: inline-block;
-}
-
-.boton:hover {
-  background: linear-gradient(135deg, rgb(197, 0, 1), rgb(255, 0, 0));
-  transform: scale(1.1);
-}
-</style>
-
 <template>
   <h1 class="title is-spaced">Creador de páginas Wiki</h1>
   <div class="subtitle is-4">Elija qué tipo de página desea crear:</div>
-  <nav aria-label="Subpages" class="page-options">
+  <div class="page-options">
     <PageLink v-for="link in links" :url="link.url" :text="link.text" :img="link.img" :imgAlt="link.imgAlt" :disabled="link.inactive" />
-  </nav>
+  </div>
   <div class="built-by">
     <div>Traído a usted por:</div>
   </div>
@@ -207,10 +187,28 @@ onMounted(() => {
 }
 
 .page-options {
-  max-width: 3300px;
+  max-width: 3400px;
   margin: 1em auto;
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
   gap: 1.5em;
+}
+
+.boton {
+  background: linear-gradient(135deg, #000000, #434343);
+  color: white;
+  font-weight: bold;
+  padding: 10px 20px;
+  text-decoration: none;
+  border-radius: 5px;
+  box-shadow: 2px 2px 4px rgba(167, 166, 177, 0.5);
+  transition: all 0.5s ease;
+  margin-bottom: 20px;
+  display: inline-block;
+}
+
+.boton:hover {
+  background: linear-gradient(135deg, rgb(197, 0, 1), rgb(255, 0, 0));
+  transform: scale(1.1);
 }
 </style>
