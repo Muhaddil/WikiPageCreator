@@ -827,6 +827,7 @@ export function getRarezaData(): Rarezas {
 		'Not Present':'Agotado',
 		'Devoid':'Falto',
 		'Barren':'Seco',
+		'Synthetic':'Sintética',
   }
 };
   return rarezas;
@@ -896,6 +897,7 @@ export function getRareza2Data(): Rarezas2 {
 		'Not Present':'Agotado',
 		'Devoid':'Falto',
 		'Barren':'Seco',
+		'Synthetic':'Sintética',
   }
 };
   return rarezas2;
