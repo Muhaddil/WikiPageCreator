@@ -6,6 +6,7 @@
 export const versions: {
 [key: string]: string
 } = {
+  'WorldsOne': 'Mundos Parte 1',
   'Adrift': 'Adrift',
   'Orbital': 'Orbital',
   'Omega': 'Omega',

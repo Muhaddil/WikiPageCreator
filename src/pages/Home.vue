@@ -160,7 +160,7 @@ onMounted(() => {
 
 <template>
   <h1 class="title is-spaced">Creador de páginas Wiki</h1>
-  <div class="subtitle is-4">Elija qué tipo de página desea crear:</div>
+  <div class="subtitle is-4">No hay soporte completo para la versión 5.00 de NMS<br>Elija qué tipo de página desea crear:</div>
   <div class="page-options">
     <PageLink v-for="link in links" :url="link.url" :text="link.text" :img="link.img" :imgAlt="link.imgAlt" :disabled="link.inactive" />
   </div>
