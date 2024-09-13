@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { watch, nextTick, defineAsyncComponent, type Component, onMounted } from 'vue';
+import { watch, nextTick, type Component, onMounted } from 'vue';
 import Home from './pages/Home.vue';
 import Flora from './pages/Flora.vue';
 import Mineral from './pages/Mineral.vue';

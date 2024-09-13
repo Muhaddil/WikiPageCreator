@@ -1,14 +1,15 @@
 {
   "name": "wiki-page-creator",
   "private": true,
-  "version": "0.8.9",
+  "version": "0.8.91",
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "run-p type-check build-only",
+    "build": "vue-tsc && vite build",
     "preview": "vite preview",
-    "build-only": "vite build",
-    "type-check": "vue-tsc --noEmit -p tsconfig.app.json --composite false"
+    "format": "prettier --write src/",
+    "test": "vitest",
+    "test-ci": "vitest run"
   },
   "devDependencies": {
     "@types/node": "^20.14.10",
