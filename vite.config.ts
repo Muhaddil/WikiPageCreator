@@ -9,11 +9,12 @@ export default defineConfig({
   base: '/RSSWikiPageCreator/',
   plugins: [vue()],
   test: {
+    environment: 'happy-dom',
     browser: {
+      provider: 'webdriverio',
       enabled: true,
       headless: true,
-      provider: 'playwright',
-      name: 'chromium',
+      name: 'chrome',
     },
   },
   build: {
