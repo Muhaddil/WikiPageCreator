@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import InputColumn from '@/components/structure/InputColumn.vue';
 import OutputColumn from '@/components/structure/OutputColumn.vue';
-import ReleaseInput from '@/components/inputs/ReleaseInput.vue';
+// import ReleaseInput from '@/components/inputs/ReleaseInput.vue';
 import SimpleInput from '@/components/inputs/SimpleInput.vue';
 import floranutSourceInput from '@/components/inputs/floranutSourceInput.vue';
 import floraNotesInput from '@/components/inputs/floraNotesInput.vue';
@@ -156,7 +156,7 @@ function markCopy() {
     <form
       class="table"
       @submit.prevent>
-      <ReleaseInput />
+      <!-- <ReleaseInput /> -->
       <SimpleInput
         label="Nombre de la Planta:"
         identifier="nameInput"

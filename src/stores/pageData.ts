@@ -1,5 +1,5 @@
 import { defineStore } from 'pinia';
-import { versions } from '../variables/versions';
+// import { versions } from '../variables/versions';
 import { regions, galaxies } from '../variables/regions';
 import { sanitiseString } from '@/common';
 
@@ -69,7 +69,7 @@ interface PageData {
 
 export const usePageDataStore = defineStore('pageData', {
   state: (): PageData => ({
-    release: versions[0],
+    release: '',
     name: '',
     hub: 'Royal Space Society',
     image: '',
@@ -130,8 +130,8 @@ export const usePageDataStore = defineStore('pageData', {
       moon: sanitiseString(state.moon),
       orgName: sanitiseString(state.orgName),
       appearance: sanitiseString(state.appearance),
-    }),    
-  
+    }),
+
     hubName: (state) => sanitiseString(state.hub),
     docBySentence: (state) => {
       const isLink = state.docBy.startsWith('{{');

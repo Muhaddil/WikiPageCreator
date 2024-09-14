@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import InputColumn from '@/components/structure/InputColumn.vue';
 import OutputColumn from '@/components/structure/OutputColumn.vue';
-import ReleaseInput from '@/components/inputs/ReleaseInput.vue';
+// import ReleaseInput from '@/components/inputs/ReleaseInput.vue';
 import SimpleInput from '@/components/inputs/SimpleInput.vue';
 import InfoboxImageInput from '@/components/inputs/InfoboxImageInput.vue';
 import DiscovererInputs from '@/components/inputs/DiscovererInputs.vue';
@@ -135,7 +135,7 @@ function markCopy() {
       class="table"
       @submit.prevent
     >
-      <ReleaseInput />
+      <!-- <ReleaseInput /> -->
       <SimpleInput
         label="Nombre del mineral:"
         identifier="nameInput"
