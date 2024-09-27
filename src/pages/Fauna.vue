@@ -30,7 +30,8 @@ import { onMounted, ref, watchEffect, watch } from 'vue';
 import creatureData from '@/miscLogic/creatureData';
 
 const genera = ref<string[]>([]);
-const selectedGenus = ref<string | null>(null);
+const selectedGenus = ref<string>('');
+const produces = ref<string[]>([]);
 
 function updateGeneraList() {
   const currentEcosystem = ecosystem.value;
@@ -94,6 +95,7 @@ const {
   docBy,
   researchteam,
   appearance,
+  genus,
   ecosystem,
   sanitisedStrings,
   // sanitisedName: creatureName,
@@ -107,6 +109,12 @@ const {
 } = storeToRefs(pageData);
 
 watch(ecosystem, updateGeneraList);
+
+watch(selectedGenus, (newGenus) => {
+  if (newGenus && ecosystem.value) {
+    produces.value = creatureData.ecosystems[ecosystem.value][newGenus]?.produces || [];
+  }
+});
 
 updateGeneraList();
 
@@ -524,6 +532,8 @@ function markCopy() {
         :rarity="rarity"
         :ecosystem="ecosystem"
         :activity="activity"
+        :produces="produces.join(', ')"
+        :genus="selectedGenus"
         :hemisphere="hemisphere"
         :elem-primary="elements[0]"
         :elem-secondary="elements[1]"
@@ -537,7 +547,7 @@ function markCopy() {
       <br />
 
       <div>==Summary==</div>
-      <div>'''{{ sanitisedStrings.name }}''' is a [[creature]], a member of the {{ hemisphere }} [[genus]].</div>
+      <div>'''{{ sanitisedStrings.name }}''' is a [[creature]], a member of the {{ genus }} [[genus]].</div>
       <br />
       <div>==Appearance==</div>
       {{ appearance }}

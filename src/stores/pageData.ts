@@ -33,6 +33,8 @@ interface PageData {
   release: string;
   name: string;
   hub: string;
+  produces: string;
+  genus: string;
   image: string;
   discovered: string;
   discoveredlink: string;
@@ -72,6 +74,8 @@ export const usePageDataStore = defineStore('pageData', {
     release: '',
     name: '',
     hub: 'Royal Space Society',
+    produces: "",
+    genus: "",
     image: '',
     discovered: localStorageData()['discoveredInput builderInput'] ?? '',
     discoveredlink: localStorageData()['discoveredlinkInput builderlinkInput'] ?? '',
