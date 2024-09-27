@@ -72,7 +72,7 @@ const {
   activity,
   rarity,
   type,
-  behaviours,
+  behaviour,
   age,
   gender,
   gender2,
@@ -510,7 +510,7 @@ function markCopy() {
         :moon-name="sanitisedStrings.moon"
         :type="type"
         :glyphs="glyphs"
-        :behaviours="behaviours"
+        :behaviours="behaviour"
         :polymorphic="polymorphic"
         :age="age"
         :gender="gender"

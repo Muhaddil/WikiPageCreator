@@ -6,7 +6,7 @@ import { usePageDataStore } from '../../stores/pageData';
 import { storeToRefs } from 'pinia';
 
 const pageData = usePageDataStore();
-const { behaviours } = storeToRefs(pageData);
+const { behaviour } = storeToRefs(pageData);
 </script>
 
 <template>
@@ -24,7 +24,7 @@ const { behaviours } = storeToRefs(pageData);
           </Explanation>
         </template>
         <template #input>
-      <input list="floraNotesDatalist" v-model="behaviours" type="text">
+      <input list="floraNotesDatalist" v-model="behaviour" type="text">
       <datalist id="floraNotesDatalist">
         <option v-for="(escreatureBehaviourDatalist, encreatureBehaviourDatalist) in creatureBehaviourDatalist" :value="encreatureBehaviourDatalist">
           {{ escreatureBehaviourDatalist }}

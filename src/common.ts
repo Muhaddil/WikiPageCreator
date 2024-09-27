@@ -226,11 +226,9 @@ export function showAll() {
  * @param {HTMLInputElement} element - The input element with the datalist.
  * @returns {void}
  */
-export function forceDatalist2(element: HTMLInputElement, object: { [key: string]: string }) {
-  const isValidOption = Object.keys(object).some(
-    key => key === element.value || object[key] === element.value
-  );
-  if (!isValidOption && element.value) {
+export function forceDatalist2(element: HTMLInputElement) {
+  const option = element.list?.querySelector(`[value="${element.value}"]`);
+  if (!option && element.value) {
     errorMessage(
       element,
       'No es una opción válida. Si cree que se trata de un error, envíe un <a href="https://forms.gle/LRhzWjMRkXoKd9CcA" rel="noreferrer noopener" target="_blank">informe de error</a>.'
@@ -239,6 +237,7 @@ export function forceDatalist2(element: HTMLInputElement, object: { [key: string
     errorMessage(element);
   }
 }
+
 
 /**
  * Updates a destination element with the sanitized value of a source element's value or content.
