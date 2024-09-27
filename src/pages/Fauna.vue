@@ -532,7 +532,7 @@ function markCopy() {
         :rarity="rarity"
         :ecosystem="ecosystem"
         :activity="activity"
-        :produces="produces.join(', ')"
+        :produces="produces.join('')"
         :genus="selectedGenus"
         :hemisphere="hemisphere"
         :elem-primary="elements[0]"

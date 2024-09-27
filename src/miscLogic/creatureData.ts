@@ -114,7 +114,7 @@ const creatureData: CreatureData = {
     Flying: {
       Agnelis: {
         commonName: 'Pajaros',
-        produces: ['', 'Craw Milk'],
+        produces: ['Craw Milk'],
       },
       Cycromys: {
         commonName: 'Dragones',
@@ -152,7 +152,7 @@ const creatureData: CreatureData = {
       },
       Prionace: {
         commonName: 'Tiburones',
-        produces: ['', 'Wild Milk'],
+        produces: ['Wild Milk'],
       },
       Prionacefda: {
         commonName: 'Vacas nadadoras',
