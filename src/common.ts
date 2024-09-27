@@ -949,6 +949,7 @@ export function datalists2(object: { [key: string]: string; }): string {
   let selectedValue = '';
   const datalist = document.createElement('datalist');
   datalist.id = 'creatureNotesDatalist';
+
   for (const id in object) {
     const optionElement = document.createElement('option');
     optionElement.value = object[id];
@@ -958,15 +959,20 @@ export function datalists2(object: { [key: string]: string; }): string {
 
   const input = document.querySelector('input[list="creatureNotesDatalist"]');
   if (input) {
-    input.addEventListener('input', function(e) {
-      const selectedOption = Object.keys(object).find(key => object[key] === (e.target as HTMLInputElement).value);
+    input.addEventListener('input', function (e) {
+      const inputValue = (e.target as HTMLInputElement).value;
+
+      // Buscamos tanto la clave (en inglés) como el valor (en español)
+      const selectedOption = Object.keys(object).find(key => object[key] === inputValue || key === inputValue);
+
       if (selectedOption) {
         e.preventDefault();
-        (e.target as HTMLInputElement).value = selectedOption;
+        (e.target as HTMLInputElement).value = object[selectedOption];
         selectedValue = selectedOption;
       }
     });
   }
+
   return selectedValue;
 }
 
@@ -974,48 +980,58 @@ export function datalists3(object: { [key: string]: string; }): string {
   let selectedValue = '';
   const datalist = document.createElement('datalist');
   datalist.id = 'creatureBehavioursDatalist';
+
   for (const id in object) {
     const optionElement = document.createElement('option');
     optionElement.value = object[id];
     datalist.appendChild(optionElement);
   }
   document.body.appendChild(datalist);
-const input = document.querySelector('input[list="creatureBehavioursDatalist"]');
-if (input) {
-  input.addEventListener('input', function(e) {
-    const selectedOption = Object.keys(object).find(key => object[key] === (e.target as HTMLInputElement).value);
-    if (selectedOption) {
-      e.preventDefault();
-      (e.target as HTMLInputElement).value = selectedOption;
-      selectedValue = selectedOption;
-    }
-  });
-}
-return selectedValue;
+
+  const input = document.querySelector('input[list="creatureBehavioursDatalist"]');
+  if (input) {
+    input.addEventListener('input', function (e) {
+      const inputValue = (e.target as HTMLInputElement).value;
+      const selectedOption = Object.keys(object).find(key => object[key] === inputValue || key === inputValue);
+
+      if (selectedOption) {
+        e.preventDefault();
+        (e.target as HTMLInputElement).value = object[selectedOption];
+        selectedValue = selectedOption;
+      }
+    });
+  }
+
+  return selectedValue;
 }
 
 export function datalists4(object: { [key: string]: string; }): string {
   let selectedValue = '';
   const datalist = document.createElement('datalist');
   datalist.id = 'creatureDietDatalist';
+
   for (const id in object) {
     const optionElement = document.createElement('option');
     optionElement.value = object[id];
     datalist.appendChild(optionElement);
   }
   document.body.appendChild(datalist);
-const input = document.querySelector('input[list="creatureDietDatalist"]');
-if (input) {
-  input.addEventListener('input', function(e) {
-    const selectedOption = Object.keys(object).find(key => object[key] === (e.target as HTMLInputElement).value);
-    if (selectedOption) {
-      e.preventDefault();
-      (e.target as HTMLInputElement).value = selectedOption;
-      selectedValue = selectedOption;
-    }
-  });
-}
-return selectedValue;
+
+  const input = document.querySelector('input[list="creatureDietDatalist"]');
+  if (input) {
+    input.addEventListener('input', function (e) {
+      const inputValue = (e.target as HTMLInputElement).value;
+      const selectedOption = Object.keys(object).find(key => object[key] === inputValue || key === inputValue);
+
+      if (selectedOption) {
+        e.preventDefault();
+        (e.target as HTMLInputElement).value = object[selectedOption];
+        selectedValue = selectedOption;
+      }
+    });
+  }
+
+  return selectedValue;
 }
 
 /**

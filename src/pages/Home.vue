@@ -33,12 +33,12 @@ const links: PageLinkProps[] = [
     img: './assets/images/buttons/1_004.png',
     imgAlt: 'Asentamientos',
   },
-  //{
-  //  text: '',
-  //  url: './fauna.html',
-  //  img: './assets/images/buttons/1_012_2.png',
-  //  imgAlt: 'Fauna',
- // },
+  {
+   text: '',
+   url: './fauna.html',
+   img: './assets/images/buttons/1_012_2.png',
+   imgAlt: 'Fauna',
+ },
   {
     text: '',
     url: './sandworm.html',
