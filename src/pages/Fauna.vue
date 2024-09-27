@@ -6,7 +6,6 @@ import FaunaInfobox from '@/components/infoboxes/FaunaInfobox.vue';
 import DiscovererInputs from '@/components/inputs/DiscovererInputs.vue';
 import GlyphInput from '@/components/inputs/GlyphInput.vue';
 import InfoboxImageInput from '@/components/inputs/InfoboxImageInput.vue';
-import ReleaseInput from '@/components/inputs/ReleaseInput.vue';
 import ResearchteamInput from '@/components/inputs/ResearchteamInput.vue';
 import SimpleInput from '@/components/inputs/SimpleInput.vue';
 import creatureBehavioursInput from '@/components/inputs/creatureBehavioursInput.vue';
@@ -27,7 +26,16 @@ import { useDataValidationStore } from '@/stores/dataValidation';
 import { usePageDataStore, useStaticPageDataStore } from '@/stores/pageData';
 import { watchDebounced } from '@vueuse/core';
 import { storeToRefs } from 'pinia';
-import { onMounted, ref, watchEffect } from 'vue';
+import { onMounted, ref, watchEffect, watch } from 'vue';
+import creatureData from '@/miscLogic/creatureData';
+
+const genera = ref<string[]>([]);
+const selectedGenus = ref<string | null>(null);
+
+function updateGeneraList() {
+  const currentEcosystem = ecosystem.value;
+  genera.value = Object.keys(creatureData.ecosystems[currentEcosystem] || {});
+}
 
 const staticPageData = useStaticPageDataStore();
 const { fullArticleElement } = storeToRefs(staticPageData);
@@ -98,6 +106,10 @@ const {
   docBySentence,
 } = storeToRefs(pageData);
 
+watch(ecosystem, updateGeneraList);
+
+updateGeneraList();
+
 const isAgeInvalid = ref('');
 const isRootsInvalid = ref('');
 const isNutrientsInvalid = ref('');
@@ -149,7 +161,7 @@ function markCopy() {
       class="table"
       @submit.prevent
     >
-      <ReleaseInput />
+      <!-- <ReleaseInput /> -->
       <SimpleInput
         label="Nombre de la criatura:"
         identifier="nameInput"
@@ -166,7 +178,7 @@ function markCopy() {
         identifier="orgNameInput"
         v-model="orgName"
       />
-      <SimpleInput
+      <!-- <SimpleInput
         label="Nombre de la Galaxia:"
         identifier="galaxyInput"
         v-model="galaxy"
@@ -175,7 +187,7 @@ function markCopy() {
         label="Nombre de la region:"
         identifier="regionInput"
         v-model="region"
-      />
+      /> -->
       <InfoboxImageInput />
       <SimpleInput
         label="Nombre del sistema:"
@@ -198,31 +210,26 @@ function markCopy() {
       </SimpleInput>
       <GlyphInput />
       <InputRow>
-        <template #label>
-          <label for="genus">Genuses:</label>
-          <Explanation img="creature/creatureHemisphere">
-            Consulte la wiki para obtener una lista de géneros.
-            <template #heading>Hemisferio</template>
-            <template #content>
-              Consulte la wiki para obtener una lista de géneros. El género se define por la apariencia general de una
-              criatura.<br />
-              Consulte la wiki para obtener una
-              <a
-                href="Genus#Genus_List"
-                data-wiki
-                >lista de los genuses</a
-              >
-            </template>
-          </Explanation>
-        </template>
-        <template #input>
-          <select
-            v-model="hemisphere"
-            id="genusInput"
-          ></select>
-        </template>
-      </InputRow>
-      <InputRow>
+      <template #label>
+        <label for="ecosystem">Ecosistema:</label>
+        <Explanation img="creature/creatureEcosystem">
+          Seleccione un ecosistema para filtrar los géneros de criaturas.
+          <template #heading>Ecosistema</template>
+          <template #content>
+            Seleccione un ecosistema para filtrar los géneros.
+          </template>
+        </Explanation>
+      </template>
+      <template #input>
+        <select v-model="ecosystem" id="ecosystem">
+          <option value="Ground">Terrestre</option>
+          <option value="Flying">Voladora</option>
+          <option value="Underwater">Submarina</option>
+          <option value="Underground">Subterránea</option>
+        </select>
+      </template>
+    </InputRow>
+    <InputRow>
         <p>La siguiente información se puede encontrar en el menú de descubrimiento de criaturas.</p>
       </InputRow>
       <InputRow>
@@ -274,26 +281,22 @@ function markCopy() {
         </template>
       </InputRow>
       <InputRow>
-        <template #label>
-          <label for="ecosystem">Ecosistema:</label>
-          <Explanation img="creature/creatureEcosystem">
-            Encontrado en el menú de descubrimiento de criaturas.
-            <template #heading>Ecosistema</template>
-            <template #content> Encontrado en el menú de descubrimiento de criaturas. </template>
-          </Explanation>
-        </template>
-        <template #input>
-          <select
-            v-model="ecosystem"
-            id="ecosystem"
-          >
-            <option value="Ground">Terrestre</option>
-            <option value="Flying">Voladora</option>
-            <option value="Underwater">Submarina</option>
-            <option value="Underground">Subterreánea</option>
-          </select>
-        </template>
-      </InputRow>
+      <template #label>
+        <label for="genus">Género:</label>
+        <Explanation>
+          Consulte la lista de géneros basada en el ecosistema seleccionado.
+          <template #heading>Géneros</template>
+          <template #content>
+            Seleccione un género disponible basado en el ecosistema seleccionado.
+          </template>
+        </Explanation>
+      </template>
+      <template #input>
+        <select v-model="selectedGenus" id="genusInput">
+          <option v-for="genus in genera" :key="genus" :value="genus">{{ genus }}</option>
+        </select>
+      </template>
+    </InputRow>
       <InputRow>
         <template #label>
           <label for="activity">Actividad:</label>
