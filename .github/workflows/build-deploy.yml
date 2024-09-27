@@ -60,7 +60,7 @@ jobs:
           path: dist
 
       - name: Deploy to GitHub Pages
-        uses: JamesIves/github-pages-deploy-action@v4
+        uses: JamesIves/github-pages-deploy-action@v4.6.4
         with:
           folder: dist # The folder the action should deploy.
 
@@ -80,7 +80,7 @@ jobs:
           path: dist
 
       - name: Deploy to GitHub Pages
-        uses: JamesIves/github-pages-deploy-action@v4
+        uses: JamesIves/github-pages-deploy-action@v4.6.4
         with:
           folder: dist # The folder the action should deploy.
           target-folder: staging # The folder the action should deploy to.
