@@ -39,6 +39,8 @@ interface PageData {
   discovered: string;
   discoveredlink: string;
   orgName: string;
+  height: string;
+  weight: string;
   system: string;
   planet: string;
   moon: string;
@@ -67,6 +69,8 @@ interface PageData {
   hemisphere: string;
   rarity: string;
   ecosystem: string;
+  weight2: string;
+  height2: string;
 }
 
 export const usePageDataStore = defineStore('pageData', {
@@ -77,6 +81,10 @@ export const usePageDataStore = defineStore('pageData', {
     produces: "",
     genus: "",
     image: '',
+    height: '',
+    weight: '',
+    weight2: '',
+    height2: '',
     discovered: localStorageData()['discoveredInput builderInput'] ?? '',
     discoveredlink: localStorageData()['discoveredlinkInput builderlinkInput'] ?? '',
     orgName: '',

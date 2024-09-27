@@ -26,7 +26,7 @@ import { useDataValidationStore } from '@/stores/dataValidation';
 import { usePageDataStore, useStaticPageDataStore } from '@/stores/pageData';
 import { watchDebounced } from '@vueuse/core';
 import { storeToRefs } from 'pinia';
-import { onMounted, ref, watchEffect, watch } from 'vue';
+import { onMounted, ref, watchEffect, watch, computed } from 'vue';
 import creatureData from '@/miscLogic/creatureData';
 
 const genera = ref<string[]>([]);
@@ -71,6 +71,10 @@ const {
   hub,
   orgName,
   image,
+  weight,
+  height,
+  weight2,
+  height2,
   discovered,
   discoveredlink,
   system,
@@ -161,6 +165,24 @@ function markCopy() {
   errorMessage.value = message.value;
   openErrorModal.value = !isValidData.value;
 }
+
+const isSecondGenderVisible = computed(() => {
+  return gender2.value !== "- None" && gender2.value !== gender.value;
+});
+
+const combinedWeight = computed(() => {
+  if (weight.value && weight2.value && weight.value !== weight2.value) {
+    return `${weight.value} - ${weight2.value}`;
+  }
+  return weight.value || weight2.value || '';
+});
+
+const combinedHeight = computed(() => {
+  if (height.value && height2.value && height.value !== height2.value) {
+    return `${height.value} - ${height2.value}`;
+  }
+  return height.value || height2.value || '';
+});
 </script>
 
 <template>
@@ -417,7 +439,7 @@ function markCopy() {
       <creatureBehavioursInput />
       <creatureDietsInput />
       <SimpleInput
-        v-model="hemisphere"
+        v-model="weight"
         identifier="weight"
         label="Peso:"
         maxlength="5"
@@ -428,40 +450,39 @@ function markCopy() {
           <template #content> Encontrado en el escaneo de criaturas. No se necesitan "kg". </template>
         </Explanation>
       </SimpleInput>
+
       <SimpleInput
-        v-model="hemisphere"
-        identifier="height"
-        label="Altura:"
-        maxlength="3"
-      >
-        <Explanation img="creature/creatureWeight">
-          Encontrado en el escaneo de criaturas. No se necesitan "m".
-          <template #heading>Altura</template>
-          <template #content> Encontrado en el escaneo de criaturas. No se necesitan "m". </template>
-        </Explanation>
-      </SimpleInput>
-      <SimpleInput
-        v-model="hemisphere"
+        v-if="isSecondGenderVisible"
+        v-model="weight2"
         identifier="weight2"
-        label="Peso del genero 2: (si hay)"
+        label="Peso del género 2: (si hay)"
         maxlength="5"
       >
         <Explanation img="creature/creatureWeight">
           Encontrado en el escaneo de criaturas. No se necesitan "kg".
-          <template #heading>Peso</template>
-          <template #content> Encontrado en el escaneo de criaturas. No se necesitan "kg". </template>
         </Explanation>
       </SimpleInput>
+
       <SimpleInput
-        v-model="hemisphere"
-        identifier="height2"
-        label="Altura del genero 2: (si hay)"
+        v-model="height"
+        identifier="height"
+        label="Altura:"
         maxlength="3"
       >
-        <Explanation img="creature/creatureWeight">
+        <Explanation img="creature/creatureHeight">
           Encontrado en el escaneo de criaturas. No se necesitan "m".
-          <template #heading>Altura</template>
-          <template #content> Encontrado en el escaneo de criaturas. No se necesitan "m". </template>
+        </Explanation>
+      </SimpleInput>
+
+      <SimpleInput
+        v-if="isSecondGenderVisible"
+        v-model="height2"
+        identifier="height2"
+        label="Altura del género 2: (si hay)"
+        maxlength="3"
+      >
+        <Explanation img="creature/creatureHeight">
+          Encontrado en el escaneo de criaturas. No se necesitan "m".
         </Explanation>
       </SimpleInput>
       <creatureNotesInput />
@@ -532,6 +553,8 @@ function markCopy() {
         :rarity="rarity"
         :ecosystem="ecosystem"
         :activity="activity"
+        :weight="combinedWeight"
+        :height="combinedHeight"
         :produces="produces.join('')"
         :genus="selectedGenus"
         :hemisphere="hemisphere"
