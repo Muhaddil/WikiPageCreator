@@ -72,6 +72,7 @@ interface PageData {
   weight2: string;
   height2: string;
   mode: string;
+  diet: string;
 }
 
 export const usePageDataStore = defineStore('pageData', {
@@ -96,6 +97,7 @@ export const usePageDataStore = defineStore('pageData', {
     type: '',
     biome: 'Lush',
     age: '',
+    diet: '',
     roots: '',
     nutrients: '',
     notes: '',

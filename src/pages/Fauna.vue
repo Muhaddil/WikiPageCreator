@@ -9,6 +9,7 @@ import InfoboxImageInput from '@/components/inputs/InfoboxImageInput.vue';
 import ResearchteamInput from '@/components/inputs/ResearchteamInput.vue';
 import SimpleInput from '@/components/inputs/SimpleInput.vue';
 import creatureBehavioursInput from '@/components/inputs/creatureBehavioursInput.vue';
+import creatureDietsInput from '@/components/inputs/creatureDietsInput.vue';
 import creatureNotesInput from '@/components/inputs/creatureNotesInput.vue';
 import Explanation from '@/components/structure/Explanation.vue';
 import ExplanationError from '@/components/structure/ExplanationError.vue';
@@ -101,6 +102,7 @@ const {
   appearance,
   genus,
   ecosystem,
+  diet,
   sanitisedStrings,
   mode,
   // sanitisedName: creatureName,
@@ -411,7 +413,7 @@ const combinedHeight = computed(() => {
             v-model="gender2"
             id="gender2"
           >
-            <option value="- None">Ninguno</option>
+            <option value=""></option>
             <option value="- Asynchronous">Asíncrono</option>
             <option value="- Circular">Circular</option>
             <option value="- Electronic">Electrónico</option>
@@ -442,7 +444,8 @@ const combinedHeight = computed(() => {
       <SimpleInput
         v-model="weight"
         identifier="weight"
-        label="Peso:"
+        label="Peso en KG:"
+        aria-placeholder="1.5"
         maxlength="5"
       >
         <Explanation img="creature/creatureWeight">
@@ -457,6 +460,7 @@ const combinedHeight = computed(() => {
         v-model="weight2"
         identifier="weight2"
         label="Peso del género 2: (si hay)"
+        aria-placeholder="1.5"
         maxlength="5"
       >
         <Explanation img="creature/creatureWeight">
@@ -467,7 +471,8 @@ const combinedHeight = computed(() => {
       <SimpleInput
         v-model="height"
         identifier="height"
-        label="Altura:"
+        label="Altura en M:"
+        aria-placeholder="1.5"
         maxlength="3"
       >
         <Explanation img="creature/creatureHeight">
@@ -479,6 +484,7 @@ const combinedHeight = computed(() => {
         v-if="isSecondGenderVisible"
         v-model="height2"
         identifier="height2"
+        aria-placeholder="1.5"
         label="Altura del género 2: (si hay)"
         maxlength="3"
       >
@@ -553,6 +559,7 @@ const combinedHeight = computed(() => {
         :notes="notes"
         :mode="mode"
         :rarity="rarity"
+        :diet="diet"
         :ecosystem="ecosystem"
         :activity="activity"
         :weight="combinedWeight"

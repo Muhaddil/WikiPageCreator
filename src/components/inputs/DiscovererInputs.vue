@@ -19,11 +19,6 @@ withDefaults(defineProps<Props>(), {
   <InputRow>
     <template #label>
       <label for="mode">Modo de juego:</label>
-      <Explanation img="creature/creatureEcosystem">
-        Seleccione un ecosistema para filtrar los géneros de criaturas.
-        <template #heading>Ecosistema</template>
-        <template #content> Seleccione un ecosistema para filtrar los géneros. </template>
-      </Explanation>
     </template>
     <template #input>
       <select
