@@ -60,7 +60,7 @@ interface PageData {
   wealth: string;
   formation: string;
   content: string;
-  behaviours: string;
+  behaviour: string;
   activity: string;
   hemisphere: string;
   rarity: string;
@@ -97,7 +97,7 @@ export const usePageDataStore = defineStore('pageData', {
     wealth: localStorageData().wealthInput ?? '',
     formation: '',
     content: '',
-    behaviours: '',
+    behaviour: '',
     gender: '',
     gender2: '',
     activity: '',

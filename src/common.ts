@@ -226,9 +226,11 @@ export function showAll() {
  * @param {HTMLInputElement} element - The input element with the datalist.
  * @returns {void}
  */
-export function forceDatalist2(element: HTMLInputElement) {
-  const option = element.list?.querySelector(`[value="${element.value}"]`);
-  if (!option && element.value) {
+export function forceDatalist2(element: HTMLInputElement, object: { [key: string]: string }) {
+  const isValidOption = Object.keys(object).some(
+    key => key === element.value || object[key] === element.value
+  );
+  if (!isValidOption && element.value) {
     errorMessage(
       element,
       'No es una opción válida. Si cree que se trata de un error, envíe un <a href="https://forms.gle/LRhzWjMRkXoKd9CcA" rel="noreferrer noopener" target="_blank">informe de error</a>.'
@@ -237,7 +239,6 @@ export function forceDatalist2(element: HTMLInputElement) {
     errorMessage(element);
   }
 }
-
 
 /**
  * Updates a destination element with the sanitized value of a source element's value or content.
@@ -949,7 +950,6 @@ export function datalists2(object: { [key: string]: string; }): string {
   let selectedValue = '';
   const datalist = document.createElement('datalist');
   datalist.id = 'creatureNotesDatalist';
-
   for (const id in object) {
     const optionElement = document.createElement('option');
     optionElement.value = object[id];
@@ -959,20 +959,15 @@ export function datalists2(object: { [key: string]: string; }): string {
 
   const input = document.querySelector('input[list="creatureNotesDatalist"]');
   if (input) {
-    input.addEventListener('input', function (e) {
-      const inputValue = (e.target as HTMLInputElement).value;
-
-      // Buscamos tanto la clave (en inglés) como el valor (en español)
-      const selectedOption = Object.keys(object).find(key => object[key] === inputValue || key === inputValue);
-
+    input.addEventListener('input', function(e) {
+      const selectedOption = Object.keys(object).find(key => object[key] === (e.target as HTMLInputElement).value);
       if (selectedOption) {
         e.preventDefault();
-        (e.target as HTMLInputElement).value = object[selectedOption];
+        (e.target as HTMLInputElement).value = selectedOption;
         selectedValue = selectedOption;
       }
     });
   }
-
   return selectedValue;
 }
 
@@ -980,58 +975,48 @@ export function datalists3(object: { [key: string]: string; }): string {
   let selectedValue = '';
   const datalist = document.createElement('datalist');
   datalist.id = 'creatureBehavioursDatalist';
-
   for (const id in object) {
     const optionElement = document.createElement('option');
     optionElement.value = object[id];
     datalist.appendChild(optionElement);
   }
   document.body.appendChild(datalist);
-
-  const input = document.querySelector('input[list="creatureBehavioursDatalist"]');
-  if (input) {
-    input.addEventListener('input', function (e) {
-      const inputValue = (e.target as HTMLInputElement).value;
-      const selectedOption = Object.keys(object).find(key => object[key] === inputValue || key === inputValue);
-
-      if (selectedOption) {
-        e.preventDefault();
-        (e.target as HTMLInputElement).value = object[selectedOption];
-        selectedValue = selectedOption;
-      }
-    });
-  }
-
-  return selectedValue;
+const input = document.querySelector('input[list="creatureBehavioursDatalist"]');
+if (input) {
+  input.addEventListener('input', function(e) {
+    const selectedOption = Object.keys(object).find(key => object[key] === (e.target as HTMLInputElement).value);
+    if (selectedOption) {
+      e.preventDefault();
+      (e.target as HTMLInputElement).value = selectedOption;
+      selectedValue = selectedOption;
+    }
+  });
+}
+return selectedValue;
 }
 
 export function datalists4(object: { [key: string]: string; }): string {
   let selectedValue = '';
   const datalist = document.createElement('datalist');
   datalist.id = 'creatureDietDatalist';
-
   for (const id in object) {
     const optionElement = document.createElement('option');
     optionElement.value = object[id];
     datalist.appendChild(optionElement);
   }
   document.body.appendChild(datalist);
-
-  const input = document.querySelector('input[list="creatureDietDatalist"]');
-  if (input) {
-    input.addEventListener('input', function (e) {
-      const inputValue = (e.target as HTMLInputElement).value;
-      const selectedOption = Object.keys(object).find(key => object[key] === inputValue || key === inputValue);
-
-      if (selectedOption) {
-        e.preventDefault();
-        (e.target as HTMLInputElement).value = object[selectedOption];
-        selectedValue = selectedOption;
-      }
-    });
-  }
-
-  return selectedValue;
+const input = document.querySelector('input[list="creatureDietDatalist"]');
+if (input) {
+  input.addEventListener('input', function(e) {
+    const selectedOption = Object.keys(object).find(key => object[key] === (e.target as HTMLInputElement).value);
+    if (selectedOption) {
+      e.preventDefault();
+      (e.target as HTMLInputElement).value = selectedOption;
+      selectedValue = selectedOption;
+    }
+  });
+}
+return selectedValue;
 }
 
 /**
