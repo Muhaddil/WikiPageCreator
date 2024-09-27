@@ -71,6 +71,7 @@ interface PageData {
   ecosystem: string;
   weight2: string;
   height2: string;
+  mode: string;
 }
 
 export const usePageDataStore = defineStore('pageData', {
@@ -116,6 +117,7 @@ export const usePageDataStore = defineStore('pageData', {
     hemisphere: '',
     rarity: '',
     ecosystem: '',
+    mode: '',
   }),
 
   getters: {

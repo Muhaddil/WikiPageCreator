@@ -102,6 +102,7 @@ const {
   genus,
   ecosystem,
   sanitisedStrings,
+  mode,
   // sanitisedName: creatureName,
   // discoveredName,
   // discoveredlinkName,
@@ -550,6 +551,7 @@ const combinedHeight = computed(() => {
         :roots="roots"
         :nutrients="nutrients"
         :notes="notes"
+        :mode="mode"
         :rarity="rarity"
         :ecosystem="ecosystem"
         :activity="activity"
