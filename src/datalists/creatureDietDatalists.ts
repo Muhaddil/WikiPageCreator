@@ -1,6 +1,5 @@
 const creatureDietDatalist: {
-  [key: string]: string
-} = {
+  [key: string]: string } = {
   '[[Star Bramble]]':'Zarza estelar',
   '[[Echinocactus]]':'Equinocactus',
   '[[Solar Vine]]':'Vid solar',

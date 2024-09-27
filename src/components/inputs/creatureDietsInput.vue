@@ -24,8 +24,8 @@ const { diet } = storeToRefs(pageData);
           </Explanation>
         </template>
         <template #input>
-      <input list="floraNotesDatalist" v-model="diet" type="text">
-      <datalist id="floraNotesDatalist">
+      <input list="creatureDietDatalist" v-model="diet" type="text">
+      <datalist id="creatureDietDatalist">
         <option v-for="(escreatureDietDatalist, encreatureDietDatalist) in creatureDietDatalist" :value="encreatureDietDatalist">
           {{ escreatureDietDatalist }}
         </option>
