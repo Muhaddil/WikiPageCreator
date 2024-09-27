@@ -28,6 +28,7 @@ export default defineConfig({
         biofrig: resolve(__dirname, 'biofrig.html'),
         derelict: resolve(__dirname, 'derelict.html'),
         fauna: resolve(__dirname, 'fauna.html'),
+        fauna1: resolve(__dirname, 'fauna1.html'),
         flora: resolve(__dirname, 'flora.html'),
         mineral: resolve(__dirname, 'mineral.html'),
         moon: resolve(__dirname, 'moon.html'),
