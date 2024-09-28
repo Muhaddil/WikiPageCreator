@@ -4,9 +4,22 @@ import creatureBehaviourDatalist from '@/datalists/creatureDatalists3';
 import Explanation from '../structure/Explanation.vue';
 import { usePageDataStore } from '../../stores/pageData';
 import { storeToRefs } from 'pinia';
+import { watchDebounced } from '@vueuse/core';
+import { forceDatalistComponent } from '@/common';
+import { ref } from 'vue';
 
 const pageData = usePageDataStore();
 const { behaviour } = storeToRefs(pageData);
+const isBehaviourInvalid = ref('');
+
+watchDebounced(
+  behaviour,
+  () => (isBehaviourInvalid.value = forceDatalistComponent(behaviour.value, Object.keys(creatureBehaviourDatalist))),
+  {
+    debounce: 500,
+  }
+);
+
 </script>
 
 <template>
@@ -24,7 +37,7 @@ const { behaviour } = storeToRefs(pageData);
           </Explanation>
         </template>
         <template #input>
-      <input list="creatureBehaviourDatalist" v-model="behaviour" type="text">
+      <input list="creatureBehaviourDatalist" v-model="behaviour" type="text" :error="isBehaviourInvalid">
       <datalist id="creatureBehaviourDatalist">
         <option v-for="(escreatureBehaviourDatalist, encreatureBehaviourDatalist) in creatureBehaviourDatalist" :value="encreatureBehaviourDatalist">
           {{ escreatureBehaviourDatalist }}

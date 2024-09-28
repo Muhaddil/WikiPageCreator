@@ -19,7 +19,7 @@ import OutputColumn from '@/components/structure/OutputColumn.vue';
 import Subgrid from '@/components/structure/Subgrid.vue';
 import WikiTemplate from '@/components/structure/WikiTemplate.vue';
 import { useMarker } from '@/composables/useMarker';
-import floraageDatalist from '@/datalists/floraDatalists';
+import creatureBehaviourDatalist from '@/datalists/creatureDatalists3';
 import floranutSourceDatalist from '@/datalists/floraDatalists3';
 import floraNotesDatalist from '@/datalists/floraDatalists4';
 import florarootDatalist from '@/datalists/floraDatalists5';
@@ -125,12 +125,12 @@ watch(selectedGenus, (newGenus) => {
 
 updateGeneraList();
 
-const isAgeInvalid = ref('');
+const isBehaviourInvalid = ref('');
 const isRootsInvalid = ref('');
 const isNutrientsInvalid = ref('');
 const isNotesInvalid = ref('');
 
-watchDebounced(age, () => (isAgeInvalid.value = forceDatalistComponent(age.value, Object.keys(floraageDatalist))), {
+watchDebounced(age, () => (isBehaviourInvalid.value = forceDatalistComponent(behaviour.value, Object.keys(creatureBehaviourDatalist))), {
   debounce: 500,
 });
 watchDebounced(
@@ -493,7 +493,6 @@ const combinedHeight = computed(() => {
         </Explanation>
       </SimpleInput>
       <creatureNotesInput />
-      <creatureProducesInput />
       <Subgrid>
         <DiscovererInputs />
         <SimpleInput

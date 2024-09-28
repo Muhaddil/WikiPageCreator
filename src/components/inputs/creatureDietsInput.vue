@@ -4,9 +4,21 @@ import creatureDietDatalist from '@/datalists/creatureDietDatalists';
 import Explanation from '../structure/Explanation.vue';
 import { usePageDataStore } from '../../stores/pageData';
 import { storeToRefs } from 'pinia';
+import { watchDebounced } from '@vueuse/core';
+import { forceDatalistComponent } from '@/common';
+import { ref } from 'vue';
 
 const pageData = usePageDataStore();
 const { diet } = storeToRefs(pageData);
+const isDietInvalid = ref('');
+
+watchDebounced(
+  diet,
+  () => (isDietInvalid.value = forceDatalistComponent(diet.value, Object.keys(creatureDietDatalist))),
+  {
+    debounce: 500,
+  }
+);
 </script>
 
 <template>
@@ -24,7 +36,7 @@ const { diet } = storeToRefs(pageData);
           </Explanation>
         </template>
         <template #input>
-      <input list="creatureDietDatalist" v-model="diet" type="text">
+      <input list="creatureDietDatalist" v-model="diet" type="text" :error="isDietInvalid">
       <datalist id="creatureDietDatalist">
         <option v-for="(escreatureDietDatalist, encreatureDietDatalist) in creatureDietDatalist" :value="encreatureDietDatalist">
           {{ escreatureDietDatalist }}
