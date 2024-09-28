@@ -23,7 +23,7 @@ const router: Record<string, string> = {
   flora: 'Flora',
   mineral: 'Mineral',
   home: 'Home',
-  fauna1: 'Fauna',
+  fauna: 'Fauna',
 };
 
 function getRouteComponent() {
