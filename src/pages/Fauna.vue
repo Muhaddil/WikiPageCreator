@@ -12,6 +12,7 @@ import creatureBehavioursInput from '@/components/inputs/creatureBehavioursInput
 import creatureDietsInput from '@/components/inputs/creatureDietsInput.vue';
 import creatureNotesInput from '@/components/inputs/creatureNotesInput.vue';
 import creatureDietDatalist from '@/datalists/creatureDietDatalists';
+import creatureNotesDatalist from '@/datalists/creatureDatalists2';
 import Explanation from '@/components/structure/Explanation.vue';
 import ExplanationError from '@/components/structure/ExplanationError.vue';
 import InputColumn from '@/components/structure/InputColumn.vue';
@@ -127,9 +128,6 @@ const isBehaviourInvalid = ref('');
 const isDietInvalid = ref('');
 const isNotesInvalid = ref('');
 
-watchDebounced(age, () => (isBehaviourInvalid.value = forceDatalistComponent(behaviour.value, Object.keys(creatureBehaviourDatalist))), {
-  debounce: 500,
-});
 watchDebounced(
   diet,
   () => (isDietInvalid.value = forceDatalistComponent(diet.value, Object.keys(creatureDietDatalist))),
@@ -139,8 +137,16 @@ watchDebounced(
 );
 
 watchDebounced(
+  behaviour,
+  () => (isBehaviourInvalid.value = forceDatalistComponent(behaviour.value, Object.keys(creatureBehaviourDatalist))),
+  {
+    debounce: 500,
+  }
+);
+
+watchDebounced(
   notes,
-  () => (isNotesInvalid.value = forceDatalistComponent(notes.value, Object.keys(creatureNotesInput))),
+  () => (isNotesInvalid.value = forceDatalistComponent(notes.value, Object.keys(creatureNotesDatalist))),
   {
     debounce: 500,
   }

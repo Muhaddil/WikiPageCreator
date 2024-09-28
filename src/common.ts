@@ -1366,6 +1366,6 @@ export function numberErrorComponent(
 export function forceDatalistComponent(value: string, list: string[]) {
   const option = list.includes(value);
   return !option && value
-    ? 'No es una opción válida. Si cree que se trata de un error, envíe un <a href="https://forms.gle/LRhzWjMRkXoKd9CcA" rel="noreferrer noopener" target="_blank">reporte de bugs</a> aaa.'
+    ? 'No es una opción válida. Si cree que se trata de un error, envíe un <a href="https://forms.gle/LRhzWjMRkXoKd9CcA" rel="noreferrer noopener" target="_blank">reporte de bugs</a>.'
     : '';
 }
