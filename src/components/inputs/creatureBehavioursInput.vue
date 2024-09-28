@@ -7,6 +7,7 @@ import { storeToRefs } from 'pinia';
 import { watchDebounced } from '@vueuse/core';
 import { forceDatalistComponent } from '@/common';
 import { ref } from 'vue';
+import ErrorMessage from './ErrorMessage.vue';
 
 const pageData = usePageDataStore();
 const { behaviour } = storeToRefs(pageData);
@@ -20,6 +21,8 @@ watchDebounced(
   }
 );
 
+defineProps<{
+  error?: string;}>();
 </script>
 
 <template>
@@ -37,12 +40,16 @@ watchDebounced(
           </Explanation>
         </template>
         <template #input>
-      <input list="creatureBehaviourDatalist" v-model="behaviour" type="text" :error="isBehaviourInvalid">
+      <input list="creatureBehaviourDatalist" v-model="behaviour" type="text">
       <datalist id="creatureBehaviourDatalist">
         <option v-for="(escreatureBehaviourDatalist, encreatureBehaviourDatalist) in creatureBehaviourDatalist" :value="encreatureBehaviourDatalist">
           {{ escreatureBehaviourDatalist }}
         </option>
       </datalist>
+      <ErrorMessage
+        v-if="error"
+        v-html="error"
+      ></ErrorMessage>
     </template>
       </InputRow>
 </template>

@@ -11,6 +11,7 @@ import SimpleInput from '@/components/inputs/SimpleInput.vue';
 import creatureBehavioursInput from '@/components/inputs/creatureBehavioursInput.vue';
 import creatureDietsInput from '@/components/inputs/creatureDietsInput.vue';
 import creatureNotesInput from '@/components/inputs/creatureNotesInput.vue';
+import creatureDietDatalist from '@/datalists/creatureDietDatalists';
 import Explanation from '@/components/structure/Explanation.vue';
 import ExplanationError from '@/components/structure/ExplanationError.vue';
 import InputColumn from '@/components/structure/InputColumn.vue';
@@ -20,9 +21,6 @@ import Subgrid from '@/components/structure/Subgrid.vue';
 import WikiTemplate from '@/components/structure/WikiTemplate.vue';
 import { useMarker } from '@/composables/useMarker';
 import creatureBehaviourDatalist from '@/datalists/creatureDatalists3';
-import floranutSourceDatalist from '@/datalists/floraDatalists3';
-import floraNotesDatalist from '@/datalists/floraDatalists4';
-import florarootDatalist from '@/datalists/floraDatalists5';
 import { useDataValidationStore } from '@/stores/dataValidation';
 import { usePageDataStore, useStaticPageDataStore } from '@/stores/pageData';
 import { watchDebounced } from '@vueuse/core';
@@ -126,23 +124,15 @@ watch(selectedGenus, (newGenus) => {
 updateGeneraList();
 
 const isBehaviourInvalid = ref('');
-const isRootsInvalid = ref('');
-const isNutrientsInvalid = ref('');
+const isDietInvalid = ref('');
 const isNotesInvalid = ref('');
 
 watchDebounced(age, () => (isBehaviourInvalid.value = forceDatalistComponent(behaviour.value, Object.keys(creatureBehaviourDatalist))), {
   debounce: 500,
 });
 watchDebounced(
-  roots,
-  () => (isRootsInvalid.value = forceDatalistComponent(roots.value, Object.keys(florarootDatalist))),
-  {
-    debounce: 500,
-  }
-);
-watchDebounced(
-  nutrients,
-  () => (isNutrientsInvalid.value = forceDatalistComponent(nutrients.value, Object.keys(floranutSourceDatalist))),
+  diet,
+  () => (isDietInvalid.value = forceDatalistComponent(diet.value, Object.keys(creatureDietDatalist))),
   {
     debounce: 500,
   }
@@ -150,7 +140,7 @@ watchDebounced(
 
 watchDebounced(
   notes,
-  () => (isNotesInvalid.value = forceDatalistComponent(notes.value, Object.keys(floraNotesDatalist))),
+  () => (isNotesInvalid.value = forceDatalistComponent(notes.value, Object.keys(creatureNotesInput))),
   {
     debounce: 500,
   }
@@ -416,7 +406,7 @@ const combinedHeight = computed(() => {
             <option value=""></option>
             <option value="- Asynchronous">Asíncrono</option>
             <option value="- Circular">Circular</option>
-            <option value="- Electronic">Electrónico</option>
+            <option value="- Electronic">isDietInvalidElectrónico</option>
             <option value="- Mutable">Mutable</option>
             <option value="- Non-boolean">No booleano</option>
             <option value="- Non-Euclidean">No euclidiano</option>
@@ -439,8 +429,8 @@ const combinedHeight = computed(() => {
           </select>
         </template>
       </InputRow>
-      <creatureBehavioursInput />
-      <creatureDietsInput />
+      <creatureBehavioursInput :error="isBehaviourInvalid"/>
+      <creatureDietsInput :error="isDietInvalid" />
       <SimpleInput
         v-model="weight"
         identifier="weight"
@@ -492,7 +482,7 @@ const combinedHeight = computed(() => {
           Encontrado en el escaneo de criaturas. No se necesitan "m".
         </Explanation>
       </SimpleInput>
-      <creatureNotesInput />
+      <creatureNotesInput :error="isNotesInvalid"/>
       <Subgrid>
         <DiscovererInputs />
         <SimpleInput

@@ -4,22 +4,13 @@ import creatureNotesDatalist from '@/datalists/creatureDatalists2';
 import Explanation from '../structure/Explanation.vue';
 import { usePageDataStore } from '../../stores/pageData';
 import { storeToRefs } from 'pinia';
-import { watchDebounced } from '@vueuse/core';
-import { forceDatalistComponent } from '@/common';
-import { ref } from 'vue';
+import ErrorMessage from './ErrorMessage.vue';
 
 const pageData = usePageDataStore();
 const { notes } = storeToRefs(pageData);
 
-const isNotesInvalid = ref('');
-
-watchDebounced(
-  notes,
-  () => (isNotesInvalid.value = forceDatalistComponent(notes.value, Object.keys(creatureNotesDatalist))),
-  {
-    debounce: 500,
-  }
-);
+defineProps<{
+  error?: string;}>();
 </script>
 
 <template>
@@ -37,13 +28,17 @@ watchDebounced(
           </Explanation>
         </template>
         <template #input>
-      <input list="creatureNotesDatalist" v-model="notes" type="text" :error="isNotesInvalid">
+      <input list="creatureNotesDatalist" v-model="notes" type="text">
       <datalist id="creatureNotesDatalist">
         <option v-for="(escreatureNotesDatalist, encreatureNotesDatalist) in creatureNotesDatalist"
         :value="encreatureNotesDatalist">
           {{ escreatureNotesDatalist }}
         </option>
       </datalist>
+      <ErrorMessage
+        v-if="error"
+        v-html="error"
+      ></ErrorMessage>
     </template>
       </InputRow>
 </template>
