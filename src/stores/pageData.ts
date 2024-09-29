@@ -151,12 +151,15 @@ export const usePageDataStore = defineStore('pageData', {
     hubName: (state) => sanitiseString(state.hub),
     docBySentence: (state) => {
       const isLink = state.docBy.startsWith('{{');
-      const hasResearchteam = state.researchteam.split(' ').length > 1;
+      const hasResearchteam = state.researchteam && state.researchteam.trim() !== '' && state.researchteam.split(' ').length > 1;
       const documenter = isLink ? state.docBy : `''${state.docBy}''`;
-      const researchteamLink = state.researchteam.includes('Wiki')
-        ? '[[Wiki Scholars|Wiki Scholar]]'
-        : `[[${state.researchteam}]] member`;
-      return `${hasResearchteam ? researchteamLink : ''} ${documenter}`;
+      let researchteamLink = '';
+      if (hasResearchteam) {
+        researchteamLink = state.researchteam.includes('Wiki')
+          ? '[[Wiki Scholars|Wiki Scholar]]'
+          : `[[${state.researchteam}]] member`;
+      }
+      return `${hasResearchteam ? researchteamLink + ' ' : ''}${documenter}`;
     },
   },
 });
