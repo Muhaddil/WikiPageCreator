@@ -13,7 +13,7 @@ El sitio web fue creado por [Lenni](https://nomanssky.fandom.com/wiki/User:Lenni
 
 Y la traducción al español fue hecha por [Muhaddil](https://nomanssky.fandom.com/wiki/User:Muhaddil).
 
-También está abierto para que otras civilizaciones/empresas/jugadores creen su propia versión. Para hacerlo, [crea una cuenta de GitHub](https://github.com/signup), [bifurca el repositorio](https://github.com/Lenni009/EisvanaWikiPageCreator/fork), editalo para adaptarlo a tus necesidades y crea su propia página de GitHub con páginas de GitHub ([es muy fácil de configurar](https://docs.github.com/en/pages/quickstart)).
+También está abierto para que otras civilizaciones/empresas/jugadores creen su propia versión. Para hacerlo, [crea una cuenta de GitHub](https://github.com/signup), [bifurca el repositorio](https://github.com/Muhaddil/RSSWikiPageCreator/fork), editalo para adaptarlo a tus necesidades y crea su propia página de GitHub con páginas de GitHub ([es muy fácil de configurar](https://docs.github.com/es/pages/quickstart)).
 
 Gracias especiales:
 * [KhaozTopsy](https://github.com/Khaoz-Topsy) (Asistente de No Man's Sky; NMSCD): ayuda de JavaScript y estilo de página.

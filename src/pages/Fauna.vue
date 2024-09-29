@@ -166,7 +166,7 @@ function markCopy() {
 }
 
 const isSecondGenderVisible = computed(() => {
-  return gender2.value !== "- None" && gender2.value !== gender.value;
+  return gender2.value !== "" && gender2.value !== gender.value;
 });
 
 const combinedWeight = computed(() => {
@@ -198,7 +198,7 @@ const combinedHeight = computed(() => {
         img="creature/creatureName"
       >
         Introduzca exactamente como se ve en el juego. Cuidado con 0 (cero) y O (o).
-        <template #heading>Nombre de la Planta</template>
+        <template #heading>Nombre de la Criatura</template>
         <template #content>Introduzca exactamente como se ve en el juego. Cuidado con 0 (cero) y O (o).</template>
       </SimpleInput>
       <!--  <SimpleInput label="Nombre del Hub:" identifier="hubInput" v-model="hub" />-->
@@ -228,14 +228,14 @@ const combinedHeight = computed(() => {
         identifier="planetInput"
         v-model="planet"
       >
-        Nombre del planeta O el planeta rodeado por la luna donde se puede encontrar la planta.
+        Nombre del planeta O el planeta rodeado por la luna donde se puede encontrar la Criatura.
       </SimpleInput>
       <SimpleInput
-        label="Nombre de la luna (si la planta está en la luna):"
+        label="Nombre de la luna (si la Criatura está en la luna):"
         identifier="moonInput"
         v-model="moon"
       >
-        Si la planta está ubicada en una luna. Déjelo en blanco si la planta está en un planeta.
+        Si la Criatura está ubicada en una luna. Déjelo en blanco si la Criatura está en un planeta.
       </SimpleInput>
       <GlyphInput />
       <InputRow>
