@@ -22,6 +22,7 @@ export default defineConfig({
       input: {
         main: resolve(__dirname, 'index.html'),
         about: resolve(__dirname, 'about.html'),
+        faq: resolve(__dirname, 'faq.html'),
         base: resolve(__dirname, 'base.html'),
         basenocensus: resolve(__dirname, 'basenocensus.html'),
         basepruebas: resolve(__dirname, 'basepruebas.html'),
