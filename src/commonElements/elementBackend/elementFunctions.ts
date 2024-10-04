@@ -13,7 +13,7 @@ export function assignFunction(dataObject: ElementFunction): void {
 		}
 		return;
 	}
-	const simplePages = ['about', '', 'flora', 'mineral'];	// excludes the index and about pages from the advanced behaviour. flora is a temporary test for the vue app
+	const simplePages = ['about', 'faq', 'fauna', 'flora', 'mineral'];	// excludes the index and about pages from the advanced behaviour. flora is a temporary test for the vue app
 	if (!pageData.eventListeners && !simplePages.includes(getCurrentHTMLFile())) {
 		transformListenerData(dataObject);
 		return;

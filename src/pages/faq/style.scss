@@ -1,0 +1,194 @@
+h1, h2 {
+  color: var(--heading-color);
+  opacity: 0;
+  animation: fadeIn 1s ease forwards;
+}
+
+.container {
+  min-width: 71%;
+  margin: 10 auto;
+  padding: 20px;
+  background-color: var(--input-background-faq);
+  box-shadow: 0 4px 8px rgb(0, 0, 0);
+  border-radius: var(--border-radius);
+  transition: var(--theme-transition);
+}
+
+.container {
+  opacity: 0;
+  transform: translateY(20px);
+  animation: fadeSlideIn 1s ease-out forwards;
+}
+
+.search-container {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+
+.search-container input {
+  max-width: 500px;
+  width: 100%;
+  padding: 10px;
+  background-color: var(--input-background);
+  color: var(--text-color);
+  border: 1px solid var(--border-color);
+  border-radius: var(--border-radius);
+  box-shadow: inset 0 1px 2px rgba(10, 10, 10, 0.1);
+  transition: var(--theme-transition), transform 0.3s ease;
+}
+
+.search-container input:hover {
+  background-color: var(--input-background-hover);
+}
+
+.search-container input:focus {
+  outline: 1px solid var(--outline-color);
+  border-color: var(--border-color-focus);
+  transform: scale(1.05);
+  transition: transform 0.2s ease-out;
+}
+
+.search-container input::placeholder {
+  color: var(--placeholder-color);
+  opacity: 0.8;
+}
+
+.search-container input {
+  animation: inputFocus 0.3s ease;
+}
+
+.box.faq-item {
+  padding: 20px;
+  margin-bottom: 15px;
+  background-color: var(--input-background);
+  border: 1px solid var(--border-color);
+  border-radius: var(--border-radius);
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+  transition: var(--theme-transition), transform 0.2s ease;
+}
+
+.box.faq-item:hover {
+  border-color: var(--border-color-hover);
+  transform: scale(1.02);
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.15);
+}
+
+details {
+  opacity: 0;
+  transform: translateY(10px);
+  animation: fadeSlideIn 0.5s ease-out forwards;
+  transition: opacity 0.3s ease;
+}
+
+details summary {
+  font-size: 1.1rem;
+  font-weight: bold;
+  cursor: pointer;
+  color: var(--heading-color);
+}
+
+details[open] summary {
+  color: var(--link-color);
+}
+
+details p {
+  margin-top: 10px;
+  font-size: 1rem;
+  color: var(--text-color);
+  opacity: 0;
+  max-height: 0;
+  overflow: hidden;
+  transition: opacity 1.5s ease, max-height 1.5s ease;
+}
+
+details[open] p {
+  opacity: 1;
+  max-height: 1000px;
+  transition: opacity 1.5s ease, max-height 1.5s ease;
+}
+
+details a {
+  color: var(--link-color);
+  text-decoration: none;
+  position: relative;
+}
+
+details a:hover {
+  color: var(--link-hover-color);
+}
+
+details a::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -2px;
+  width: 100%;
+  height: 2px;
+  background-color: var(--link-hover-color);
+  transform: scaleX(0);
+  transform-origin: bottom right;
+  transition: transform 1.3s ease;
+}
+
+details a:hover::after {
+  transform: scaleX(1);
+  transform-origin: bottom left;
+}
+
+code {
+  background-color: var(--input-background-hover);
+  border-radius: 4px;
+  padding: 2px 4px;
+  font-size: 0.9rem;
+  color: var(--code-color);
+  opacity: 0;
+  animation: fadeIn 0.6s ease 0.5s forwards;
+}
+
+@keyframes fadeIn {
+  from {
+      opacity: 0;
+  }
+  to {
+      opacity: 1;
+  }
+}
+
+@keyframes fadeSlideIn {
+  from {
+      opacity: 0;
+      transform: translateY(20px);
+  }
+  to {
+      opacity: 1;
+      transform: translateY(0);
+  }
+}
+
+@keyframes inputFocus {
+  from {
+      transform: scale(1);
+  }
+  to {
+      transform: scale(1.05);
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .container {
+      padding: 10px;
+  }
+
+  h1.title {
+      font-size: 1.5rem;
+  }
+
+  .search-container {
+      margin-bottom: 20px;
+  }
+
+  .box.faq-item {
+      padding: 15px;
+  }
+}
