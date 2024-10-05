@@ -50,8 +50,8 @@ updateGeneraList();
   <InputTableItem>
     <template #label>
       <div class="is-flex is-justify-content-space-between is-align-items-center full-width">
-        <label :id>Genre:</label>
-        <Explainer tooltip="Found in the creature discovery menu.">
+        <label :id>Género:</label>
+        <Explainer tooltip="Encontrado en el menú de descubrimiento de criaturas.">
         </Explainer>
       </div>
     </template>

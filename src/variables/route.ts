@@ -7,8 +7,37 @@ export const router: Record<string, string> = {
   mineral: 'Mineral',
   home: 'Home',
   base: 'Base',
+  basenocensus: 'NormalBase',
   fauna: 'Fauna',
 };
 
 export const route = getCurrentRoute();
 export const componentName = getRouteComponent();
+
+let exportName;
+
+switch (route) {
+  case 'base':
+    exportName = 'Bases';
+    break;
+  case 'flora':
+    exportName = 'Flora';
+    break;
+  case 'mineral':
+    exportName = 'Minerales';
+    break;
+  case 'fauna':
+    exportName = 'Fauna';
+    break;
+  case 'basenocensus':
+    exportName = 'Bases Normales';
+    break;
+  case '':
+    exportName = 'Home';
+    break;
+  default:
+    exportName = 'Desconocido';
+    break;
+}
+
+export const pageformattedName = exportName;

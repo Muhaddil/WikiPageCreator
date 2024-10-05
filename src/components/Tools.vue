@@ -21,10 +21,6 @@ const items = [
         label: 'Portal Decoder',
         url: 'https://nmsportals.github.io/',
       },
-      {
-        label: 'Eisvana Discovery Data',
-        url: 'https://eisvana.github.io/Eisvana-Discovery-Data',
-      },
     ],
   },
 ];

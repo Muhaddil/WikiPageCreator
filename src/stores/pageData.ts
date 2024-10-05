@@ -2,7 +2,6 @@ import { defineStore } from 'pinia';
 import { fetchSectionWikiText } from '@/helpers/api';
 import parseMediawikiTemplate from 'parse-mediawiki-template';
 import { currentReleaseKey, defaultValuesKey } from '@/variables/localStorageKeys';
-import { civName } from '@/variables/civilization';
 import { regions, galaxies } from '@/variables/regions';
 import { maxGlyphLength } from '@/variables/glyphData';
 import { emitGlobalEvent } from '@/helpers/event';
@@ -18,7 +17,13 @@ const toast = useToast();
 
 const localStorageData = () => JSON.parse(localStorage.getItem('defaultSettings') ?? '{}');
 
-const researchteamDefaultExceptions: string[] = ['base'];
+const researchteamDefaultExceptions = ['base'];
+
+export const departments = {
+  '': '',
+};
+
+if (researchteamDefaultExceptions.includes(route)) departments[''] = '';
 
 interface PageData {
   release: string;
@@ -64,7 +69,7 @@ interface PageData {
   censusarrival: string;
   censusshow: string;
   layout: string;
-  features: string;
+  features: string[];
   additionalInfo: string;
   behaviour: string;
   activity: string;
@@ -131,7 +136,7 @@ const defaultState: PageData = {
   censusarrival: '',
   censusshow: '',
   layout: '',
-  features: '',
+  features: [],
   additionalInfo: '',
   orgName: '',
   behaviour: '',
@@ -164,8 +169,8 @@ export const usePageDataStore = defineStore('pageData', {
       if (state.glyphs.length !== maxGlyphLength) return { region: '', regionNumber: '', galaxy: '' };
 
       const regionGlyphs = state.glyphs.slice(4);
-      const eisvanaRegionGlyphs = Object.keys(regions);
-      const regionIndex = eisvanaRegionGlyphs.indexOf(regionGlyphs);
+      const rssRegionGlyphs = Object.keys(regions);
+      const regionIndex = rssRegionGlyphs.indexOf(regionGlyphs);
       const regionNames = Object.values(regions);
       const currentRegion = regionNames[regionIndex];
 
@@ -178,15 +183,17 @@ export const usePageDataStore = defineStore('pageData', {
         galaxy: currentGalaxy,
       };
     },
-    researchteamValue: (state) => state.researchteam ?? (researchteamDefaultExceptions.includes(route) ? '' : civName),
+    // researchteamValue: (state) => state.researchteam ?? (researchteamDefaultExceptions.includes(route) ? '' : civName),
+    researchteamValue: (state) => state.researchteam || '',
     docBySentence: (state) => {
       const isLink = state.docBy.startsWith('{{');
-      const hasResearchteam = state.researchteam.split(' ').length > 1;
+      const hasResearchteam = state.researchteam;
       const documenter = isLink ? state.docBy : `''${state.docBy}''`;
-      const researchteamLink = state.researchteam.includes('Wiki')
-        ? '[[Eisvana Wiki Scholars|Eisvana Wiki Scholar]]'
-        : `[[${state.researchteam}]] member`;
-      return `${hasResearchteam ? researchteamLink : ''} ${documenter}`;
+      let researchteamLink = '';
+      if (hasResearchteam) {
+        researchteamLink = `[[${state.researchteam}]] member`
+      }
+      return `${hasResearchteam ? researchteamLink + ' ' : ''}${documenter}`;
     },
   },
 

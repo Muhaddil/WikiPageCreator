@@ -47,11 +47,15 @@ const locationSentence = computed(() => {
   const moonSentence = `moon [[${moon.value}]] of the`;
   return moon.value ? `${moonSentence} ${planetSentence}` : planetSentence;
 });
+
+const formattedFeatures = computed(() => {
+  if (!features.value || features.value.length === 0) return '';
+  return features.value.map(feature => `* [[${feature}]]`).join('\n');
+});
 </script>
 
 <template>
   <div><span v-pre>{{Version|</span>{{ release }}<span v-pre>}}</span></div>
-  <div><span v-pre>{{</span>Eisvana<span v-pre>}}</span></div>
   <div v-pre>{{Base infobox</div>
   <div>| name = {{ name }}</div>
   <div>| image = {{ image }}</div>
@@ -59,7 +63,7 @@ const locationSentence = computed(() => {
   <div>| researchteam = {{ researchteam }}</div>
   <div>| builderlink = {{ discoveredlink }}</div>
   <div>| builder = {{ discovered }}</div>
-  <div>| galaxy = Eissentam</div>
+  <div>| galaxy = {{ regionData.galaxy }}</div>
   <div>| region = {{ regionData.region }}</div>
   <div>| system = {{ system }}</div>
   <div>| planet = {{ planet }}</div>
@@ -97,7 +101,7 @@ const locationSentence = computed(() => {
   <div class="keep-linebreaks">{{ layout }}</div>
   <br />
   <div>==Features==</div>
-  <div class="keep-linebreaks">{{ features }}</div>
+  <div class="keep-linebreaks">{{ formattedFeatures }}</div>
   <br />
   <div>==Additional Information==</div>
   <div class="keep-linebreaks">{{ additionalInfo }}</div>

@@ -65,7 +65,7 @@ watchDebounced(
   <Panel
     v-model:collapsed="isCollapsed"
     class="my-4"
-    header="Census"
+    header="Censo"
     toggleable
   >
     <template #toggleicon>
@@ -74,53 +74,53 @@ watchDebounced(
     <SanitisedTextInput
       v-model="censusplayer"
       help-img="base/playerName"
-      help-title="Player Name"
-      label="Ingame name"
-      tooltip="Your ingame name"
-      >Your ingame name. Don't include any ingame titles.
+      help-title="Nombre del Jugador"
+      label="Nombre en el juego"
+      tooltip="Tu nombre en el juego"
+      >Tu nombre en el juego. No incluyas los títulos del juego.
     </SanitisedTextInput>
     <SanitisedTextInput
       v-if="!censussocial"
       v-model="censusreddit"
       :invalid="!isRedditValid"
-      error-message="Reddit name must not include spaces"
-      label="Reddit name"
-      tooltip='Your Reddit name. "u/" not necessary'
+      error-message="El nombre de Reddit no debe incluir espacios"
+      label="Nombre de Reddit"
+      tooltip='Tu nombre de Reddit. "u/" no es necesario'
     />
     <SanitisedTextInput
       v-if="!censusreddit"
       v-model="censussocial"
       :invalid="!isSocialLinkValid"
-      error-message="Please provide the full link"
-      label="Social media name"
-      tooltip="Social Media profile if you don't have Reddit (Facebook, Instagram, Wiki, etc). Put the full link here"
+      error-message="Por favor proporciona el enlace completo"
+      label="Nombre en redes sociales"
+      tooltip="Perfil en redes sociales si no tienes Reddit (Facebook, Instagram, Wiki, etc). Pon aquí el enlace completo"
     />
     <SanitisedTextInput
       v-model="censusdiscord"
       :invalid="!isDiscordValid"
-      error-message="'Invalid Discord tag. Please give your username, not your display name.'"
-      label="Discord name"
-      tooltip="Your Discord name. Please enter your username, not your display name"
+      error-message="'Etiqueta de Discord inválida. Por favor da tu nombre de usuario, no tu apodo.'"
+      label="Nombre de Discord"
+      tooltip="Tu nombre de Discord. Por favor ingresa tu nombre de usuario, no tu apodo"
     />
     <TextInput
       v-model="censusfriend"
       :invalid="!isFriendCodeValid"
-      error-message="Wrong friend code format"
+      error-message="Formato de código de amigo incorrecto"
       help-img="base/friendCode"
-      help-title="NMS Friend Code"
-      label="Friend code"
-      tooltip="Can be found in the Options"
+      help-title="Código de Amigo NMS"
+      label="Código de amigo"
+      tooltip="Se puede encontrar en las Opciones"
     >
-      You can find your friend code in the Options &rarr; Network &rarr; View No Man's Sky Friends List &rarr; Show My
-      No Man's Sky Friend Code
+      Puedes encontrar tu código de amigo en Opciones &rarr; Red &rarr; Ver Lista de Amigos de No Man's Sky &rarr; Mostrar mi
+      Código de Amigo de No Man's Sky
     </TextInput>
     <DateSelect
       v-model="censusarrival"
-      label="Date of arrival in Eisvana"
+      label="Fecha de llegada a la RSS"
     />
     <InputTableItem class="census-row">
       <template #label>
-        <label for="census-checkbox">Create census entry</label>
+        <label for="census-checkbox">Crear entrada de censo</label>
       </template>
       <template #input>
         <Checkbox

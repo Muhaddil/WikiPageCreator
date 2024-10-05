@@ -116,6 +116,7 @@ const isSmallScreen = computed(() => width.value <= smallContainerWidth);
                 mode="basic"
                 auto
                 custom-upload
+                chooseLabel="Elegir"
                 @select="onUpload"
               />
             </component>

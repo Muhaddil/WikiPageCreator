@@ -150,7 +150,7 @@ const helperImage = computed(() => `/src/assets/images/${props.helpImg}.webp`);
     transition: opacity 0.5s;
 
     &::after {
-      content: 'Click to enlarge';
+      content: 'Haga clic para ampliar';
       display: block;
     }
 

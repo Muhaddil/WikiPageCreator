@@ -16,8 +16,8 @@ const id = useId('hemisphere');
   <InputTableItem>
     <template #label>
       <div class="is-flex is-justify-content-space-between is-align-items-center full-width">
-        <label :id>Hemisphere:</label>
-        <Explainer tooltip="Found in the creature discovery menu. If no hemisphere is provided, leave the entry empty.">
+        <label :id>Hemisferio:</label>
+        <Explainer tooltip="Encontrado en el menú de descubrimiento de criaturas. Si no se proporciona ningún hemisferio, deje la entrada vacía.">
         </Explainer>
       </div>
     </template>

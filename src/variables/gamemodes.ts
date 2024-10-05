@@ -1,5 +1,9 @@
 import type { SelectOption } from '@/types/selectInputOptions';
 
-export const modes = ['Normal', 'Creative', 'Relaxed', 'Survival', 'Permadeath', 'Custom'] as const;
+const modesInEnglish = ['Normal', 'Creative', 'Relaxed', 'Survival', 'Permadeath', 'Custom'] as const;
+const modesInSpanish = ['Normal', 'Creativo', 'Relajado', 'Supervivencia', 'Muerte permanente', 'Personalizado'] as const;
 
-export const mappedModeOptions: SelectOption[] = modes.map((mode) => ({ label: mode, value: mode }));
+export const mappedModeOptions: SelectOption[] = modesInSpanish.map((mode, index) => ({
+  label: mode,
+  value: modesInEnglish[index],
+}));

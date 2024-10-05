@@ -1,12 +1,13 @@
 <script setup lang="ts">
 import GlyphInput from '@/components/inputs/GlyphInput.vue';
-import DepartmentSelect from '@/components/inputs/DepartmentSelect.vue';
 import SanitisedTextInput from '@/components/inputs/SanitisedTextInput.vue';
 import SingleFileUpload from '@/components/inputs/SingleFileUpload.vue';
 import TextareaInput from '@/components/inputs/TextareaInput.vue';
+import { usePageDataStore } from '@/stores/pageData';
+import { storeToRefs } from 'pinia';
+import { watch, computed } from 'vue';
 import GameModeSelect from '@/components/inputs/GameModeSelect.vue';
-import GalleryInput from '@/components/inputs/gallery/GalleryInput.vue';
-
+import creatureData from '@/miscLogic/creatureData';
 import EcosystemSelect from '@/components/inputs/fauna/EcosystemSelect.vue';
 import HemisphereSelect from '@/components/inputs/fauna/HemisphereSelect.vue';
 import RaritySelect from '@/components/inputs/fauna/RaritySelect.vue';
@@ -16,14 +17,8 @@ import GenderSelect from '@/components/inputs/fauna/GenderSelect.vue';
 import BehavioursSelect from '@/components/inputs/fauna/BehavioursSelect.vue';
 import DietSelect from '@/components/inputs/fauna/DietSelect.vue';
 import NotesSelect from '@/components/inputs/fauna/NotesSelect.vue';
-
+import GalleryInput from '@/components/inputs/gallery/GalleryInput.vue';
 import FileUploadNotice from '@/components/FileUploadNotice.vue';
-
-import { usePageDataStore } from '@/stores/pageData';
-import { storeToRefs } from 'pinia';
-import { watch, computed } from 'vue';
-
-import creatureData from '@/miscLogic/creatureData';
 
 const pageData = usePageDataStore();
 const {
@@ -72,42 +67,42 @@ watch(genus, (newGenus) => {
   <SanitisedTextInput
     v-model="name"
     help-img="creature/creatureName"
-    help-title="Creature Name"
-    label="Creature Name:"
-    tooltip="Enter exactly as it appears in the game. Be careful with 0 (zero) and O (oh)."
+    help-title="Nombre de la criatura"
+    label="Nombre de la criatura:"
+    tooltip="Introduce exactamente como se ve en el juego. Cuidado con el 0 (cero) y la O (o)."
   >
-    Enter exactly as it appears in the game. Be careful with 0 (zero) and O (oh).
+    Introduce exactamente como se ve en el juego. Cuidado con el 0 (cero) y la O (o).
   </SanitisedTextInput>
 
   <SingleFileUpload
     v-model="image"
-    label="Main Image"
-    help-title="File Upload"
-    tooltip="The image will not be uploaded to the wiki. This is only for auto-completing the image name."
+    label="Imagen principal"
+    help-title="Subida de Archivo"
+    tooltip="La imagen no se subirá a la wiki. Esto es solo para autocompletar el nombre de la imagen."
   >
     <FileUploadNotice />
   </SingleFileUpload>
 
   <SanitisedTextInput
     v-model="orgName"
-    label="Original name before registering (if available):"
+    label="Nombre original antes de registrar (si está disponible):"
   />
 
   <SanitisedTextInput
     v-model="system"
-    label="System Name:"
+    label="Nombre del sistema:"
   />
 
   <SanitisedTextInput
     v-model="planet"
-    label="Planet Name:"
-    tooltip="Name of the planet OR the planet around which the moon orbits where the creature is found."
+    label="Nombre del planeta:"
+    tooltip="Nombre del planeta O el planeta alrededor del cual orbita la luna donde se encuentra la criatura."
   />
 
   <SanitisedTextInput
     v-model="moon"
-    label="Moon Name (if the plant is on the moon):"
-    tooltip="If the creature is located on a moon. Leave blank if the plant is on a planet."
+    label="Nombre de la luna (si la planta está en la luna):"
+    tooltip="Si la criatura está ubicada en una luna. Déjelo en blanco si la planta está en un planeta."
   />
 
   <GlyphInput v-model="glyphs" />
@@ -120,12 +115,12 @@ watch(genus, (newGenus) => {
 
   <GenderSelect
     v-model="gender"
-    label="Gender:"
+    label="Género:"
   />
 
   <GenderSelect
     v-model="gender2"
-    label="Gender 2 (if applicable):"
+    label="Género 2 (si tiene):"
   />
 
   <BehavioursSelect v-model="behaviour"/>
@@ -134,79 +129,77 @@ watch(genus, (newGenus) => {
 
   <SanitisedTextInput
     v-model="weight"
-    label="Weight in KG:"
+    label="Peso en KG:"
     maxlength="5"
     placeholder="1.5"
-    tooltip="Found in the creature scan. No need to include 'kg'."
+    tooltip="Encontrado en el escaneo de criaturas. No se necesitan poner 'kg'."
     help-img="creature/creatureWeight"
-    help-title="Creature Weight"
+    help-title="Peso de la criatura"
   />
 
   <SanitisedTextInput
     v-if="isSecondGenderVisible"
     v-model="weight2"
-    label="Weight for Gender 2: (if applicable)"
+    label="Peso del género 2: (si hay)"
     maxlength="5"
     placeholder="1.5"
-    tooltip="Found in the creature scan. No need to include 'kg'."
+    tooltip="Encontrado en el escaneo de criaturas. No se necesitan poner 'kg'."
     help-img="creature/creatureWeight"
-    help-title="Creature Weight"
+    help-title="Peso de la criatura"
   />
 
   <SanitisedTextInput
     v-model="height"
-    label="Height in M:"
+    label="Altura en M:"
     maxlength="5"
     placeholder="1.5"
-    tooltip="Found in the creature scan. No need to include 'm'."
+    tooltip="Encontrado en el escaneo de criaturas. No se necesitan poner 'kg'."
     help-img="creature/creatureHeight"
-    help-title="Creature Height"
+    help-title="Altura de la criatura"
   />
 
   <SanitisedTextInput
     v-if="isSecondGenderVisible"
     v-model="height2"
-    label="Height for Gender 2: (if applicable)"
+    label="Altura del género 2: (si hay)"
     maxlength="5"
     placeholder="1.5"
-    tooltip="Found in the creature scan. No need to include 'm'."
+    tooltip="Encontrado en el escaneo de criaturas. No se necesitan poner 'kg'."
     help-img="creature/creatureHeight"
-    help-title="Creature Height"
+    help-title="Altura de la criatura"
   />
 
   <SanitisedTextInput
     v-model="discoveredlink"
-    label="Discoverer's Name on the wiki:"
+    label="Nombre del Descubridor en la wiki:"
   />
   <SanitisedTextInput
     v-model="discovered"
-    label="Discoverer's Alias if no wiki entry:"
+    label="Alias del Descubridor si no tiene wiki:"
   />
 
   <GameModeSelect v-model="mode" />
 
-  <!-- <SanitisedTextInput
+  <SanitisedTextInput
     v-model="researchteam"
-    label="Department: (Optional)"
-  /> -->
-
-  <DepartmentSelect v-model="researchteam" />
+    label="Departamento: (Opcional)"
+  />
 
   <SanitisedTextInput
     v-model="docBy"
-    label="Documenter's Name if not the discoverer:"
+    label="Nombre del documentador si no es el descubridor:"
   />
 
   <TextareaInput
     v-model="appearance"
-    label="Appearance:"
-    placeholder="This flora is a <size> <colour> <type>."
+    label="Apariencia:"
+    placeholder="Esta flora es una <size> <colour> <type>."
   />
 
   <!--
   <TextareaInput
     v-model="additionalInfo"
-    label="Additional Information:"
+    label="Información Adicional:"
   /> -->
 
   <GalleryInput />

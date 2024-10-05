@@ -66,8 +66,7 @@ const combinedHeight = computed(() => {
 
 <template>
   <div><span v-pre>{{Version|</span>{{ release }}<span v-pre>}}</span></div>
-  <!-- <div><span v-pre>{{</span>Eisvana<span v-pre>}}</span></div> -->
-  <div v-pre>{{Base infobox</div>
+  <div v-pre>{{Fauna infobox</div>
   <div>| name = {{ name }}</div>
   <div>| image = {{ image }}</div>
   <div>| galaxy = {{ regionData.galaxy }}</div>

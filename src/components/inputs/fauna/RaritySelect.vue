@@ -16,8 +16,8 @@ const id = useId('rarity');
   <InputTableItem>
     <template #label>
       <div class="is-flex is-justify-content-space-between is-align-items-center full-width">
-        <label :id>Rarity:</label>
-        <Explainer tooltip="Found in the creature discovery menu.">
+        <label :id>Rareza:</label>
+        <Explainer tooltip="Encontrado en el menú de descubrimiento de criaturas.">
         </Explainer>
       </div>
     </template>

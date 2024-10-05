@@ -17,7 +17,7 @@ const id = useId('gender1');
     <template #label>
       <div class="is-flex is-justify-content-space-between is-align-items-center full-width">
         <label :id="id">{{ label }}</label>
-        <Explainer tooltip="Found in the creature discovery menu.">
+        <Explainer tooltip="Encontrado en el menú de descubrimiento de criaturas.">
         </Explainer>
       </div>
     </template>

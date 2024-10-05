@@ -49,7 +49,13 @@ function lintGlyphs() {
 
 watchPostEffect(lintGlyphs);
 
-const activeCelestialBody = computed(() => (moon.value || route === 'moon' ? 'moon' : 'planet'));
+const activeCelestialBody = computed(() => {
+  if (moon.value || route === 'moon') {
+    return 'luna';
+  } else {
+    return 'planeta';
+  }
+});
 
 const id = useId('glyph-input-');
 </script>
@@ -59,11 +65,11 @@ const id = useId('glyph-input-');
     <div class="columns is-mobile mb-0">
       <div class="column is-flex is-align-items-center is-justify-content-space-between is-row-gap-1 is-column-gap-2">
         <div class="is-flex is-flex-wrap-wrap is-align-items-center is-row-gap-1 is-column-gap-2">
-          <label :for="id">Glyphs</label>
+          <label :for="id">Glifos</label>
           <div>
             <Button
               icon="pi pi-delete-left"
-              label="Delete"
+              label="Borrar"
               severity="danger"
               size="small"
               outlined
@@ -73,11 +79,11 @@ const id = useId('glyph-input-');
         </div>
         <Explainer
           v-if="!noExplain"
-          :tooltip="`Found in Photo Mode. Glyphs are specific to each ${activeCelestialBody}.`"
+          :tooltip="`Se encuentra en el modo Foto. Los glifos son específicos de cada ${activeCelestialBody}.`"
           help-img="shared/glyphs"
-          help-title="Portalglyphs"
+          help-title="Glifos"
         >
-          Found in Photo Mode. Glyphs are specific to each {{ activeCelestialBody }}.
+        Se encuentra en el modo Foto. Los glifos son específicos de cada {{ activeCelestialBody }}.
         </Explainer>
       </div>
       <div class="column is-flex is-align-items-center">
@@ -93,12 +99,12 @@ const id = useId('glyph-input-');
             size="small"
           />
           <template #errorMessage>
-            No valid Eisvana region. See
+            No es una región valida de la RSS, por favor mira las
             <WikiLink
-              link="Eisvana#Claimed_Regions"
-              text="Eisvana Claimed Regions"
+              link="Regions_RSS"
+              text="regiones de la RSS"
             />
-            for a list of valid regions.
+            para obtener una lista de regiones validas.
           </template>
         </InvalidInput>
       </div>

@@ -5,18 +5,17 @@ import ExternalLink from './ExternalLink.vue';
 
 <template>
   <p>
-    Any pictures you upload here won't be uploaded to the wiki. This is only to autofill the image name. Maximum
-    filesize is 10MB. You can upload your pictures to the wiki on
-    <WikiLink
+    Las imágenes que cargues aquí no se cargarán en la wiki. Esto es solo para completar automáticamente el nombre de la imagen. El tamaño máximo de archivo es de 10 MB. Puedes cargar tus imágenes en la wiki en
+      <WikiLink
       link="Special:Upload?multiple=true"
-      text="Special:Upload"
+      text="Especial:Subir"
     />.
   </p>
   <p>
-    You can compress your images with the
+    Puedes comprimir tus imágenes con el
     <ExternalLink
       link="https://nmscd.com/Image-Compressor/"
-      text="Image Compressor"
+      text="Compresor de imágenes"
     />.
   </p>
 </template>

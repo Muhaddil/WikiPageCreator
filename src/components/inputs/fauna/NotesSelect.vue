@@ -16,8 +16,8 @@ const id = useId('notes');
   <InputTableItem>
     <template #label>
       <div class="is-flex is-justify-content-space-between is-align-items-center full-width">
-        <label>Notes:</label>
-        <Explainer tooltip="Found in the creature discovery menu.">
+        <label>Notas:</label>
+        <Explainer tooltip="Encontrado en el escaneo de criaturas.">
         </Explainer>
       </div>
     </template>

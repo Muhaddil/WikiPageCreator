@@ -9,7 +9,7 @@ import { ref } from 'vue';
 import GalleryPreview from './GalleryPreview.vue';
 
 const pageData = usePageDataStore();
-const { galleryFiles, locationFiles } = storeToRefs(pageData);
+const { galleryFiles } = storeToRefs(pageData);
 
 let id = 0;
 
@@ -70,7 +70,7 @@ const { isOverDropZone } = useDropZone(dropzone, {
             :class="{ 'p-button-outlined': !isOverDropZone }"
             :maxFileSize
             accept="image/*"
-            choose-label="Add Files"
+            choose-label="Añadir archivos"
             auto
             custom-upload
             mode="basic"
@@ -81,7 +81,7 @@ const { isOverDropZone } = useDropZone(dropzone, {
       </template>
       <template #empty>
         <div class="is-flex is-justify-content-center is-align-items-center my-5">
-          <p>Drop gallery files here</p>
+          <p>Suelte los archivos de la galería aquí</p>
         </div>
       </template>
     </FileUpload>

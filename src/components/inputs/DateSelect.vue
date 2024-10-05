@@ -37,7 +37,7 @@ watchEffect(() => {
       <DatePicker
         v-model="dateModel"
         :input-id="id"
-        date-format="yy-mm-dd"
+        date-format="dd/mm/yy"
         icon-display="input"
         input-class="p-inputtext-sm"
         pt:inputIconContainer:class="mt-0"

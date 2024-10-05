@@ -1,7 +1,7 @@
 import { definePreset } from '@primevue/themes';
 import Aura from '@primevue/themes/aura';
 
-export const eisvanaColours = definePreset(Aura, {
+export const Colours = definePreset(Aura, {
   semantic: {
     primary: {
       50: '{purple.50}',

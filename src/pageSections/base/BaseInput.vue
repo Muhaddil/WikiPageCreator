@@ -1,5 +1,4 @@
 <script setup lang="ts">
-import DepartmentSelect from '@/components/inputs/DepartmentSelect.vue';
 import GlyphInput from '@/components/inputs/GlyphInput.vue';
 import PlatformSelect from '@/components/inputs/PlatformSelect.vue';
 import SanitisedTextInput from '@/components/inputs/SanitisedTextInput.vue';
@@ -16,6 +15,7 @@ import CoordinateInput from '@/components/inputs/CoordinateInput.vue';
 import GalleryInput from '@/components/inputs/gallery/GalleryInput.vue';
 import FileUploadNotice from '@/components/FileUploadNotice.vue';
 import CensusInputs from '@/components/inputs/CensusInputs.vue';
+import FeatureInput from '@/components/inputs/FeatureInput.vue';
 
 const pageData = usePageDataStore();
 const {
@@ -44,12 +44,12 @@ const {
 } = storeToRefs(pageData);
 
 const featureCheckboxes: CheckboxData[] = reactive([
-  { model: farm, label: 'Farm' },
-  { model: geobay, label: 'Geobay' },
-  { model: landingpad, label: 'Landing Pad' },
+  { model: farm, label: 'Granja' },
+  { model: geobay, label: 'Geobahías' },
+  { model: landingpad, label: 'Plataforma de Aterrizaje' },
   { model: terminal, label: 'Terminal' },
   { model: arena, label: 'Arena' },
-  { model: racetrack, label: 'Racetrack' },
+  { model: racetrack, label: 'Pista de Carreras' },
 ]);
 </script>
 
@@ -57,91 +57,97 @@ const featureCheckboxes: CheckboxData[] = reactive([
   <SanitisedTextInput
     v-model="name"
     help-img="base/baseName"
-    help-title="Base Name"
-    label="Name"
-    tooltip="Enter exactly as seen in game. Watch out for 0 (zero) and O (o)."
+    help-title="Nombre de la Base"
+    label="Nombre"
+    tooltip="Escribe exactamente como se ve en el juego. Cuidado con 0 (cero) y O (o)."
   >
-    Enter exactly as seen in game. Watch out for 0 (zero) and O (o).
+    Escribe exactamente como se ve en el juego. Cuidado con 0 (cero) y O (o).
   </SanitisedTextInput>
   <SingleFileUpload
     v-model="image"
-    label="Main image"
-    help-title="File Upload"
-    tooltip="Picture won't be uploaded to the wiki. This is only to autofill the image name."
+    label="Imagen principal"
+    help-title="Subida de Archivo"
+    tooltip="La imagen no se subirá a la wiki. Esto es solo para completar automáticamente el nombre de la imagen."
   >
     <FileUploadNotice />
   </SingleFileUpload>
   <SanitisedTextInput
     v-model="system"
-    label="System"
+    label="Sistema"
   />
   <SanitisedTextInput
     v-model="planet"
-    label="Planet"
-    tooltip="Planet Name OR the planet circled by the moon where the base can be found."
+    label="Nombre del Planeta"
+    tooltip="Nombre del Planeta O el planeta rodeado por la luna donde se puede encontrar la base."
   />
   <SanitisedTextInput
     v-model="moon"
-    label="Moon"
-    tooltip="If the base is located on a moon. Leave blank if the base is on a planet."
+    label="Nombre de la Luna"
+    tooltip="Si la base está ubicada en una luna. Déjalo en blanco si la base está en un planeta."
   />
   <CoordinateInput v-model="axes" />
   <GlyphInput v-model="glyphs" />
   <SanitisedTextInput
     v-model="type"
-    label="Type of the base"
-    tooltip="Type and purpose of the base."
-    help-title="Base Type"
+    label="Tipo de la base"
+    tooltip="Tipo y propósito de la base."
+    help-title="Tipo de Base"
   >
     <div class="dialog-center">
       <ul class="dialog-list">
-        <li>Artistic</li>
-        <li>Embassy</li>
-        <li>Farm</li>
-        <li>Headquarters</li>
+        <li>Artístico</li>
+        <li>Embajada</li>
+        <li>Granja</li>
+        <li>Cuartel General</li>
         <li>Industrial</li>
         <li>Memorial</li>
-        <li>Residential</li>
+        <li>Residencial</li>
       </ul>
     </div>
   </SanitisedTextInput>
 
   <Fieldset
     class="mb-4"
-    legend="Features"
+    legend="Características"
   >
     <GridCheckboxWrapper :checkboxes="featureCheckboxes" />
   </Fieldset>
 
   <SanitisedTextInput
     v-model="discoveredlink"
-    label="Builder wiki name"
+    label="Nombre en la wiki del constructor"
   />
   <SanitisedTextInput
     v-model="discovered"
-    label="Builder alias if no wiki"
+    label="Alias del constructor si no hay wiki"
   />
 
   <GameModeSelect v-model="mode" />
   <PlatformSelect v-model="platform" />
-  <DepartmentSelect v-model="researchteam" />
+  <!-- <DepartmentSelect v-model="researchteam" /> -->
+  <SanitisedTextInput
+    v-model="researchteam"
+    label="Departamento: (Opcional)"
+  />
 
   <CensusInputs />
 
   <div class="is-flex is-flex-direction-column is-gap-2">
     <TextareaInput
       v-model="layout"
-      label="Base Layout"
+      label="Distribución de la Base"
     />
-    <TextareaInput
+    <!-- <TextareaInput
       v-model="features"
-      label="Base Features"
-    />
+      label="Características de la Base"
+    /> -->
+    <FeatureInput v-model="features" />
     <TextareaInput
       v-model="additionalInfo"
-      label="Additional Information"
+      label="Información Adicional"
     />
   </div>
 
   <GalleryInput />
 </template>
+

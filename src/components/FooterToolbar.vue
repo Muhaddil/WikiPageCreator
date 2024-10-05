@@ -7,13 +7,25 @@ import { useToast, POSITION } from 'vue-toastification';
 const pageData = usePageDataStore();
 
 const toast = useToast();
+const copyContent = ''
 
-function copyPage() {
+async function copyPage() {
+  try {
+    await navigator.clipboard.writeText(copyContent);
+    toast.success('¡Copiado!', {
+      position: POSITION.BOTTOM_RIGHT,
+    });
+  } catch (error) {
+    toast.error('¡El botón aún no funciona!');
+  }
+}
+
+function createPage() {
   const randomBool = Math.random() > 0.5;
   if (randomBool) {
-    toast.error('Button is not yet functional!');
+    toast.error('¡El botón aún no funciona!');
   } else {
-    toast.success('Copied!', {
+    toast.success('¡Creada!', {
       position: POSITION.BOTTOM_RIGHT,
     });
   }
@@ -25,15 +37,16 @@ function copyPage() {
     <template #center>
       <div class="is-gap-1 is-flex is-justify-content-center footer-toolbar">
         <Button
-          label="Copy"
+          label="Copiar"
           @click="copyPage"
         />
         <Button
           as="a"
-          label="Create"
+          label="Crear"
+          @click="createPage"
         />
         <Button
-          label="Reset"
+          label="Restablecer"
           severity="warn"
           @click="pageData.resetStore"
         />

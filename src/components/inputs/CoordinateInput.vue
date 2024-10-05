@@ -16,14 +16,14 @@ watchDebounced(model, (newVal) => (invalid.value = !validateCoords(newVal)), { d
   <SanitisedTextInput
     v-model="model"
     :invalid
-    error-message="Invalid coordinate format"
-    label="Planetary coordinates"
+    error-message="Formato de coordenadas no válido"
+    label="Coordenadas planetarias"
     placeholder="+0.00, -0.00"
     maxlength="16"
-    tooltip="Found using your analysis visor OR on your ship's dashboard."
-    help-title="Planetary Coordinates"
+    tooltip="Lo encontrarás usando tu visor de análisis O en el tablero de tu nave."
+    help-title="Coordenadas planetarias"
     help-img="shared/axes"
   >
-    Found using your analysis visor OR on your ship's dashboard.
+  Lo encontrarás usando tu visor de análisis O en el tablero de tu nave.
   </SanitisedTextInput>
 </template>

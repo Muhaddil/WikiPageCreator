@@ -2,7 +2,7 @@
 import Toolbar from 'primevue/toolbar';
 import ThemeSwitch from './ThemeSwitch.vue';
 import NavBar from './NavBar.vue';
-import { componentName } from '@/variables/route';
+import { pageformattedName } from '@/variables/route';
 import Presets from './Presets.vue';
 import Tools from './Tools.vue';
 </script>
@@ -14,7 +14,7 @@ import Tools from './Tools.vue';
     </template>
 
     <template #center>
-      <h1 class="title is-3">Eisvana Wiki Page Creator{{ componentName === 'Home' ? '' : ` - ${componentName}` }}</h1>
+      <h1 class="title is-3">Royal Space Society Wiki Page Creator{{ pageformattedName === 'Home' ? '' : ` - ${pageformattedName}` }}</h1>
     </template>
 
     <template #end>

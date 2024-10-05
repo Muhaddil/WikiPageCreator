@@ -16,13 +16,13 @@ const id = useId('gamemode-');
   <InputTableItem>
     <template #label>
       <div class="is-flex is-justify-content-space-between is-align-items-center full-width">
-        <label :id>Gamemode</label>
+        <label :id>Modo de juego</label>
         <Explainer
-          tooltip="Gamemode of the save on which this base was built."
+          tooltip="Modo de juego de la partida en la que se construyó esta base."
           help-img="shared/gamemode"
-          help-title="Gamemode"
+          help-title="Modo de juego"
         >
-          Gamemode of the save on which this base was built.<br />Found in the main menu:
+          Modo de juego de la partida en la que se construyó esta base.<br />Encontrado en el menú principal:
         </Explainer>
       </div>
     </template>

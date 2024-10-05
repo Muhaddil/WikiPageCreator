@@ -8,7 +8,7 @@ defineProps<{
 }>();
 
 const pageData = usePageDataStore();
-const { galleryFiles, locationFiles } = storeToRefs(pageData);
+const { galleryFiles } = storeToRefs(pageData);
 </script>
 
 <template>

@@ -14,7 +14,7 @@ const id = useId('platform-');
 <template>
   <InputTableItem>
     <template #label>
-      <label :id>Platform</label>
+      <label :id>Plataforma</label>
     </template>
 
     <template #input>
