@@ -24,3 +24,26 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 });
+
+document.querySelectorAll("details").forEach((detail) => {
+  detail.addEventListener("toggle", () => {
+      const p = detail.querySelector("p");
+
+      if (p) {
+          if (detail.open) {
+              p.style.height = `${p.scrollHeight}px`;
+              p.style.opacity = '1';
+          } else {
+              p.style.opacity = '0';
+              p.style.height = '0';
+
+              setTimeout(() => {
+                  p.style.transition = 'none';
+                  p.style.height = '';
+                  p.style.opacity = '';
+                  p.style.transition = '';
+              }, 100);
+          }
+      }
+  });
+});
