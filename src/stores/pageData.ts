@@ -33,6 +33,9 @@ interface PageData {
   discoveredlink: string;
   system: string;
   planet: string;
+  planetnum: string;
+  moonnum: string;
+  planetName: string;
   moon: string;
   glyphs: string;
   type: string;
@@ -53,6 +56,8 @@ interface PageData {
   mode: string;
   wealth: string;
   formation: string;
+  dissonant: string;
+  water: string;
   content: string;
   axes: string;
   farm: string;
@@ -78,7 +83,20 @@ interface PageData {
   ecosystem: string;
   weight2: string;
   height2: string;
+  stellarclass: string;
+  color: string;
+  distance: string;
+  faction: string;
+  economy: string;
+  economysell: string;
+  conflict: string;
+  docDate:string;
+  economybuy: string;
+  multiplestars: string;
+  ssImage: string;
+  navImage: string;
   features2: string;
+  addInfo: string;
   gender: string;
   gender2: string;
   height: string;
@@ -89,24 +107,45 @@ interface PageData {
   exocraftTable: string[];
   docBy: string;
   docBySentence: string;
+  resource1: string;
+  resource2: string;
   galleryFiles: GalleryFileItem[];
   locationFiles: GalleryFileItem[];
   galleryDescriptions: string[];
   presetData: PresetData;
+  generatedOutput: string;
 }
 
 const defaultState: PageData = {
   release: '',
+  water: 'No',
+  dissonant: 'No',
+  planetName: '',
   name: '',
   image: '',
   discovered: '',
   discoveredlink: '',
   system: '',
   planet: '',
+  planetnum: '1',
+  moonnum: '0',
   moon: '',
   glyphs: '',
   type: '',
-  biome: 'Lush',
+  biome: '',
+  stellarclass: '',
+  color: '',
+  distance: '',
+  faction: '',
+  economy: '',
+  economysell: '',
+  economybuy: '',
+  conflict: '',
+  docDate: '',
+  multiplestars: '',
+  ssImage: '',
+  navImage: '',
+  addInfo: '',
   age: '',
   roots: '',
   nutrients: '',
@@ -159,9 +198,12 @@ const defaultState: PageData = {
   exocraftTable: [],
   docBy: localStorageData().docbyInput ?? '',
   docBySentence: '',
+  resource1: '',
+  resource2: '',
   galleryFiles: [],
   locationFiles: [],
   galleryDescriptions: [],
+  generatedOutput: '',
   presetData: structuredClone(defaultData),
 };
 

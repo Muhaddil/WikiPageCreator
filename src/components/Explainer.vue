@@ -16,7 +16,7 @@ const isHelpModalVisible = ref(false);
 const openModal = () => {
   if (props.helpTitle) isHelpModalVisible.value = true;
 };
-const helperImage = computed(() => `/src/assets/images/${props.helpImg}.webp`);
+const helperImage = computed(() => `/RSSWikiPageCreator/src/assets/images/${props.helpImg}.webp`);
 </script>
 
 <template>

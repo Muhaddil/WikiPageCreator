@@ -37,7 +37,7 @@ const {
 <template>
   <SanitisedTextInput
     v-model="name"
-    help-img="creature/creatureName"
+    help-img="base/baseName"
     help-title="Nombre del Circuito"
     label="Nombre del Circuito:"
     tooltip="Introduce exactamente como se ve en el juego. Cuidado con el 0 (cero) y la O (o)."

@@ -95,7 +95,7 @@ const combinedHeight = computed(() => {
   <div>| release = {{ release }}</div>
 
   <div v-pre>}}</div>
-  <div>'''{{ name }}''' is a species of flora.</div>
+  <div>'''{{ name }}''' is a species of fauna.</div>
   <br />
   <div>==Summary==</div>
   <div>'''{{ name }}''' is a [[creature]], a member of the {{ genus }} [[genus]].</div>

@@ -16,6 +16,7 @@ import GalleryInput from '@/components/inputs/gallery/GalleryInput.vue';
 import FileUploadNotice from '@/components/FileUploadNotice.vue';
 import CensusInputs from '@/components/inputs/CensusInputs.vue';
 import FeatureInput from '@/components/inputs/FeatureInput.vue';
+import BaseTypeSelect from '@/components/inputs/BaseTypeSelect.vue';
 
 const pageData = usePageDataStore();
 const {
@@ -87,7 +88,8 @@ const featureCheckboxes: CheckboxData[] = reactive([
   />
   <CoordinateInput v-model="axes" />
   <GlyphInput v-model="glyphs" />
-  <SanitisedTextInput
+  <BaseTypeSelect v-model="type" />
+  <!-- <SanitisedTextInput
     v-model="type"
     label="Tipo de la base"
     tooltip="Tipo y propósito de la base."
@@ -104,7 +106,7 @@ const featureCheckboxes: CheckboxData[] = reactive([
         <li>Residencial</li>
       </ul>
     </div>
-  </SanitisedTextInput>
+  </SanitisedTextInput> -->
 
   <Fieldset
     class="mb-4"

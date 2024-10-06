@@ -193,7 +193,6 @@ watch(genus, (newGenus) => {
   <TextareaInput
     v-model="appearance"
     label="Apariencia:"
-    placeholder="Esta flora es una <size> <colour> <type>."
   />
 
   <!--
