@@ -78,6 +78,7 @@ interface PageData {
   ecosystem: string;
   weight2: string;
   height2: string;
+  features2: string;
   gender: string;
   gender2: string;
   height: string;
@@ -85,6 +86,7 @@ interface PageData {
   diet: string;
   genus: string;
   produces: string[];
+  exocraftTable: string[];
   docBy: string;
   docBySentence: string;
   galleryFiles: GalleryFileItem[];
@@ -147,12 +149,14 @@ const defaultState: PageData = {
   rarity: '',
   ecosystem: '',
   height: '',
+  features2: '',
   weight: '',
   weight2: '',
   height2: '',
   diet: '',
   genus:'',
   produces: [],
+  exocraftTable: [],
   docBy: localStorageData().docbyInput ?? '',
   docBySentence: '',
   galleryFiles: [],
@@ -184,7 +188,7 @@ export const usePageDataStore = defineStore('pageData', {
       };
     },
     // researchteamValue: (state) => state.researchteam ?? (researchteamDefaultExceptions.includes(route) ? '' : civName),
-    researchteamValue: (state) => state.researchteam || '',
+    // researchteamValue: (state) => state.researchteam || '',
     docBySentence: (state) => {
       const isLink = state.docBy.startsWith('{{');
       const hasResearchteam = state.researchteam;

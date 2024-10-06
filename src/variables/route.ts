@@ -9,6 +9,7 @@ export const router: Record<string, string> = {
   base: 'Base',
   basenocensus: 'NormalBase',
   fauna: 'Fauna',
+  racetrack: 'Racetrack',
 };
 
 export const route = getCurrentRoute();
@@ -31,6 +32,9 @@ switch (route) {
     break;
   case 'basenocensus':
     exportName = 'Bases Normales';
+    break;
+  case 'racetrack':
+    exportName = 'Circuitos';
     break;
   case '':
     exportName = 'Home';

@@ -7,18 +7,18 @@ const menu = ref<ComponentInstance<typeof Menu> | null>(null);
 
 const items = [
   {
-    label: 'Tools',
+    label: 'Herramientas',
     items: [
       {
-        label: 'Image Compressor',
+        label: 'Compresor de imágenes',
         url: 'https://nmscd.com/Image-Compressor/',
       },
       {
-        label: 'Glyph Reader',
+        label: 'Lector de glifos',
         url: 'https://nmspar.vercel.app/',
       },
       {
-        label: 'Portal Decoder',
+        label: 'Decodificador de portal',
         url: 'https://nmsportals.github.io/',
       },
     ],

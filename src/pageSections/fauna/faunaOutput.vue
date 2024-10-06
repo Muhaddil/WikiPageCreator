@@ -13,7 +13,7 @@ const {
   image,
   discovered,
   discoveredlink,
-  researchteamValue: researchteam,
+  researchteam,
   system,
   planet,
   moon,

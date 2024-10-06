@@ -13,7 +13,7 @@ const {
   discovered,
   discoveredlink,
   axes,
-  researchteamValue: researchteam,
+  researchteam,
   system,
   planet,
   moon,

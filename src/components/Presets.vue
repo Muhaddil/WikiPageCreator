@@ -7,7 +7,6 @@ import Fluid from 'primevue/fluid';
 import GlyphInput from './inputs/GlyphInput.vue';
 import WealthSelect from './WealthSelect.vue';
 import PlatformSelect from './inputs/PlatformSelect.vue';
-import DepartmentSelect from './inputs/DepartmentSelect.vue';
 import DialogWrapper from './DialogWrapper.vue';
 import SanitisedTextInput from './inputs/SanitisedTextInput.vue';
 import { usePageDataStore } from '@/stores/pageData';
@@ -52,9 +51,9 @@ function hideDialog() {
 
 <template>
   <Button
-    aria-label="Defaults"
+    aria-label="Predeterminados"
     icon="pi pi-sliders-h"
-    title="Global Defaults"
+    title="Valores predeterminados globales"
     @click="isOpen = true"
   />
 
@@ -64,7 +63,7 @@ function hideDialog() {
     pt:footer:class="is-flex-wrap-wrap is-justify-content-center is-gap-1"
   >
     <template #header>
-      <h2 class="title is-4 has-text-centered mb-0 full-width">Global Preload Values</h2>
+      <h2 class="title is-4 has-text-centered mb-0 full-width">Valores de precarga globales</h2>
     </template>
 
     <Fluid class="mt-5">
@@ -73,48 +72,48 @@ function hideDialog() {
         v-model="presetData.discoveredlink"
         :initial-value="presetData.discoveredlink"
         :reset-event
-        label="Discoverer wiki name"
+        label="Nombre en el wiki del descubridor"
       />
       <SanitisedTextInput
         v-if="!presetData.discoveredlink"
         v-model="presetData.discovered"
         :initial-value="presetData.discovered"
         :reset-event
-        label="Discoverer alias if no wiki"
+        label="Alias del descubridor si no hay wiki"
       />
       <SanitisedTextInput
         v-model="presetData.documenterName"
         :initial-value="presetData.documenterName"
         :reset-event
-        label="Documenter alias if not discoverer"
+        label="Alias del documentador si no es descubridor"
       />
       <SanitisedTextInput
         v-model="presetData.system"
         :initial-value="presetData.system"
         :reset-event
-        label="Name of the system"
+        label="Nombre del sistema"
       />
       <SanitisedTextInput
         v-model="presetData.planet"
         :initial-value="presetData.planet"
         :reset-event
-        label="Name of the planet"
+        label="Nombre del planeta"
       />
       <SanitisedTextInput
         v-model="presetData.moon"
         :initial-value="presetData.moon"
         :reset-event
-        label="Name of the moon"
+        label="Nombre de la luna"
       />
       <PlatformSelect
         v-model="presetData.platform"
         :reset-event
       />
 
-      <DepartmentSelect
+      <!-- <DepartmentSelect
         v-model="presetData.researchteam"
         :reset-event
-      />
+      /> -->
 
       <WealthSelect
         v-model="presetData.wealth"
@@ -122,7 +121,7 @@ function hideDialog() {
         :reset-event
       />
 
-      <!--that no-explain is necessary, otherwise this would cause a bug with the layout-shift-prevention logic in the DialogWrapper-->
+      <!--Ese no-explain es necesario, de lo contrario causaría un error con la lógica de prevención de cambios en el diseño en el DialogWrapper-->
       <GlyphInput
         v-model="presetData.glyphs"
         no-explain
@@ -132,17 +131,17 @@ function hideDialog() {
     <template #footer>
       <Button
         severity="success"
-        label="Set"
+        label="Establecer"
         @click="storeData"
       />
       <Button
         severity="danger"
-        label="Cancel"
+        label="Cancelar"
         @click="hideDialog"
       />
       <Button
         severity="warn"
-        label="Restore Defaults"
+        label="Restaurar predeterminados"
         @click="restoreDefaults"
       />
     </template>

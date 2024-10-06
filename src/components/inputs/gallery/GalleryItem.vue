@@ -63,7 +63,7 @@ const directions = ['up', 'down'] as const;
         />
       </a>
       <div class="input-section is-flex is-flex-direction-column is-flex-grow-1 is-gap-1 p-2">
-        <p style="word-break: break-all"><span class="has-text-weight-bold">Name: </span>{{ fileItem.file.name }}</p>
+        <p style="word-break: break-all"><span class="has-text-weight-bold">Nombre: </span>{{ fileItem.file.name }}</p>
         <div v-show="galleryDescriptions.length">
           <SmallSelect
             v-model="fileItem.desc"
@@ -74,7 +74,7 @@ const directions = ['up', 'down'] as const;
           <!--TODO: Add input sanitisation-->
           <InputText
             v-model="fileItem.desc"
-            placeholder="Description"
+            placeholder="Descripción"
             size="small"
           />
         </div>
@@ -86,7 +86,7 @@ const directions = ['up', 'down'] as const;
         <Button
           class="delete-icon is-clickable"
           severity="danger"
-          title="Remove picture from gallery"
+          title="Eliminar imagen de la galería"
           @click="removeItem(fileItem)"
         >
           ❌
@@ -95,7 +95,7 @@ const directions = ['up', 'down'] as const;
         <span
           v-show="!isLocationFile"
           class="handle pi pi-arrows-v"
-          title="Move picture up or down"
+          title="Mover la imagen hacia arriba o hacia abajo"
           draggable="true"
         ></span>
         <!--Move buttons (only if input is touch)-->
@@ -104,7 +104,7 @@ const directions = ['up', 'down'] as const;
             v-for="direction in directions"
             v-show="!isLocationFile"
             :icon="`pi pi-sort-${direction}-fill`"
-            :title="`Move ${direction}`"
+            :title="`Mover ${direction}`"
             severity="secondary"
             outlined
             @click="moveItem(fileItem, direction)"

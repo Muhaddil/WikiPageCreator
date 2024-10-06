@@ -125,17 +125,17 @@ const isSmallScreen = computed(() => width.value <= smallContainerWidth);
               #errorMessage
               v-if="isTooLarge"
             >
-              This file is too big to be uploaded to the wiki. Maximum filesize is 10MB. Compress your file here:
+              Este archivo es demasiado grande para subirlo a la wiki. El tamaño máximo es de 10 MB. Comprime tu archivo aquí:
               <ExternalLink
                 link="https://nmscd.com/Image-Compressor/"
-                text="Image Compressor"
+                text="Compresor de imágenes"
               />
             </template>
 
             <template
               #errorMessage
               v-else-if="!hasFileEnding"
-              >File has no file extension (i. e. .jpg, .png)!</template
+              >¡El archivo no tiene extensión de archivo (es decir, .jpg, .png)!</template
             >
           </InvalidInput>
         </div>
