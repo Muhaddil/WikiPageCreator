@@ -99,7 +99,6 @@ const {
   docBy,
   researchteam,
   appearance,
-  genus,
   ecosystem,
   diet,
   sanitisedStrings,
