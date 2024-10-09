@@ -570,11 +570,11 @@ const combinedHeight = computed(() => {
         :researchteam="researchteam"
         :release="release"
       />
-      <div>'''{{ sanitisedStrings.name }}''' is a species of flora.</div>
+      <div>'''{{ sanitisedStrings.name }}''' is a creature.</div>
       <br />
 
       <div>==Summary==</div>
-      <div>'''{{ sanitisedStrings.name }}''' is a [[creature]], a member of the {{ genus }} [[genus]].</div>
+      <div>'''{{ sanitisedStrings.name }}''' is a [[creature]], a member of the [[{{ selectedGenus }}]] [[genus]].</div>
       <br />
       <div>==Appearance==</div>
       {{ appearance }}
