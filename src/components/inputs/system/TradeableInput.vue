@@ -1,0 +1,118 @@
+<script setup lang="ts">
+import { ref, watch, computed } from 'vue';
+import { usePageDataStore } from '@/stores/pageData';
+import SanitisedTextInput from '../SanitisedTextInput.vue';
+import Panel from 'primevue/panel';
+import FileUploadNotice from '@/components/FileUploadNotice.vue';
+import BiomeInput from '@/components/inputs/flora/BiomeInput.vue';
+import PlanetDescriptors from '@/components/inputs/system/PlanetDescriptors.vue';
+import PlanetWeather from '@/components/inputs/system/PlanetWeather.vue';
+import Explainer from '@/components/Explainer.vue';
+import SelectDropdown from '../SelectDropdown.vue';
+import Checkbox from 'primevue/checkbox';
+import { mappedSystemTradeables } from '@/variables/system/systemtradeables';
+import InputTableItem from '../../InputTableItem.vue';
+// import Explainer from '@/components/Explainer.vue';
+import Button from 'primevue/button';
+
+const pageData = usePageDataStore();
+
+const tradeables = ref([{
+  id: 0,
+  name: '',
+  price: '',
+}]);
+
+const addPlanet = () => {
+  tradeables.value.push({
+    id: tradeables.value.length,
+    name: '',
+    price: '',
+  });
+};
+
+const removePlanet = (index: number) => {
+  tradeables.value.splice(index, 1);
+};
+
+const tradeTerminal = () => {
+  const output = tradeables.value.map((tradeable) => {
+    return `|-
+|{{ilink|${tradeable.name}}} || {{Units}} ${tradeable.price}`;
+  }).join('\n\n');
+  pageData.tradeTerminal = output;
+};
+
+const isPriceValid = computed(() => tradeables.value.every(tradeable => /^\d*$/.test(tradeable.price)));
+
+const formatPrice = (price: string) => {
+  return price.replace(/\B(?=(\d{3})+(?!\d))/g, ',');
+};
+
+watch(tradeables, (newTradeables) => {
+  newTradeables.forEach((tradeable) => {
+    tradeable.price = formatPrice(tradeable.price.replace(/,/g, ''));
+  });
+  tradeTerminal();
+}, { deep: true });
+
+</script>
+
+<template>
+  <div>
+    <Button @click="addPlanet">Agregar Tradeable</Button>
+    <br />
+    <br />
+    <div v-for="(tradeable, index) in tradeables" :key="tradeable.id">
+      <Panel class="my-4" :header="`Tradeable ${index + 1}: ${tradeable.name}`" toggleable>
+        <!-- <SanitisedTextInput v-model="tradeable.name"
+          label="Nombre del tradeable">
+        </SanitisedTextInput> -->
+
+        <InputTableItem>
+          <template #label>
+            <div class="is-flex is-justify-content-space-between is-align-items-center full-width">
+              <label id="tradeables">Nombre del tradeable:</label>
+              <Explainer tooltip="Se pueden encontrar en la estación espacial." help-img="system/tradeables"
+                help-title="Objetos comercializables de la estación espacial">
+                Se pueden encontrar en la estación espacial en el Terminal de comercio..<br>
+                Incluya solo bienes comercializables (artículos con fondo blanco en la parte superior)
+              </Explainer>
+            </div>
+          </template>
+
+          <template #input>
+            <SelectDropdown v-model="tradeable.name" aria-labelledby="tradeables" :options="mappedSystemTradeables"
+              filter />
+
+          </template>
+        </InputTableItem>
+
+        <SanitisedTextInput v-model="tradeable.price" label="Precio del tradeable:" :invalid="!isPriceValid"
+          error-message="Solo numeros">
+        </SanitisedTextInput>
+
+        <Button v-if="tradeables.length > 1" @click="removePlanet(index)">
+          Eliminar Tradeable
+        </Button>
+      </Panel>
+    </div>
+  </div>
+</template>
+
+<style scoped>
+.resource-container {
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.resource-select {
+  flex: 1;
+  margin-right: -10px;
+}
+
+.remove-resource-button {
+  margin-right: 10px;
+}
+</style>

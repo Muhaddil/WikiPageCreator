@@ -38,6 +38,12 @@ const {
   ssImage,
   generatedOutput,
   addInfo,
+  tradeTerminal,
+  modulesMT,
+  modulesSS,
+  modulesEC,
+  modulesES,
+  modulesSD,
 } = storeToRefs(pageData);
 
 const glyphcoords = computed(() => glyphs2Coords(glyphs.value));
@@ -70,6 +76,26 @@ function glyphs2Coords(glyphs: string): string {
 
   return coordinates.join(':');
 }
+
+const formattedModulesMT = computed(() => {
+  return modulesMT.value.map((module, index) => `| MT${index + 1}=${module}`).join('\n');
+});
+
+const formattedmodulesSS = computed(() => {
+  return modulesSS.value.map((module, index) => `| SS${index + 1}=${module}`).join('\n');
+});
+
+const formattedmodulesEC = computed(() => {
+  return modulesEC.value.map((module, index) => `| EC${index + 1}=${module}`).join('\n');
+});
+
+const formattedmodulesES = computed(() => {
+  return modulesES.value.map((module, index) => `| ES${index + 1}=${module}`).join('\n');
+});
+
+const formattedmodulesSD = computed(() => {
+  return modulesSD.value.map((module, index) => `| ${index + 1}=${module}`).join('\n');
+});
 
 watch(discoveredlink, (newDiscoveredLinkValue) => {
   if (newDiscoveredLinkValue) {
@@ -140,9 +166,11 @@ watch(discoveredlink, (newDiscoveredLinkValue) => {
   <div>! Flora</div>
   <div>! Fauna</div>
   <div v-if="generatedOutput">
-    <div><pre>{{ generatedOutput }}</pre></div>
+    <div>
+      <pre>{{ generatedOutput }}</pre>
     </div>
-    <div>|<span v-pre>}</span></div>
+  </div>
+  <div>|<span v-pre>}</span></div>
   <br />
 
   <!-- <div id="Freighters" style="display: none">
@@ -231,33 +259,58 @@ watch(discoveredlink, (newDiscoveredLinkValue) => {
   <br />
 
   <div>==Space Station==</div>
-  <div data-station="img">[[File:{{ ssImage }}|thumb|System space station]]</div>
-  <div data-station="note"></div>
-  <div data-station="terminal">
-    <div>The [[Space Station]] [[Galactic Trade Terminal|terminal]] offers the following [[Trade Commodities]] for sale:</div>
-    <div>{| class="article-table"}</div>
-    <div>|-</div>
-    <div>! style="min-width:250px" | Item Name</div>
-    <div>! style="min-width:125px" | Price per Item</div>
-    <div id="tradeTerminal"></div>
-    <div>|}</div>
+<div data-station="img">[[File:{{ ssImage }}|thumb|System space station]]</div>
+<div data-station="note"></div>
+<div data-station="terminal">
+  <div>
+    The [[Space Station]] [[Galactic Trade Terminal|terminal]] offers the following [[Trade Commodities]] for sale:
   </div>
-  <div data-station="merchant">
-    <div>The Space Station merchants offer the following <span v-pre>{{</span>class|S<span v-pre>}}</span>class items for sale:</div>
-    <br />
-    <div><span v-pre>{{</span>SSMerchants</div>
-    <div>{{ MTMerchant }}</div>
-    <div>{{ SSMerchant }}</div>
-    <div>{{ ECMerchant }}</div>
-    <div>{{ ESMerchant }}</div>
-    <div>}}</div>
+  <div>{| class="article-table"}</div>
+  <div>|-</div>
+  <div>! style="min-width:250px" | Item Name</div>
+  <div>! style="min-width:125px" | Price per Item</div>
+  <div v-if="tradeTerminal">
+    <div>
+      <pre>{{ tradeTerminal }}</pre>
+    </div>
   </div>
+  <div>|}</div>
+</div>
+
+<div data-station="merchant">
+  <div>
+    The Space Station merchants offer the following <span v-pre>{{</span>class|S<span v-pre>}}</span> class items for sale:
+  </div>
+
+  <span v-pre>{{</span>SSMerchants
+
+  <span v-if="formattedModulesMT">
+    <pre>{{ formattedModulesMT }}</pre>
+  </span>
+
+  <span v-if="modulesSS && modulesSS.length > 0">
+    <pre>{{ formattedmodulesSS }}</pre>
+  </span>
+
+  <span v-if="modulesEC && modulesEC.length > 0">
+    <pre>{{ formattedmodulesEC }}</pre>
+  </span>
+
+  <span v-if="modulesES && modulesES.length > 0">
+    <pre>{{ formattedmodulesES }}</pre>
+  </span>
+}}
+</div>
 
   <div id="scrapDealer" data-station="scrapDealer">
     <br />
     <div>===Scrap Dealer===</div>
     <div><span v-pre>{{</span>ScrapDealer</div>
-    <div>{{ SDMerchant }}</div>
+    <div v-if="modulesSD && modulesSD.length > 0">
+      <div>
+        <pre>{{ formattedmodulesSD }}</pre>
+      </div>
+    </div>
     <div><span v-pre>}}</span></div>
   </div>
   <br />

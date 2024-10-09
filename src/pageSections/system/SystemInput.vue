@@ -21,6 +21,13 @@ import SystemConflict from '@/components/inputs/system/SystemConflict.vue';
 import WealthSelect from '@/components/WealthSelect.vue';
 import PlatformSelect from '@/components/inputs/PlatformSelect.vue';
 import PlanetInputs from '@/components/inputs/system/PlanetInputs.vue';
+import TradeableInput from '@/components/inputs/system/TradeableInput.vue';
+import UpgradeModules from '@/components/inputs/system/UpgradeModules.vue';
+import UpgradeModulesSS from '@/components/inputs/system/UpgradeModulesSS.vue';
+import UpgradeModulesEC from '@/components/inputs/system/UpgradeModulesEC.vue';
+import UpgradeModulesES from '@/components/inputs/system/UpgradeModulesES.vue';
+import UpgradeModulesSD from '@/components/inputs/system/UpgradeModulesSD.vue';
+
 
 const pageData = usePageDataStore();
 const {
@@ -52,6 +59,11 @@ const {
   docDate,
   navImage,
   ssImage,
+  modulesMT,
+  modulesSS,
+  modulesEC,
+  modulesES,
+  modulesSD,
 } = storeToRefs(pageData);
 
 const systemplanets = ref([]);
@@ -61,6 +73,7 @@ const isDistanceValid = computed(() => {
   const regex = /^\d+([.,]\d+)?$/;
   return regex.test(distance.value);
 });
+
 </script>
 
 <template>
@@ -185,6 +198,13 @@ const isDistanceValid = computed(() => {
   <SanitisedTextInput v-model="discovered" label="Alias del Descubridor si no tiene wiki:" v-if="!discoveredlink" />
   <SanitisedTextInput v-model="docBy" label="Nombre del documentador si no es el descubridor:" />
 
+  <TradeableInput />
+
+  <UpgradeModules v-model="modulesMT" />
+  <UpgradeModulesSS v-model="modulesSS" />
+  <UpgradeModulesEC v-model="modulesEC" />
+  <UpgradeModulesES v-model="modulesES" />
+  <UpgradeModulesSD v-model="modulesSD" />
   <TextareaInput v-model="additionalInfo" label="Información Adicional:" />
 
   <GalleryInput />

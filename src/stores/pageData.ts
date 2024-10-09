@@ -114,6 +114,12 @@ interface PageData {
   galleryDescriptions: string[];
   presetData: PresetData;
   generatedOutput: string;
+  tradeTerminal: string;
+  modulesMT: string[];
+  modulesSS: string[];
+  modulesEC: string[];
+  modulesES: string[];
+  modulesSD: string[];
 }
 
 const defaultState: PageData = {
@@ -204,6 +210,12 @@ const defaultState: PageData = {
   locationFiles: [],
   galleryDescriptions: [],
   generatedOutput: '',
+  tradeTerminal: '',
+  modulesMT: [],
+  modulesSS: [],
+  modulesEC: [],
+  modulesES: [],
+  modulesSD: [],
   presetData: structuredClone(defaultData),
 };
 
