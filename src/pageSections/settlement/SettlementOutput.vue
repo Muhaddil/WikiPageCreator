@@ -13,23 +13,17 @@ const {
   discovered,
   discoveredlink,
   axes,
-  researchteam,
+  faction,
   system,
   planet,
   moon,
   glyphs,
-  type,
   platform,
   mode,
   regionData,
-  farm,
-  geobay,
-  landingpad,
-  arena,
-  terminal,
-  racetrack,
-  features,
-  layout,
+  settlementproduction,
+  populationammount,
+  royalclass,
   additionalInfo,
 } = storeToRefs(pageData);
 
@@ -38,22 +32,13 @@ const locationSentence = computed(() => {
   const moonSentence = `moon [[${moon.value}]] of the`;
   return moon.value ? `${moonSentence} ${planetSentence}` : planetSentence;
 });
-
-const formattedFeatures = computed(() => {
-  if (!features.value || features.value.length === 0) return '';
-  return features.value.map(feature => `* [[${feature}]]`).join('\n');
-});
 </script>
 
 <template>
   <div><span v-pre>{{Version|</span>{{ release }}<span v-pre>}}</span></div>
-  <div v-pre>{{Base infobox</div>
+  <div v-pre>{{Settlement infobox</div>
   <div>| name = {{ name }}</div>
   <div>| image = {{ image || 'nmsMisc_NotAvailable.png' }}</div>
-  <div>| civilized = {{ civilized }}</div>
-  <div>| researchteam = {{ researchteam }}</div>
-  <div>| builderlink = {{ discoveredlink }}</div>
-  <div>| builder = {{ discovered }}</div>
   <div>| galaxy = {{ regionData.galaxy }}</div>
   <div>| region = {{ regionData.region }}</div>
   <div>| system = {{ system }}</div>
@@ -61,37 +46,30 @@ const formattedFeatures = computed(() => {
   <div>| moon = {{ moon }}</div>
   <div>| axes = {{ axes }}</div>
   <div>| coordinates = <span v-pre>{{Glyphs2Coords|</span>{{ glyphs }}<span v-pre>}}</span></div>
-  <div>| portalglyphs = {{ glyphs }}</div>
-  <div>| type = {{ type }}</div>
-  <div>| mode = {{ mode }}</div>
+  <div>| faction = {{ faction }}</div>
+  <div>| class = {{ royalclass }}</div>
+  <div>| population = {{ populationammount }}</div>
+  <div>| industry = {{ settlementproduction }}</div>
+  <div>| civilized = {{ civilized }}</div>
+  <div>| overseer = {{ discovered }}</div>
+  <div>| overseerlink = {{ discoveredlink }}</div>
   <div>| platform = {{ platform }}</div>
+  <div>| mode = {{ mode }}</div>
   <div>| release = {{ release }}</div>
-  <div>| farm = {{ farm }}</div>
-  <div>| geobay = {{ geobay }}</div>
-  <div>| landingpad = {{ landingpad }}</div>
-  <div>| arena = {{ arena }}</div>
-  <div>| terminal = {{ terminal }}</div>
-  <div>| racetrack = {{ racetrack }}</div>
-  <div>| censusplayer = </div>
-  <div>| censusdiscord = </div>
-  <div>| censusfriend = </div>
-  <div>| censusarrival = </div>
-  <div>| censusrenewal = </div>
-  <div>| censusshow = </div>
   <div v-pre>}}</div>
-  <div>'''{{ name }}''' is a player base.</div>
+  <div>'''{{ name }}''' is a planetary settlement.</div>
   <br />
   <div>==Summary==</div>
   <div>
-    '''{{ name }}''' is a [[Habitable Base|player base]], located on the {{ locationSentence }} in the [[{{ system }}]]
-    system.
+    <div>
+    '''{{ name }}''' is a [[Planetary Settlement|planetary settlement]], located on the {{ locationSentence }} in the [[{{ system }}]] system.
   </div>
+</div>
   <br />
-  <div>==Layout==</div>
-  <div class="keep-linebreaks">{{ layout }}</div>
+  <div>==Location==</div>
+  <div class="keep-linebreaks">It is located at {{ axes }}</div>
   <br />
-  <div>==Features==</div>
-  <div class="keep-linebreaks">{{ formattedFeatures }}</div>
+  <div class="keep-linebreaks"><span v-pre>{{CoordGlyphConvert</span>|{{ glyphs }}<span v-pre>}}</span></div>
   <br />
   <div>==Additional Information==</div>
   <div class="keep-linebreaks">{{ additionalInfo }}</div>

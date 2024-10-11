@@ -68,7 +68,7 @@ const combinedHeight = computed(() => {
   <div><span v-pre>{{Version|</span>{{ release }}<span v-pre>}}</span></div>
   <div v-pre>{{Fauna infobox</div>
   <div>| name = {{ name }}</div>
-  <div>| image = {{ image }}</div>
+  <div>| image = {{ image || 'nmsMisc_NotAvailable.png' }}</div>
   <div>| galaxy = {{ regionData.galaxy }}</div>
   <div>| region = {{ regionData.region }}</div>
   <div>| system = {{ system }}</div>

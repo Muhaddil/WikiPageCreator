@@ -10,6 +10,14 @@ const items = [
     label: 'Herramientas',
     items: [
       {
+        label: 'FAQ',
+        url: '/RSSWikiPageCreator/faq.html',
+      },
+      {
+        label: 'Generador de Glifos de la RSS',
+        url: '/RSSWikiPageCreator/glyphgeneratorV2.html',
+      },
+      {
         label: 'Compresor de imágenes',
         url: 'https://nmscd.com/Image-Compressor/',
       },

@@ -58,7 +58,7 @@ const formattedFeatures = computed(() => {
   <div><span v-pre>{{Version|</span>{{ release }}<span v-pre>}}</span></div>
   <div v-pre>{{Base infobox</div>
   <div>| name = {{ name }}</div>
-  <div>| image = {{ image }}</div>
+  <div>| image = {{ image || 'nmsMisc_NotAvailable.png' }}</div>
   <div>| civilized = {{ civilized }}</div>
   <div>| researchteam = {{ researchteam }}</div>
   <div>| builderlink = {{ discoveredlink }}</div>

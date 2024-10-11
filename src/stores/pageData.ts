@@ -120,6 +120,13 @@ interface PageData {
   modulesEC: string[];
   modulesES: string[];
   modulesSD: string[];
+  populationammount: string;
+  settlementproduction: string;
+  royalclass: string;
+  maxdepth: string;
+  stomachContent: string;
+  sandwormclass: string;
+  appearonreload: string;
 }
 
 const defaultState: PageData = {
@@ -216,6 +223,13 @@ const defaultState: PageData = {
   modulesEC: [],
   modulesES: [],
   modulesSD: [],
+  populationammount: '',
+  settlementproduction: '',
+  royalclass: '',
+  maxdepth: '',
+  stomachContent: '',
+  sandwormclass: '',
+  appearonreload: '',
   presetData: structuredClone(defaultData),
 };
 

@@ -11,6 +11,8 @@ export const router: Record<string, string> = {
   fauna: 'Fauna',
   racetrack: 'Racetrack',
   system: 'System',
+  settlement: 'Settlement',
+  sandworm: 'Sandworm',
 };
 
 export const route = getCurrentRoute();
@@ -39,6 +41,12 @@ switch (route) {
     break;
   case 'system':
     exportName = 'Sistemas';
+    break;
+  case 'settlement':
+    exportName = 'Asentamientos';
+    break;
+  case 'sandworm':
+    exportName = 'Gusano de arena';
     break;
   case '':
     exportName = 'Home';

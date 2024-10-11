@@ -40,7 +40,7 @@ const formattedExocraftTable = computed(() => {
   <div><span v-pre>{{Version|</span>{{ release }}<span v-pre>}}</span></div>
   <div v-pre>{{Racetrack infobox</div>
   <div>| name = {{ name }}</div>
-  <div>| image = {{ image }}</div>
+  <div>| image = {{ image || 'nmsMisc_NotAvailable.png' }}</div>
   <div>| builderlink = {{ discoveredlink }}</div>
   <div>| builder = {{ discovered }}</div>
   <div>| galaxy = {{ regionData.galaxy }}</div>
