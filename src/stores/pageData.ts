@@ -18,6 +18,7 @@ const toast = useToast();
 const localStorageData = () => JSON.parse(localStorage.getItem('defaultSettings') ?? '{}');
 
 interface PageData {
+  outputContent: string;
   release: string;
   name: string;
   image: string;
@@ -122,6 +123,7 @@ interface PageData {
 }
 
 const defaultState: PageData = {
+  outputContent: '',
   release: '',
   water: 'No',
   dissonant: 'No',
@@ -260,6 +262,9 @@ export const usePageDataStore = defineStore('pageData', {
   },
 
   actions: {
+    setOutputContent(content: string) {
+      this.outputContent = content;
+    },
     initStore() {
       this.getRelease();
       this.applyDefaults();

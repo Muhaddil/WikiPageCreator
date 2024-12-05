@@ -8,11 +8,13 @@ import 'primeicons/primeicons.css';
 import { Colours } from './css/stylePreset';
 import Toast, { POSITION } from 'vue-toastification';
 import 'vue-toastification/dist/index.css';
+import ConfirmationService from 'primevue/confirmationservice';
 
 const app = createApp(App);
 const pinia = createPinia();
 
 app.use(pinia);
+app.use(ConfirmationService);
 app.use(PrimeVue, {
   theme: {
     preset: Colours,
