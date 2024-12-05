@@ -13,7 +13,7 @@ const {
   discovered,
   discoveredlink,
   axes,
-  researchteam,
+  researchteam2,
   system,
   planet,
   moon,
@@ -60,7 +60,7 @@ const formattedFeatures = computed(() => {
   <div>| name = {{ name }}</div>
   <div>| image = {{ image || 'nmsMisc_NotAvailable.png' }}</div>
   <div>| civilized = {{ civilized }}</div>
-  <div>| researchteam = {{ researchteam }}</div>
+  <div>| researchteam = {{ researchteam2 }}</div>
   <div>| builderlink = {{ discoveredlink }}</div>
   <div>| builder = {{ discovered }}</div>
   <div>| galaxy = {{ regionData.galaxy }}</div>

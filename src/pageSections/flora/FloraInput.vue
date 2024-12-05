@@ -27,7 +27,7 @@ const {
   planet,
   moon,
   mode,
-  researchteam,
+  researchteam2,
   orgName,
   appearance,
   notes,
@@ -92,7 +92,7 @@ const {
 
   <GameModeSelect v-model="mode" />
 
-  <SanitisedTextInput v-model="researchteam" label="Departamento: (Opcional)" />
+  <SanitisedTextInput v-model="researchteam2" label="Departamento: (Opcional)" />
 
   <TextareaInput v-model="appearance" label="Apariencia:" />
 

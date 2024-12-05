@@ -14,7 +14,7 @@ const {
   discovered,
   discoveredlink,
   axes,
-  researchteam,
+  researchteam2,
   system,
   planet,
   moon,
@@ -52,7 +52,7 @@ const formattedExocraftTable = computed(() => {
   <div>| coordinates = <WikiTemplate template-name="Glyphs2Coords">{{ glyphs }}</WikiTemplate></div>
   <div>| suited = {{ formattedExocraftTable }}</div>
   <div>| civilized = {{ civilized }}</div>
-  <div>| researchteam = {{ researchteam }}</div>
+  <div>| researchteam = {{ researchteam2 }}</div>
   <div>| mode = {{ mode }}</div>
   <div>| platform = {{ platform }}</div>
   <div>| release = {{ release }}</div>

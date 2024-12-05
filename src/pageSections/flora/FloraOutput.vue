@@ -17,7 +17,7 @@ const {
   planet,
   moon,
   mode,
-  researchteam,
+  researchteam2,
   orgName,
   appearance,
   elements,
@@ -72,7 +72,7 @@ const filledElements = computed(() => elements.value.filter(Boolean));
   <div>| discovered = {{ discovered }}</div>
   <div>| discovered_on = {{ discDate }}</div>
   <div>| mode = {{ mode }}</div>
-  <div>| researchteam = {{ researchteam }}</div>
+  <div>| researchteam = {{ researchteam2 }}</div>
   <div>| release = {{ release }}</div>
 
   <div v-pre>}}</div>

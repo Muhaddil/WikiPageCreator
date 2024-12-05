@@ -31,7 +31,7 @@ const {
   maxdepth,
   appearance,
   sandwormclass,
-  researchteam,
+  researchteam2,
 } = storeToRefs(pageData);
 
 const isMaxDepthValid = computed(() => {
@@ -63,7 +63,7 @@ const isMaxDepthValid = computed(() => {
   <SanitisedTextInput v-model="discovered" label="Alias del ​​descubridor si no tiene wiki" />
   <SanitisedTextInput v-model="docBy" label="Alias del documentador si no es el descubridor:" />
   <SanitisedTextInput
-    v-model="researchteam"
+    v-model="researchteam2"
     label="Departamento: (Opcional)"
   />
 

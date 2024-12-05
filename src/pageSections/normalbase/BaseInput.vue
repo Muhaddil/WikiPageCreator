@@ -30,7 +30,7 @@ const {
   axes,
   platform,
   mode,
-  researchteam,
+  researchteam2,
   farm,
   geobay,
   landingpad,
@@ -123,9 +123,9 @@ const featureCheckboxes: CheckboxData[] = reactive([
 
   <GameModeSelect v-model="mode" />
   <PlatformSelect v-model="platform" />
-  <!-- <DepartmentSelect v-model="researchteam" /> -->
+  <!-- <DepartmentSelect v-model="researchteam2" /> -->
   <SanitisedTextInput
-    v-model="researchteam"
+    v-model="researchteam2"
     label="Departamento: (Opcional)"
   />
 

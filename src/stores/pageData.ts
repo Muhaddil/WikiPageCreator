@@ -5,7 +5,7 @@ import { currentReleaseKey, defaultValuesKey } from '@/variables/localStorageKey
 import { regions, galaxies } from '@/variables/regions';
 import { maxGlyphLength } from '@/variables/glyphData';
 import { emitGlobalEvent } from '@/helpers/event';
-import { route } from '@/variables/route';
+// import { route } from '@/variables/route';
 import type { PresetData } from '@/types/preset';
 import { defaultData } from '@/variables/preset';
 import { nextTick } from 'vue';
@@ -16,14 +16,6 @@ import type { GalleryFileItem } from '@/types/gallery';
 const toast = useToast();
 
 const localStorageData = () => JSON.parse(localStorage.getItem('defaultSettings') ?? '{}');
-
-const researchteamDefaultExceptions = ['base'];
-
-export const departments = {
-  '': '',
-};
-
-if (researchteamDefaultExceptions.includes(route)) departments[''] = '';
 
 interface PageData {
   release: string;
@@ -48,7 +40,7 @@ interface PageData {
   polymorphic: string;
   discDate: string;
   documenterName: string;
-  researchteam: string;
+  researchteam2: string;
   appearance: string;
   pageName: string;
   orgName: string;
@@ -90,7 +82,7 @@ interface PageData {
   economy: string;
   economysell: string;
   conflict: string;
-  docDate:string;
+  docDate: string;
   economybuy: string;
   multiplestars: string;
   ssImage: string;
@@ -167,7 +159,7 @@ const defaultState: PageData = {
   polymorphic: '',
   discDate: '',
   documenterName: '',
-  researchteam: '',
+  researchteam2: localStorageData().researchteamInput ?? '',
   appearance: '',
   pageName: '',
   platform: '',
@@ -206,7 +198,7 @@ const defaultState: PageData = {
   weight2: '',
   height2: '',
   diet: '',
-  genus:'',
+  genus: '',
   produces: [],
   exocraftTable: [],
   docBy: localStorageData().docbyInput ?? '',
@@ -255,15 +247,13 @@ export const usePageDataStore = defineStore('pageData', {
         galaxy: currentGalaxy,
       };
     },
-    // researchteamValue: (state) => state.researchteam ?? (researchteamDefaultExceptions.includes(route) ? '' : civName),
-    // researchteamValue: (state) => state.researchteam || '',
     docBySentence: (state) => {
       const isLink = state.docBy.startsWith('{{');
-      const hasResearchteam = state.researchteam;
+      const hasResearchteam = state.researchteam2;
       const documenter = isLink ? state.docBy : `''${state.docBy}''`;
       let researchteamLink = '';
       if (hasResearchteam) {
-        researchteamLink = `[[${state.researchteam}]] member`
+        researchteamLink = `[[${state.researchteam2}]] member`
       }
       return `${hasResearchteam ? researchteamLink + ' ' : ''}${documenter}`;
     },

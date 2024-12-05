@@ -6,7 +6,7 @@ export interface PresetData {
   planet: string;
   moon: string;
   platform: string;
-  researchteam: string | null;
+  researchteam2: string;
   glyphs: string;
   wealth: string;
 }

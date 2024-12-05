@@ -110,10 +110,10 @@ function hideDialog() {
         :reset-event
       />
 
-      <!-- <DepartmentSelect
-        v-model="presetData.researchteam"
-        :reset-event
-      /> -->
+      <SanitisedTextInput
+          v-model="presetData.researchteam2"
+          label="Departamento: (Opcional)"
+      />
 
       <WealthSelect
         v-model="presetData.wealth"

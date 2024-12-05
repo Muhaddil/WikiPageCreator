@@ -8,7 +8,7 @@ export const defaultData: PresetData = {
   planet: '',
   moon: '',
   platform: '',
-  researchteam: null,
+  researchteam2: '',
   glyphs: '',
   wealth: '',
 };

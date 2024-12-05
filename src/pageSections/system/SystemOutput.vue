@@ -16,7 +16,7 @@ const {
   planetnum,
   moonnum,
   mode,
-  researchteam,
+  researchteam2,
   orgName,
   docBy,
   regionData,
@@ -128,7 +128,7 @@ watch(discoveredlink, (newDiscoveredLinkValue) => {
   <div>| conflict = {{ conflict }}</div>
   <div>| mode = {{ mode }}</div>
   <div>| civilized = {{ civilized }}</div>
-  <div>| researchteam = {{ researchteam }}</div>
+  <div>| researchteam = {{ researchteam2 }}</div>
   <div>| discoveredlink = {{ discoveredlink }}</div>
   <div>| discovered = {{ discovered }}</div>
   <div>| release = {{ release }}</div>

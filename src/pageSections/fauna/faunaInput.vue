@@ -31,7 +31,7 @@ const {
   planet,
   moon,
   mode,
-  researchteam,
+  researchteam2,
   orgName,
   appearance,
   genus,
@@ -181,7 +181,7 @@ watch(genus, (newGenus) => {
   <GameModeSelect v-model="mode" />
 
   <SanitisedTextInput
-    v-model="researchteam"
+    v-model="researchteam2"
     label="Departamento: (Opcional)"
   />
 
@@ -195,11 +195,5 @@ watch(genus, (newGenus) => {
     label="Apariencia:"
   />
 
-  <!--
-  <TextareaInput
-    v-model="additionalInfo"
-    label="Información Adicional:"
-  /> -->
-
-  <GalleryInput />
+<GalleryInput />
 </template>

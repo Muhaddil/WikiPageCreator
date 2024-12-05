@@ -13,7 +13,7 @@ const {
   image,
   discovered,
   discoveredlink,
-  researchteam,
+  researchteam2,
   system,
   planet,
   moon,
@@ -91,7 +91,7 @@ const combinedHeight = computed(() => {
   <div>| discovered = {{ discovered }}</div>
   <div>| discoveredlink = {{ discoveredlink }}</div>
   <div>| mode = {{ mode }}</div>
-  <div>| researchteam = {{ researchteam }}</div>
+  <div>| researchteam = {{ researchteam2 }}</div>
   <div>| release = {{ release }}</div>
 
   <div v-pre>}}</div>

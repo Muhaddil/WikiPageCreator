@@ -18,7 +18,7 @@ const {
   glyphs,
   appearonreload,
   regionData,
-  researchteam,
+  researchteam2,
   stomachContent,
   maxdepth,
   appearance,
@@ -49,7 +49,7 @@ const locationSentence = computed(() => {
   <div>| civilized = {{ civilized }}</div>
   <div>| discovered = {{ discovered }}</div>
   <div>| discoveredlink = {{ discoveredlink }}</div>
-  <div>| researchteam = {{ researchteam }}</div>
+  <div>| researchteam = {{ researchteam2 }}</div>
   <div>| mode = {{ mode }}</div>
   <div>| release = {{ release }}</div>
   <div v-pre>}}</div>

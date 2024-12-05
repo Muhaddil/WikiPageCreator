@@ -19,7 +19,7 @@ const {
   discovered,
   discoveredlink,
   axes,
-  researchteam,
+  researchteam2,
   system,
   planet,
   moon,
@@ -94,7 +94,7 @@ const {
   <PlatformSelect v-model="platform" />
 
   <SanitisedTextInput
-    v-model="researchteam"
+    v-model="researchteam2"
     label="Departamento: (Opcional)"
   />
 
