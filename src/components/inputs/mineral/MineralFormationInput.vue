@@ -2,23 +2,22 @@
 import { useId } from '@/helpers/id';
 import InputTableItem from '../../InputTableItem.vue';
 import SelectDropdown from '../SelectDropdown.vue';
-import { mappedFloraNotes } from '@/variables/flora/notes';
-import Explainer from '../../Explainer.vue';
+import { mappedMineralFormation } from '@/variables/mineral/mineralFormation';
+import Explainer from '@/components/Explainer.vue';
 
 defineProps<{ resetEvent?: string }>();
 
 const model = defineModel<string>({ required: true });
 
-const id = useId('floranotes');
+const id = useId('biomeinput');
 </script>
 
 <template>
   <InputTableItem>
     <template #label>
       <div class="is-flex is-justify-content-space-between is-align-items-center full-width">
-        <label :id>Notas:</label>
-        <Explainer tooltip="Encontrado en el escaneo de flora." help-img="flora/notes" help-title="Notas">Encontrado en el escaneo de flora.
-        </Explainer>
+        <label :id>Proceso de formación:</label>
+        <Explainer tooltip="Encontrado en el escaneo de minerales" help-img="mineral/formation" help-title="Proceso de formación">Encontrado en el escaneo de minerales.</Explainer>
       </div>
     </template>
 
@@ -26,7 +25,7 @@ const id = useId('floranotes');
       <SelectDropdown
         v-model="model"
         :aria-labelledby="id"
-        :options="mappedFloraNotes"
+        :options="mappedMineralFormation"
         :reset-event
       />
     </template>

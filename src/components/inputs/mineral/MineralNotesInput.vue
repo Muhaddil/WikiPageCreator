@@ -2,7 +2,7 @@
 import { useId } from '@/helpers/id';
 import InputTableItem from '../../InputTableItem.vue';
 import SelectDropdown from '../SelectDropdown.vue';
-import { mappedFloraNotes } from '@/variables/flora/notes';
+import { mappedMineralNotes } from '@/variables/mineral/notes';
 import Explainer from '../../Explainer.vue';
 
 defineProps<{ resetEvent?: string }>();
@@ -17,7 +17,7 @@ const id = useId('floranotes');
     <template #label>
       <div class="is-flex is-justify-content-space-between is-align-items-center full-width">
         <label :id>Notas:</label>
-        <Explainer tooltip="Encontrado en el escaneo de flora." help-img="flora/notes" help-title="Notas">Encontrado en el escaneo de flora.
+        <Explainer tooltip=" Encontrado en el escaneo de minerales." help-title="Notas del mineral" help-img="mineral/notes">
         </Explainer>
       </div>
     </template>
@@ -26,7 +26,7 @@ const id = useId('floranotes');
       <SelectDropdown
         v-model="model"
         :aria-labelledby="id"
-        :options="mappedFloraNotes"
+        :options="mappedMineralNotes"
         :reset-event
       />
     </template>

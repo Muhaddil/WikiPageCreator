@@ -2,22 +2,22 @@
 import { useId } from '@/helpers/id';
 import InputTableItem from '../../InputTableItem.vue';
 import SelectDropdown from '../SelectDropdown.vue';
-import { mappedFloraNotes } from '@/variables/flora/notes';
+import { mappedFloraAge } from '@/variables/flora/age';
 import Explainer from '../../Explainer.vue';
 
 defineProps<{ resetEvent?: string }>();
 
 const model = defineModel<string>({ required: true });
 
-const id = useId('floranotes');
+const id = useId('floraage');
 </script>
 
 <template>
   <InputTableItem>
     <template #label>
       <div class="is-flex is-justify-content-space-between is-align-items-center full-width">
-        <label :id>Notas:</label>
-        <Explainer tooltip="Encontrado en el escaneo de flora." help-img="flora/notes" help-title="Notas">Encontrado en el escaneo de flora.
+        <label :id>Edad de la planta:</label>
+        <Explainer tooltip="Encontrado en el escaneo de flora.">
         </Explainer>
       </div>
     </template>
@@ -26,7 +26,7 @@ const id = useId('floranotes');
       <SelectDropdown
         v-model="model"
         :aria-labelledby="id"
-        :options="mappedFloraNotes"
+        :options="mappedFloraAge"
         :reset-event
       />
     </template>

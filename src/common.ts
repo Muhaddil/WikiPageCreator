@@ -903,21 +903,21 @@ import { usePageDataStore } from './stores/pageData';
 //  * @param {boolean} [outputRaw=false] - If true, returns the raw parsed value without formatting.
 //  * @returns {string|number} - The parsed number, formatted with commas and the specified number of decimal places (if decimals is non-null), or the raw parsed value (if outputRaw is true).
 //  */
-// export function getNumber(
-//   number: string,
-//   decimals: number | undefined = undefined,
-//   outputRaw: boolean = false
-// ): number | string {
-//   const raw = parseFloat(number.replaceAll(',', ''));
-//   const decimalNumber = parseInt(String(decimals));
-//   const output = (() => {
-//     if (isNaN(raw)) return '';
-//     if (!isNaN(decimalNumber)) return raw.toFixed(decimalNumber);
-//     return raw;
-//   })();
-//   if (outputRaw || !output) return output.toString();
-//   return new Intl.NumberFormat('en-UK', { minimumFractionDigits: decimalNumber || 0 }).format(output as number); // does 3 decimals by default if no decimal number is given.
-// }
+export function getNumber(
+  number: string,
+  decimals: number | undefined = undefined,
+  outputRaw: boolean = false
+): number | string {
+  const raw = parseFloat(number.replaceAll(',', ''));
+  const decimalNumber = parseInt(String(decimals));
+  const output = (() => {
+    if (isNaN(raw)) return '';
+    if (!isNaN(decimalNumber)) return raw.toFixed(decimalNumber);
+    return raw;
+  })();
+  if (outputRaw || !output) return output.toString();
+  return new Intl.NumberFormat('en-UK', { minimumFractionDigits: decimalNumber || 0 }).format(output as number); // does 3 decimals by default if no decimal number is given.
+}
 
 // /**
 //  * Creates HTML5 datalists with the provided entries and appends them to the <body> tag.
@@ -1352,15 +1352,15 @@ export function hashPageData() {
 }
 
 // // TODO: rename this function when the old one (numberError) is not used anymore
-// export function numberErrorComponent(
-//   value: string,
-//   decimals: number | undefined = undefined,
-//   outputRaw: boolean = false
-// ) {
-//   const number = getNumber(value, decimals, outputRaw);
-//   const allowedSymbols = ['+', '-'];
-//   return number || !value || allowedSymbols.includes(value) ? '' : 'Sólo debe contener números';
-// }
+export function numberErrorComponent(
+  value: string,
+  decimals: number | undefined = undefined,
+  outputRaw: boolean = false
+) {
+  const number = getNumber(value, decimals, outputRaw);
+  const allowedSymbols = ['+', '-'];
+  return number || !value || allowedSymbols.includes(value) ? '' : 'Sólo debe contener números';
+}
 
 // // TODO: rename this function when the old one (forceDatalist) is not used anymore
 // export function forceDatalistComponent(value: string, list: string[]) {

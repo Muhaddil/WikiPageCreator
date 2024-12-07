@@ -139,6 +139,7 @@ interface PageData {
   shieldB: string;
   warpB: string;
   statsClass: string;
+  metalContent: string;
 }
 
 const defaultState: PageData = {
@@ -262,6 +263,7 @@ const defaultState: PageData = {
   shieldB: '',
   warpB: '',
   statsClass: '',
+  metalContent: '',
   presetData: structuredClone(defaultData),
 };
 

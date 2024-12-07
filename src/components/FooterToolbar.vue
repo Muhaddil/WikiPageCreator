@@ -32,8 +32,12 @@ async function copyPage() {
     }
   }
 
+  const processedContent = pageData.outputContent
+    .replace(/<br\s*\/?>/g, '\n')
+    .replace(/\n{2,}/g, '\n\n');
+
   try {
-    await navigator.clipboard.writeText(pageData.outputContent);
+    await navigator.clipboard.writeText(processedContent);
     toast.success('¡Copiado con éxito!', {
       position: POSITION.BOTTOM_RIGHT,
     });
