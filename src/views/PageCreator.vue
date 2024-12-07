@@ -2,7 +2,7 @@
 import Card from 'primevue/card';
 import Fluid from 'primevue/fluid';
 import { usePageDataStore } from '@/stores/pageData';
-import { ref, onMounted, onUnmounted } from 'vue';
+import { ref, onMounted, onUnmounted, computed } from 'vue';
 
 const pageData = usePageDataStore();
 const outputRef = ref<HTMLElement | null>(null);
@@ -24,6 +24,15 @@ onMounted(() => {
   }
 });
 
+const isValid = computed(() => {
+  return !!(
+    pageData.outputContent &&
+    pageData.name &&
+    pageData.glyphs &&
+    pageData.regionData.region
+  );
+});
+
 onUnmounted(() => {
   if (observer) {
     observer.disconnect();
@@ -42,10 +51,13 @@ onUnmounted(() => {
       </template>
     </Card>
 
-    <Card class="column is-full-mobile p-0 is-family-monospace">
+    <Card
+      class="column is-full-mobile p-0 is-family-monospace"
+      :class="{'is-disabled': !isValid}"
+    >
       <template #content>
         <Fluid>
-          <div ref="outputRef">
+          <div ref="outputRef" :style="!isValid ? { userSelect: 'none', opacity: 0.5 } : {}">
             <slot name="output"></slot>
           </div>
         </Fluid>
