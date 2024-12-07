@@ -11,13 +11,20 @@ import ResourceSelect from '@/components/inputs/system/ResourceSelect.vue';
 import SingleFileUpload from '@/components/inputs/SingleFileUpload.vue';
 import Checkbox from 'primevue/checkbox';
 import InputTableItem from '../../InputTableItem.vue';
-// import Explainer from '@/components/Explainer.vue';
+import { useToast, POSITION } from 'vue-toastification';
 import Button from 'primevue/button';
 import PlanetSentinels from './PlanetSentinels.vue';
 import PlanetFlora from './PlanetFlora.vue';
 import PlanetFauna from './PlanetFauna.vue';
 
 const pageData = usePageDataStore();
+const toast = useToast();
+
+function showError(message: string) {
+  toast.error(message, {
+    position: POSITION.BOTTOM_RIGHT,
+  });
+}
 
 const getPlanetLabel = (isMoon: string) => {
   return isMoon === 'Yes' ? 'Nombre de la luna' : 'Nombre del planeta';
@@ -46,21 +53,25 @@ const planets = ref([{
 }]);
 
 const addPlanet = () => {
-  planets.value.push({
-    id: planets.value.length,
-    name: '',
-    image: '',
-    imagelandscape: '',
-    biome: '',
-    descriptors: '',
-    ismoon: '',
-    resources: ['', '', ''],
-    weather: '',
-    sentinels: '',
-    faunatotal: '',
-    flora: '',
-    fauna: '',
-  });
+  if (planets.value.length < 6) {
+    planets.value.push({
+      id: planets.value.length,
+      name: '',
+      image: '',
+      imagelandscape: '',
+      biome: '',
+      descriptors: '',
+      ismoon: '',
+      resources: ['', '', ''],
+      weather: '',
+      sentinels: '',
+      faunatotal: '',
+      flora: '',
+      fauna: '',
+    });
+  } else {
+    showError('No puedes agregar más de 6 planetas|lunas.');
+  }
 };
 
 const removePlanet = (index: number) => {

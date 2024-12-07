@@ -53,5 +53,6 @@ onUnmounted(() => {
     </Card>
   </div>
 
+  <!--This is for extra content like album entry or category modules-->
   <slot></slot>
 </template>

@@ -132,7 +132,6 @@ watch(discoveredlink, (newDiscoveredLinkValue) => {
   <div>| discoveredlink = {{ discoveredlink }}</div>
   <div>| discovered = {{ discovered }}</div>
   <div>| release = {{ release }}</div>
-
   <div v-pre>}}</div>
   <div>'''{{ name }}''' is a star system.</div>
   <br />
@@ -147,11 +146,9 @@ watch(discoveredlink, (newDiscoveredLinkValue) => {
     <WikiTemplate template-name="aliasc">text=Current|name={{ name }}</WikiTemplate>
   </div>
   <br />
-
   <div>==Discovery==</div>
   <div v-if="docBy && docBy !== discoveredlink && docBy !== discovered">Documented by {{ docBySentence }}</div>
   <br />
-
   <div>==Planets & Moons==</div>
   <div><span v-pre>{{</span>PM|{{ planetnum }}|{{ moonnum }}<span v-pre>}}</span></div>
   <div>{| class="article-table" style="text-align:center; width:100%; max-width:1250px"}</div>
@@ -172,7 +169,6 @@ watch(discoveredlink, (newDiscoveredLinkValue) => {
   </div>
   <div>|<span v-pre>}</span></div>
   <br />
-
   <!-- <div id="Freighters" style="display: none">
     <div>==Freighters==</div>
     <div>===Capital Freighter===</div>
@@ -197,7 +193,6 @@ watch(discoveredlink, (newDiscoveredLinkValue) => {
     <div>|}</div>
     <br />
   </div>
-
   <div id="Derelict" style="display: none">
     <div>===Derelict Freighter===</div>
     <div>{| class="article-table" style="text-align:center; width:100%; max-width: 800px"}</div>
@@ -215,7 +210,6 @@ watch(discoveredlink, (newDiscoveredLinkValue) => {
     <div>|}</div>
     <br />
   </div>
-
   <div id="Organic" style="display: none">
     <div>==Organic Frigate==</div>
     <div>{| class="article-table" style="text-align:center; width:100%; max-width: 800px"}</div>
@@ -231,7 +225,6 @@ watch(discoveredlink, (newDiscoveredLinkValue) => {
     <div>|}</div>
     <br />
   </div> -->
-
   <div>==Documented Starships==</div>
   <div><span v-pre>{{</span>CARGOShipSys|{{ glyphcoords }}|{{ regionData.galaxy }}<span v-pre>}}</span></div>
   <br />
@@ -239,7 +232,6 @@ watch(discoveredlink, (newDiscoveredLinkValue) => {
     All Starships discovered in the system can be found in the [[{{ name }} - Starship Album]].
     <br /><br />
   </div>
-
   <div>==Documented Multi-Tools==</div>
   <div><span v-pre>{{</span>CARGOMTCoord|{{ glyphcoords }}|{{ regionData.galaxy }}<span v-pre>}}</span></div>
   <br />
@@ -247,15 +239,12 @@ watch(discoveredlink, (newDiscoveredLinkValue) => {
     All Multi-Tools discovered in the system can be found in the [[{{ name }} - Multi-Tool Album]].
     <br /><br />
   </div>
-
   <div>==Location Information==</div>
   <div><span v-pre>{{CoordGlyphConvert|</span>{{ glyphcoords }}<span v-pre>}}</span></div>
   <br />
-
   <div>===Navigation Image===</div>
   <div>[[File:{{ navImage }}|400px]]</div>
   <br />
-
   ===System Location===
   <div v-if="regionData && regionData.region && regionData.galaxy">
     <div>
@@ -263,7 +252,6 @@ watch(discoveredlink, (newDiscoveredLinkValue) => {
     </div>
   </div>
   <br />
-
   <div>==Space Station==</div>
   <div data-station="img">[[File:{{ ssImage }}|thumb|System space station]]</div>
   <div data-station="note"></div>
@@ -282,15 +270,12 @@ watch(discoveredlink, (newDiscoveredLinkValue) => {
     </div>
     <div>|}</div>
   </div>
-
   <div data-station="merchant">
     <div>
       The Space Station merchants offer the following <span v-pre>{{</span>class|S<span v-pre>}}</span> class items for
       sale:
     </div>
-
     <span v-pre>{{</span>SSMerchants
-
     <span v-if="formattedModulesMT">
       <pre>{{ formattedModulesMT }}</pre>
     </span>
@@ -308,7 +293,6 @@ watch(discoveredlink, (newDiscoveredLinkValue) => {
     </span>
     }}
   </div>
-
   <div id="scrapDealer" data-station="scrapDealer">
     <br />
     <div>===Scrap Dealer===</div>
@@ -321,11 +305,9 @@ watch(discoveredlink, (newDiscoveredLinkValue) => {
     <div><span v-pre>}}</span></div>
   </div>
   <br />
-
   <div>==Additional Information==</div>
   <div>{{ addInfo }}</div>
   <br />
-
   <div>==Gallery==</div>
   <GalleryOutput />
 </template>

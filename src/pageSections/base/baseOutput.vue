@@ -104,7 +104,7 @@ const formattedFeatures = computed(() => {
   <div class="keep-linebreaks">{{ formattedFeatures }}</div>
   <br />
   <div>==Additional Information==</div>
-  <div class="keep-linebreaks">{{ additionalInfo }}</div>
+  <div>{{ additionalInfo }}</div>
   <br />
   <div>==Gallery==</div>
   <GalleryOutput />

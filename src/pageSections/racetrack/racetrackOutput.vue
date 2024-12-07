@@ -72,7 +72,7 @@ const formattedExocraftTable = computed(() => {
   <div class="keep-linebreaks">{{ features2 }}</div>
   <br />
   <div>==Additional Information==</div>
-      <div class="keep-linebreaks">{{ additionalInfo }}</div>
+  <div>{{ additionalInfo }}</div>
       <div v-if="docBy && docBy !== discoveredlink && docBy !== discovered">Documented by {{ docBySentence }}</div>
       <br />
   <div>==Gallery==</div>

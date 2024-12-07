@@ -169,7 +169,7 @@ function showConfirmDialog() {
     </template>
   </Toolbar>
 
-  <ConfirmDialog draggable="true"/>
+  <ConfirmDialog :draggable="true"/>
 </template>
 
 <style scoped>

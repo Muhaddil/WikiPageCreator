@@ -9,8 +9,10 @@ import { mappedSystemTradeables } from '@/variables/system/systemtradeables';
 import InputTableItem from '../../InputTableItem.vue';
 // import Explainer from '@/components/Explainer.vue';
 import Button from 'primevue/button';
+import { useToast, POSITION } from 'vue-toastification';
 
 const pageData = usePageDataStore();
+const toast = useToast();
 
 const tradeables = ref([{
   id: 0,
@@ -18,12 +20,22 @@ const tradeables = ref([{
   price: '',
 }]);
 
-const addPlanet = () => {
-  tradeables.value.push({
-    id: tradeables.value.length,
-    name: '',
-    price: '',
+function showError(message: string) {
+  toast.error(message, {
+    position: POSITION.BOTTOM_RIGHT,
   });
+}
+
+const addPlanet = () => {
+  if (tradeables.value.length < 5) {
+    tradeables.value.push({
+      id: tradeables.value.length,
+      name: '',
+      price: '',
+    });
+  } else {
+    showError('No puedes agregar más de 5 tradeables.');
+  }
 };
 
 const removePlanet = (index: number) => {
@@ -87,7 +99,8 @@ watch(tradeables, (newTradeables) => {
           error-message="Solo numeros">
         </SanitisedTextInput>
 
-        <Button v-if="tradeables.length > 1" @click="removePlanet(index)">
+        <!-- <Button v-if="tradeables.length > 1" @click="removePlanet(index)"> -->
+          <Button @click="removePlanet(index)">
           Eliminar Tradeable
         </Button>
       </Panel>

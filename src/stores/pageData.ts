@@ -32,6 +32,10 @@ interface PageData {
   moon: string;
   glyphs: string;
   type: string;
+  location: string;
+  subtype: string;
+  exotic: string;
+  inventory: string;
   biome: string;
   age: string;
   roots: string;
@@ -120,10 +124,27 @@ interface PageData {
   stomachContent: string;
   sandwormclass: string;
   appearonreload: string;
+  pilot: string;
+  crystals: string;
+  horns: string;
+  glowtubes: string;
+  slots: string;
+  savelocation: string;
+  savelocationDF: string;
+  cost: string;
+  scannerRange: string;
+  damagePotential: string;
+  maneuverB: string;
+  damageB: string;
+  shieldB: string;
+  warpB: string;
+  statsClass: string;
 }
 
 const defaultState: PageData = {
   outputContent: '',
+  slots: '',
+  cost: '',
   release: '',
   water: 'No',
   dissonant: 'No',
@@ -139,6 +160,11 @@ const defaultState: PageData = {
   moon: '',
   glyphs: '',
   type: '',
+  savelocationDF: '',
+  subtype: '',
+  location: '',
+  exotic: '',
+  inventory: '',
   biome: '',
   stellarclass: '',
   color: '',
@@ -220,10 +246,22 @@ const defaultState: PageData = {
   populationammount: '',
   settlementproduction: '',
   royalclass: '',
+  crystals: '',
+  horns: '',
+  glowtubes: '',
   maxdepth: '',
   stomachContent: '',
   sandwormclass: '',
   appearonreload: '',
+  pilot: '',
+  savelocation: '',
+  scannerRange: '',
+  damagePotential: '',
+  maneuverB: '',
+  damageB: '',
+  shieldB: '',
+  warpB: '',
+  statsClass: '',
   presetData: structuredClone(defaultData),
 };
 

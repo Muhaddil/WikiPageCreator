@@ -72,7 +72,7 @@ const locationSentence = computed(() => {
   <div class="keep-linebreaks"><span v-pre>{{CoordGlyphConvert</span>|{{ glyphs }}<span v-pre>}}</span></div>
   <br />
   <div>==Additional Information==</div>
-  <div class="keep-linebreaks">{{ additionalInfo }}</div>
+  <div>{{ additionalInfo }}</div>
   <br />
   <div>==Gallery==</div>
   <GalleryOutput />
