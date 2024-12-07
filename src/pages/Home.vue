@@ -57,12 +57,12 @@ const links: PageLinkProps[] = [
     img: './assets/images/buttons/1_013.png',
     imgAlt: 'Naves',
   },
-  {
-    text: '',
-    url: './multitool.html',
-    img: './assets/images/buttons/1_007.png',
-    imgAlt: 'Multiherramientas',
-  },
+  //{
+   // text: '',
+   // url: './multitool.html',
+   // img: './assets/images/buttons/1_007.png',
+   // imgAlt: 'Multiherramientas',
+  //},
   {
     text: '',
     url: './mineral.html',
