@@ -24,7 +24,6 @@ const {
   system,
   planet,
   moon,
-  mode,
   researchteam2,
   orgName,
   appearance,

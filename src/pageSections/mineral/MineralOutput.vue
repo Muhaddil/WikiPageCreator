@@ -23,7 +23,6 @@ const {
   elements,
   discDate,
   polymorphic,
-  biome,
   metalContent,
   formation,
   docBy,
