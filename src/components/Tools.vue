@@ -41,7 +41,7 @@ const toggle = (event: Event) => menu.value?.toggle(event);
     aria-controls="overlay-menu"
     aria-haspopup="true"
     icon="pi pi-wrench"
-    title="Tools"
+    title="Herramientas"
     @click="toggle"
   />
 

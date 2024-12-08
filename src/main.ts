@@ -91,6 +91,10 @@ app.use(PrimeVue, {
 });
 app.use(Toast, {
   position: POSITION.BOTTOM_CENTER,
+  pauseOnHover: false,
+  draggable: true,
+  closeOnClick: true,
+  maxToasts: 5,
 });
 
 app.mount('#app');

@@ -1,15 +1,21 @@
-# https://lenni009.github.io/EisvanaWikiPageCreator
-# No Man's Sky - Wiki page creation website!
+[![Build](https://github.com/Muhaddil/RSSWikiPageCreator/actions/workflows/build-deploy.yml/badge.svg)](https://github.com/Muhaddil/RSSWikiPageCreator/actions/workflows/build-deploy.yml)
+[![pages-build-deployment](https://github.com/Muhaddil/RSSWikiPageCreator/actions/workflows/pages/pages-build-deployment/badge.svg)](https://github.com/Muhaddil/RSSWikiPageCreator/actions/workflows/pages/pages-build-deployment)
+[![CodeQL](https://github.com/Muhaddil/RSSWikiPageCreator/actions/workflows/github-code-scanning/codeql/badge.svg)](https://github.com/Muhaddil/RSSWikiPageCreator/actions/workflows/github-code-scanning/codeql)
 
-This is a website intended for making wiki page creation in the [No Man's Sky Wiki](https://nomanssky.fandom.com) easier.
+# No Man's Sky - Página para crear paginas en la wiki (valga la redundancia)!
 
-It was originally forked from seamonkey420 who made this in 2017 as a batch script.
+Este es un sitio web destinado a facilitar la creación de páginas wiki en [No Man's Sky Wiki](https://nomanssky.fandom.com).
 
-To make it more cross platform, with console gamers and other operating systems in mind, it has been ported to the web.
+Originalmente fue bifurcado de seamonkey420, quien lo hizo en 2017 como un script por lotes.
 
-The website was created by [Lenni](https://nomanssky.fandom.com/wiki/User:Lenni009).
+Para hacerlo más multiplataforma, pensando en los jugadores de consola y otros sistemas operativos, se ha trasladado a la web.
 
-It's also open for other civs/companies/players to make their own version of it. To do so, [create a GitHub account](https://github.com/signup), [fork the repo](https://github.com/Eisvana/EisvanaWikiPageCreator/fork), edit to fit your needs and create your own GitHub page from it with GitHub pages ([it's super easy to set up](https://docs.github.com/en/pages/quickstart)).
+El sitio web fue creado por [Lenni](https://nomanssky.fandom.com/wiki/User:Lenni009).
 
-Special thanks:
-* [KhaozTopsy](https://github.com/Khaoz-Topsy) (Assistant for No Man's Sky; NMSCD): JavaScript help and page styling
+Y la traducción al español fue hecha por [Muhaddil](https://nomanssky.fandom.com/wiki/User:Muhaddil).
+
+También está abierto para que otras civilizaciones/empresas/jugadores creen su propia versión. Para hacerlo, [crea una cuenta de GitHub](https://github.com/signup), [bifurca el repositorio](https://github.com/Muhaddil/RSSWikiPageCreator/fork), editalo para adaptarlo a tus necesidades y crea su propia página de GitHub con páginas de GitHub ([es muy fácil de configurar](https://docs.github.com/es/pages/quickstart)).
+
+Gracias especiales:
+* [KhaozTopsy](https://github.com/Khaoz-Topsy) (Asistente de No Man's Sky; NMSCD): ayuda de JavaScript y estilo de página.
+* [Muhaddil](https://github.com/Muhaddil): ayuda en la traducción de la página a español.

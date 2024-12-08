@@ -11,6 +11,7 @@ import Tools from './Tools.vue';
   <Toolbar class="is-borderless is-radiusless">
     <template #start>
       <NavBar />
+
     </template>
 
     <template #center>

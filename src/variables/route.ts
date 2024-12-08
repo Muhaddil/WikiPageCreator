@@ -15,6 +15,7 @@ export const router: Record<string, string> = {
   sandworm: 'Sandworm',
   starship: 'Starship',
   multitool: 'Multitool',
+  planet: 'Planet',
 };
 
 export const route = getCurrentRoute();
@@ -55,6 +56,9 @@ switch (route) {
     break;
   case 'multitool':
     exportName = 'Multiherramientas';
+    break;
+  case 'planet':
+    exportName = 'Planetas';
     break;
   case '':
     exportName = 'Home';

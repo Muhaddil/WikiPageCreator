@@ -12,8 +12,9 @@ const icon = computed(() => (isDark.value ? 'pi-sun' : 'pi-moon'));
 <template>
   <Button
     :icon="`pi ${icon}`"
-    aria-label="Switch Theme"
-    title="Switch Theme"
+    aria-label="Cambiar de Tema"
+    title="Cambiar de Tema"
     @click="toggleDark()"
+    class="theme-toggle-button"
   />
 </template>

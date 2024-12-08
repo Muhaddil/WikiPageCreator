@@ -51,12 +51,12 @@ const links: PageLinkProps[] = [
     img: './assets/images/buttons/1_006.png',
     imgAlt: 'Flora',
   },
-  // {
-  //   text: '',
-  //   url: './starship.html',
-  //   img: './assets/images/buttons/1_013.png',
-  //   imgAlt: 'Naves',
-  // },
+  {
+    text: '',
+    url: './starship.html',
+    img: './assets/images/buttons/1_013.png',
+    imgAlt: 'Naves',
+  },
   {
     text: '',
     url: './multitool.html',

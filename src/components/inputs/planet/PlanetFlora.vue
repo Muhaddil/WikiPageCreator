@@ -1,0 +1,36 @@
+<script setup lang="ts">
+import { useId } from '@/helpers/id';
+import InputTableItem from '../../InputTableItem.vue';
+import SelectDropdown from '../SelectDropdown.vue';
+import { mappedPlanetFlora } from '@/variables/system/planetflora';
+import Explainer from '../../Explainer.vue';
+
+defineProps<{ resetEvent?: string, isMoon?: boolean }>();
+
+const model = defineModel<string>({ required: true });
+
+const id = useId('planetdescriptors');
+</script>
+
+<template>
+  <InputTableItem>
+    <template #label>
+      <div class="is-flex is-justify-content-space-between is-align-items-center full-width">
+        <label :id>Flora:</label>
+        <Explainer tooltip="Se puede encontrar en el menú de descubrimiento." help-img="planet/flora" help-title="Nivel de flora del planeta">
+          Se puede encontrar en el menú de descubrimiento.
+        </Explainer>
+      </div>
+    </template>
+
+    <template #input>
+      <SelectDropdown
+        v-model="model"
+        :aria-labelledby="id"
+        :options="mappedPlanetFlora"
+        :reset-event="resetEvent"
+      />
+
+    </template>
+  </InputTableItem>
+</template>

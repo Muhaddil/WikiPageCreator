@@ -140,6 +140,16 @@ interface PageData {
   warpB: string;
   statsClass: string;
   metalContent: string;
+  resourceListOutput: string;
+  chemicalSymbolsOutput: string;
+  Planetdescriptors: string;
+  atmosphere: string;
+  sentinels: string;
+  weather: string;
+  flora: string;
+  fauna: string;
+  terrain: string;
+  faunaNum: string;
 }
 
 const defaultState: PageData = {
@@ -264,6 +274,16 @@ const defaultState: PageData = {
   warpB: '',
   statsClass: '',
   metalContent: '',
+  resourceListOutput: '',
+  chemicalSymbolsOutput: '',
+  Planetdescriptors: '',
+  atmosphere: '',
+  sentinels: '',
+  weather: '',
+  flora: '',
+  fauna: '',
+  terrain: '',
+  faunaNum: '',
   presetData: structuredClone(defaultData),
 };
 

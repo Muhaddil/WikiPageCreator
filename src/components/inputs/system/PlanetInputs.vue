@@ -95,7 +95,7 @@ const generateOutput = () => {
 |[[File:${planet.imagelandscape || 'nmsMisc_NotAvailable.png'}|150px]]
 |[[${planet.name}]]
 |{{Biome|${planet.biome}}}<hr>${planet.descriptors}
-|[[${planet.resources.join('<br>')}]]
+|${planet.resources.map(resource => `[[${resource}]]`).join('<br>')}
 |${planet.weather}
 |${planet.sentinels}
 |${planet.flora}

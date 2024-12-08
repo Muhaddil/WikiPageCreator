@@ -3,11 +3,26 @@ import { ref, onMounted } from 'vue';
 import Button from 'primevue/button';
 
 const sandwormLink = ref('');
+const faunaLink = ref('');
+const planetLink = ref('');
+const moonLink = ref('');
 
 onMounted(() => {
   const currentUrl = window.location.pathname;
   if (currentUrl.includes('fauna.html')) {
     sandwormLink.value = 'sandworm.html';
+  }
+
+  if (currentUrl.includes('sandworm.html')) {
+    faunaLink.value = 'fauna.html';
+  }
+
+  if (currentUrl.includes('planet.html')) {
+    moonLink.value = 'moon.html';
+  }
+
+  if (currentUrl.includes('moon.html')) {
+    planetLink.value = 'planet.html';
   }
 });
 </script>
@@ -16,4 +31,7 @@ onMounted(() => {
   <Button :href="'/'" as="a" icon="pi pi-arrow-left" label="Ver otras páginas" link />
 
   <Button v-if="sandwormLink" :href="sandwormLink" as="a" icon="pi pi-arrow-right" label="Ir a Sandworm" link />
+  <Button v-if="faunaLink" :href="faunaLink" as="a" icon="pi pi-arrow-right" label="Ir a Fauna" link />
+  <Button v-if="moonLink" :href="moonLink" as="a" icon="pi pi-arrow-right" label="Lunas" link />
+  <Button v-if="faunaLink" :href="faunaLink" as="a" icon="pi pi-arrow-right" label="Planetas" link />
 </template>

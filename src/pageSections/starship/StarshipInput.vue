@@ -1,6 +1,5 @@
 <script setup lang="ts">
 import GlyphInput from '@/components/inputs/GlyphInput.vue';
-import PlatformSelect from '@/components/inputs/PlatformSelect.vue';
 import SanitisedTextInput from '@/components/inputs/SanitisedTextInput.vue';
 import SingleFileUpload from '@/components/inputs/SingleFileUpload.vue';
 import { usePageDataStore } from '@/stores/pageData';
@@ -8,12 +7,11 @@ import { storeToRefs } from 'pinia';
 import { computed, ref, watch } from 'vue';
 import InputTableItem from '@/components/InputTableItem.vue';
 import SelectDropdown from '@/components/inputs/SelectDropdown.vue';
-import GameModeSelect from '@/components/inputs/GameModeSelect.vue';
+import StarShipAppearance from '@/components/inputs/starship/StarShipAppearance.vue';
 import WealthSelect from '@/components/WealthSelect.vue';
 import TypeSelect from '@/components/inputs/starship/TypeSelect.vue';
 import GalleryInput from '@/components/inputs/gallery/GalleryInput.vue';
 import FileUploadNotice from '@/components/FileUploadNotice.vue';
-import TextareaInput from '@/components/inputs/TextareaInput.vue';
 import { shipData } from '@/variables/starship/shipData';
 import { mapOptions } from '@/helpers/selectMapping';
 import type { SelectOption } from '@/types/selectInputOptions';
@@ -27,14 +25,12 @@ const {
   glyphs,
   wealth,
   system,
-  platform,
-  mode,
+  appearance,
   docBy,
   type,
   inventory,
   subtype,
   researchteam2,
-  additionalInfo,
   statsClass,
 } = storeToRefs(pageData);
 
@@ -163,12 +159,7 @@ statsClass.value = statsClassData[type.value]?.[0]?.value || '';
     label="Departamento: (Opcional)"
   />
 
-  <GameModeSelect v-model="mode" />
-  <PlatformSelect v-model="platform" />
+  <StarShipAppearance v-model="appearance"></StarShipAppearance>
 
-  <TextareaInput
-    v-model="additionalInfo"
-    label="Información Adicional"
-  />
   <GalleryInput />
 </template>
