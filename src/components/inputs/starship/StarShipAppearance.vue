@@ -1,5 +1,4 @@
 <script setup lang="ts">
-import Checkbox from 'primevue/checkbox';
 import Panel from 'primevue/panel';
 import type { SelectOption } from '@/types/selectInputOptions';
 import { usePageDataStore } from '@/stores/pageData';
