@@ -150,6 +150,9 @@ interface PageData {
   fauna: string;
   terrain: string;
   faunaNum: string;
+  locations: string;
+  generatedOutputFauna: string;
+  sentinelInfo: string;
 }
 
 const defaultState: PageData = {
@@ -284,6 +287,9 @@ const defaultState: PageData = {
   fauna: '',
   terrain: '',
   faunaNum: '',
+  locations: '',
+  generatedOutputFauna: '',
+  sentinelInfo: '',
   presetData: structuredClone(defaultData),
 };
 
