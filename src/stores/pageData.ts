@@ -152,6 +152,13 @@ interface PageData {
   faunaNum: string;
   locations: string;
   generatedOutputFauna: string;
+  generatedOutputFlora: string;
+  generatedOutputMinerals: string;
+  combat: string;
+  exploration: string;
+  industrial: string;
+  fuel: string;
+  trade: string;
   sentinelInfo: string;
 }
 
@@ -289,7 +296,14 @@ const defaultState: PageData = {
   faunaNum: '',
   locations: '',
   generatedOutputFauna: '',
+  generatedOutputFlora: '',
+  generatedOutputMinerals: '',
   sentinelInfo: '',
+  combat: '',
+  exploration: '',
+  industrial: '',
+  fuel: '',
+  trade: '',
   presetData: structuredClone(defaultData),
 };
 

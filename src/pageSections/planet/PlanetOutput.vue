@@ -40,6 +40,8 @@ const {
   generatedOutput,
   additionalInfo,
   generatedOutputFauna,
+  generatedOutputFlora,
+  generatedOutputMinerals,
 } = storeToRefs(pageData);
 
 const glyphcoords = computed(() => glyphs2Coords(glyphs.value));
@@ -82,6 +84,12 @@ watch(discoveredlink, (newDiscoveredLinkValue) => {
 const formattedGeneratedOutput = computed(() => {
   const moons = generatedOutput.value.split(',').map((moon) => moon.trim());
   return moons.length > 1 ? moons.join(' and ') : moons[0];
+});
+
+const faunaVerb = computed(() => {
+  const num = parseInt(faunaNum.value);
+  if (isNaN(num)) return 'are';
+  return num === 1 ? 'is' : 'are';
 });
 </script>
 
@@ -153,7 +161,7 @@ const formattedGeneratedOutput = computed(() => {
 
   <div>==Life==</div>
   <div>===Fauna===</div>
-  <div>* There {{ faunaNum }} fauna on this planet</div>
+  <div>* There {{ faunaVerb }} {{ faunaNum }} fauna on this planet</div>
   <div><span v-pre>{| class="article-table" style="text-align:center; width:100%; max-width: 1250px"</span></div>
   <div>|-</div>
   <div>! style="width:150px" | Image</div>
@@ -166,6 +174,42 @@ const formattedGeneratedOutput = computed(() => {
   <div v-if="generatedOutputFauna">
     <div>
       <pre>{{ generatedOutputFauna }}</pre>
+    </div>
+  </div>
+  <div>|}</div>
+  <br />
+
+  <div>===Flora===</div>
+  <div><span v-pre>{| class="article-table" style="text-align:center; width:100%; max-width: 1250px"</span></div>
+  <div>|-</div>
+  <div>! style="width:150px" | Image</div>
+  <div>! Name</div>
+  <div>! Root Structure</div>
+  <div>! Nutrient Source</div>
+  <div>! Notes</div>
+  <div>! Elements</div>
+  <div>! Discovered by</div>
+  <div v-if="generatedOutputFlora">
+    <div>
+      <pre>{{ generatedOutputFlora }}</pre>
+    </div>
+  </div>
+  <div>|}</div>
+  <br />
+
+  <div>===Minerals===</div>
+  <div><span v-pre>{| class="article-table" style="text-align:center; width:100%; max-width: 1250px"</span></div>
+  <div>|-</div>
+  <div>! style="width:150px" | Image</div>
+  <div>! Name</div>
+  <div>! Metal Content</div>
+  <div>! Formation Process</div>
+  <div>! Notes</div>
+  <div>! Elements</div>
+  <div>! Discovered by</div>
+  <div v-if="generatedOutputMinerals">
+    <div>
+      <pre>{{ generatedOutputMinerals }}</pre>
     </div>
   </div>
   <div>|}</div>

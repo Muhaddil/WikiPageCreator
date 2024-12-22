@@ -16,6 +16,7 @@ export const router: Record<string, string> = {
   starship: 'Starship',
   multitool: 'Multitool',
   planet: 'Planet',
+  biofrig: 'Biofrig',
 };
 
 export const route = getCurrentRoute();
@@ -59,6 +60,9 @@ switch (route) {
     break;
   case 'planet':
     exportName = 'Planetas';
+    break;
+  case 'biofrig':
+    exportName = 'Fragata Orgánica';
     break;
   case '':
     exportName = 'Home';

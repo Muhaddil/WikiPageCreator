@@ -92,7 +92,7 @@ const mappedterrainMapping: SelectOption[] = mapOptions(terrainMapping);
   </SanitisedTextInput>
   <SanitisedTextInput v-model="orgName" label="Nombre original antes de registrar (si está disponible):" />
 
-  <SingleFileUpload v-model="image" label="Imagen principa:l" help-title="Subida de Archivo"
+  <SingleFileUpload v-model="image" label="Imagen principal:" help-title="Subida de Archivo"
     tooltip="La imagen no se subirá a la wiki. Esto es solo para autocompletar el nombre de la imagen.">
     <FileUploadNotice />
   </SingleFileUpload>
