@@ -1,12 +1,10 @@
 <script setup lang="ts">
-// import '@suadelabs/vue3-multiselect/dist/vue3-multiselect.css';
-import '../../scss/components/vue3-multiselect.scss'
-import { ref, watchEffect } from 'vue';
-import Multiselect from '@suadelabs/vue3-multiselect';
+import  MultiSelect from 'primevue/multiselect';
 
 type Option = { english: string; spanish: string };
 
-const value = ref<Option[]>([]);
+const model = defineModel<string[]>({ required: true });
+
 const options: Option[] = [
   { english: 'Pilgrim Geobay', spanish: 'Geobahía para Peregrina' },
   { english: 'Nomad Geobay', spanish: 'Geobahía para Nómada' },
@@ -20,7 +18,6 @@ const options: Option[] = [
   { english: 'Atmosphere Harvester', spanish: 'Recolector de atmósfera' },
   { english: 'Autonomous Mining Unit', spanish: 'Unidad de Extracción Autónoma' },
   { english: 'Portable Refiner', spanish: 'Refinería portátil' },
-  // { english: 'Base Computer', spanish: 'Ordenador de base' },
   { english: 'Oxygen Harvester', spanish: 'Recolector de oxígeno' },
   { english: 'Blueprint Analyser', spanish: 'Analizador de planos' },
   { english: 'Marine Shelter', spanish: 'Refugio marino' },
@@ -63,30 +60,21 @@ const options: Option[] = [
   { english: 'Construction Terminal', spanish: 'Terminal de construcción' },
   { english: 'Agricultural Terminal', spanish: 'Terminal Agrícola' },
 ];
-
-const element = document.getElementById('features');
-
-watchEffect(() => {
-  if (element)
-    element.innerText = value.value
-      .map((item) => `* [[${item.english}]]`)
-      .join('\n');
-});
 </script>
 
 <template>
-  <Multiselect
-    v-model="value"
-    :options="options"
-    :multiple="true"
-    :close-on-select="false"
-    :label="'spanish'"
-    :track-by="'english'"
-    :selectedLabel="'Seleccionado'"
-    :select-label="'Presiona enter para seleccionar'"
-    :deselect-label="'Presiona enter para eliminar'"
-    placeholder="Seleccionar"
-  ></Multiselect>
+      <label for="ms-cities">Características de la Base</label>
+      <MultiSelect
+        id="ms-cities"
+        v-model="model"
+        :options="options"
+        optionLabel="spanish"
+        optionValue="english"
+        filter
+        :maxSelectedLabels="3"
+        selectedItemsLabel="Se han seleccionado {0} elementos"
+        class="w-full"
+      />
 </template>
 
 <!-- <script setup lang="ts">

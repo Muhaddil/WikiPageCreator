@@ -1,1 +1,0 @@
-Esta carpeta contiene el código fuente en forma de lógica Javascript y hojas de estilo CSS.

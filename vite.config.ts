@@ -1,6 +1,4 @@
-/// <reference types="vitest" />
-import { fileURLToPath, URL } from 'node:url';
-import { resolve } from 'path';
+import { fileURLToPath } from 'node:url';
 import { defineConfig } from 'vite';
 import vue from '@vitejs/plugin-vue';
 
@@ -8,41 +6,41 @@ import vue from '@vitejs/plugin-vue';
 export default defineConfig({
   base: '/RSSWikiPageCreator/',
   plugins: [vue()],
-  test: {
-    environment: 'happy-dom',
-    browser: {
-      provider: 'webdriverio',
-      enabled: true,
-      headless: true,
-      name: 'chrome',
-    },
-  },
+  // test: {
+  //   environment: 'happy-dom',
+  //   browser: {
+  //     provider: 'webdriverio',
+  //     enabled: true,
+  //     headless: true,
+  //     name: 'chrome',
+  //   },
+  //   coverage: {
+  //     include: ['src/**.{ts,vue}', 'src/**/**.{ts,vue}'],
+  //     exclude: ['src/api/**/**.ts', 'src/**/**.d.ts'],
+  //     clean: true,
+  //     all: true,
+  //   },
+  // },
   build: {
     rollupOptions: {
-      input: {
-        main: resolve(__dirname, 'index.html'),
-        about: resolve(__dirname, 'about.html'),
-        faq: resolve(__dirname, 'faq.html'),
-        base: resolve(__dirname, 'base.html'),
-        basenocensus: resolve(__dirname, 'basenocensus.html'),
-        basepruebas: resolve(__dirname, 'basepruebas.html'),
-        biofrig: resolve(__dirname, 'biofrig.html'),
-        derelict: resolve(__dirname, 'derelict.html'),
-        fauna: resolve(__dirname, 'fauna.html'),
-        faunaOLD: resolve(__dirname, 'faunaOLD.html'),
-        flora: resolve(__dirname, 'flora.html'),
-        mineral: resolve(__dirname, 'mineral.html'),
-        moon: resolve(__dirname, 'moon.html'),
-        multitool: resolve(__dirname, 'multitool.html'),
-        planet: resolve(__dirname, 'planet.html'),
-        racetrack: resolve(__dirname, 'racetrack.html'),
-        sandworm: resolve(__dirname, 'sandworm.html'),
-        settlement: resolve(__dirname, 'settlement.html'),
-        starship: resolve(__dirname, 'starship.html'),
-        system: resolve(__dirname, 'system.html'),
-        test1: resolve(__dirname, 'test1.html'),
-        glyphgeneratorV2: resolve(__dirname, 'glyphgeneratorV2.html'),
-      },
+      input: [
+        'index.html',
+        'base.html',
+        'basenocensus.html',
+        'biofrig.html',
+        'derelict.html',
+        'fauna.html',
+        'flora.html',
+        'mineral.html',
+        'moon.html',
+        'multitool.html',
+        'planet.html',
+        'racetrack.html',
+        'sandworm.html',
+        'settlement.html',
+        'starship.html',
+        'system.html',
+      ],
     },
   },
   resolve: {

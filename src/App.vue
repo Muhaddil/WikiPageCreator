@@ -1,42 +1,46 @@
 <script setup lang="ts">
-import { watch, nextTick, defineAsyncComponent, type Component, onMounted } from 'vue';
-import { usePageDataStore, useStaticPageDataStore } from './stores/pageData';
-import { storeToRefs } from 'pinia';
-import { useMarker } from './composables/useMarker';
-import { getRelease } from './common';
-
-const staticPageData = useStaticPageDataStore();
-const { route } = storeToRefs(staticPageData);
+import MainToolbar from '@/components/MainToolbar.vue';
+import { componentName } from '@/variables/route';
+import { defineAsyncComponent, onMounted, type Component } from 'vue';
+import { usePageDataStore } from './stores/pageData';
+import FooterToolbar from './components/FooterToolbar.vue';
 
 const pageData = usePageDataStore();
-const { pageName, glyphs, release } = storeToRefs(pageData);
 
-onMounted(async () => {
-  const currentRelease = await getRelease();
-  release.value = currentRelease;
-});
-
-// I have no idea why I have to use nextTick() here. It's just one character behind otherwise apparently for some reason
-watch([pageName, glyphs], () => nextTick(() => useMarker()), { immediate: true });
-
-const router: Record<string, string> = {
-  flora: 'Flora',
-  mineral: 'Mineral',
-  home: 'Home',
-  fauna: 'Fauna',
-};
-
-function getRouteComponent() {
-  const currentRoute = route.value;
-  if (!currentRoute || !router[currentRoute]) return router.home;
-  return router[currentRoute];
-}
+onMounted(async () => pageData.initStore());
 
 const RouteComponent = defineAsyncComponent<Component>({
-  loader: () => import(`./pages/${getRouteComponent()}.vue`),
+  loader: () => import(`./pages/${componentName}.vue`),
 });
 </script>
 
 <template>
-  <RouteComponent />
+  <header class="header">
+    <MainToolbar />
+  </header>
+  <main class="container main-page-content pt-4 my-5">
+    <RouteComponent />
+  </main>
+  <footer
+    v-if="componentName !== 'Home'"
+    class="full-width"
+  >
+    <FooterToolbar />
+  </footer>
 </template>
+
+<style scoped>
+.header {
+  border-block-end: 1px solid var(--p-toolbar-border-color);
+}
+
+footer {
+  position: fixed;
+  bottom: 0;
+  border-block-start: 1px solid var(--p-toolbar-border-color);
+}
+
+.main-page-content {
+  padding-block-end: 5rem;
+}
+</style>

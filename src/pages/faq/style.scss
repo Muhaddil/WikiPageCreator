@@ -1,3 +1,20 @@
+:root {
+	--body-backgroundcolor: hsl(228, 10%, 10%);
+	--input-background: hsl(0, 0%, 10%);
+  --input-background-faq: hsl(228, 10%, 8%);
+	--input-background-hover: hsl(0, 0%, 20%);
+	--text-color: hsl(0, 0%, 85%);
+	--heading-color: hsl(0, 0%, 90%);
+	--code-color: hsl(0, 0%, 80%);
+	--placeholder-color: hsl(0, 0%, 70%);
+	--link-color: hsl(217, 65%, 57%);
+	--link-hover-color: hsl(217, 65%, 70%);
+	--border-color: hsl(0, 0%, 40%);
+	--border-color-hover: hsl(0, 0%, 70%);
+	--border-color-focus: hsl(0, 0%, 85%);
+	--border-color-focus-hover: hsl(0, 0%, 100%);
+}
+
 h1, h2 {
   color: var(--heading-color);
   opacity: 0;
@@ -14,8 +31,6 @@ p {
   padding: 20px;
   background-color: var(--input-background-faq);
   box-shadow: 0 4px 8px rgb(0, 0, 0);
-  border-radius: var(--border-radius);
-  transition: var(--theme-transition);
 }
 
 .container {
@@ -107,10 +122,10 @@ details p {
   margin-top: 10px;
   font-size: 1rem;
   color: var(--text-color);
-  opacity: 0; /* Comienza oculto */
-  height: 0; /* Altura inicial cero */
-  overflow: hidden; /* Oculta el contenido desbordado */
-  transition: opacity 0.5s ease, height 0.5s ease; /* Transiciones suaves */
+  opacity: 0;
+  height: 0;
+  overflow: hidden;
+  transition: opacity 0.5s ease, height 0.5s ease;
 }
 
 details[open] p {

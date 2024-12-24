@@ -1,0 +1,28 @@
+@import './fonts.css';
+@import './variables.css';
+@import './dialog.css';
+
+.glyphs {
+  font-family: NMS-Glyphs-Mono;
+  font-size: 2.5rem;
+}
+
+.full-width {
+  width: 100%;
+}
+
+.link {
+  text-decoration: none;
+
+  &:hover {
+    text-decoration: underline;
+  }
+}
+
+.keep-linebreaks {
+  white-space: pre;
+}
+
+.is-borderless {
+  border: none !important;
+}

@@ -1,4 +1,4 @@
-import '../../startup/minimal';
+import 'bulma';
 import './style.scss';
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -10,8 +10,8 @@ document.addEventListener('DOMContentLoaded', () => {
             const searchTerm = searchInput.value.toLowerCase();
 
             faqItems.forEach(item => {
-                const question = item.querySelector('summary')?.textContent?.toLowerCase() || '';
-                const answer = item.querySelector('p')?.textContent?.toLowerCase() || '';
+                const question = item.querySelector('summary')?.textContent?.toLowerCase() ?? '';
+                const answer = item.querySelector('p')?.textContent?.toLowerCase() ?? '';
 
                 if (question.includes(searchTerm) || answer.includes(searchTerm)) {
                     item.classList.remove('hidden');

@@ -1,4 +1,16 @@
-import type { CreatureData } from '../types/objects';
+export interface CreatureData {
+  ecosystems: {
+    [key: string]: {
+      [key: string]: {
+        commonName: string;
+        produces: Array<string>;
+      };
+    };
+  };
+  catalogs: {
+    [key: string]: Array<string>;
+  };
+}
 
 /**
  * @fileoverview Provides data for creatures which is not intended to be put into a datalist. This data is needed in multiple files, so it was broken into its own file.

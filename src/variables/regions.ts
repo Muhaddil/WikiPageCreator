@@ -1,9 +1,4 @@
-import type { Regions, Galaxies } from '../types/regions';
-
-/**
- * An object representing discovery regions and their associated names.
- */
-export const regions: Regions = {
+export const regions = {
   'F7EC0D24': 'Uekenbe Shallows',
 	'032FE9B0': 'Uklots Shallows',
 	'FEA34C10': 'Eighba Fringe',
@@ -18,15 +13,9 @@ export const regions: Regions = {
   '0266CF95': 'Skitco',
   'F7EBFD24': 'Udrupi Shallows',
   'F7EBFD25': 'Jiessl Shallows',
-};
+} as const;
 
-// Make 'regions' read-only
-Object.freeze(regions);
-
-/**
- * An object representing discovery regions and their galaxy names.
- */
-export const galaxies: Galaxies = {
+export const galaxies = {
   'F7EC0D24': 'Euclid',
   '032FE9B0': 'Euclid',
   'FEA34C10': 'Euclid',
@@ -41,6 +30,4 @@ export const galaxies: Galaxies = {
   '0266CF95': 'Hilbert Dimension',
   'F7EBFD24': 'Euclid',
   'F7EBFD25': 'Euclid',
-};
-// Make 'galaxies' read-only
-Object.freeze(galaxies);
+} as const;

@@ -1,8 +1,8 @@
 <script setup lang="ts">
+import type { CivImageProps, PageLinkProps } from '@/types/homePageProps';
 import { reactive, onMounted } from 'vue';
-import PageLink from '@/components/structure/PageLink.vue';
-import CivImage from '@/components/structure/CivImage.vue';
-import type { CivImageProps, PageLinkProps } from '@/types/objects';
+import CivImage from '@/components/CivImage.vue';
+import PageLink from '@/components/PageLink.vue';
 
 const links: PageLinkProps[] = [
   {
@@ -17,10 +17,6 @@ const links: PageLinkProps[] = [
     img: './assets/images/buttons/1_002.png',
     imgAlt: 'Bases Normales',
   },
-  // {
-  //   text: 'Bases (TESTING)',
-  //   url: './basepruebas.html',
-  // },
   {
     text: '',
     url: './racetrack.html',
@@ -34,11 +30,11 @@ const links: PageLinkProps[] = [
     imgAlt: 'Asentamientos',
   },
   {
-   text: '',
-   url: './fauna.html',
-   img: './assets/images/buttons/1_012_2.png',
-   imgAlt: 'Fauna',
- },
+    text: '',
+    url: './fauna.html',
+    img: './assets/images/buttons/1_012_2.png',
+    imgAlt: 'Fauna',
+  },
   {
     text: '',
     url: './sandworm.html',
@@ -57,12 +53,12 @@ const links: PageLinkProps[] = [
     img: './assets/images/buttons/1_013.png',
     imgAlt: 'Naves',
   },
-  //{
-   // text: '',
-   // url: './multitool.html',
-   // img: './assets/images/buttons/1_007.png',
-   // imgAlt: 'Multiherramientas',
-  //},
+  {
+    text: '',
+    url: './multitool.html',
+    img: './assets/images/buttons/1_007.png',
+    imgAlt: 'Multiherramientas',
+  },
   {
     text: '',
     url: './mineral.html',
@@ -103,12 +99,6 @@ const links: PageLinkProps[] = [
     img: './assets/images/buttons/1_011.png',
     imgAlt: 'Lunas',
   },
-  // {
-  //   text: '',
-  //   url: './tests/test1.html',
-  //   img: '',
-  //   imgAlt: 'Test1',
-  // },
 ];
 
 function getCssVarValue(varName: string) {
@@ -159,18 +149,18 @@ onMounted(() => {
 </script>
 
 <template>
-  <h1 class="title is-spaced">Creador de páginas Wiki</h1>
+  <p class="subtitle is-4 has-text-centered">Elige qué página quieres crear:</p>
   <!-- <div class="subtitle is-4">No hay soporte completo para la versión 5.00 de NMS<br>Elija qué tipo de página desea crear:</div> -->
   <div class="page-options">
     <PageLink v-for="link in links" :url="link.url" :text="link.text" :img="link.img" :imgAlt="link.imgAlt" :disabled="link.inactive" />
   </div>
-  <div class="built-by">
+  <div class="built-by is-4 has-text-centered">
     <div>Traído a usted por:</div>
   </div>
   <div class="images">
     <CivImage v-for="image in images" :img="image.img" :img-alt="image.imgAlt" :link="image.link" />
   </div>
-  <div><b>Royal Space Society</b></div>
+  <div class="images"><b>Royal Space Society</b></div>
 </template>
 
 <style scoped lang="scss">

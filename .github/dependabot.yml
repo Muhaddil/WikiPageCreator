@@ -5,7 +5,18 @@
 
 version: 2
 updates:
-  - package-ecosystem: "npm" # See documentation for possible values
-    directory: "/" # Location of package manifests
+  - package-ecosystem: 'npm' # See documentation for possible values
+    directory: '/' # Location of package manifests
+    target-branch: 'web-dev'
     schedule:
-      interval: "weekly"
+      interval: 'weekly'
+    groups:
+      vitest:
+        patterns:
+          - '*vitest*'
+
+  - package-ecosystem: 'github-actions'
+    directory: '/'
+    target-branch: 'web-dev'
+    schedule:
+      interval: 'weekly'
