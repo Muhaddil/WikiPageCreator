@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { ref, watch, computed, watchEffect } from 'vue';
+import { ref, watch, watchEffect } from 'vue';
 import { usePageDataStore } from '@/stores/pageData';
 import SanitisedTextInput from '../SanitisedTextInput.vue';
 import Panel from 'primevue/panel';

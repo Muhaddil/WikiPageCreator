@@ -84,13 +84,6 @@ const genera = ref<string[]>([]);
 const selectedGenus = ref<string>('');
 const produces = ref<string[]>([]);
 
-function updateGeneraList() {
-  faunas.value.map((fauna) => {
-    const currentEcosystem = fauna.ecosystem;
-    genera.value = Object.keys(creatureData.ecosystems[currentEcosystem] || {});
-  });
-}
-
 watch(
   () => faunas.value.map(fauna => fauna.ecosystem),
   (newEcosystems) => {
