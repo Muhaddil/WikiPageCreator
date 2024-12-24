@@ -21,8 +21,6 @@ import PlanetSentinels from '@/components/inputs/moon/PlanetSentinels.vue';
 import PlanetWeather from '@/components/inputs/moon/PlanetWeather.vue';
 import PlanetFauna from '@/components/inputs/moon/PlanetFauna.vue';
 import PlanetFlora from '@/components/inputs/moon/PlanetFlora.vue';
-import { mapOptions } from '@/helpers/selectMapping';
-import type { SelectOption } from '@/types/selectInputOptions';
 
 const pageData = usePageDataStore();
 const {
@@ -71,12 +69,6 @@ const isCostValid = computed(() => /^\d*$/.test(originalFaunaNum.value));
 watch(originalFaunaNum, (newValue) => {
   faunaNum.value = formatNumberWithCommas(newValue);
 });
-
-const terrainMapping = {
-  'Pangeano': 'Pangean',
-  'Continental': 'Continental',
-  'Semioceánico': 'Semi-Oceanic'
-};
 
 const showDiscoveredLink = computed(() => !discovered.value);
 const showDiscovered = computed(() => !discoveredlink.value);
