@@ -40,6 +40,8 @@ export default defineConfig({
         'settlement.html',
         'starship.html',
         'system.html',
+        'faq.html',
+        'glyphgeneratorV2.html',
       ],
     },
   },
