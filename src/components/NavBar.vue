@@ -6,9 +6,15 @@ const sandwormLink = ref('');
 const faunaLink = ref('');
 const planetLink = ref('');
 const moonLink = ref('');
+const isIndexPage = ref('');
 
 onMounted(() => {
   const currentUrl = window.location.pathname;
+
+  if (currentUrl.includes('.html')) {
+    isIndexPage.value = 'something';
+  }
+
   if (currentUrl.includes('fauna.html')) {
     sandwormLink.value = 'sandworm.html';
   }
@@ -28,7 +34,8 @@ onMounted(() => {
 </script>
 
 <template>
-  <Button :href="'/RSSWikiPageCreator/'" as="a" icon="pi pi-arrow-left" label="Volver al Menu Principal" link />
+  <Button v-if="!isIndexPage" :href="'/'" as="a" icon="pi pi-arrow-left" label="Ver Otras Páginas" link />
+  <Button v-if="isIndexPage" :href="'/RSSWikiPageCreator/'" as="a" icon="pi pi-arrow-left" label="Volver al Menu Principal" link />
 
   <Button v-if="sandwormLink" :href="sandwormLink" as="a" icon="pi pi-arrow-right" label="Ir a Sandworm" link />
   <Button v-if="faunaLink" :href="faunaLink" as="a" icon="pi pi-arrow-right" label="Ir a Fauna" link />

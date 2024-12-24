@@ -7,9 +7,9 @@ const pageData = usePageDataStore();
 
 <template>
   <div class="is-flex is-gap-1 is-align-items-center">
-    <div>{{ 'Failed to fetch release!' }}</div>
+    <div>{{ '¡No se pudo obtener la versión!' }}</div>
     <Button
-      label="Retry"
+      label="Reintentar"
       severity="danger"
       size="small"
       raised
