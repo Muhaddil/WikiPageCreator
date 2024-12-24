@@ -99,7 +99,7 @@ jobs:
   deploy:
     runs-on: ubuntu-latest
     if: ${{ !cancelled() && !failure() }}
-    needs: ['build-main', 'build-pr']
+    needs: ['build-main']
 
     steps:
       - name: Checkout Repo
