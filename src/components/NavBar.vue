@@ -28,7 +28,7 @@ onMounted(() => {
 </script>
 
 <template>
-  <Button :href="'/'" as="a" icon="pi pi-arrow-left" label="Ver otras páginas" link />
+  <Button :href="'/RSSWikiPageCreator/'" as="a" icon="pi pi-arrow-left" label="Volver al Menu Principal" link />
 
   <Button v-if="sandwormLink" :href="sandwormLink" as="a" icon="pi pi-arrow-right" label="Ir a Sandworm" link />
   <Button v-if="faunaLink" :href="faunaLink" as="a" icon="pi pi-arrow-right" label="Ir a Fauna" link />
