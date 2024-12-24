@@ -61,6 +61,9 @@ watch(genus, (newGenus) => {
     produces.value = creatureData.ecosystems[ecosystem.value][newGenus]?.produces || [];
   }
 });
+
+const showDiscoveredLink = computed(() => !discovered.value);
+const showDiscovered = computed(() => !discoveredlink.value);
 </script>
 
 <template>
@@ -170,12 +173,14 @@ watch(genus, (newGenus) => {
   />
 
   <SanitisedTextInput
+    v-if="showDiscoveredLink"
     v-model="discoveredlink"
-    label="Nombre del Descubridor en la wiki:"
+    label="Nombre en la wiki del descubridor:"
   />
   <SanitisedTextInput
+    v-if="showDiscovered"
     v-model="discovered"
-    label="Alias del Descubridor si no tiene wiki:"
+    label="Alias del descubridor si no tiene wiki:"
   />
 
   <GameModeSelect v-model="mode" />

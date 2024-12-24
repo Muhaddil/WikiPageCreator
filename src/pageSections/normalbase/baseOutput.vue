@@ -31,6 +31,8 @@ const {
   features,
   layout,
   additionalInfo,
+  docBy,
+  docBySentence,
 } = storeToRefs(pageData);
 
 const locationSentence = computed(() => {
@@ -95,6 +97,7 @@ const formattedFeatures = computed(() => {
   <br />
   <div>==Additional Information==</div>
   <div>{{ additionalInfo }}</div>
+  <div v-if="docBy && docBy !== discoveredlink && docBy !== discovered">Documented by {{ docBySentence }}</div>
   <br />
   <div>==Gallery==</div>
   <GalleryOutput />

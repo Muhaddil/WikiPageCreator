@@ -5,6 +5,7 @@ import SingleFileUpload from '@/components/inputs/SingleFileUpload.vue';
 import TextareaInput from '@/components/inputs/TextareaInput.vue';
 import { usePageDataStore } from '@/stores/pageData';
 import { storeToRefs } from 'pinia';
+import { computed } from 'vue';
 import GameModeSelect from '@/components/inputs/GameModeSelect.vue';
 import DateSelect from '@/components/inputs/DateSelect.vue';
 import GalleryInput from '@/components/inputs/gallery/GalleryInput.vue';
@@ -39,6 +40,9 @@ const {
   docBy,
   age,
 } = storeToRefs(pageData);
+
+const showDiscoveredLink = computed(() => !discovered.value);
+const showDiscovered = computed(() => !discoveredlink.value);
 </script>
 
 <template>
@@ -78,16 +82,13 @@ const {
     cuantos modelos de flora diferentes tenían este nombre.
   </SanitisedTextInput>
 
-  <ResourceInput label="Elemento Primario" :index="0"/>
-  <ResourceInput label="Elemento Secundario" :index="1"/>
+  <ResourceInput label="Elemento Primario" :index="0" />
+  <ResourceInput label="Elemento Secundario" :index="1" />
 
-  <DateSelect
-      v-model="discDate"
-      label="Fecha del descubrimiento"
-  />
+  <DateSelect v-model="discDate" label="Fecha del descubrimiento" />
 
-  <SanitisedTextInput v-model="discoveredlink" label="Nombre del Descubridor en la wiki:" />
-  <SanitisedTextInput v-model="discovered" label="Alias del Descubridor si no tiene wiki:" v-if="!discoveredlink" />
+  <SanitisedTextInput v-if="showDiscoveredLink" v-model="discoveredlink" label="Nombre en la wiki del descubridor:" />
+  <SanitisedTextInput v-if="showDiscovered" v-model="discovered" label="Alias del descubridor si no tiene wiki:" />
   <SanitisedTextInput v-model="docBy" label="Nombre del documentador si no es el descubridor:" />
 
   <GameModeSelect v-model="mode" />

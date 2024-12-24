@@ -38,6 +38,9 @@ const {
 const isPopulationAmmountValid = computed(() => {
   return /^\d*$/.test(populationammount.value);
 });
+
+const showDiscoveredLink = computed(() => !discovered.value);
+const showDiscovered = computed(() => !discoveredlink.value);
 </script>
 
 <template>
@@ -79,26 +82,25 @@ const isPopulationAmmountValid = computed(() => {
   </SanitisedTextInput> -->
 
   <SanitisedTextInput v-model="populationammount" tooltip="Cantidad de población del asentamiento"
-    label="Cantidad de población del asentamiento" help-img="settlement/populationAmount"
-    help-title="Industria" :invalid="!isPopulationAmmountValid"
-    error-message="Solo numeros" maxlength="3">La cantidad de población del asentamiento.</SanitisedTextInput>
+    label="Cantidad de población del asentamiento" help-img="settlement/populationAmount" help-title="Industria"
+    :invalid="!isPopulationAmmountValid" error-message="Solo numeros" maxlength="3">La cantidad de población del
+    asentamiento.</SanitisedTextInput>
 
-    <SanitisedTextInput v-model="settlementproduction" tooltip="El producto que produce el asentamiento"
+  <SanitisedTextInput v-model="settlementproduction" tooltip="El producto que produce el asentamiento"
     label="Cantidad de población del asentamiento" help-img="settlement/settlementProduction"
     help-title="Cantidad de población del asentamiento">El producto que produce el asentamiento. <br />
-    <b>A poder ser mirar el recurso en la wiki inglesa o dejarlo en español y avisar a algun mod en discord para que os ayude.</b></SanitisedTextInput>
+    <b>A poder ser mirar el recurso en la wiki inglesa o dejarlo en español y avisar a algun mod en discord para que os
+      ayude.</b>
+  </SanitisedTextInput>
 
   <GameModeSelect v-model="mode" />
   <PlatformSelect v-model="platform" />
 
-  <SanitisedTextInput v-model="discoveredlink" label="Nombre en la wiki del supervisor:" />
-  <SanitisedTextInput v-model="discovered" label="Alias de supervisor si no tiene wiki" />
+  <SanitisedTextInput v-if="showDiscoveredLink" v-model="discoveredlink" label="Nombre en la wiki del supervisor:" />
+  <SanitisedTextInput v-if="showDiscovered" v-model="discovered" label="Alias del supervisor si no tiene wiki:" />
   <SanitisedTextInput v-model="docBy" label="Documentado por (en caso de no ser el supervisor):" />
 
-    <TextareaInput
-      v-model="additionalInfo"
-      label="Información Adicional"
-    />
+  <TextareaInput v-model="additionalInfo" label="Información Adicional" />
 
   <GalleryInput />
 </template>

@@ -61,7 +61,8 @@ const formattedExocraftTable = computed(() => {
   <div>'''{{ name }}''' is a racetrack.</div>
   <br />
   <div>==Summary==</div>
-  <div>'''{{ name }}''' is a [[racetrack]], located on the <span v-if="moon">[[moon]] [[{{ moon }}]] of the</span> [[planet]] [[{{planet}}]] in the [[{{ system }}]] system.</div>
+  <div>'''{{ name }}''' is a [[racetrack]], located on the <span v-if="moon">[[moon]] [[{{ moon }}]] of the</span>
+    [[planet]] [[{{ planet }}]] in the [[{{ system }}]] system.</div>
   It is suited for {{ formattedExocraftTable }}.
   <br />
   <br />
@@ -73,8 +74,8 @@ const formattedExocraftTable = computed(() => {
   <br />
   <div>==Additional Information==</div>
   <div>{{ additionalInfo }}</div>
-      <div v-if="docBy && docBy !== discoveredlink && docBy !== discovered">Documented by {{ docBySentence }}</div>
-      <br />
+  <div v-if="docBy && docBy !== discoveredlink && docBy !== discovered">Documented by {{ docBySentence }}</div>
+  <br />
   <div>==Gallery==</div>
   <GalleryOutput />
 </template>

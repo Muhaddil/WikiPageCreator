@@ -37,7 +37,7 @@ const {
   navImage,
   ssImage,
   generatedOutput,
-  addInfo,
+  additionalInfo,
   tradeTerminal,
   modulesMT,
   modulesSS,
@@ -306,7 +306,8 @@ watch(discoveredlink, (newDiscoveredLinkValue) => {
   </div>
   <br />
   <div>==Additional Information==</div>
-  <div>{{ addInfo }}</div>
+  <div>{{ additionalInfo }}</div>
+  <div v-if="docBy && docBy !== discoveredlink && docBy !== discovered">Documented by {{ docBySentence }}</div>
   <br />
   <div>==Gallery==</div>
   <GalleryOutput />

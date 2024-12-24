@@ -37,6 +37,9 @@ const {
 const isMaxDepthValid = computed(() => {
   return /^\d*$/.test(maxdepth.value);
 });
+
+const showDiscoveredLink = computed(() => !discovered.value);
+const showDiscovered = computed(() => !discoveredlink.value);
 </script>
 
 <template>
@@ -53,24 +56,19 @@ const isMaxDepthValid = computed(() => {
   <GlyphInput v-model="glyphs" />
 
   <Class v-model="sandwormclass" />
-  <SanitisedTextInput v-model="maxdepth" label="Máxima profundidad:" :invalid="!isMaxDepthValid" error-message="Sólo debe contener números"/>
+  <SanitisedTextInput v-model="maxdepth" label="Máxima profundidad:" :invalid="!isMaxDepthValid"
+    error-message="Sólo debe contener números" />
   <StomachContentInput v-model="stomachContent" />
   <AppearonReload v-model="appearonreload" />
 
   <GameModeSelect v-model="mode" />
 
-  <SanitisedTextInput v-model="discoveredlink" label="Nombre en la wiki del descubridor" />
-  <SanitisedTextInput v-model="discovered" label="Alias del ​​descubridor si no tiene wiki" />
+  <SanitisedTextInput v-if="showDiscoveredLink" v-model="discoveredlink" label="Nombre en la wiki del descubridor:" />
+  <SanitisedTextInput v-if="showDiscovered" v-model="discovered" label="Alias del descubridor si no tiene wiki:" />
   <SanitisedTextInput v-model="docBy" label="Alias del documentador si no es el descubridor:" />
-  <SanitisedTextInput
-    v-model="researchteam2"
-    label="Departamento: (Opcional)"
-  />
+  <SanitisedTextInput v-model="researchteam2" label="Departamento: (Opcional)" />
 
-    <TextareaInput
-      v-model="appearance"
-      label="Apariencia"
-    />
+  <TextareaInput v-model="appearance" label="Apariencia" />
 
   <GalleryInput />
 </template>

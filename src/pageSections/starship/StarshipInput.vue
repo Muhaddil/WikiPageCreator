@@ -85,31 +85,22 @@ watch(type, (newType) => {
 
 updateSubtypeOptions(type.value);
 statsClass.value = statsClassData[type.value]?.[0]?.value || '';
+
+const showDiscoveredLink = computed(() => !discovered.value);
+const showDiscovered = computed(() => !discoveredlink.value);
 </script>
 
 <template>
-  <SanitisedTextInput
-    v-model="name"
-    help-img="settlement/settlementName"
-    help-title="Nombre del Asentamiento"
-    label="Nombre"
-    tooltip="Escribe exactamente como se ve en el juego. Cuidado con 0 (cero) y O (o)."
-  >
+  <SanitisedTextInput v-model="name" help-img="settlement/settlementName" help-title="Nombre del Asentamiento"
+    label="Nombre" tooltip="Escribe exactamente como se ve en el juego. Cuidado con 0 (cero) y O (o).">
     Escribe exactamente como se ve en el juego. Cuidado con 0 (cero) y O (o).
   </SanitisedTextInput>
-  <SingleFileUpload
-    v-model="image"
-    label="Imagen principal"
-    help-title="Subida de Archivo"
-    tooltip="La imagen no se subirá a la wiki. Esto es solo para completar automáticamente el nombre de la imagen."
-  >
+  <SingleFileUpload v-model="image" label="Imagen principal" help-title="Subida de Archivo"
+    tooltip="La imagen no se subirá a la wiki. Esto es solo para completar automáticamente el nombre de la imagen.">
     <FileUploadNotice />
   </SingleFileUpload>
   <TypeSelect v-model="type" />
-  <SanitisedTextInput
-    v-model="system"
-    label="Nombre del Sistema"
-  />
+  <SanitisedTextInput v-model="system" label="Nombre del Sistema" />
   <WealthSelect v-model="wealth" />
   <GlyphInput v-model="glyphs" />
 
@@ -119,11 +110,7 @@ statsClass.value = statsClassData[type.value]?.[0]?.value || '';
     </template>
 
     <template #input>
-      <SelectDropdown
-        v-model="subtype"
-        :aria-labelledby="subtype"
-        :options="typeSpecificValues.subtypes"
-      />
+      <SelectDropdown v-model="subtype" :aria-labelledby="subtype" :options="typeSpecificValues.subtypes" />
     </template>
   </InputTableItem>
 
@@ -133,31 +120,15 @@ statsClass.value = statsClassData[type.value]?.[0]?.value || '';
     </template>
 
     <template #input>
-      <SelectDropdown
-        v-model="inventory"
-        :aria-labelledby="inventory"
-        :options="mappedsizeMapping"
-      />
+      <SelectDropdown v-model="inventory" :aria-labelledby="inventory" :options="mappedsizeMapping" />
     </template>
   </InputTableItem>
 
-  <SanitisedTextInput
-    v-model="discoveredlink"
-    label="Nombre en la wiki del descubridor:"
-  />
-  <SanitisedTextInput
-    v-model="discovered"
-    label="Alias del descubridor si no tiene wiki:"
-  />
-  <SanitisedTextInput
-    v-model="docBy"
-    label="Alias del documentador si no es el descubridor:"
-  />
+  <SanitisedTextInput v-if="showDiscoveredLink" v-model="discoveredlink" label="Nombre en la wiki del descubridor:" />
+  <SanitisedTextInput v-if="showDiscovered" v-model="discovered" label="Alias del descubridor si no tiene wiki:" />
+  <SanitisedTextInput v-model="docBy" label="Alias del documentador si no es el descubridor:" />
 
-  <SanitisedTextInput
-    v-model="researchteam2"
-    label="Departamento: (Opcional)"
-  />
+  <SanitisedTextInput v-model="researchteam2" label="Departamento: (Opcional)" />
 
   <StarShipAppearance v-model="appearance"></StarShipAppearance>
 

@@ -74,6 +74,8 @@ const isDistanceValid = computed(() => {
   return regex.test(distance.value);
 });
 
+const showDiscoveredLink = computed(() => !discovered.value);
+const showDiscovered = computed(() => !discoveredlink.value);
 </script>
 
 <template>
@@ -118,7 +120,8 @@ const isDistanceValid = computed(() => {
 
   <SanitisedTextInput v-model="distance" label="Distancia al centro:"
     tooltip="Encontrado en el mapa de galaxias. Haga clic aquí para obtener una guía sobre cómo obtener un valor preciso."
-    help-title="Distancia al centro" error-message="Formato incorrecto, el formato correcto debe ser '319.487'" :invalid="!isDistanceValid">
+    help-title="Distancia al centro" error-message="Formato incorrecto, el formato correcto debe ser '319.487'"
+    :invalid="!isDistanceValid">
     En el mapa de galaxias, mueve la cámara <span class="is-italic">muy</span> cerca de la estrella.<br>
     Debes desenfocar el sistema para poder acercarte lo suficiente a la estrella. Si básicamente estás dentro de la
     estrella, esa es la posición correcta.<br>
@@ -159,9 +162,10 @@ const isDistanceValid = computed(() => {
   <InputTableItem>
     <template #label>
       <div class="is-flex is-justify-content-space-between is-align-items-center full-width">
-      <label for="water-checkbox">¿Agua en el sistema?</label>
-      <Explainer tooltip="Encontrado en el mapa de galaxias. Si no muestra Agua, no hay agua" help-img="system/water" help-title="Agua">Encontrado en el mapa de galaxias. Si no muestra "Agua", no hay agua.</Explainer>
-    </div>
+        <label for="water-checkbox">¿Agua en el sistema?</label>
+        <Explainer tooltip="Encontrado en el mapa de galaxias. Si no muestra Agua, no hay agua" help-img="system/water"
+          help-title="Agua">Encontrado en el mapa de galaxias. Si no muestra "Agua", no hay agua.</Explainer>
+      </div>
     </template>
     <template #input>
       <Checkbox v-model="water" false-value="No" input-id="water-checkbox" true-value="Yes" binary />
@@ -171,9 +175,11 @@ const isDistanceValid = computed(() => {
   <InputTableItem>
     <template #label>
       <div class="is-flex is-justify-content-space-between is-align-items-center full-width">
-      <label for="dissonant-checkbox">¿Sistema disonante?</label>
-      <Explainer tooltip="Encontrado en el mapa de galaxias. Si no muestra Disonante, no es disonante." help-img="system/dissonant" help-title="Disonante">Encontrado en el mapa de galaxias. Si no muestra "Disonante", no marque la caja.</Explainer>
-    </div>
+        <label for="dissonant-checkbox">¿Sistema disonante?</label>
+        <Explainer tooltip="Encontrado en el mapa de galaxias. Si no muestra Disonante, no es disonante."
+          help-img="system/dissonant" help-title="Disonante">Encontrado en el mapa de galaxias. Si no muestra
+          "Disonante", no marque la caja.</Explainer>
+      </div>
     </template>
     <template #input>
       <Checkbox v-model="dissonant" false-value="No" input-id="dissonant-checkbox" true-value="Yes" binary />
@@ -184,8 +190,14 @@ const isDistanceValid = computed(() => {
   <SystemRace v-model="faction" />
   <SystemEconomy v-model="economy" />
 
-  <SanitisedTextInput v-model="economysell" label="Economía Vender:"tooltip="Encontrado en la vista ampliada del mapa galáctico" help-img="system/e-sell" help-title="Economía-Vender">Encontrado en la vista ampliada del mapa galáctico.<br>El botón para ingresar a la vista ampliada se muestra debajo del cuadro con los detalles del sistema.</SanitisedTextInput>
-  <SanitisedTextInput v-model="economybuy" label="Economía Comprar:" tooltip="Encontrado en la vista ampliada del mapa galáctico" help-img="system/e-buy" help-title="Economía-Comprar">Encontrado en la vista ampliada del mapa galáctico.<br>El botón para ingresar a la vista ampliada se muestra debajo del cuadro con los detalles del sistema.</SanitisedTextInput>
+  <SanitisedTextInput v-model="economysell" label="Economía Vender:"
+    tooltip="Encontrado en la vista ampliada del mapa galáctico" help-img="system/e-sell" help-title="Economía-Vender">
+    Encontrado en la vista ampliada del mapa galáctico.<br>El botón para ingresar a la vista ampliada se muestra debajo
+    del cuadro con los detalles del sistema.</SanitisedTextInput>
+  <SanitisedTextInput v-model="economybuy" label="Economía Comprar:"
+    tooltip="Encontrado en la vista ampliada del mapa galáctico" help-img="system/e-buy" help-title="Economía-Comprar">
+    Encontrado en la vista ampliada del mapa galáctico.<br>El botón para ingresar a la vista ampliada se muestra debajo
+    del cuadro con los detalles del sistema.</SanitisedTextInput>
 
   <WealthSelect v-model="wealth" />
   <SystemConflict v-model="conflict" />
@@ -194,8 +206,8 @@ const isDistanceValid = computed(() => {
   <DateSelect v-model="docDate" label="¿Cuándo se documentó este sistema?" />
   <GameModeSelect v-model="mode" />
   <PlatformSelect v-model="platform" />
-  <SanitisedTextInput v-model="discoveredlink" label="Nombre del Descubridor en la wiki:" />
-  <SanitisedTextInput v-model="discovered" label="Alias del Descubridor si no tiene wiki:" v-if="!discoveredlink" />
+  <SanitisedTextInput v-if="showDiscoveredLink" v-model="discoveredlink" label="Nombre en la wiki del descubridor:" />
+  <SanitisedTextInput v-if="showDiscovered" v-model="discovered" label="Alias del descubridor si no tiene wiki:" />
   <SanitisedTextInput v-model="docBy" label="Nombre del documentador si no es el descubridor:" />
 
   <TradeableInput />

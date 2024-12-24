@@ -16,7 +16,7 @@ const id = useId('planetweather');
   <InputTableItem>
     <template #label>
       <div class="is-flex is-justify-content-space-between is-align-items-center full-width">
-        <label :id>Clima del planeta::</label>
+        <label :id>Clima del planeta:</label>
         <Explainer tooltip="Se puede encontrar en el menú de descubrimiento." help-img="planet/weather" help-title="El tiempo del planeta">
           Se puede encontrar en el menú de descubrimiento.
         </Explainer>

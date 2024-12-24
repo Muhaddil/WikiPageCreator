@@ -17,13 +17,14 @@ const {
   glyphs,
   regionData,
   royalclass,
-  additionalInfo,
+  docBy,
   cost,
   combat,
   exploration,
   industrial,
   fuel,
   trade,
+  docBySentence,
   appearance,
 } = storeToRefs(pageData);
 
@@ -80,7 +81,7 @@ const {
   <div>The <span v-pre>{{Class</span>|{{ royalclass }}<span v-pre>}}</span> class version of this frigate can be found in the [[{{ system }}]] [[star system]] in the [[{{ regionData.region }}]] [[region]] of [[Royal Space Society]], in the [[{{ regionData.galaxy }}]] [[galaxy]].</div>
   <br />
   <div>==Additional Information==</div>
-  <div>{{ additionalInfo }}</div>
+  <div v-if="docBy && docBy !== discoveredlink && docBy !== discovered">Documented by {{ docBySentence }}</div>
   <br />
   <div>==Gallery==</div>
   <GalleryOutput />

@@ -12,6 +12,7 @@ export interface BuiltByProps {
   imgAlt?: string;
   img?: string;
 }
+
 export interface CivImageProps {
   link?: string;
   imgAlt: string;

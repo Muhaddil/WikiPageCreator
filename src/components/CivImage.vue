@@ -7,20 +7,18 @@ defineProps<CivImageProps>();
 <template>
   <a
     :href="link"
-    rel="noopener noreferrer"
     target="_blank"
+    rel="noopener noreferrer"
   >
     <img
-      :alt="imgAlt"
       :src="img"
+      :alt="imgAlt"
     />
   </a>
 </template>
 
-<style scoped>
+<style scoped lang="scss">
 img {
-  width: min(100%, 200px);
+  width: 200px;
 }
 </style>
-
-

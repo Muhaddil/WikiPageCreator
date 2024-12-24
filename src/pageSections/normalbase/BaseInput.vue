@@ -6,7 +6,7 @@ import SingleFileUpload from '@/components/inputs/SingleFileUpload.vue';
 import TextareaInput from '@/components/inputs/TextareaInput.vue';
 import { usePageDataStore } from '@/stores/pageData';
 import { storeToRefs } from 'pinia';
-import { reactive } from 'vue';
+import { reactive, computed } from 'vue';
 import Fieldset from 'primevue/fieldset';
 import type { CheckboxData } from '@/types/checkboxTypes';
 import GridCheckboxWrapper from '@/components/GridCheckboxWrapper.vue';
@@ -40,6 +40,7 @@ const {
   layout,
   features,
   additionalInfo,
+  docBy,
 } = storeToRefs(pageData);
 
 const featureCheckboxes: CheckboxData[] = reactive([
@@ -50,6 +51,9 @@ const featureCheckboxes: CheckboxData[] = reactive([
   { model: arena, label: 'Arena' },
   { model: racetrack, label: 'Pista de Carreras' },
 ]);
+
+const showDiscoveredLink = computed(() => !discovered.value);
+const showDiscovered = computed(() => !discoveredlink.value);
 </script>
 
 <template>
@@ -113,17 +117,23 @@ const featureCheckboxes: CheckboxData[] = reactive([
   </Fieldset>
 
   <SanitisedTextInput
+    v-if="showDiscoveredLink"
     v-model="discoveredlink"
     label="Nombre en la wiki del constructor"
   />
   <SanitisedTextInput
+    v-if="showDiscovered"
     v-model="discovered"
     label="Alias del constructor si no hay wiki"
+  />
+  <SanitisedTextInput
+    v-model="docBy"
+    label="Documentado por (en caso de no ser el constructor):"
   />
 
   <GameModeSelect v-model="mode" />
   <PlatformSelect v-model="platform" />
-  <!-- <DepartmentSelect v-model="researchteam2" /> -->
+
   <SanitisedTextInput
     v-model="researchteam2"
     label="Departamento: (Opcional)"

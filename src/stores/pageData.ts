@@ -160,6 +160,10 @@ interface PageData {
   fuel: string;
   trade: string;
   sentinelInfo: string;
+  roomNumber: string;
+  otherupgrades: string;
+  hyperdrive: string;
+  derelictEnemies: string;
 }
 
 const defaultState: PageData = {
@@ -304,6 +308,10 @@ const defaultState: PageData = {
   industrial: '',
   fuel: '',
   trade: '',
+  roomNumber: '',
+  otherupgrades: '',
+  hyperdrive: '',
+  derelictEnemies: '',
   presetData: structuredClone(defaultData),
 };
 

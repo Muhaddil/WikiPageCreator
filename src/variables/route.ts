@@ -17,6 +17,8 @@ export const router: Record<string, string> = {
   multitool: 'Multitool',
   planet: 'Planet',
   biofrig: 'Biofrig',
+  derelict: 'Derelict',
+  moon: 'Moon',
 };
 
 export const route = getCurrentRoute();
@@ -61,8 +63,14 @@ switch (route) {
   case 'planet':
     exportName = 'Planetas';
     break;
+  case 'moon':
+    exportName = 'Lunas';
+    break;
   case 'biofrig':
     exportName = 'Fragata Orgánica';
+    break;
+  case 'derelict':
+    exportName = 'Cargueros Abandonados';
     break;
   case '':
     exportName = 'Home';

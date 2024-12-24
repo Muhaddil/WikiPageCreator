@@ -196,9 +196,9 @@ watch(savelocation, (newValue) => {
 });
 
 const featureCheckboxes: CheckboxData[] = reactive([
-  { model: crystals, label: 'Cristales', falseValue: ''},
-  { model: horns, label: 'Cuernos', falseValue: ''},
-  { model: glowtubes, label: 'Tubos Luminosos', falseValue: ''},
+  { model: crystals, label: 'Cristales', falseValue: '' },
+  { model: horns, label: 'Cuernos', falseValue: '' },
+  { model: glowtubes, label: 'Tubos Luminosos', falseValue: '' },
 ]);
 
 const isDamageValid = computed(() => /^\d*$/.test(damagePotential.value));
@@ -225,6 +225,8 @@ watch(originalCost, (newValue) => {
   cost.value = formatNumberWithCommas(newValue);
 });
 
+const showDiscoveredLink = computed(() => !discovered.value);
+const showDiscovered = computed(() => !discoveredlink.value);
 </script>
 
 <template>
@@ -326,36 +328,56 @@ watch(originalCost, (newValue) => {
         tooltip="Si la herramienta tiene estas características." helpImg="mt/addons"> Marque las casillas que se aplican
         a la herramienta.<br>
         Existen ciertas reglas para algunos tipos de MT a fin de calificar para el complemento.<br>
-        <a href="https://nomanssky.fandom.com/wiki/Multi-Tool_Catalogue#Add-ons" data-wiki>La información detallada se puede encontrar en la wiki.</a>
+        <a href="https://nomanssky.fandom.com/wiki/Multi-Tool_Catalogue#Add-ons" data-wiki>La información detallada se
+          puede encontrar en la wiki.</a>
       </Explainer>
     </div>
     <GridCheckboxWrapper :checkboxes="featureCheckboxes" />
   </Fieldset>
 
-  <SanitisedTextInput v-model="slots" label="Número de slots:" :maxlength="3" help-img="mt/slots" help-title="Número de slots" :invalid="!isSlotsValid" error-message="Solo debe contener numeros" tooltip="Se puede encontrar en la página de precios.">Número de ranuras de la herramienta. Se puede encontrar en la página de precios.</SanitisedTextInput>
+  <SanitisedTextInput v-model="slots" label="Número de slots:" :maxlength="3" help-img="mt/slots"
+    help-title="Número de slots" :invalid="!isSlotsValid" error-message="Solo debe contener numeros"
+    tooltip="Se puede encontrar en la página de precios.">Número de ranuras de la herramienta. Se puede encontrar en la
+    página de precios.</SanitisedTextInput>
 
-  <SanitisedTextInput v-model="originalCost" label="Coste:" help-img="mt/price" help-title="Precio de la multiherramienta" :invalid="!isCostValid" error-message="Solo debe contener numeros" tooltip="Se puede encontrar en la página de precios.">Se puede encontrar en la página de precios. Ingrese el precio de compra, no el precio de intercambio.</SanitisedTextInput>
+  <SanitisedTextInput v-model="originalCost" label="Coste:" help-img="mt/price"
+    help-title="Precio de la multiherramienta" :invalid="!isCostValid" error-message="Solo debe contener numeros"
+    tooltip="Se puede encontrar en la página de precios.">Se puede encontrar en la página de precios. Ingrese el precio
+    de
+    compra, no el precio de intercambio.</SanitisedTextInput>
 
-  <SanitisedTextInput v-model="damagePotential" label="Daño base de la multiherramienta:" :invalid="!isDamageValid" error-message="Solo debe contener numeros" help-img="mt/baseDmg" help-title="Daño base de la multiherramienta" tooltip="Daño base sin mejoras instaladas.">Daño base sin mejoras instaladas. Es necesario desmantelar todas las tecnologías, excepto el escáner y el laser de extracción. Tenga cuidado de que no se utilicen ranuras sobrecargadas (azul claro).</SanitisedTextInput>
+  <SanitisedTextInput v-model="damagePotential" label="Daño base de la multiherramienta:" :invalid="!isDamageValid"
+    error-message="Solo debe contener numeros" help-img="mt/baseDmg" help-title="Daño base de la multiherramienta"
+    tooltip="Daño base sin mejoras instaladas.">Daño base sin mejoras instaladas. Es necesario desmantelar todas las
+    tecnologías, excepto el escáner y el laser de extracción. Tenga cuidado de que no se utilicen ranuras sobrecargadas
+    (azul claro).</SanitisedTextInput>
 
-  <SanitisedTextInput v-model="scannerRange" label="Rango base del escáner:" :invalid="!isScannerValid" error-message="Solo debe contener numeros" help-img="mt/baseScan" help-title="Rango del Escanes base" tooltip="Rango del escaner base sin mejoras instaladas.">Rango del escaner base sin mejoras instaladas. Es necesario desmantelar todas las tecnologías, excepto el escáner y el laser de extracción. Tenga cuidado de que no se utilicen ranuras sobrecargadas (azul claro).</SanitisedTextInput>
+  <SanitisedTextInput v-model="scannerRange" label="Rango base del escáner:" :invalid="!isScannerValid"
+    error-message="Solo debe contener numeros" help-img="mt/baseScan" help-title="Rango del Escanes base"
+    tooltip="Rango del escaner base sin mejoras instaladas.">Rango del escaner base sin mejoras instaladas. Es necesario
+    desmantelar todas las tecnologías, excepto el escáner y el laser de extracción. Tenga cuidado de que no se utilicen
+    ranuras sobrecargadas (azul claro).</SanitisedTextInput>
 
-  <div><label>Notas: Estas imágenes deben ser del menú de descubrimiento (excepto coordenadas)</label></div> <br/>
-  <SingleFileUpload v-model="image" label="Guardar/Recargar ubicación" help-title="Guardar/Recargar imagen de ubicación" help-img="mt/srExample"
+  <div><label>Notas: Estas imágenes deben ser del menú de descubrimiento (excepto coordenadas)</label></div> <br />
+  <SingleFileUpload v-model="image" label="Guardar/Recargar ubicación" help-title="Guardar/Recargar imagen de ubicación"
+    help-img="mt/srExample" tooltip="Haga clic para ver una imagen de ejemplo.">
+  </SingleFileUpload>
+
+  <SingleFileUpload v-model="image" label="Sistema (Gabinete Planetario resaltado)"
+    help-title="Guardar/Recargar imagen de ubicación" help-img="mt/sysExample"
     tooltip="Haga clic para ver una imagen de ejemplo.">
   </SingleFileUpload>
-  <SingleFileUpload v-model="image" label="Sistema (Gabinete Planetario resaltado)" help-title="Guardar/Recargar imagen de ubicación" help-img="mt/sysExample"
-    tooltip="Haga clic para ver una imagen de ejemplo.">
-  </SingleFileUpload>
-  <SingleFileUpload v-model="image" label="Gabinete Planetario" help-title="Guardar/Recargar imagen de ubicación" help-img="mt/srExample"
-    tooltip="Haga clic para ver una imagen de ejemplo.">
-  </SingleFileUpload>
-  <SingleFileUpload v-model="image" label="Coordenadas" help-title="Guardar/Recargar imagen de ubicación" help-img="mt/coordExample"
-    tooltip="Haga clic para ver una imagen de ejemplo.">
+
+  <SingleFileUpload v-model="image" label="Gabinete Planetario" help-title="Guardar/Recargar imagen de ubicación"
+    help-img="mt/srExample" tooltip="Haga clic para ver una imagen de ejemplo.">
   </SingleFileUpload>
 
-  <SanitisedTextInput v-model="discoveredlink" label="Nombre en la wiki del constructor" />
-  <SanitisedTextInput v-model="discovered" label="Alias del constructor si no hay wiki" />
+  <SingleFileUpload v-model="image" label="Coordenadas" help-title="Guardar/Recargar imagen de ubicación"
+    help-img="mt/coordExample" tooltip="Haga clic para ver una imagen de ejemplo.">
+  </SingleFileUpload>
+
+  <SanitisedTextInput v-if="showDiscoveredLink" v-model="discoveredlink" label="Nombre en la wiki del descubridor:" />
+  <SanitisedTextInput v-if="showDiscovered" v-model="discovered" label="Alias del descubridor si no tiene wiki:" />
 
   <GameModeSelect v-model="mode" />
   <PlatformSelect v-model="platform" />

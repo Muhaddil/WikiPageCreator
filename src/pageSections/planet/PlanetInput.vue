@@ -82,6 +82,9 @@ const terrainMapping = {
 };
 
 const mappedterrainMapping: SelectOption[] = mapOptions(terrainMapping);
+
+const showDiscoveredLink = computed(() => !discovered.value);
+const showDiscovered = computed(() => !discoveredlink.value);
 </script>
 
 <template>
@@ -113,18 +116,16 @@ const mappedterrainMapping: SelectOption[] = mapOptions(terrainMapping);
   <BiomeInput v-model="biome" />
   <MoonInputs v-model="systemplanets" />
   <PlanetDescriptors v-model="Planetdescriptors" />
-  <SanitisedTextInput v-model="atmosphere" label="Atmósfera del planeta:"tooltip="Se puede encontrar en la guía de exploración." help-img="planet/atmosphere" help-title="Atmósfera del planeta">Se puede encontrar en la guía de exploración.</SanitisedTextInput>
+  <SanitisedTextInput v-model="atmosphere" label="Atmósfera del planeta:"
+    tooltip="Se puede encontrar en la guía de exploración." help-img="planet/atmosphere"
+    help-title="Atmósfera del planeta">Se puede encontrar en la guía de exploración.</SanitisedTextInput>
   <InputTableItem>
     <template #label>
       <label>Terreno del planeta:</label>
     </template>
 
     <template #input>
-      <SelectDropdown
-        v-model="terrain"
-        :aria-labelledby="terrain"
-        :options="mappedterrainMapping"
-      />
+      <SelectDropdown v-model="terrain" :aria-labelledby="terrain" :options="mappedterrainMapping" />
     </template>
   </InputTableItem>
   <PlanetWeather v-model="weather" />
@@ -133,18 +134,18 @@ const mappedterrainMapping: SelectOption[] = mapOptions(terrainMapping);
 
   <PlanetFlora v-model="flora" />
   <PlanetFauna v-model="fauna" />
-  <SanitisedTextInput v-model="originalFaunaNum" label="Número de Fauna:" help-img="planet/faunaNum" help-title="Número de fauna del planeta" :invalid="!isCostValid" error-message="Solo debe contener numeros" tooltip="Se puede encontrar en el menú de descubrimiento.">Se puede encontrar en el menú de descubrimiento.</SanitisedTextInput>
+  <SanitisedTextInput v-model="originalFaunaNum" label="Número de Fauna:" help-img="planet/faunaNum"
+    help-title="Número de fauna del planeta" :invalid="!isCostValid" error-message="Solo debe contener numeros"
+    tooltip="Se puede encontrar en el menú de descubrimiento.">Se puede encontrar en el menú de descubrimiento.
+  </SanitisedTextInput>
 
   <DateSelect v-model="discDate" label="¿Cuándo se descubrió este planeta?"></DateSelect>
   <DateSelect v-model="docDate" label="¿Cuándo se documentó este planeta?" />
-  <SanitisedTextInput
-    v-model="researchteam2"
-    label="Departamento: (Opcional)"
-  />
+  <SanitisedTextInput v-model="researchteam2" label="Departamento: (Opcional)" />
   <GameModeSelect v-model="mode" />
   <PlatformSelect v-model="platform" />
-  <SanitisedTextInput v-model="discoveredlink" label="Nombre del Descubridor en la wiki:" />
-  <SanitisedTextInput v-model="discovered" label="Alias del Descubridor si no tiene wiki:" v-if="!discoveredlink" />
+  <SanitisedTextInput v-if="showDiscoveredLink" v-model="discoveredlink" label="Nombre en la wiki del descubridor:" />
+  <SanitisedTextInput v-if="showDiscovered" v-model="discovered" label="Alias del descubridor si no tiene wiki:" />
   <SanitisedTextInput v-model="docBy" label="Nombre del documentador si no es el descubridor:" />
 
   <TextareaInput v-model="additionalInfo" label="Información Adicional:" />

@@ -58,6 +58,8 @@ const activeCelestialBody = computed(() => {
 });
 
 const id = useId('glyph-input-');
+
+const showDeleteButton = computed(() => model.value);
 </script>
 
 <template>
@@ -66,7 +68,7 @@ const id = useId('glyph-input-');
       <div class="column is-flex is-align-items-center is-justify-content-space-between is-row-gap-1 is-column-gap-2">
         <div class="is-flex is-flex-wrap-wrap is-align-items-center is-row-gap-1 is-column-gap-2">
           <label :for="id">Glifos</label>
-          <div>
+          <div v-if="showDeleteButton">
             <Button
               icon="pi pi-delete-left"
               label="Borrar"

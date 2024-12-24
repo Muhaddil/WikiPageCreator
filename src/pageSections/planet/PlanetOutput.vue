@@ -95,7 +95,7 @@ const faunaVerb = computed(() => {
 
 <template>
   <div><span v-pre>{{Version|</span>{{ release }}<span v-pre>}}</span></div>
-  <div v-pre>{{System infobox</div>
+  <div v-pre>{{Planet infobox</div>
   <div>| name = {{ name }}</div>
   <div>| image = {{ image || 'nmsMisc_NotAvailable.png' }}</div>
   <div>| region = {{ regionData.region }}</div>

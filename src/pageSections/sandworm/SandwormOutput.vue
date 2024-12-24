@@ -22,6 +22,8 @@ const {
   stomachContent,
   maxdepth,
   appearance,
+  docBy,
+  docBySentence,
 } = storeToRefs(pageData);
 
 const locationSentence = computed(() => {
@@ -72,6 +74,7 @@ const locationSentence = computed(() => {
   <br />
   <div>==Additional Information==</div>
   <div class="keep-linebreaks">{{ appearonreload }}</div>
+  <div v-if="docBy && docBy !== discoveredlink && docBy !== discovered">Documented by {{ docBySentence }}</div>
   <br />
   <div>==Gallery==</div>
   <GalleryOutput />

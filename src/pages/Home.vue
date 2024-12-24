@@ -17,10 +17,6 @@ const links: PageLinkProps[] = [
     img: './assets/images/buttons/1_002.png',
     imgAlt: 'Bases Normales',
   },
-  // {
-  //   text: 'Bases (TESTING)',
-  //   url: './basepruebas.html',
-  // },
   {
     text: '',
     url: './racetrack.html',
@@ -34,11 +30,11 @@ const links: PageLinkProps[] = [
     imgAlt: 'Asentamientos',
   },
   {
-   text: '',
-   url: './fauna.html',
-   img: './assets/images/buttons/1_012_2.png',
-   imgAlt: 'Fauna',
- },
+    text: '',
+    url: './fauna.html',
+    img: './assets/images/buttons/1_012_2.png',
+    imgAlt: 'Fauna',
+  },
   {
     text: '',
     url: './sandworm.html',
@@ -103,12 +99,6 @@ const links: PageLinkProps[] = [
     img: './assets/images/buttons/1_011.png',
     imgAlt: 'Lunas',
   },
-  // {
-  //   text: '',
-  //   url: './tests/test1.html',
-  //   img: '',
-  //   imgAlt: 'Test1',
-  // },
 ];
 
 function getCssVarValue(varName: string) {
@@ -160,18 +150,17 @@ onMounted(() => {
 
 <template>
   <p class="subtitle is-4 has-text-centered">Elige qué página quieres crear:</p>
-  <nav
-    aria-label="Subpages"
-    class="page-options is-gap-3 mx-auto mb-6"
-  >
-  <PageLink v-for="link in links" :url="link.url" :text="link.text" :img="link.img" :imgAlt="link.imgAlt" :disabled="link.inactive" />
- </nav>
-  <div class="built-by is-flex is-flex-wrap-wrap is-justify-content-center is-gap-5">
+  <!-- <div class="subtitle is-4">No hay soporte completo para la versión 5.00 de NMS<br>Elija qué tipo de página desea crear:</div> -->
+  <div class="page-options">
+    <PageLink v-for="link in links" :url="link.url" :text="link.text" :img="link.img" :imgAlt="link.imgAlt" :disabled="link.inactive" />
+  </div>
+  <div class="built-by is-4 has-text-centered">
     <div>Traído a usted por:</div>
   </div>
-  <div class="is-flex is-flex-wrap-wrap is-justify-content-center is-gap-5">
+  <div class="images">
     <CivImage v-for="image in images" :img="image.img" :img-alt="image.imgAlt" :link="image.link" />
-   </div>
+  </div>
+  <div class="images"><b>Royal Space Society</b></div>
 </template>
 
 <style scoped lang="scss">
@@ -213,5 +202,3 @@ onMounted(() => {
   transform: scale(1.1);
 }
 </style>
-
-
