@@ -32,7 +32,7 @@ export default defineConfig({
         'fauna.html',
         'flora.html',
         'mineral.html',
-        // 'moon.html',
+        'moon.html',
         'multitool.html',
         'planet.html',
         'racetrack.html',
