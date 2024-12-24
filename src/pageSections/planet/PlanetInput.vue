@@ -24,6 +24,9 @@ import PlanetFauna from '@/components/inputs/planet/PlanetFauna.vue';
 import PlanetFlora from '@/components/inputs/planet/PlanetFlora.vue';
 import { mapOptions } from '@/helpers/selectMapping';
 import type { SelectOption } from '@/types/selectInputOptions';
+import PlanetFaunaInputs from '@/components/inputs/moon/PlanetFaunaInputs.vue';
+import PlanetFloraInputs from '@/components/inputs/moon/PlanetFloraInputs.vue';
+import PlanetMineralInputs from '@/components/inputs/moon/PlanetMineralInputs.vue';
 
 const pageData = usePageDataStore();
 const {
@@ -138,6 +141,10 @@ const showDiscovered = computed(() => !discoveredlink.value);
     help-title="Número de fauna del planeta" :invalid="!isCostValid" error-message="Solo debe contener numeros"
     tooltip="Se puede encontrar en el menú de descubrimiento.">Se puede encontrar en el menú de descubrimiento.
   </SanitisedTextInput>
+
+  <PlanetFaunaInputs />
+  <PlanetFloraInputs />
+  <PlanetMineralInputs />
 
   <DateSelect v-model="discDate" label="¿Cuándo se descubrió este planeta?"></DateSelect>
   <DateSelect v-model="docDate" label="¿Cuándo se documentó este planeta?" />

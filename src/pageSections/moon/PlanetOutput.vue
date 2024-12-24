@@ -102,14 +102,12 @@ const faunaVerb = computed(() => {
   <div>| region = {{ regionData.region }}</div>
   <div>| galaxy = {{ regionData.galaxy }}</div>
   <div>| system = {{ system }}</div>
-  <div>| moon = {{ generatedOutput }}</div>
+  <div>| planet = {{ planet }}</div>
   <div>| coordinates = {{ glyphcoords }}</div>
   <div>| type = {{ type }}</div>
   <div>| description = {{ Planetdescriptors }}</div>
   <div>| atmosphere = {{ atmosphere }}</div>
-  <div>| terrain = {{ terrain }}</div>
-  <div>| water = {{ water }}</div>
-  <div>| dissonant = {{ dissonant }}</div>
+  <div>| terrain = Pangean</div>
   <div>| weather = {{ weather }}</div>
   <div>| resources = {{ chemicalSymbolsOutput }}</div>
   <div>| sentinel = {{ sentinels }}</div>
@@ -148,7 +146,8 @@ const faunaVerb = computed(() => {
   <div v-if="!formattedGeneratedOutput">This planet has no moons.</div>
   <br />
   <div>==Location==</div>
-  <div>It can be found in the [[{{system}}]] [[star system]] in the [[{{regionData.region}}]] [[region]] of [[Royal Space Society]], in the [[{{regionData.galaxy}}]] [[galaxy]].</div>
+  <div>It can be found in the [[{{ system }}]] [[star system]] in the [[{{ regionData.region }}]] [[region]] of [[Royal
+    Space Society]], in the [[{{ regionData.galaxy }}]] [[galaxy]].</div>
   <br />
   <div><span v-pre>{{CoordGlyphConvert|</span>{{ glyphcoords }}<span v-pre>}}</span></div>
   <br />
@@ -176,7 +175,7 @@ const faunaVerb = computed(() => {
   <div>! Discovered by</div>
   <div v-if="generatedOutputFauna">
     <div>
-      <pre>{{ generatedOutputFauna }}</pre>
+      <pre class="pre-wrap">{{ generatedOutputFauna }}</pre>
     </div>
   </div>
   <div>|}</div>
@@ -187,6 +186,7 @@ const faunaVerb = computed(() => {
   <div>|-</div>
   <div>! style="width:150px" | Image</div>
   <div>! Name</div>
+  <div>! Age</div>
   <div>! Root Structure</div>
   <div>! Nutrient Source</div>
   <div>! Notes</div>
@@ -194,7 +194,7 @@ const faunaVerb = computed(() => {
   <div>! Discovered by</div>
   <div v-if="generatedOutputFlora">
     <div>
-      <pre>{{ generatedOutputFlora }}</pre>
+      <pre class="pre-wrap">{{ generatedOutputFlora }}</pre>
     </div>
   </div>
   <div>|}</div>
@@ -212,7 +212,7 @@ const faunaVerb = computed(() => {
   <div>! Discovered by</div>
   <div v-if="generatedOutputMinerals">
     <div>
-      <pre>{{ generatedOutputMinerals }}</pre>
+      <pre class="pre-wrap">{{ generatedOutputMinerals }}</pre>
     </div>
   </div>
   <div>|}</div>
@@ -234,3 +234,10 @@ const faunaVerb = computed(() => {
   <div>==Gallery==</div>
   <GalleryOutput />
 </template>
+
+<style>
+.pre-wrap {
+  white-space: pre-wrap;
+  word-wrap: break-word;
+}
+</style>

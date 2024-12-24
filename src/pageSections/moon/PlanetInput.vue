@@ -21,6 +21,9 @@ import PlanetSentinels from '@/components/inputs/moon/PlanetSentinels.vue';
 import PlanetWeather from '@/components/inputs/moon/PlanetWeather.vue';
 import PlanetFauna from '@/components/inputs/moon/PlanetFauna.vue';
 import PlanetFlora from '@/components/inputs/moon/PlanetFlora.vue';
+import PlanetFaunaInputs from '@/components/inputs/moon/PlanetFaunaInputs.vue';
+import PlanetFloraInputs from '@/components/inputs/moon/PlanetFloraInputs.vue';
+import PlanetMineralInputs from '@/components/inputs/moon/PlanetMineralInputs.vue';
 
 const pageData = usePageDataStore();
 const {
@@ -76,7 +79,7 @@ const showDiscovered = computed(() => !discoveredlink.value);
 
 <template>
   <SanitisedTextInput v-model="name" help-img="planet/planetName" help-title="Nombre del Planeta"
-    label="Nombre del Planeta:"
+    label="Nombre de la Luna:"
     tooltip="Introduce exactamente como se ve en el juego. Cuidado con el 0 (cero) y la O (o).">
     Introduce exactamente como se ve en el juego. Cuidado con el 0 (cero) y la O (o).
   </SanitisedTextInput>
@@ -119,6 +122,10 @@ const showDiscovered = computed(() => !discoveredlink.value);
     help-title="Número de fauna de la Luna" :invalid="!isCostValid" error-message="Solo debe contener numeros"
     tooltip="Se puede encontrar en el menú de descubrimiento.">Se puede encontrar en el menú de descubrimiento.
   </SanitisedTextInput>
+
+  <PlanetFaunaInputs />
+  <PlanetFloraInputs />
+  <PlanetMineralInputs />
 
   <DateSelect v-model="discDate" label="¿Cuándo se descubrió esta Luna?"></DateSelect>
   <DateSelect v-model="docDate" label="¿Cuándo se documentó esta Luna?" />

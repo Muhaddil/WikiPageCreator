@@ -173,7 +173,7 @@ const faunaVerb = computed(() => {
   <div>! Discovered by</div>
   <div v-if="generatedOutputFauna">
     <div>
-      <pre>{{ generatedOutputFauna }}</pre>
+      <pre class="pre-wrap">{{ generatedOutputFauna }}</pre>
     </div>
   </div>
   <div>|}</div>
@@ -184,6 +184,7 @@ const faunaVerb = computed(() => {
   <div>|-</div>
   <div>! style="width:150px" | Image</div>
   <div>! Name</div>
+  <div>! Age</div>
   <div>! Root Structure</div>
   <div>! Nutrient Source</div>
   <div>! Notes</div>
@@ -191,7 +192,7 @@ const faunaVerb = computed(() => {
   <div>! Discovered by</div>
   <div v-if="generatedOutputFlora">
     <div>
-      <pre>{{ generatedOutputFlora }}</pre>
+      <pre class="pre-wrap">{{ generatedOutputFlora }}</pre>
     </div>
   </div>
   <div>|}</div>
@@ -209,7 +210,7 @@ const faunaVerb = computed(() => {
   <div>! Discovered by</div>
   <div v-if="generatedOutputMinerals">
     <div>
-      <pre>{{ generatedOutputMinerals }}</pre>
+      <pre class="pre-wrap">{{ generatedOutputMinerals }}</pre>
     </div>
   </div>
   <div>|}</div>
@@ -231,3 +232,10 @@ const faunaVerb = computed(() => {
   <div>==Gallery==</div>
   <GalleryOutput />
 </template>
+
+<style>
+.pre-wrap {
+  white-space: pre-wrap;
+  word-wrap: break-word;
+}
+</style>
