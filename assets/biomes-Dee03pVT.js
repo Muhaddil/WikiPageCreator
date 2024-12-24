@@ -1,0 +1,1 @@
+const c=["Lush","Barren","Dead","Exotic","Mega Exotic","Scorched","Frozen","Toxic","Irradiated","Marsh","Volcanic"],e=["Rico","Estéril","Muerto","Exótico","Mega Exótico","Quemado","Congelado","Tóxico","Irradiado","Cenagal","Volcánico"],i=e.map(((o,a)=>({label:o,value:c[a]})));export{i as m};
