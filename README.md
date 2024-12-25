@@ -1,4 +1,4 @@
-[![Build](https://github.com/Muhaddil/RSSWikiPageCreator/actions/workflows/build-deploy.yml/badge.svg)](https://github.com/Muhaddil/RSSWikiPageCreator/actions/workflows/build-deploy.yml)
+[![Build](https://github.com/Muhaddil/RSSWikiPageCreator/actions/workflows/deploy-all.yml/badge.svg)](https://github.com/Muhaddil/RSSWikiPageCreator/actions/workflows/deploy-all.yml)
 [![pages-build-deployment](https://github.com/Muhaddil/RSSWikiPageCreator/actions/workflows/pages/pages-build-deployment/badge.svg)](https://github.com/Muhaddil/RSSWikiPageCreator/actions/workflows/pages/pages-build-deployment)
 [![CodeQL](https://github.com/Muhaddil/RSSWikiPageCreator/actions/workflows/github-code-scanning/codeql/badge.svg)](https://github.com/Muhaddil/RSSWikiPageCreator/actions/workflows/github-code-scanning/codeql)
 
