@@ -17,18 +17,26 @@ function showError(message: string) {
   });
 }
 
-async function copyPage() {
-  const requiredFields = [
-    { field: pageData.outputContent, message: 'ERROR 404' },
-    // { field: pageData.name, message: '¡Falta el nombre!' },
-    // { field: pageData.glyphs, message: '¡Faltan los Glifos!' },
-    // { field: pageData.regionData.region, message: '¡Glifos Incorrectos!' }
-  ];
+const currentUrl = window.location.pathname;
 
-  for (const { field, message } of requiredFields) {
-    if (!field) {
-      showError(message);
-      return;
+function isBaseRenewalPage() {
+  return currentUrl.includes('baserenewal.html');
+}
+
+async function copyPage() {
+  if (!isBaseRenewalPage()) {
+    const requiredFields = [
+      { field: pageData.outputContent, message: 'ERROR 404' },
+      { field: pageData.name, message: '¡Falta el nombre!' },
+      { field: pageData.glyphs, message: '¡Faltan los Glifos!' },
+      { field: pageData.regionData.region, message: '¡Glifos Incorrectos!' }
+    ];
+
+    for (const { field, message } of requiredFields) {
+      if (!field) {
+        showError(message);
+        return;
+      }
     }
   }
 
@@ -47,16 +55,18 @@ async function copyPage() {
 }
 
 function createPage() {
-  const requiredFields = [
-    { field: pageData.name, message: '¡Falta el nombre!' },
-    { field: pageData.glyphs, message: '¡Faltan los Glifos!' },
-    { field: pageData.regionData.region, message: '¡Glifos Incorrectos!' }
-  ];
+  if (!isBaseRenewalPage()) {
+    const requiredFields = [
+      { field: pageData.name, message: '¡Falta el nombre!' },
+      { field: pageData.glyphs, message: '¡Faltan los Glifos!' },
+      { field: pageData.regionData.region, message: '¡Glifos Incorrectos!' }
+    ];
 
-  for (const { field, message } of requiredFields) {
-    if (!field) {
-      showError(message);
-      return;
+    for (const { field, message } of requiredFields) {
+      if (!field) {
+        showError(message);
+        return;
+      }
     }
   }
 
@@ -68,17 +78,19 @@ function createPage() {
 }
 
 function downloadCode() {
-  const requiredFields = [
-    { field: pageData.outputContent, message: 'ERROR 404' },
-    { field: pageData.name, message: '¡Falta el nombre!' },
-    { field: pageData.glyphs, message: '¡Faltan los Glifos!' },
-    { field: pageData.regionData.region, message: '¡Glifos Incorrectos!' }
-  ];
+  if (!isBaseRenewalPage()) {
+    const requiredFields = [
+      { field: pageData.outputContent, message: 'ERROR 404' },
+      { field: pageData.name, message: '¡Falta el nombre!' },
+      { field: pageData.glyphs, message: '¡Faltan los Glifos!' },
+      { field: pageData.regionData.region, message: '¡Glifos Incorrectos!' }
+    ];
 
-  for (const { field, message } of requiredFields) {
-    if (!field) {
-      showError(message);
-      return;
+    for (const { field, message } of requiredFields) {
+      if (!field) {
+        showError(message);
+        return;
+      }
     }
   }
 
@@ -98,15 +110,17 @@ function downloadCode() {
 }
 
 function uploadFiles() {
-  const requiredFields = [
-    { field: pageData.image, message: '¿Que quieres subir sin foto principal?' },
-    // { field: pageData.galleryFiles, message: '¿Que quieres subir sin fotos en la galería?' },
-  ];
+  if (!isBaseRenewalPage()) {
+    const requiredFields = [
+      { field: pageData.image, message: '¿Que quieres subir sin foto principal?' },
+      // { field: pageData.galleryFiles, message: '¿Que quieres subir sin fotos en la galería?' },
+    ];
 
-  for (const { field, message } of requiredFields) {
-    if (!field) {
-      showError(message);
-      return;
+    for (const { field, message } of requiredFields) {
+      if (!field) {
+        showError(message);
+        return;
+      }
     }
   }
 

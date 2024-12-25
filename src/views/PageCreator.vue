@@ -33,6 +33,9 @@ const isValid = computed(() => {
   );
 });
 
+const currentUrl = window.location.pathname;
+const isBaseRenewalPage = currentUrl.includes('baserenewal.html');
+
 onUnmounted(() => {
   if (observer) {
     observer.disconnect();
@@ -53,11 +56,11 @@ onUnmounted(() => {
 
     <Card
       class="column is-full-mobile p-0 is-family-monospace"
-      :class="{'is-disabled': !isValid}"
+      :class="{'is-disabled': !isValid && !isBaseRenewalPage}"
     >
       <template #content>
         <Fluid>
-          <div ref="outputRef" :style="!isValid ? { userSelect: 'none', opacity: 0.5 } : {}">
+          <div ref="outputRef" :style="(!isValid && !isBaseRenewalPage) ? { userSelect: 'none', opacity: 0.5 } : {}">
             <slot name="output"></slot>
           </div>
         </Fluid>

@@ -10,12 +10,10 @@ const { censusrenewal, release } = storeToRefs(pageData);
 const censusrenewalYear = new Date().getUTCFullYear();
 const currentVersion = release.value;
 
-// Añadir un ref para controlar si se debe agregar todos los años desde el último registrado
 const addAllYears = ref(false);
 
-// Función para actualizar censusrenewal con los años desde el último registrado
 function updateCensusRenewal(input: string) {
-  const currentYear = censusrenewalYear.toString();
+  const currentYear = censusrenewalYear;
   const regex = /censusrenewal\s*=\s*([^\n]*)/;
   const match = input.match(regex);
 
@@ -26,7 +24,6 @@ function updateCensusRenewal(input: string) {
       return input.replace(regex, `censusrenewal = ${currentYear}`);
     }
 
-    // Si se debe añadir todos los años desde el último registrado
     if (addAllYears.value) {
       const lastYear = parseInt(years[years.length - 1], 10);
       for (let year = lastYear + 1; year <= currentYear; year++) {
@@ -36,9 +33,8 @@ function updateCensusRenewal(input: string) {
       }
     }
 
-    // Asegurar que el año actual esté en la lista
-    if (!years.includes(currentYear)) {
-      years.push(currentYear);
+    if (!years.includes(currentYear.toString())) {
+      years.push(currentYear.toString());
     }
 
     return input.replace(regex, `censusrenewal = ${years.join(', ')}`);
@@ -63,29 +59,17 @@ function updateText(input: string): string {
   return updatedText;
 }
 
-// Función para actualizar censusrenewal y forzar actualización
-function updateCensusRenewalIfNeeded() {
-  if (censusrenewal.value) {
-    const updatedText = updateText(censusrenewal.value);
-    pageData.censusrenewal = updatedText;
-  }
-}
-
-// Función que actualiza la variable censusrenewal inmediatamente cuando se marca el checkbox
 function handleCheckboxChange() {
   if (censusrenewal.value) {
-    // Forzar actualización de censusrenewal
     const updatedText = updateText(censusrenewal.value);
     pageData.censusrenewal = updatedText;
   }
 }
 
-// Observador para el checkbox
 watch(addAllYears, () => {
   handleCheckboxChange();
 });
 
-// Observador para censusrenewal
 watch(censusrenewal, () => {
   handleCheckboxChange();
 });
