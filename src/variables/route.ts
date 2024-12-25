@@ -19,6 +19,7 @@ export const router: Record<string, string> = {
   biofrig: 'Biofrig',
   derelict: 'Derelict',
   moon: 'Moon',
+  baserenewal: 'BaseRenewal',
 };
 
 export const route = getCurrentRoute();
@@ -71,6 +72,9 @@ switch (route) {
     break;
   case 'derelict':
     exportName = 'Cargueros Abandonados';
+    break;
+  case 'baserenewal':
+    exportName = 'Actualización del Censo RSS';
     break;
   case '':
     exportName = 'Home';

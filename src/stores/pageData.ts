@@ -164,6 +164,7 @@ interface PageData {
   otherupgrades: string;
   hyperdrive: string;
   derelictEnemies: string;
+  censusrenewal: string;
 }
 
 const defaultState: PageData = {
@@ -312,6 +313,7 @@ const defaultState: PageData = {
   otherupgrades: '',
   hyperdrive: '',
   derelictEnemies: '',
+  censusrenewal: '',
   presetData: structuredClone(defaultData),
 };
 

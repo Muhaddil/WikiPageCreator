@@ -42,6 +42,7 @@ export default defineConfig({
         'system.html',
         'faq.html',
         'glyphgeneratorV2.html',
+        'baserenewal.html',
       ],
     },
   },

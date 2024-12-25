@@ -1,0 +1,161 @@
+<script setup lang="ts">
+import { usePageDataStore } from '@/stores/pageData';
+import { storeToRefs } from 'pinia';
+import TextareaInput from '@/components/inputs/TextareaInput.vue';
+import { ref, watch } from 'vue';
+
+const pageData = usePageDataStore();
+const { censusrenewal, release } = storeToRefs(pageData);
+
+const censusrenewalYear = new Date().getUTCFullYear();
+const currentVersion = release.value;
+
+// Añadir un ref para controlar si se debe agregar todos los años desde el último registrado
+const addAllYears = ref(false);
+
+// Función para actualizar censusrenewal con los años desde el último registrado
+function updateCensusRenewal(input: string) {
+  const currentYear = censusrenewalYear.toString();
+  const regex = /censusrenewal\s*=\s*([^\n]*)/;
+  const match = input.match(regex);
+
+  if (match && match[1]) {
+    let years = match[1].split(',').map(year => year.trim());
+
+    if (years.length === 0) {
+      return input.replace(regex, `censusrenewal = ${currentYear}`);
+    }
+
+    // Si se debe añadir todos los años desde el último registrado
+    if (addAllYears.value) {
+      const lastYear = parseInt(years[years.length - 1], 10);
+      for (let year = lastYear + 1; year <= currentYear; year++) {
+        if (!years.includes(year.toString())) {
+          years.push(year.toString());
+        }
+      }
+    }
+
+    // Asegurar que el año actual esté en la lista
+    if (!years.includes(currentYear)) {
+      years.push(currentYear);
+    }
+
+    return input.replace(regex, `censusrenewal = ${years.join(', ')}`);
+  } else {
+    return input.trimEnd() + `\ncensusrenewal = ${currentYear}`;
+  }
+}
+
+function updateRelease(input: string) {
+  const versionRegex = /{{Version\|([^\n]*)}}/;
+  const releaseRegex = /\| release =\s*([^\n]*)/;
+
+  let updatedInput = input.replace(versionRegex, `{{Version|${currentVersion}}}`);
+  updatedInput = updatedInput.replace(releaseRegex, `| release = ${currentVersion}`);
+
+  return updatedInput;
+}
+
+function updateText(input: string): string {
+  let updatedText = updateCensusRenewal(input);
+  updatedText = updateRelease(updatedText);
+  return updatedText;
+}
+
+// Función para actualizar censusrenewal y forzar actualización
+function updateCensusRenewalIfNeeded() {
+  if (censusrenewal.value) {
+    const updatedText = updateText(censusrenewal.value);
+    pageData.censusrenewal = updatedText;
+  }
+}
+
+// Función que actualiza la variable censusrenewal inmediatamente cuando se marca el checkbox
+function handleCheckboxChange() {
+  if (censusrenewal.value) {
+    // Forzar actualización de censusrenewal
+    const updatedText = updateText(censusrenewal.value);
+    pageData.censusrenewal = updatedText;
+  }
+}
+
+// Observador para el checkbox
+watch(addAllYears, () => {
+  handleCheckboxChange();
+});
+
+// Observador para censusrenewal
+watch(censusrenewal, () => {
+  handleCheckboxChange();
+});
+</script>
+
+<template>
+  <div class="code-container">
+    <h2 class="title">Actualización del Censo RSS</h2>
+    <p class="description">
+      Pega aquí el código que deseas actualizar. Los valores se actualizarán automáticamente con el año actual y la versión más reciente.
+    </p>
+
+    <div class="checkbox-container">
+      <label>
+        <input type="checkbox" v-model="addAllYears" />
+        Añadir todos los años desde el último registrado.
+      </label>
+      <div class="note">
+      <p><strong>Nota:</strong> Selecciona esto antes de ingresar tu código o puede haber errores.</p>
+    </div>
+    </div>
+
+    <TextareaInput
+      v-model="censusrenewal"
+      label="Pega tu código aquí"
+      placeholder="Ejemplo de código a pegar"
+      class="textarea-input"
+    />
+
+    <div class="note">
+      <p><strong>Nota:</strong> Si no tienes ningún año en el campo de <code>censusrenewal</code>, el sistema fallará.</p>
+    </div>
+  </div>
+</template>
+
+<style scoped>
+.code-container {
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.title {
+  text-align: center;
+  font-size: 1.5rem;
+  margin-bottom: 10px;
+}
+
+.checkbox-container {
+  margin-top: 20px;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.description {
+  text-align: center;
+  font-size: 1rem;
+  margin-bottom: 20px;
+}
+
+.note {
+  margin-top: 20px;
+  font-size: 0.9rem;
+  text-align: center;
+}
+
+code {
+  padding: 2px 6px;
+  border-radius: 4px;
+}
+</style>

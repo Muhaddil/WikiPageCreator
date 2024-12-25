@@ -10,6 +10,10 @@ const items = [
     label: 'Herramientas',
     items: [
       {
+        label: 'Actualizador Censo RSS',
+        url: '/RSSWikiPageCreator/baserenewal.html',
+      },
+      {
         label: 'FAQ',
         url: '/RSSWikiPageCreator/faq.html',
       },

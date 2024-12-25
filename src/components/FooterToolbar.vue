@@ -20,9 +20,9 @@ function showError(message: string) {
 async function copyPage() {
   const requiredFields = [
     { field: pageData.outputContent, message: 'ERROR 404' },
-    { field: pageData.name, message: '¡Falta el nombre!' },
-    { field: pageData.glyphs, message: '¡Faltan los Glifos!' },
-    { field: pageData.regionData.region, message: '¡Glifos Incorrectos!' }
+    // { field: pageData.name, message: '¡Falta el nombre!' },
+    // { field: pageData.glyphs, message: '¡Faltan los Glifos!' },
+    // { field: pageData.regionData.region, message: '¡Glifos Incorrectos!' }
   ];
 
   for (const { field, message } of requiredFields) {
