@@ -6,11 +6,10 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Creador de páginas Wiki - Generador de Glifos</title>
   <div style="display: inline-block; text-align: center; width: 100%">
-      <div>Versión %VITE_VERSION%</div>
+    <div>Versión %VITE_VERSION%</div>
   </div>
   <meta name="application-name" content="Wiki Page Creator">
-  <meta name="description"
-    content="¡Genere Glifos de las regiones de la RSS facilmente!">
+  <meta name="description" content="¡Genere Glifos de las regiones de la RSS facilmente!">
   <meta name="theme-color" content="#280033">
   <meta name="keywords" content="No Man's Sky, NMS, Wiki, Fandom, Muhaddil, Page Creator, Generador de Glifos">
   <script src="./src/pages/glyphgenerator/index.ts" type="module"></script>
@@ -29,7 +28,8 @@
     overflow-y: auto;
   }
 
-  select, button {
+  select,
+  button {
     width: 100%;
     padding: 10px;
   }
@@ -51,7 +51,8 @@
   /* Estilos específicos para pantallas pequeñas */
   @media (max-width: 600px) {
     body {
-      padding: 20px 0; /* Añade un padding superior e inferior al cuerpo */
+      padding: 20px 0;
+      /* Añade un padding superior e inferior al cuerpo */
     }
 
     .columns {
@@ -81,8 +82,8 @@
             <main class="columns is-desktop">
               <div class="section">
                 <select id="regionSelect">
-                    <option value="">Selecciona una región</option>
-                    <!-- Las opciones se llenarán dinámicamente con JavaScript -->
+                  <option value="">Selecciona una región</option>
+                  <!-- Las opciones se llenarán dinámicamente con JavaScript -->
                 </select>
               </div>
               <div class="section">
@@ -98,8 +99,9 @@
                 <p id="galaxyOutput"></p>
               </div>
           </div>
-        </main>
-      </div>
-    </div>
-  </body>
+    </main>
+  </div>
+  </div>
+</body>
+
 </html>
