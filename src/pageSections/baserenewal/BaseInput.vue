@@ -11,6 +11,7 @@ const censusrenewalYear = new Date().getUTCFullYear();
 const currentVersion = release.value;
 
 const addAllYears = ref(false);
+const baseName = ref('');
 
 function updateCensusRenewal(input: string) {
   const currentYear = censusrenewalYear;
@@ -59,10 +60,23 @@ function updateText(input: string): string {
   return updatedText;
 }
 
+function extractName(input: string): string {
+  const nameRegex = /\| name =\s*([^\n]*)/;
+  const match = input.match(nameRegex);
+
+  if (match && match[1]) {
+    return match[1].trim();
+  }
+  return '';
+}
+
 function handleCheckboxChange() {
   if (censusrenewal.value) {
     const updatedText = updateText(censusrenewal.value);
     pageData.censusrenewal = updatedText;
+
+    baseName.value = extractName(censusrenewal.value);
+    pageData.name = baseName.value;
   }
 }
 
@@ -79,7 +93,8 @@ watch(censusrenewal, () => {
   <div class="code-container">
     <h2 class="title">Actualización del Censo RSS</h2>
     <p class="description">
-      Pega aquí el código que deseas actualizar. Los valores se actualizarán automáticamente con el año actual y la versión más reciente.
+      Pega aquí el código que deseas actualizar. Los valores se actualizarán automáticamente con el año actual y la
+      versión más reciente.
     </p>
 
     <div class="checkbox-container">
@@ -88,19 +103,16 @@ watch(censusrenewal, () => {
         Añadir todos los años desde el último registrado.
       </label>
       <div class="note">
-      <p><strong>Nota:</strong> Selecciona esto antes de ingresar tu código o puede haber errores.</p>
-    </div>
+        <p><strong>Nota:</strong> Selecciona esto antes de ingresar tu código o puede haber errores.</p>
+      </div>
     </div>
 
-    <TextareaInput
-      v-model="censusrenewal"
-      label="Pega tu código aquí"
-      placeholder="Ejemplo de código a pegar"
-      class="textarea-input"
-    />
+    <TextareaInput v-model="censusrenewal" label="Pega tu código aquí" placeholder="Ejemplo de código a pegar"
+      class="textarea-input" />
 
     <div class="note">
-      <p><strong>Nota:</strong> Si no tienes ningún año en el campo de <code>censusrenewal</code>, el sistema fallará.</p>
+      <p><strong>Nota:</strong> Si no tienes ningún año en el campo de <code>censusrenewal</code>, el sistema fallará.
+      </p>
     </div>
   </div>
 </template>
