@@ -3,9 +3,12 @@ import { usePageDataStore } from '@/stores/pageData';
 import { storeToRefs } from 'pinia';
 import TextareaInput from '@/components/inputs/TextareaInput.vue';
 import { ref, watch } from 'vue';
+import SanitisedTextInput from '@/components/inputs/SanitisedTextInput.vue';
+import { useToast, POSITION } from 'vue-toastification';
+import Button from 'primevue/button';
 
 const pageData = usePageDataStore();
-const { censusrenewal, release } = storeToRefs(pageData);
+const { censusrenewal, release, name } = storeToRefs(pageData);
 
 const censusrenewalYear = new Date().getUTCFullYear();
 const currentVersion = release.value;
@@ -87,6 +90,34 @@ watch(addAllYears, () => {
 watch(censusrenewal, () => {
   handleCheckboxChange();
 });
+
+const toast = useToast();
+
+function showError(message: string) {
+  toast.error(message, {
+    position: POSITION.BOTTOM_RIGHT,
+  });
+}
+
+function createPage() {
+  const requiredFields = [
+    { field: pageData.name, message: '¡Pon el nombre de tu base!' },
+  ];
+
+  for (const { field, message } of requiredFields) {
+    if (!field) {
+      showError(message);
+      return;
+    }
+  }
+
+  toast.success('¡Creada!', {
+    position: POSITION.BOTTOM_RIGHT,
+  });
+
+  window.open(`https://nomanssky.fandom.com/wiki/${pageData.name}?action=edit`, '_blank');
+}
+
 </script>
 
 <template>
@@ -106,6 +137,16 @@ watch(censusrenewal, () => {
         <p><strong>Nota:</strong> Selecciona esto antes de ingresar tu código o puede haber errores.</p>
       </div>
     </div>
+
+    <SanitisedTextInput v-model="name" help-img="base/baseName" help-title="Nombre de la Base:"
+      label="Nombre de la Base" tooltip="Escribe exactamente como se ve en el juego. Cuidado con 0 (cero) y O (o).">
+      Escribe exactamente como se ve en el juego. Cuidado con 0 (cero) y O (o).
+    </SanitisedTextInput>
+
+    <Button as="a" label="Ir a la base" severity="warn" @click="createPage" />
+
+    <br />
+    <br />
 
     <TextareaInput v-model="censusrenewal" label="Pega tu código aquí" placeholder="Ejemplo de código a pegar"
       class="textarea-input" />

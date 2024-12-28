@@ -24,19 +24,26 @@ function isBaseRenewalPage() {
 }
 
 async function copyPage() {
+  let requiredFields;
+
   if (!isBaseRenewalPage()) {
-    const requiredFields = [
+    requiredFields = [
       { field: pageData.outputContent, message: 'ERROR 404' },
       { field: pageData.name, message: '¡Falta el nombre!' },
       { field: pageData.glyphs, message: '¡Faltan los Glifos!' },
       { field: pageData.regionData.region, message: '¡Glifos Incorrectos!' }
     ];
+  } else {
+    requiredFields = [
+      { field: pageData.name, message: '¡Falta el nombre!' },
+      { field: pageData.censusrenewal, message: '¿Que quieres copiar? Rellena los datos' }
+    ];
+  }
 
-    for (const { field, message } of requiredFields) {
-      if (!field) {
-        showError(message);
-        return;
-      }
+  for (const { field, message } of requiredFields) {
+    if (!field) {
+      showError(message);
+      return;
     }
   }
 
@@ -164,20 +171,26 @@ function showConfirmDialog() {
           label="Copiar"
           @click="copyPage"
         />
+
         <Button
+          v-if="!isBaseRenewalPage()"
           as="a"
           label="Crear"
           severity="warn"
           @click="createPage"
         />
+
         <Button
+          v-if="!isBaseRenewalPage()"
           label="Descargar Código"
           @click="downloadCode"
         />
         <Button
+          v-if="!isBaseRenewalPage()"
           label="Subir Archivos"
           @click="uploadFiles"
         />
+
         <Button
           label="Restablecer"
           severity="danger"
@@ -189,6 +202,7 @@ function showConfirmDialog() {
 
   <ConfirmDialog :draggable="true"/>
 </template>
+
 
 <style scoped>
 .footer-toolbar {
