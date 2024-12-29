@@ -115,7 +115,7 @@ function createPage() {
     position: POSITION.BOTTOM_RIGHT,
   });
 
-  window.open(`https://nomanssky.fandom.com/wiki/${pageData.name}?action=edit`, '_blank');
+  window.open(`https://nomanssky.fandom.com/wiki/${pageData.name}?action=edit#editform`, '_blank');
 }
 
 </script>
