@@ -1,7 +1,7 @@
 {
   "name": "wiki-page-creator",
   "private": true,
-  "version": "1.0.45",
+  "version": "1.0.451",
   "type": "module",
   "scripts": {
     "dev": "vite",
@@ -18,26 +18,26 @@
     "@vitest/browser": "^2.1.8",
     "@vitest/coverage-v8": "^2.1.8",
     "@vue/test-utils": "^2.4.6",
-    "@vueuse/core": "^11.1.0",
-    "happy-dom": "^15.11.7",
+    "@vueuse/core": "^12.2.0",
+    "happy-dom": "^16.2.9",
     "pinia": "^2.3.0",
     "prettier": "^3.4.2",
     "sass-embedded": "^1.83.0",
     "typescript": "^5.7.2",
     "vite": "^6.0.6",
     "vitest": "^2.1.8",
-    "vue": "^3.5.8",
+    "vue": "^3.5.13",
     "vue-toastification": "^2.0.0-rc.5",
     "vue-tsc": "^2.2.0",
-    "webdriverio": "^9.4.5"
+    "webdriverio": "^9.5.0"
   },
   "dependencies": {
-    "@primevue/themes": "^4.0.7",
-    "bulma": "^1.0.2",
+    "@primevue/themes": "^4.2.5",
+    "bulma": "^1.0.3",
     "md5-hex": "^5.0.0",
     "parse-mediawiki-template": "^0.2.2",
     "primeicons": "^7.0.0",
-    "primevue": "^4.0.7",
+    "primevue": "^4.2.5",
     "vue-draggable-plus": "^0.6.0"
   }
 }

@@ -10,7 +10,6 @@ import GameModeSelect from '@/components/inputs/GameModeSelect.vue';
 import DateSelect from '@/components/inputs/DateSelect.vue';
 import GalleryInput from '@/components/inputs/gallery/GalleryInput.vue';
 import FileUploadNotice from '@/components/FileUploadNotice.vue';
-import InputNumber from 'primevue/inputnumber';
 import StarcolorInput from '@/components/inputs/system/StarcolorInput.vue';
 import InputTableItem from '../../components/InputTableItem.vue';
 import Checkbox from 'primevue/checkbox';
@@ -133,31 +132,8 @@ const showDiscovered = computed(() => !discoveredlink.value);
     distancia al centro con precisión en la parte superior del mapa de galaxias.
   </SanitisedTextInput>
 
-  <InputTableItem>
-    <template #label>
-      <div class="is-flex is-justify-content-space-between is-align-items-center full-width">
-        <label id="planetnum">Número de planetas:</label>
-      </div>
-    </template>
-
-    <template #input>
-      <InputNumber id="planetnum" v-model="planetnum" max="6" min="1" />
-    </template>
-  </InputTableItem>
-
-
-  <InputTableItem>
-    <template #label>
-      <div class="is-flex is-justify-content-space-between is-align-items-center full-width">
-        <label id="moonnum">Número de lunas:</label>
-      </div>
-    </template>
-
-    <template #input>
-      <InputNumber id="moonnum" v-model="moonnum" max="6" />
-    </template>
-  </InputTableItem>
-
+  <SanitisedTextInput v-model="planetnum" label="Número de planetas:" maxlength="1" />
+  <SanitisedTextInput v-model="moonnum" label="Número de lunas:" maxlength="1" />
 
   <InputTableItem>
     <template #label>
