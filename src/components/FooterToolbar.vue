@@ -23,6 +23,10 @@ function isBaseRenewalPage() {
   return currentUrl.includes('baserenewal.html');
 }
 
+function isFAQPage() {
+  return currentUrl.includes('faq.html');
+}
+
 async function copyPage() {
   let requiredFields;
 
@@ -164,7 +168,7 @@ function showConfirmDialog() {
 </script>
 
 <template>
-  <Toolbar class="is-borderless is-radiusless">
+  <Toolbar class="is-borderless is-radiusless" v-if="!isFAQPage()">
     <template #center>
       <div class="is-gap-1 is-flex is-justify-content-center footer-toolbar">
         <Button
