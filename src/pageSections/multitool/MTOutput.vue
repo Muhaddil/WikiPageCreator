@@ -36,6 +36,7 @@ const {
 
 <template>
   <div><span v-pre>{{Version|</span>{{ release }}<span v-pre>}}</span></div>
+  <div><span v-pre>{{Royal Space Society}}</span></div>
   <div v-pre>{{Multitool infobox</div>
   <div>| name = {{ name }}</div>
   <div>| image = {{ image || 'nmsMisc_NotAvailable.png' }}</div>

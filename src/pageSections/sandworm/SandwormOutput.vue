@@ -35,6 +35,7 @@ const locationSentence = computed(() => {
 
 <template>
   <div><span v-pre>{{Version|</span>{{ release }}<span v-pre>}}</span></div>
+  <div><span v-pre>{{Royal Space Society}}</span></div>
   <div v-pre>{{Settlement infobox</div>
   <div>| name = Immortal Worm {{ planet }}</div>
   <div>| image = {{ image || 'nmsMisc_NotAvailable.png' }}</div>
