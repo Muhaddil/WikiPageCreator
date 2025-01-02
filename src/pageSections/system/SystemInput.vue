@@ -5,13 +5,14 @@ import SingleFileUpload from '@/components/inputs/SingleFileUpload.vue';
 import TextareaInput from '@/components/inputs/TextareaInput.vue';
 import { usePageDataStore } from '@/stores/pageData';
 import { storeToRefs } from 'pinia';
-import { computed, ref } from 'vue';
+import { computed, ref, watch } from 'vue';
 import GameModeSelect from '@/components/inputs/GameModeSelect.vue';
 import DateSelect from '@/components/inputs/DateSelect.vue';
 import GalleryInput from '@/components/inputs/gallery/GalleryInput.vue';
 import FileUploadNotice from '@/components/FileUploadNotice.vue';
 import StarcolorInput from '@/components/inputs/system/StarcolorInput.vue';
-import InputTableItem from '../../components/InputTableItem.vue';
+import StarNumberInput from '@/components/inputs/system/StarNumberInput.vue';
+import InputTableItem from '@/components/InputTableItem.vue';
 import Checkbox from 'primevue/checkbox';
 import Explainer from '@/components/Explainer.vue';
 import SystemRace from '@/components/inputs/system/SystemRace.vue';
@@ -26,7 +27,6 @@ import UpgradeModulesSS from '@/components/inputs/system/UpgradeModulesSS.vue';
 import UpgradeModulesEC from '@/components/inputs/system/UpgradeModulesEC.vue';
 import UpgradeModulesES from '@/components/inputs/system/UpgradeModulesES.vue';
 import UpgradeModulesSD from '@/components/inputs/system/UpgradeModulesSD.vue';
-
 
 const pageData = usePageDataStore();
 const {
@@ -75,6 +75,25 @@ const isDistanceValid = computed(() => {
 
 const showDiscoveredLink = computed(() => !discovered.value);
 const showDiscovered = computed(() => !discoveredlink.value);
+
+function ensurePercentage(value: string): string {
+  if (!value.endsWith('%')) {
+    return `${value}%`;
+  }
+  return value;
+}
+
+watch(economysell, (newValue) => {
+  if (newValue && !newValue.endsWith('%')) {
+    economysell.value = ensurePercentage(newValue);
+  }
+});
+
+watch(economybuy, (newValue) => {
+  if (newValue && !newValue.endsWith('%')) {
+    economybuy.value = ensurePercentage(newValue);
+  }
+});
 </script>
 
 <template>
@@ -85,31 +104,22 @@ const showDiscovered = computed(() => !discoveredlink.value);
   </SanitisedTextInput>
   <SanitisedTextInput v-model="orgName" label="Nombre original antes de registrar (si está disponible):" />
 
-  <SingleFileUpload v-model="image" label="Imagen principa:l" help-title="Subida de Archivo"
+  <SingleFileUpload v-model="image" label="Imagen principal:" help-title="Subida de Archivo"
     tooltip="La imagen no se subirá a la wiki. Esto es solo para autocompletar el nombre de la imagen.">
     <FileUploadNotice />
   </SingleFileUpload>
 
-  <SingleFileUpload v-model="navImage" label="Nombre de la imagen principal:" help-title="Subida de Archivo"
-    tooltip="La imagen no se subirá a la wiki. Esto es solo para autocompletar el nombre de la imagen.">
+  <SingleFileUpload v-model="navImage" label="Imagen del mapa galáctico:">
     <FileUploadNotice />
   </SingleFileUpload>
 
-  <SingleFileUpload v-model="ssImage" label="Nombre de la imagen de la estación espacial:"
-    help-title="Subida de Archivo"
-    tooltip="La imagen no se subirá a la wiki. Esto es solo para autocompletar el nombre de la imagen.">
+  <SingleFileUpload v-model="ssImage" label="Nombre de la imagen de la estación espacial:">
     <FileUploadNotice />
   </SingleFileUpload>
 
   <GlyphInput v-model="glyphs" />
 
-  <SanitisedTextInput v-model="multiplestars" label="Numero de estrellas:" help-img="system/numOfStars"
-    help-title="Nombre del sistema" tooltip="Número de estrellas locales visibles en el espacio."> Número de estrellas
-    locales visibles en el espacio.<br>
-    Ingrese al modo Foto, luego presione el botón para rotar la estrella del sistema hacia su cursor.<br>
-    Ingresa el número de estrellas que ves.<br>
-    Este por ejemplo es 1 estrella:</SanitisedTextInput>
-
+  <StarNumberInput v-model="multiplestars" />
   <StarcolorInput v-model="color" />
 
   <SanitisedTextInput v-model="stellarclass" maxlength="4" label="Clase estelar:"

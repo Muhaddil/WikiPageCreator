@@ -2,6 +2,7 @@ import type { SelectOption } from '@/types/selectInputOptions';
 
 const InEnglish = [
   'Abundant',
+  'Abundant',
   'High',
   'Ample',
   'Frequent',
@@ -58,6 +59,7 @@ const InEnglish = [
 
 const InSpanish = [
   'Abundante',
+  'Fructuoso',
   'Alta',
   'Rebosante',
   'Frecuente',

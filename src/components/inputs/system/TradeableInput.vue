@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { ref, watch, computed } from 'vue';
+import { ref, watch } from 'vue';
 import { usePageDataStore } from '@/stores/pageData';
 import SanitisedTextInput from '../SanitisedTextInput.vue';
 import Panel from 'primevue/panel';
@@ -7,7 +7,6 @@ import Explainer from '@/components/Explainer.vue';
 import SelectDropdown from '../SelectDropdown.vue';
 import { mappedSystemTradeables } from '@/variables/system/systemtradeables';
 import InputTableItem from '../../InputTableItem.vue';
-// import Explainer from '@/components/Explainer.vue';
 import Button from 'primevue/button';
 import { useToast, POSITION } from 'vue-toastification';
 
@@ -46,11 +45,11 @@ const tradeTerminal = () => {
   const output = tradeables.value.map((tradeable) => {
     return `|-
 |{{ilink|${tradeable.name}}} || {{Units}} ${tradeable.price}`;
-  }).join('\n\n');
+  }).join('\n');
   pageData.tradeTerminal = output;
 };
 
-const isPriceValid = computed(() => tradeables.value.every(tradeable => /^\d*$/.test(tradeable.price)));
+const isPriceValid = (price: string) => /^\d*$/.test(price.replace(/,/g, ''));
 
 const formatPrice = (price: string) => {
   return price.replace(/\B(?=(\d{3})+(?!\d))/g, ',');
@@ -63,6 +62,10 @@ watch(tradeables, (newTradeables) => {
   tradeTerminal();
 }, { deep: true });
 
+const getLabelFromValue = (value: string) => {
+  const found = mappedSystemTradeables.find(option => option.value === value);
+  return found ? found.label : value;
+};
 </script>
 
 <template>
@@ -71,18 +74,14 @@ watch(tradeables, (newTradeables) => {
     <br />
     <br />
     <div v-for="(tradeable, index) in tradeables" :key="tradeable.id">
-      <Panel class="my-4" :header="`Tradeable ${index + 1}: ${tradeable.name}`" toggleable>
-        <!-- <SanitisedTextInput v-model="tradeable.name"
-          label="Nombre del tradeable">
-        </SanitisedTextInput> -->
-
+      <Panel class="my-4" :header="`Tradeable ${index + 1}: ${getLabelFromValue(tradeable.name)}`" toggleable>
         <InputTableItem>
           <template #label>
             <div class="is-flex is-justify-content-space-between is-align-items-center full-width">
               <label id="tradeables">Nombre del tradeable:</label>
               <Explainer tooltip="Se pueden encontrar en la estación espacial." help-img="system/tradeables"
                 help-title="Objetos comercializables de la estación espacial">
-                Se pueden encontrar en la estación espacial en el Terminal de comercio..<br>
+                Se pueden encontrar en la estación espacial en el Terminal de comercio.<br>
                 Incluya solo bienes comercializables (artículos con fondo blanco en la parte superior)
               </Explainer>
             </div>
@@ -91,16 +90,17 @@ watch(tradeables, (newTradeables) => {
           <template #input>
             <SelectDropdown v-model="tradeable.name" aria-labelledby="tradeables" :options="mappedSystemTradeables"
               filter />
-
           </template>
         </InputTableItem>
 
-        <SanitisedTextInput v-model="tradeable.price" label="Precio del tradeable:" :invalid="!isPriceValid"
-          error-message="Solo numeros">
+        <SanitisedTextInput
+          v-model="tradeable.price"
+          label="Precio del tradeable:"
+          :invalid="!isPriceValid(tradeable.price)"
+          error-message="Solo números válidos sin símbolos especiales">
         </SanitisedTextInput>
 
-        <!-- <Button v-if="tradeables.length > 1" @click="removePlanet(index)"> -->
-          <Button @click="removePlanet(index)">
+        <Button @click="removePlanet(index)">
           Eliminar Tradeable
         </Button>
       </Panel>

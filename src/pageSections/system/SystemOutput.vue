@@ -44,6 +44,8 @@ const {
   modulesEC,
   modulesES,
   modulesSD,
+  discDate,
+  docDate,
 } = storeToRefs(pageData);
 
 const glyphcoords = computed(() => glyphs2Coords(glyphs.value));
@@ -148,7 +150,15 @@ watch(discoveredlink, (newDiscoveredLinkValue) => {
   </div>
   <br />
   <div>==Discovery==</div>
-  <div v-if="docBy && docBy !== discoveredlink && docBy !== discovered">Documented by {{ docBySentence }}</div>
+  <div v-if="discDate && !docBy && discoveredlink">Discovered and uploaded by <WikiTemplate template-name="profile">{{
+    discoveredlink }}</WikiTemplate> on {{ discDate }}</div>
+  <div v-if="discDate && !docBy && discovered">Discovered and uploaded by ''{{ discovered }}'' on {{ discDate }}</div>
+  <div v-if="discDate && docDate && discoveredlink && docBy && docBy !== discoveredlink">* Discovered and uploaded by
+    <WikiTemplate template-name="profile">{{ discoveredlink }}</WikiTemplate> on {{ discDate }}<br>
+    * Explored and documented by ''{{ docBy }}'' on {{ docDate }}</div>
+  <div v-if="discDate && docDate && discovered && docBy && docBy !== discovered">* Discovered and uploaded by ''{{
+    discovered }}'' on {{ discDate }}<br>
+    * Explored and documented by ''{{ docBy }}'' on {{ docDate }}</div>
   <br />
   <div>==Planets & Moons==</div>
   <div><span v-pre>{{</span>PM|{{ planetnum }}|{{ moonnum }}<span v-pre>}}</span></div>
@@ -249,7 +259,8 @@ watch(discoveredlink, (newDiscoveredLinkValue) => {
   ===System Location===
   <div v-if="regionData && regionData.region && regionData.galaxy">
     <div>
-      Located in the [[{{ regionData.region }}]] [[region]] of [[Royal Space Society]] in the [[{{ regionData.galaxy }}]] galaxy.
+      Located in the [[{{ regionData.region }}]] [[region]] of [[Royal Space Society]] in the [[{{ regionData.galaxy
+      }}]] galaxy.
     </div>
   </div>
   <br />
@@ -280,15 +291,12 @@ watch(discoveredlink, (newDiscoveredLinkValue) => {
     <span v-if="formattedModulesMT">
       <pre>{{ formattedModulesMT }}</pre>
     </span>
-
     <span v-if="modulesSS && modulesSS.length > 0">
       <pre>{{ formattedmodulesSS }}</pre>
     </span>
-
     <span v-if="modulesEC && modulesEC.length > 0">
       <pre>{{ formattedmodulesEC }}</pre>
     </span>
-
     <span v-if="modulesES && modulesES.length > 0">
       <pre>{{ formattedmodulesES }}</pre>
     </span>

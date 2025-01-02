@@ -4,7 +4,7 @@ import { usePageDataStore } from '@/stores/pageData';
 import SanitisedTextInput from '../SanitisedTextInput.vue';
 import Panel from 'primevue/panel';
 import FileUploadNotice from '@/components/FileUploadNotice.vue';
-import BiomeInput from '@/components/inputs/flora/BiomeInput.vue';
+import BiomeInput from '@/components/inputs/system/BiomeInput.vue';
 import PlanetDescriptors from '@/components/inputs/system/PlanetDescriptors.vue';
 import PlanetWeather from '@/components/inputs/system/PlanetWeather.vue';
 import ResourceSelect from '@/components/inputs/system/ResourceSelect.vue';

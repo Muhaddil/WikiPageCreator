@@ -20,7 +20,8 @@ const {
   regionData,
   release,
   system,
-  docBySentence,
+  docDate,
+  discDate,
   chemicalSymbolsOutput,
   resourceListOutput,
   biome,
@@ -134,7 +135,15 @@ const faunaVerb = computed(() => {
   </div>
   <br />
   <div>==Discovery==</div>
-  <div v-if="docBy && docBy !== discoveredlink && docBy !== discovered">Documented by {{ docBySentence }}</div>
+  <div v-if="discDate && !docBy && discoveredlink">Discovered and uploaded by <WikiTemplate template-name="profile">{{
+    discoveredlink }}</WikiTemplate> on {{ discDate }}</div>
+  <div v-if="discDate && !docBy && discovered">Discovered and uploaded by ''{{ discovered }}'' on {{ discDate }}</div>
+  <div v-if="discDate && docDate && discoveredlink && docBy && docBy !== discoveredlink">* Discovered and uploaded by
+    <WikiTemplate template-name="profile">{{ discoveredlink }}</WikiTemplate> on {{ discDate }}<br>
+    * Explored and documented by ''{{ docBy }}'' on {{ docDate }}</div>
+  <div v-if="discDate && docDate && discovered && docBy && docBy !== discovered">* Discovered and uploaded by ''{{
+    discovered }}'' on {{ discDate }}<br>
+    * Explored and documented by ''{{ docBy }}'' on {{ docDate }}</div>
   <br />
   <div>==Planet Type==</div>
   <div><span v-pre>{{</span>Biome|{{ biome }}<span v-pre>}}</span> - {{ Planetdescriptors }}</div>

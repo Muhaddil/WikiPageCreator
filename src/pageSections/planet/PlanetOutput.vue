@@ -20,7 +20,8 @@ const {
   regionData,
   release,
   system,
-  docBySentence,
+  docDate,
+  discDate,
   chemicalSymbolsOutput,
   resourceListOutput,
   biome,
@@ -136,7 +137,16 @@ const faunaVerb = computed(() => {
   </div>
   <br />
   <div>==Discovery==</div>
-  <div v-if="docBy && docBy !== discoveredlink && docBy !== discovered">Documented by {{ docBySentence }}</div>
+  <div v-if="discDate && !docBy && discoveredlink">Discovered and uploaded by <WikiTemplate template-name="profile">{{
+    discoveredlink }}</WikiTemplate> on {{ discDate }}</div>
+  <div v-if="discDate && !docBy && discovered">Discovered and uploaded by ''{{ discovered }}'' on {{ discDate }}</div>
+  <div v-if="discDate && docDate && discoveredlink && docBy && docBy !== discoveredlink">* Discovered and uploaded by
+    <WikiTemplate template-name="profile">{{ discoveredlink }}</WikiTemplate> on {{ discDate }}<br>
+    * Explored and documented by ''{{ docBy }}'' on {{ docDate }}
+  </div>
+  <div v-if="discDate && docDate && discovered && docBy && docBy !== discovered">* Discovered and uploaded by ''{{
+    discovered }}'' on {{ discDate }}<br>
+    * Explored and documented by ''{{ docBy }}'' on {{ docDate }}</div>
   <br />
   <div>==Planet Type==</div>
   <div><span v-pre>{{</span>Biome|{{ biome }}<span v-pre>}}</span> - {{ Planetdescriptors }}</div>
@@ -146,7 +156,8 @@ const faunaVerb = computed(() => {
   <div v-if="!formattedGeneratedOutput">This planet has no moons.</div>
   <br />
   <div>==Location==</div>
-  <div>It can be found in the [[{{system}}]] [[star system]] in the [[{{regionData.region}}]] [[region]] of [[Royal Space Society]], in the [[{{regionData.galaxy}}]] [[galaxy]].</div>
+  <div>It can be found in the [[{{ system }}]] [[star system]] in the [[{{ regionData.region }}]] [[region]] of [[Royal
+    Space Society]], in the [[{{ regionData.galaxy }}]] [[galaxy]].</div>
   <br />
   <div><span v-pre>{{CoordGlyphConvert|</span>{{ glyphcoords }}<span v-pre>}}</span></div>
   <br />
