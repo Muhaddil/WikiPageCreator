@@ -14,7 +14,8 @@ const options: Option[] = [
     { english: 'Phase Beam Upgrade', spanish: 'Módulo de rayo de fase' },
     { english: 'Photon Cannon Upgrade', spanish: 'Módulo de cañón de fotones' },
     { english: 'Positron Ejector Upgrade', spanish: 'Módulo de positrones' },
-    { english: 'Pulse Engine Upgrade', spanish: 'Módulo de motor de pulso' }
+    { english: 'Pulse Engine Upgrade', spanish: 'Módulo de motor de pulso' },
+    { english: 'Reactor Core', spanish: 'Reactor' }
   ];
 </script>
 
