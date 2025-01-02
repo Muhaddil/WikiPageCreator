@@ -16,8 +16,10 @@ import Button from 'primevue/button';
 import PlanetSentinels from './PlanetSentinels.vue';
 import PlanetFlora from './PlanetFlora.vue';
 import PlanetFauna from './PlanetFauna.vue';
+import { storeToRefs } from 'pinia';
 
 const pageData = usePageDataStore();
+const { planetnum, moonnum } = storeToRefs(pageData);
 const toast = useToast();
 
 function showError(message: string) {
@@ -36,21 +38,23 @@ const getPlanetLabelTitle = (isMoon: string) => {
 
 const isFaunaTotalValid = computed(() => planets.value.every(planet => /^\d*$/.test(planet.faunatotal)));
 
-const planets = ref([{
-  id: 0,
-  name: '',
-  image: '',
-  imagelandscape: '',
-  biome: '',
-  descriptors: '',
-  ismoon: '',
-  resources: ['', '', ''],
-  weather: '',
-  sentinels: '',
-  faunatotal: '',
-  flora: '',
-  fauna: '',
-}]);
+interface Planet {
+  id: number;
+  name: string;
+  image: string;
+  imagelandscape: string;
+  biome: string;
+  descriptors: string;
+  ismoon: string;
+  resources: string[];
+  weather: string;
+  sentinels: string;
+  faunatotal: string;
+  flora: string;
+  fauna: string;
+}
+
+const planets = ref<Planet[]>([]);
 
 const addPlanet = () => {
   if (planets.value.length < 16) {
@@ -116,7 +120,77 @@ planets.value.forEach((planet) => {
       planet.descriptors = '';
     }
   });
-});</script>
+});
+
+watch(
+  [planetnum, moonnum],
+  ([newPlanetnum, newMoonnum]) => {
+    const planetCount = Number(newPlanetnum) || 0;
+    const moonCount = Number(newMoonnum) || 0;
+
+    const currentPlanets = planets.value.filter((planet) => planet.ismoon === "No");
+    const currentMoons = planets.value.filter((planet) => planet.ismoon === "Yes");
+
+    const currentPlanetCount = currentPlanets.length;
+    const currentMoonCount = currentMoons.length;
+
+    if (planetCount > currentPlanetCount) {
+      const planetsToAdd = planetCount - currentPlanetCount;
+      for (let i = 0; i < planetsToAdd; i++) {
+        planets.value.push({
+          id: planets.value.length,
+          name: "",
+          image: "",
+          imagelandscape: "",
+          biome: "",
+          descriptors: "",
+          ismoon: "No",
+          resources: ["", "", ""],
+          weather: "",
+          sentinels: "",
+          faunatotal: "",
+          flora: "",
+          fauna: "",
+        });
+      }
+    } else if (planetCount < currentPlanetCount) {
+      const planetsToRemove = currentPlanetCount - planetCount;
+      for (let i = 0; i < planetsToRemove; i++) {
+        const index = planets.value.findIndex((planet) => planet.ismoon === "No");
+        if (index !== -1) planets.value.splice(index, 1);
+      }
+    }
+
+    if (moonCount > currentMoonCount) {
+      const moonsToAdd = moonCount - currentMoonCount;
+      for (let i = 0; i < moonsToAdd; i++) {
+        planets.value.push({
+          id: planets.value.length,
+          name: "",
+          image: "",
+          imagelandscape: "",
+          biome: "",
+          descriptors: "",
+          ismoon: "Yes",
+          resources: ["", "", ""],
+          weather: "",
+          sentinels: "",
+          faunatotal: "",
+          flora: "",
+          fauna: "",
+        });
+      }
+    } else if (moonCount < currentMoonCount) {
+      const moonsToRemove = currentMoonCount - moonCount;
+      for (let i = 0; i < moonsToRemove; i++) {
+        const index = planets.value.findIndex((planet) => planet.ismoon === "Yes");
+        if (index !== -1) planets.value.splice(index, 1);
+      }
+    }
+  },
+  { immediate: true }
+);
+</script>
 
 <template>
   <div>
