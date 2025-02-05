@@ -165,6 +165,9 @@ interface PageData {
   hyperdrive: string;
   derelictEnemies: string;
   censusrenewal: string;
+  basename: string;
+  playername: string;
+  discordname: string;
 }
 
 const defaultState: PageData = {
@@ -314,6 +317,9 @@ const defaultState: PageData = {
   hyperdrive: '',
   derelictEnemies: '',
   censusrenewal: '',
+  basename: '',
+  playername: '',
+  discordname: '',
   presetData: structuredClone(defaultData),
 };
 

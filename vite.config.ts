@@ -43,6 +43,7 @@ export default defineConfig({
         'faq.html',
         'glyphgeneratorV2.html',
         'baserenewal.html',
+        'census.html',
       ],
     },
   },

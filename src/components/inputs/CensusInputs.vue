@@ -98,7 +98,7 @@ watchDebounced(
     <SanitisedTextInput
       v-model="censusdiscord"
       :invalid="!isDiscordValid"
-      error-message="'Etiqueta de Discord inválida. Por favor da tu nombre de usuario, no tu apodo.'"
+      error-message="Etiqueta de Discord inválida. Por favor da tu nombre de usuario, no tu apodo."
       label="Nombre de Discord"
       tooltip="Tu nombre de Discord. Por favor ingresa tu nombre de usuario, no tu apodo"
     />

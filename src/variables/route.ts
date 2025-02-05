@@ -21,6 +21,7 @@ export const router: Record<string, string> = {
   moon: 'Moon',
   baserenewal: 'BaseRenewal',
   faq: 'Faq',
+  census: 'Census',
 };
 
 export const route = getCurrentRoute();
@@ -79,6 +80,9 @@ switch (route) {
     break;
   case 'faq':
     exportName = 'Preguntas Frecuentes';
+    break;
+  case 'census':
+    exportName = 'Censo';
     break;
   case '':
     exportName = 'Home';

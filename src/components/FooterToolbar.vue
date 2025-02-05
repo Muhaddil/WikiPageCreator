@@ -23,6 +23,10 @@ function isBaseRenewalPage() {
   return currentUrl.includes('baserenewal.html');
 }
 
+function isCensusPage() {
+  return currentUrl.includes('census.html');
+}
+
 function isFAQPage() {
   return currentUrl.includes('faq.html');
 }
@@ -30,17 +34,24 @@ function isFAQPage() {
 async function copyPage() {
   let requiredFields;
 
-  if (!isBaseRenewalPage()) {
+  if (isBaseRenewalPage()) {
+    requiredFields = [
+      { field: pageData.name, message: '¡Falta el nombre!' },
+      { field: pageData.censusrenewal, message: '¿Qué quieres copiar? Rellena los datos' }
+    ];
+  } else if (isCensusPage()) {
+    requiredFields = [
+      { field: pageData.playername, message: '¡Falta tu nombre!' },
+      { field: pageData.platform, message: '¡Falta tu plataforma!' },
+      { field: pageData.mode, message: '¡Falta tu modo de juego!' },
+      { field: pageData.discDate, message: '¡Falta tu fecha de unión!' },
+    ];
+  } else {
     requiredFields = [
       { field: pageData.outputContent, message: 'ERROR 404' },
       { field: pageData.name, message: '¡Falta el nombre!' },
       { field: pageData.glyphs, message: '¡Faltan los Glifos!' },
       { field: pageData.regionData.region, message: '¡Glifos Incorrectos!' }
-    ];
-  } else {
-    requiredFields = [
-      { field: pageData.name, message: '¡Falta el nombre!' },
-      { field: pageData.censusrenewal, message: '¿Que quieres copiar? Rellena los datos' }
     ];
   }
 
@@ -66,6 +77,25 @@ async function copyPage() {
 }
 
 function createPage() {
+  if (isCensusPage()) {
+    const requiredFields = [
+      { field: pageData.playername, message: '¡Falta tu nombre!' },
+      { field: pageData.platform, message: '¡Falta tu plataforma!' },
+      { field: pageData.mode, message: '¡Falta tu modo de juego!' },
+      { field: pageData.discDate, message: '¡Falta tu fecha de unión!' },
+    ];
+
+    for (const { field, message } of requiredFields) {
+      if (!field) {
+        showError(message);
+        return;
+      } else {
+        window.open(`https://nomanssky.fandom.com/wiki/Census_-_Royal_Space_Society?action=edit&section=9#editform`, '_blank');
+        return;
+        }
+    }
+  }
+
   if (!isBaseRenewalPage()) {
     const requiredFields = [
       { field: pageData.name, message: '¡Falta el nombre!' },
@@ -89,19 +119,32 @@ function createPage() {
 }
 
 function downloadCode() {
-  if (!isBaseRenewalPage()) {
-    const requiredFields = [
+  let requiredFields;
+  if (isBaseRenewalPage()) {
+    requiredFields = [
+      { field: pageData.name, message: '¡Falta el nombre!' },
+      { field: pageData.censusrenewal, message: '¿Qué quieres copiar? Rellena los datos' }
+    ];
+  } else if (isCensusPage()) {
+    requiredFields = [
+      { field: pageData.playername, message: '¡Falta tu nombre!' },
+      { field: pageData.platform, message: '¡Falta tu plataforma!' },
+      { field: pageData.mode, message: '¡Falta tu modo de juego!' },
+      { field: pageData.discDate, message: '¡Falta tu fecha de unión!' },
+    ];
+  } else {
+    requiredFields = [
       { field: pageData.outputContent, message: 'ERROR 404' },
       { field: pageData.name, message: '¡Falta el nombre!' },
       { field: pageData.glyphs, message: '¡Faltan los Glifos!' },
       { field: pageData.regionData.region, message: '¡Glifos Incorrectos!' }
     ];
+  }
 
-    for (const { field, message } of requiredFields) {
-      if (!field) {
-        showError(message);
-        return;
-      }
+  for (const { field, message } of requiredFields) {
+    if (!field) {
+      showError(message);
+      return;
     }
   }
 
