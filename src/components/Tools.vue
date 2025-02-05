@@ -14,6 +14,10 @@ const items = [
         url: '/RSSWikiPageCreator/baserenewal.html',
       },
       {
+        label: 'Entrada Censo RSS',
+        url: '/RSSWikiPageCreator/census.html',
+      },
+      {
         label: 'FAQ',
         url: '/RSSWikiPageCreator/faq.html',
       },
