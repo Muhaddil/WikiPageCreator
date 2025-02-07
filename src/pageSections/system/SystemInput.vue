@@ -113,9 +113,11 @@ watch(economybuy, (newValue) => {
     <FileUploadNotice />
   </SingleFileUpload>
 
+  <div v-if="wealth !== 'Data Unavailable'">
   <SingleFileUpload v-model="ssImage" label="Nombre de la imagen de la estación espacial:">
     <FileUploadNotice />
   </SingleFileUpload>
+  </div>
 
   <GlyphInput v-model="glyphs" />
 
