@@ -184,7 +184,7 @@ const defaultState: PageData = {
   discoveredlink: '',
   system: '',
   planet: '',
-  planetnum: '1',
+  planetnum: '0',
   moonnum: '0',
   moon: '',
   glyphs: '',
