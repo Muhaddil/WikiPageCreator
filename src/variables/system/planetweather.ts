@@ -266,6 +266,7 @@ const InEnglish = [
   'Blood Rain',
   'Bilious Storms',
   'Deadly Pressure Variations',
+  'Corrupted Blood',
 ] as const;
 
 const InSpanish = [
@@ -533,6 +534,7 @@ const InSpanish = [
   'Lluvia de sangre',
   'Tormentas biliosas',
   'Variaciones de presión mortales',
+  'Sangre corrompida',
 ] as const;
 
 export const mappedPlanetWeather: SelectOption[] = InSpanish.map((mode, index) => ({
