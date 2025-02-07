@@ -264,6 +264,7 @@ watch(discoveredlink, (newDiscoveredLinkValue) => {
     </div>
   </div>
   <br />
+  <div v-if="wealth !== 'Data Unavailable'">
   <div>==Space Station==</div>
   <div data-station="img">[[File:{{ ssImage }}|thumb|System space station]]</div>
   <div data-station="note"></div>
@@ -314,6 +315,14 @@ watch(discoveredlink, (newDiscoveredLinkValue) => {
     <div><span v-pre>}}</span></div>
   </div>
   <br />
+</div>
+
+<div v-else>
+  <div>==Space Station==</div>
+  <div>{{ name }} has no space station.</div>
+  <br />
+</div>
+
   <div>==Additional Information==</div>
   <div>{{ additionalInfo }}</div>
   <div v-if="docBy && docBy !== discoveredlink && docBy !== discovered">Documented by {{ docBySentence }}</div>

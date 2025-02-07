@@ -1,22 +1,23 @@
 import type { SelectOption } from '@/types/selectInputOptions';
 
-const InEnglishWealthCategories = ['High', 'Medium', 'Low', 'Outlaw'] as const;
-const InSpanishWealthCategories = ['Alta', 'Media', 'Baja', 'Fuera de la ley'] as const;
+const InEnglishWealthCategories = ['High', 'Medium', 'Low', 'Outlaw', 'None'] as const;
+const InSpanishWealthCategories = ['Alta', 'Media', 'Baja', 'Fuera de la ley', 'Ninguna'] as const;
 
 const wealthInEnglish = {
-  High: ['Advanced', 'Affluent', 'Booming', 'Flourishing', 'High Supply', 'Opulent', 'Prosperous', 'Wealthy'],
+  High: ['★★★ (Advanced)', '★★★ (Affluent)', '★★★ (Booming)', '★★★ (Flourishing)', '★★★ (High Supply)', '★★★ (Opulent)', '★★★ (Prosperous)', '★★★ (Wealthy)'],
   Medium: [
-    'Adequate',
-    'Balanced',
-    'Comfortable',
-    'Developing',
-    'Medium Supply',
-    'Promising',
-    'Satisfactory',
-    'Sustainable',
+    '★★ (Adequate)',
+    '★★ (Balanced)',
+    '★★ (Comfortable)',
+    '★★ (Developing)',
+    '★★ (Medium Supply)',
+    '★★ (Promising)',
+    '★★ (Satisfactory)',
+    '★★ (Sustainable)',
   ],
-  Low: ['Declining', 'Destitute', 'Failing', 'Fledgling', 'Low Supply', 'Struggling', 'Unsuccessful', 'Unpromising'],
+  Low: ['★ (Declining)', '★ (Destitute)', '★ (Failing)', '★ (Fledgling)', '★ (Low Supply)', '★ (Struggling)', '★ (Unsuccessful)', '★ (Unpromising)'],
   Outlaw: ['Black Market'],
+  None: ['Data Unavailable'],
 } as const;
 
 const wealthInSpanish = {
@@ -33,6 +34,7 @@ const wealthInSpanish = {
   ],
   Baja: ['Declinante', 'Indigente', 'Fracasado', 'Principiante', 'Bajo Suministro', 'Luchador', 'Desafortunado', 'Desalentador'],
   'Fuera de la ley': ['Mercado Negro'],
+  Ninguna: ['Datos no disponibles'],
 } as const;
 
 export const mappedWealthOptions: SelectOption[] = InSpanishWealthCategories.flatMap((category, index) => {

@@ -19,7 +19,7 @@
     "@vitest/coverage-v8": "^3.0.5",
     "@vue/test-utils": "^2.4.6",
     "@vueuse/core": "^12.5.0",
-    "happy-dom": "^16.8.1",
+    "happy-dom": "^17.0.0",
     "pinia": "^2.3.1",
     "prettier": "^3.4.2",
     "sass-embedded": "^1.83.4",
@@ -29,7 +29,7 @@
     "vue": "^3.5.13",
     "vue-toastification": "^2.0.0-rc.5",
     "vue-tsc": "^2.2.0",
-    "webdriverio": "^9.7.2"
+    "webdriverio": "^9.8.0"
   },
   "dependencies": {
     "@primevue/themes": "^4.2.5",
