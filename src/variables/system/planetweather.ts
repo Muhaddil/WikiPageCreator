@@ -460,7 +460,7 @@ const InSpanish = [
   'Llovizna sobrecalentada',
   'Niebla peligrosamente caliente',
   'Humedad asfixiante',
-  'Calma mayormente',
+  'Totalmente calmado',
   'Lluvias escaldantes ocasionales',
   'Generalmente templado',
   'Humedad hirviente',

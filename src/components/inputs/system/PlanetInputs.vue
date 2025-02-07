@@ -42,7 +42,6 @@ interface Planet {
   id: number;
   name: string;
   image: string;
-  imagelandscape: string;
   biome: string;
   descriptors: string;
   ismoon: string;
@@ -62,7 +61,6 @@ const addPlanet = () => {
       id: planets.value.length,
       name: '',
       image: '',
-      imagelandscape: '',
       biome: '',
       descriptors: '',
       ismoon: '',
@@ -96,7 +94,6 @@ const generateOutput = () => {
   const output = planets.value.map((planet) => {
     return `|-
 |[[File:${planet.image || 'nmsMisc_NotAvailable.png'}|150px]]
-|[[File:${planet.imagelandscape || 'nmsMisc_NotAvailable.png'}|150px]]
 |[[${planet.name}]]
 |{{Biome|${planet.biome}}}<hr>${planet.descriptors}
 |${planet.resources.map(resource => `[[${resource}]]`).join('<br>')}
@@ -141,7 +138,6 @@ watch(
           id: planets.value.length,
           name: "",
           image: "",
-          imagelandscape: "",
           biome: "",
           descriptors: "",
           ismoon: "No",
@@ -168,7 +164,6 @@ watch(
           id: planets.value.length,
           name: "",
           image: "",
-          imagelandscape: "",
           biome: "",
           descriptors: "",
           ismoon: "Yes",
@@ -210,11 +205,11 @@ watch(
           <FileUploadNotice />
         </SingleFileUpload>
 
-        <SingleFileUpload v-model="planet.imagelandscape" label="Nombre del archivo de paisaje:"
+        <!-- <SingleFileUpload v-model="planet.imagelandscape" label="Nombre del archivo de paisaje:"
           help-title="Subida de Archivo"
           tooltip="La imagen no se subirá a la wiki. Esto es solo para autocompletar el nombre de la imagen.">
           <FileUploadNotice />
-        </SingleFileUpload>
+        </SingleFileUpload> -->
 
         <InputTableItem>
           <template #label>
