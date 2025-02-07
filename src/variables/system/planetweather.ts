@@ -403,7 +403,7 @@ const InSpanish = [
   'Bolsas de polvo ácidas',
   'Frentes tóxicos pasajeros',
   'Vientos cáusticos',
-  'Tormentas de agua alcalina',
+  'Chaparrones alcalinos',
   'Lluvias peligrosamente tóxicas',
   'Tormentas de aguanieve corrosivas',
   'Atmósfera letal',
