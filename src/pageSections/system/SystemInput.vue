@@ -198,10 +198,10 @@ watch(economybuy, (newValue) => {
 
   <TradeableInput />
 
+  <UpgradeModulesES v-model="modulesES" />
   <UpgradeModules v-model="modulesMT" />
   <UpgradeModulesSS v-model="modulesSS" />
   <UpgradeModulesEC v-model="modulesEC" />
-  <UpgradeModulesES v-model="modulesES" />
   <UpgradeModulesSD v-model="modulesSD" />
   <TextareaInput v-model="additionalInfo" label="Información Adicional:" />
 
