@@ -196,6 +196,7 @@ watch(economybuy, (newValue) => {
   <SanitisedTextInput v-if="showDiscovered" v-model="discovered" label="Alias del descubridor si no tiene wiki:" />
   <SanitisedTextInput v-model="docBy" label="Nombre del documentador si no es el descubridor:" />
 
+  <div v-if="wealth !== 'Data Unavailable'">
   <TradeableInput />
 
   <UpgradeModulesES v-model="modulesES" />
@@ -203,6 +204,7 @@ watch(economybuy, (newValue) => {
   <UpgradeModulesSS v-model="modulesSS" />
   <UpgradeModulesEC v-model="modulesEC" />
   <UpgradeModulesSD v-model="modulesSD" />
+  </div>
   <TextareaInput v-model="additionalInfo" label="Información Adicional:" />
 
   <GalleryInput />
