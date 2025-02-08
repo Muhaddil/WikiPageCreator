@@ -28,7 +28,7 @@ function isCensusPage() {
 }
 
 function isFAQPage() {
-  return currentUrl.includes('faq.html');
+  return currentUrl.includes('faq.html') || currentUrl.includes('basesdestacadas.html');
 }
 
 async function copyPage() {

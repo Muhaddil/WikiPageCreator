@@ -1,5 +1,4 @@
-import { getRouteComponent } from '@/helpers/router';
-import { getCurrentRoute } from '@/helpers/router';
+import { getRouteComponent, getCurrentRoute } from '@/helpers/router';
 
 // build a custom "fake router" instead of using client-side routing to avoid 404 pages on direct navigation
 export const router: Record<string, string> = {
@@ -22,6 +21,7 @@ export const router: Record<string, string> = {
   baserenewal: 'BaseRenewal',
   faq: 'Faq',
   census: 'Census',
+  basesdestacadas: 'BasesDestacadas',
 };
 
 export const route = getCurrentRoute();
@@ -83,6 +83,9 @@ switch (route) {
     break;
   case 'census':
     exportName = 'Censo';
+    break;
+  case 'basesdestacadas':
+    exportName = 'Bases Destacadas';
     break;
   case '':
     exportName = 'Home';

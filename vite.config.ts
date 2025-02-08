@@ -44,6 +44,7 @@ export default defineConfig({
         'glyphgeneratorV2.html',
         'baserenewal.html',
         'census.html',
+        'basesdestacadas.html',
       ],
     },
   },
