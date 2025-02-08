@@ -93,9 +93,12 @@ const openModal = (image: string) => {
     <template #header>
       <button type="button" class="close-modal" @click="isModalOpen = false">X</button>
     </template>
+    <a :href="modalImage" target="_blank">
     <div class="modal-content">
-      <img :src="modalImage" alt="Imagen ampliada" class="modal-image" />
+      <img :src="modalImage" alt="Imagen ampliada" class="modal-image"/>
+    </img>
     </div>
+  </a>
   </Dialog>
 
 
