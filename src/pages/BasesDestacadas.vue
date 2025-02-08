@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { ref } from 'vue';
+import { ref, computed } from 'vue';
 import Card from 'primevue/card';
 import Carousel from 'primevue/carousel';
 import Tag from 'primevue/tag';
@@ -43,10 +43,36 @@ const bases = ref([
 
 const isModalOpen = ref(false);
 const modalImage = ref('');
+const screenWidth = ref(window.innerWidth);
+let resizeTimeout: NodeJS.Timeout | null = null;
+
+const updateScreenWidth = () => {
+  const newWidth = window.innerWidth;
+
+  if (Math.abs(newWidth - screenWidth.value) > 50) {
+    screenWidth.value = newWidth;
+
+    if (resizeTimeout) {
+      clearTimeout(resizeTimeout);
+    }
+
+    resizeTimeout = setTimeout(() => {
+      location.reload();
+    }, 500);
+  }
+};
+
+window.addEventListener('resize', updateScreenWidth);
+
+const numVisibleBases = computed(() => (screenWidth.value < 768 ? 1 : 2));
 
 const openModal = (image: string) => {
-  modalImage.value = image;
-  isModalOpen.value = true;
+  if (screenWidth.value <= 768) {
+    window.open(image, '_blank');
+  } else {
+    modalImage.value = image;
+    isModalOpen.value = true;
+  }
 };
 </script>
 
@@ -56,26 +82,23 @@ const openModal = (image: string) => {
       <div class="space-page-container">
         <div class="flex items-start justify-between mb-6 header-container">
           <div class="flex flex-col">
+            <a href="https://nomanssky.fandom.com/es/wiki/Royal_Space_Society" target="_blank">
+              <div class="rss-logo">
+                <img src="/assets/images/basesdestacadas/RSS-Logo.webp" class="logo-image animate-pulse" alt="RSS Logo" />
+              </div>
+            </a>
             <h1 class="text-4xl font-bold galactic-title">BASES ESTELARES DESTACADAS</h1>
             <p class="text-stellar-gray mt-2">
               Catálogo de las instalaciones más impresionantes del universo conocido
             </p>
-            <a href="https://nomanssky.fandom.com/es/wiki/Royal_Space_Society" target="_blank">
-              <div class="rss-logo">
-                <img src="/assets/images/basesdestacadas/RSS-Logo.webp" class="logo-image animate-pulse"
-                  alt="RSS Logo" />
-              </div>
-            </a>
           </div>
         </div>
 
-        <Carousel :value="bases" :numVisible="1" :numScroll="1" circular :autoplayInterval="6000"
-          class="galactic-carousel">
+        <Carousel :value="bases" :numVisible="numVisibleBases" :numScroll="1" circular :autoplayInterval="6000" class="galactic-carousel">
           <template #item="slotProps">
             <div class="base-card relative">
               <div class="image-container">
-                <img :src="slotProps.data.image" :alt="slotProps.data.name"
-                  class="galactic-image object-cover w-full h-full" @click="openModal(slotProps.data.image)" />
+                <img :src="slotProps.data.image" :alt="slotProps.data.name" class="galactic-image object-cover w-full h-full" @click="openModal(slotProps.data.image)" />
               </div>
               <div class="base-info">
                 <div class="info-content">
@@ -89,8 +112,7 @@ const openModal = (image: string) => {
                     <span>{{ slotProps.data.author }}</span>
                   </div>
                   <div class="flex flex-wrap gap-3 my-4">
-                    <Tag v-for="(feature, index) in slotProps.data.features" :key="index" :value="feature"
-                      icon="pi pi-caret-right" class="feature-tag" />
+                    <Tag v-for="(feature, index) in slotProps.data.features" :key="index" :value="feature" icon="pi pi-caret-right" class="feature-tag" />
                   </div>
                   <p class="description-text">{{ slotProps.data.description }}</p>
                 </div>
@@ -103,7 +125,7 @@ const openModal = (image: string) => {
           <template #header>
             <h2 class="text-2xl font-bold" style="background: linear-gradient(45deg, #67e8f9 0%, #4f46e5 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; text-shadow: 0 0 15px rgba(103, 232, 249, 0.3);">Registro Galáctico</h2>
           </template>
-          <p class="m-0 text-stellar-gray w-full keep-linebreaks">
+          <p class="m-0 text-stellar-gray w-full" :class="{ 'keep-linebreaks': screenWidth >= 768 }">
             Las bases aquí mostradas han sido certificadas por la Royal Space Society según los criterios de:
             <br />
             <span class="text-cyan-300 font-semibold">
@@ -333,18 +355,22 @@ const openModal = (image: string) => {
 }
 
 .header-container {
-  padding: 1rem 2rem;
-  background: rgba(16, 23, 42, 0.4);
-  border-radius: 12px;
-  border: 1px solid rgba(103, 232, 249, 0.1);
-  margin-bottom: 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
   position: relative;
+  flex-wrap: wrap;
+}
+
+.rss-logo {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-left: 1rem;
 }
 
 .logo-image {
   height: 80px;
-  width: auto;
-  filter: drop-shadow(0 0 8px rgba(103, 232, 249, 0.3));
   transition: transform 0.3s ease;
 }
 
@@ -380,7 +406,15 @@ const openModal = (image: string) => {
   .header-container {
     flex-direction: column;
     text-align: center;
+    align-items: center;
     gap: 1rem;
+  }
+
+  .rss-logo {
+    position: absolute;
+    right: -1rem;
+    top: -1rem;
+    margin-top: 1rem;
   }
 
   .logo-image {
@@ -390,5 +424,6 @@ const openModal = (image: string) => {
   .galactic-title {
     font-size: 1.8rem;
   }
+
 }
 </style>
