@@ -246,8 +246,8 @@ const gridColumns = computed(() => screenWidth.value < 768 ? 1 : screenWidth.val
   --secondary-gradient: linear-gradient(45deg, #67e8f9 0%, #4f46e5 100%);
   --text-primary: #1e293b;
   --text-secondary: #475569;
-  --background-primary: #ffffff;
-  --background-secondary: #f8fafc;
+  --background-primary: #d3d3d3;
+  --background-secondary: #f1f1f1;
   --border-color: rgba(99, 102, 241, 0.15);
   --hover-effect: rgba(99, 102, 241, 0.1);
   --tag-background: rgba(79, 70, 229, 0.1);

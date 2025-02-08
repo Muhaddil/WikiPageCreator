@@ -157,8 +157,8 @@ const openModal = (image: string) => {
 .galactic-card {
   --primary-gradient: linear-gradient(45deg, #4f46e5 0%, #1e40af 100%);
   --secondary-gradient: linear-gradient(45deg, #67e8f9 0%, #4f46e5 100%);
-  --background-primary: #f8fafc;
-  --background-secondary: #e2e8f0;
+  --background-primary: #d3d3d3;
+  --background-secondary: #f1f1f1;
   --text-primary: #1e293b;
   --text-secondary: #475569;
   --border-color: rgba(99, 102, 241, 0.2);
