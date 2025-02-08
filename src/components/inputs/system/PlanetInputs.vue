@@ -28,12 +28,12 @@ function showError(message: string) {
   });
 }
 
-const getPlanetLabel = (isMoon: string) => {
-  return isMoon === 'Yes' ? 'Nombre de la luna' : 'Nombre del planeta';
+const getPlanetLabel = (isMoon: string, isGigant: string) => {
+  return isMoon === 'Yes' ? 'Nombre de la luna' : isGigant === 'Yes' ? 'Nombre del gigante' : 'Nombre del planeta';
 };
 
-const getPlanetLabelTitle = (isMoon: string) => {
-  return isMoon === 'Yes' ? 'Luna' : 'Planeta';
+const getPlanetLabelTitle = (isMoon: string, isGigant:string) => {
+  return isMoon === 'Yes' ? 'Luna' : isGigant === 'Yes' ? 'Gigante' : 'Planeta';
 };
 
 const isFaunaTotalValid = computed(() => planets.value.every(planet => /^\d*$/.test(planet.faunatotal)));
@@ -45,6 +45,7 @@ interface Planet {
   biome: string;
   descriptors: string;
   ismoon: string;
+  isgigant: string;
   resources: string[];
   weather: string;
   sentinels: string;
@@ -64,6 +65,7 @@ const addPlanet = () => {
       biome: '',
       descriptors: '',
       ismoon: '',
+      isgigant: '',
       resources: ['', '', ''],
       weather: '',
       sentinels: '',
@@ -141,6 +143,7 @@ watch(
           biome: "",
           descriptors: "",
           ismoon: "No",
+          isgigant: "",
           resources: ["", "", ""],
           weather: "",
           sentinels: "",
@@ -167,6 +170,7 @@ watch(
           biome: "",
           descriptors: "",
           ismoon: "Yes",
+          isgigant: "",
           resources: ["", "", ""],
           weather: "",
           sentinels: "",
@@ -193,9 +197,9 @@ watch(
     <br />
     <br />
     <div v-for="(planet, index) in planets" :key="planet.id">
-      <Panel class="my-4" :header="`${getPlanetLabelTitle(planet.ismoon)} ${index + 1}: ${planet.name}`" toggleable>
+      <Panel class="my-4" :header="`${getPlanetLabelTitle(planet.ismoon, planet.isgigant)} ${index + 1}: ${planet.name}`" toggleable>
         <SanitisedTextInput v-model="planet.name" help-title="Nombre del planeta/luna"
-          :label="getPlanetLabel(planet.ismoon)" helpImg="planet/planetName"
+          :label="getPlanetLabel(planet.ismoon, planet.isgigant)" helpImg="planet/planetName"
           tooltip="Se puede encontrar en el menú de descubrimiento">Se puede encontrar en el menú de
           descubrimiento.<br>Introduzca exactamente como se ve en el juego. Cuidado con 0 (cero) y O (o).
         </SanitisedTextInput>
@@ -222,8 +226,19 @@ watch(
           </template>
         </InputTableItem>
 
+        <InputTableItem>
+          <template #label>
+            <div class="is-flex is-justify-content-space-between is-align-items-center full-width">
+              <label for="isgigant-checkbox">¿Es un gigante gaseoso?</label>
+            </div>
+          </template>
+          <template #input>
+            <Checkbox v-model="planet.isgigant" false-value="No" input-id="isgigant-checkbox" true-value="Yes" binary />
+          </template>
+        </InputTableItem>
+
         <BiomeInput v-model="planet.biome" />
-        <PlanetDescriptors v-model="planet.descriptors" :isMoon="planet.ismoon === 'Yes'" />
+        <PlanetDescriptors v-model="planet.descriptors" :isMoon="planet.ismoon === 'Yes'" :isGiant="planet.isgigant === 'Yes'"/>
 
         <Panel class="my-4" header="Recursos" toggleable>
           <div v-for="(resource, resourceIndex) in planet.resources" :key="resourceIndex" class="resource-container">

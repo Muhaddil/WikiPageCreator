@@ -520,7 +520,7 @@ const InSpanish = [
   'Recuerdos de escarcha',
   'Escarcha perseguida',
   'Incendio indetectable',
-  '[CENSURADO]',
+  '[EDITADO]',
   'Anómalo',
   'Rojo ardiente',
   'Lluvia escarlata',

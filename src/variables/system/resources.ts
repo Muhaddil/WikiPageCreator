@@ -34,6 +34,8 @@ const InEnglish = [
   'Salvageable Scrap',
   'Rusted Metal',
   'Basalt',
+  'Quartzite',
+  'Activated Quartzite',
 ] as const;
 
 const InSpanish = [
@@ -70,6 +72,8 @@ const InSpanish = [
   'Chatarra recuperable',
   'Metal oxidado',
   'Basalto',
+  'Cuarcita',
+  'Cuarcita Activada',
 ] as const;
 
 

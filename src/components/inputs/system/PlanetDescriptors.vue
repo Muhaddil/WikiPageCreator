@@ -2,10 +2,10 @@
 import { useId } from '@/helpers/id';
 import InputTableItem from '../../InputTableItem.vue';
 import SelectDropdown from '../SelectDropdown.vue';
-import { mappedPlanetDescriptors, mappedMoonDescriptors } from '@/variables/system/planetdescriptors';
+import { mappedPlanetDescriptors, mappedMoonDescriptors, mappedGiantDescriptors } from '@/variables/system/planetdescriptors';
 import Explainer from '../../Explainer.vue';
 
-defineProps<{ resetEvent?: string, isMoon?: boolean }>();
+defineProps<{ resetEvent?: string, isMoon?: boolean, isGiant?: boolean }>();
 
 const model = defineModel<string>({ required: true });
 
@@ -27,7 +27,7 @@ const id = useId('planetdescriptors');
       <SelectDropdown
         v-model="model"
         :aria-labelledby="id"
-        :options="isMoon ? mappedMoonDescriptors : mappedPlanetDescriptors"
+        :options="isMoon ? mappedMoonDescriptors : isGiant ? mappedGiantDescriptors: mappedPlanetDescriptors"
         :reset-event
       />
     </template>
