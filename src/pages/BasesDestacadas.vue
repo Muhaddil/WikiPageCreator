@@ -99,12 +99,17 @@ const openModal = (image: string) => {
           </template>
         </Carousel>
 
-        <Panel header="Registro Galáctico" class="galactic-panel mt-6">
-          <p class="m-0 text-stellar-gray">
+        <Panel class="galactic-panel mt-6">
+          <template #header>
+            <h2 class="text-2xl font-bold" style="background: linear-gradient(45deg, #67e8f9 0%, #4f46e5 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; text-shadow: 0 0 15px rgba(103, 232, 249, 0.3);">Registro Galáctico</h2>
+          </template>
+          <p class="m-0 text-stellar-gray w-full keep-linebreaks">
             Las bases aquí mostradas han sido certificadas por la Royal Space Society según los criterios de:
+            <br />
             <span class="text-cyan-300 font-semibold">
-              Innovación tecnológica, Valor científico y Diseño arquitectónico
+              <b>Innovación tecnológica, Valor científico y Diseño arquitectónico</b>
             </span>.
+            <br />
             <br />
             Actualización estelar: 18/7/2567 (Ciclo Korvax)
           </p>
@@ -282,7 +287,7 @@ const openModal = (image: string) => {
   background: transparent !important;
 }
 
-.galactic-carousel :deep(.p-carousel-viewport){
+.galactic-carousel :deep(.p-carousel-viewport) {
   background: transparent !important;
   margin: 0;
   padding: 0;
@@ -322,6 +327,8 @@ const openModal = (image: string) => {
 }
 
 .text-stellar-gray {
+  font-size: 0.9rem;
+  /* max-width: 500px; */
   color: #a0aec0;
 }
 
