@@ -154,22 +154,32 @@ const openModal = (image: string) => {
 </template>
 
 <style scoped>
-/* .space-page-container {
-  max-width: 1400px;
-  margin: 0 auto;
-  padding: 2rem 1rem;
-} */
-
 .galactic-card {
-  background: linear-gradient(45deg, #0a0e1a 0%, #1a1f2d 100%);
-  border: 1px solid rgba(103, 232, 249, 0.2);
+  --primary-gradient: linear-gradient(45deg, #4f46e5 0%, #1e40af 100%);
+  --secondary-gradient: linear-gradient(45deg, #67e8f9 0%, #4f46e5 100%);
+  --background-primary: #f8fafc;
+  --background-secondary: #e2e8f0;
+  --text-primary: #1e293b;
+  --text-secondary: #475569;
+  --border-color: rgba(99, 102, 241, 0.2);
+  --accent-color: #4f46e5;
+  --hover-effect: rgba(79, 70, 229, 0.1);
+  --card-shadow: 0 0 20px rgba(79, 70, 229, 0.1);
+  --panel-background: rgba(255, 255, 255, 0.9);
 }
 
-.galactic-title {
-  background: linear-gradient(45deg, #67e8f9 0%, #4f46e5 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  text-shadow: 0 0 15px rgba(103, 232, 249, 0.3);
+.theme-dark .galactic-card {
+  --primary-gradient: linear-gradient(45deg, #67e8f9 0%, #4f46e5 100%);
+  --secondary-gradient: linear-gradient(45deg, #4f46e5 0%, #1e40af 100%);
+  --background-primary: #0a0e1a;
+  --background-secondary: #1a1f2d;
+  --text-primary: #f8fafc;
+  --text-secondary: #cbd5e1;
+  --border-color: rgba(103, 232, 249, 0.2);
+  --accent-color: #67e8f9;
+  --hover-effect: rgba(103, 232, 249, 0.3);
+  --card-shadow: 0 0 20px rgba(103, 232, 249, 0.3);
+  --panel-background: rgba(16, 23, 42, 0.8);
 }
 
 .space-page-container {
@@ -214,53 +224,35 @@ const openModal = (image: string) => {
   padding: 1.5rem 0;
 }
 
-.custom-carousel :deep(.p-carousel-indicator button) {
-  width: 15px;
-  height: 15px;
-  border-radius: 50%;
-  background-color: rgba(103, 232, 249, 0.4);
-  transition: all 0.3s ease;
+
+.galactic-card {
+  background: var(--background-primary);
+  border: 1px solid var(--border-color);
 }
 
-.custom-carousel :deep(.p-carousel-indicator.p-highlight button) {
-  background-color: #67e8f9;
-  transform: scale(1.3);
-}
-
-.close-modal {
-  background: transparent;
-  border: none;
-  font-size: 1.5rem;
-  color: #fff;
-  cursor: pointer;
-}
-
-.custom-carousel :deep(.p-carousel-indicators) {
-  padding: 1rem 0;
-}
-
-.custom-carousel :deep(.p-carousel-indicator button) {
-  background-color: #67e8f9;
-}
-
-.custom-tag {
-  background-color: rgba(103, 232, 249, 0.1) !important;
-  border: 1px solid #67e8f9 !important;
+.galactic-title {
+  background: var(--primary-gradient);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  text-shadow: 0 0 15px var(--hover-effect);
+  font-size: 2rem;
+  line-height: 1.2;
 }
 
 .base-card {
   border-radius: 12px;
   overflow: hidden;
-  box-shadow: 0 0 20px rgba(103, 232, 249, 0.3);
+  box-shadow: var(--card-shadow);
   flex: 1;
   display: flex;
   flex-direction: column;
+  background: var(--background-secondary);
 }
 
 .base-info {
   backdrop-filter: blur(5px);
   padding: 2rem;
-  background: linear-gradient(0deg, rgba(10, 14, 26, 0.95) 30%, transparent 100%);
+  background: linear-gradient(0deg, rgba(var(--background-primary-rgb), 0.95) 30%, transparent 100%);
   flex: 1;
 }
 
@@ -270,7 +262,7 @@ const openModal = (image: string) => {
   position: relative;
   border-radius: 15px;
   overflow: hidden;
-  box-shadow: 0 0 30px rgba(103, 232, 249, 0.2);
+  box-shadow: 0 0 30px var(--hover-effect);
 }
 
 .galactic-image {
@@ -334,24 +326,24 @@ const openModal = (image: string) => {
   width: 15px;
   height: 15px;
   border-radius: 50%;
+  background-color: rgba(var(--accent-color-rgb), 0.4);
   transition: all 0.3s ease;
 }
 
 .galactic-carousel :deep(.p-carousel-indicator.p-highlight button) {
-  background-color: #67e8f9;
+  background-color: var(--accent-color);
   transform: scale(1.3);
 }
 
 .galactic-panel {
-  background: rgba(16, 23, 42, 0.8) !important;
-  border: 1px solid rgba(103, 232, 249, 0.15) !important;
+  background: var(--panel-background) !important;
+  border: 1px solid var(--border-color) !important;
   backdrop-filter: blur(10px);
 }
 
 .text-stellar-gray {
+  color: var(--text-secondary);
   font-size: 0.9rem;
-  /* max-width: 500px; */
-  color: #a0aec0;
 }
 
 .header-container {
@@ -362,16 +354,15 @@ const openModal = (image: string) => {
   flex-wrap: wrap;
 }
 
-.rss-logo {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin-left: 1rem;
-}
 
 .logo-image {
   height: 80px;
   transition: transform 0.3s ease;
+  filter: brightness(var(--logo-brightness, 1));
+}
+
+.theme-dark .logo-image {
+  --logo-brightness: 0.9;
 }
 
 .logo-image:hover {
@@ -424,6 +415,5 @@ const openModal = (image: string) => {
   .galactic-title {
     font-size: 1.8rem;
   }
-
 }
 </style>

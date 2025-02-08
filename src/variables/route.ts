@@ -22,6 +22,7 @@ export const router: Record<string, string> = {
   faq: 'Faq',
   census: 'Census',
   basesdestacadas: 'BasesDestacadas',
+  rsslinks: 'RSSLinks',
 };
 
 export const route = getCurrentRoute();
@@ -86,6 +87,9 @@ switch (route) {
     break;
   case 'basesdestacadas':
     exportName = 'Bases Destacadas';
+    break;
+  case 'rsslinks':
+    exportName = 'Portal Comunidad';
     break;
   case '':
     exportName = 'Home';

@@ -35,7 +35,7 @@ onMounted(() => {
 
 <template>
   <Button v-if="!isIndexPage" :href="'/'" as="a" icon="pi pi-arrow-left" label="Ver Otras Páginas" link />
-  <Button v-if="!isIndexPage" :href="'basesdestacadas.html'" as="a" icon="pi pi-arrow-right" label="Bases Destacadas" link />
+  <Button v-if="!isIndexPage" :href="'rsslinks.html'" as="a" icon="pi pi-arrow-right" label="Portal Comunidad" link />
   <Button v-if="isIndexPage" :href="'/RSSWikiPageCreator/'" as="a" icon="pi pi-arrow-left" label="Volver al Menu Principal" link />
 
   <Button v-if="sandwormLink" :href="sandwormLink" as="a" icon="pi pi-arrow-right" label="Ir a Sandworm" link />

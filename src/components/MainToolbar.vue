@@ -9,7 +9,7 @@ import Tools from './Tools.vue';
 const currentUrl = window.location.pathname;
 
 function isDestPage() {
-  return currentUrl.includes('basesdestacadas.html');
+  return currentUrl.includes('basesdestacadas.html') || currentUrl.includes('rsslinks.html');
 }
 
 </script>

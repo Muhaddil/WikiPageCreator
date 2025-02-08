@@ -45,6 +45,7 @@ export default defineConfig({
         'baserenewal.html',
         'census.html',
         'basesdestacadas.html',
+        'rsslinks.html',
       ],
     },
   },
