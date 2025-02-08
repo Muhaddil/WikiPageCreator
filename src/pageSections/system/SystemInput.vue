@@ -27,6 +27,7 @@ import UpgradeModulesSS from '@/components/inputs/system/UpgradeModulesSS.vue';
 import UpgradeModulesEC from '@/components/inputs/system/UpgradeModulesEC.vue';
 import UpgradeModulesES from '@/components/inputs/system/UpgradeModulesES.vue';
 import UpgradeModulesSD from '@/components/inputs/system/UpgradeModulesSD.vue';
+// import { translateText } from '@/common';
 
 const pageData = usePageDataStore();
 const {
@@ -94,6 +95,16 @@ watch(economybuy, (newValue) => {
     economybuy.value = ensurePercentage(newValue);
   }
 });
+
+// const translatedInfo = ref('');
+
+// watch(translatedInfo, async (newValue) => {
+//   if (newValue) {
+//     additionalInfo.value = await translateText(newValue, 'en');
+//   } else {
+//     additionalInfo.value = '';
+//   }
+// });
 </script>
 
 <template>

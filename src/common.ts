@@ -20,6 +20,15 @@ import { usePageDataStore } from './stores/pageData';
 // import generalDatalists from '@/datalists/GeneralDatalists';
 // import { fetchSectionWikiText } from './miscLogic/api';
 
+
+// export async function translateText(text: string, targetLang: string): Promise<string> {
+//   const response = await fetch(
+//     `https://api.mymemory.translated.net/get?q=${encodeURIComponent(text)}&langpair=es|${targetLang}`
+//   );
+//   const data = await response.json();
+//   return data.responseData.translatedText;
+// }
+
 // /**
 //  * Returns an object containing references to input elements on the page.
 //  * @returns {Object} An object with properties "inputs", "checkboxes", "stores", "defaults", "simple", and "lists", each containing an array of relevant input elements.
