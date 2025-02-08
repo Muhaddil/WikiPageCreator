@@ -21,7 +21,23 @@ const bases = ref([
     location: 'Galaxia Euclides - Sistema Sentinel Prime',
     author: 'Olivello',
     description: 'Nave principal de la Royal Space Society, donde se coordinan todos los movimientos estratégicos.',
-    features: ['Artística', 'Tecnológica']
+    features: ['Artística', 'Tecnología']
+  },
+  {
+    name: 'RSS Santuario de la Progenie Maldita',
+    image: 'assets/images/basesdestacadas/Progenie.webp',
+    location: 'Galaxia Euclides - Sistema Desconocido',
+    author: 'MoonWatcher75',
+    description: 'Una ciudad acogedora para los miembros de la Royal Space Society.',
+    features: ['Comunidad', 'Arquitectura']
+  },
+  {
+    name: 'Suburbios de Cobaltonia',
+    image: 'assets/images/basesdestacadas/ASC1.webp',
+    location: 'Galaxia Euclides - Sistema Okubak-Sha VII',
+    author: 'Abella_84 ',
+    description: 'Un lugar tranquilo y pacífico para los viajeros intergalácticos.',
+    features: ['Comunidad', 'Arquitectura']
   },
 ]);
 
@@ -38,14 +54,22 @@ const openModal = (image: string) => {
   <Card class="p-0 galactic-card">
     <template #content>
       <div class="space-page-container">
-        <div class="text-center mb-8">
-          <h1 class="text-5xl font-bold mb-3 galactic-title">BASES ESTELARES DESTACADAS</h1>
-          <p class="text-stellar-gray mb-6">
-            Catálogo de las instalaciones más impresionantes del universo conocido
-          </p>
+        <div class="flex items-start justify-between mb-6 header-container">
+          <div class="flex flex-col">
+            <h1 class="text-4xl font-bold galactic-title">BASES ESTELARES DESTACADAS</h1>
+            <p class="text-stellar-gray mt-2">
+              Catálogo de las instalaciones más impresionantes del universo conocido
+            </p>
+            <a href="https://nomanssky.fandom.com/es/wiki/Royal_Space_Society" target="_blank">
+              <div class="rss-logo">
+                <img src="/assets/images/basesdestacadas/RSS-Logo.webp" class="logo-image animate-pulse"
+                  alt="RSS Logo" />
+              </div>
+            </a>
+          </div>
         </div>
 
-        <Carousel :value="bases" :numVisible="1" :numScroll="1" circular :autoplayInterval="6000"
+        <Carousel :value="bases" :numVisible="2" :numScroll="1" circular :autoplayInterval="6000"
           class="galactic-carousel">
           <template #item="slotProps">
             <div class="base-card relative">
@@ -94,15 +118,14 @@ const openModal = (image: string) => {
       <button type="button" class="close-modal" @click="isModalOpen = false">X</button>
     </template>
     <a :href="modalImage" target="_blank">
-    <div class="modal-content">
-      <img :src="modalImage" alt="Imagen ampliada" class="modal-image"/>
-    </img>
-    </div>
-  </a>
+      <div class="modal-content">
+        <img :src="modalImage" class="modal-image" />
+        </img>
+      </div>
+    </a>
   </Dialog>
-
-
 </template>
+
 <style scoped>
 /* .space-page-container {
   max-width: 1400px;
@@ -202,12 +225,16 @@ const openModal = (image: string) => {
   border-radius: 12px;
   overflow: hidden;
   box-shadow: 0 0 20px rgba(103, 232, 249, 0.3);
+  flex: 1;
+  display: flex;
+  flex-direction: column;
 }
 
 .base-info {
   backdrop-filter: blur(5px);
   padding: 2rem;
   background: linear-gradient(0deg, rgba(10, 14, 26, 0.95) 30%, transparent 100%);
+  flex: 1;
 }
 
 .image-container {
@@ -251,6 +278,27 @@ const openModal = (image: string) => {
   @apply text-gray-200 text-lg max-w-2xl leading-relaxed;
 }
 
+.galactic-carousel {
+  background: transparent !important;
+}
+
+.galactic-carousel :deep(.p-carousel-viewport){
+  background: transparent !important;
+  margin: 0;
+  padding: 0;
+  border-radius: 15px;
+}
+
+.galactic-carousel :deep(.p-carousel-item) {
+  display: flex;
+  align-items: stretch;
+  padding: 0 0.5rem;
+}
+
+.galactic-carousel :deep(.p-carousel-items) {
+  margin: 0 -0.5rem;
+}
+
 .galactic-carousel :deep(.p-carousel-indicators) {
   padding: 1.5rem 0;
 }
@@ -259,7 +307,6 @@ const openModal = (image: string) => {
   width: 15px;
   height: 15px;
   border-radius: 50%;
-  background-color: rgba(103, 232, 249, 0.4);
   transition: all 0.3s ease;
 }
 
@@ -276,5 +323,65 @@ const openModal = (image: string) => {
 
 .text-stellar-gray {
   color: #a0aec0;
+}
+
+.header-container {
+  padding: 1rem 2rem;
+  background: rgba(16, 23, 42, 0.4);
+  border-radius: 12px;
+  border: 1px solid rgba(103, 232, 249, 0.1);
+  margin-bottom: 2rem;
+  position: relative;
+}
+
+.logo-image {
+  height: 80px;
+  width: auto;
+  filter: drop-shadow(0 0 8px rgba(103, 232, 249, 0.3));
+  transition: transform 0.3s ease;
+}
+
+.logo-image:hover {
+  transform: rotate(-5deg) scale(1.05);
+}
+
+.galactic-title {
+  font-size: 2rem;
+  line-height: 1.2;
+  background: linear-gradient(45deg, #67e8f9 0%, #4f46e5 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.text-stellar-gray {
+  font-size: 0.9rem;
+  max-width: 500px;
+}
+
+.rss-logo {
+  display: flex;
+  position: absolute;
+  align-items: flex-start;
+  justify-content: flex-end;
+  right: 5%;
+  top: 8%;
+  height: auto;
+  width: auto;
+}
+
+@media (max-width: 768px) {
+  .header-container {
+    flex-direction: column;
+    text-align: center;
+    gap: 1rem;
+  }
+
+  .logo-image {
+    height: 60px;
+  }
+
+  .galactic-title {
+    font-size: 1.8rem;
+  }
 }
 </style>
