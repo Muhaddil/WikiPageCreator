@@ -4,11 +4,9 @@ import Card from 'primevue/card';
 import Tag from 'primevue/tag';
 import Panel from 'primevue/panel';
 
-// Detectar el idioma en la URL (por defecto 'es')
 const queryParams = new URLSearchParams(window.location.search);
 const language = ref<'en' | 'es'>(queryParams.get('lang') === 'en' ? 'en' : 'es');
 
-// Contenido multilingüe
 const translations = {
   en: {
     title: 'RSS STRATEGIC RESOURCES',
@@ -30,7 +28,6 @@ const translations = {
 
 const t = computed(() => translations[language.value]);
 
-// Definir contenido en ambos idiomas
 const linkData = {
   es: [
     {
@@ -366,9 +363,17 @@ const gridColumns = computed(() => screenWidth.value < 768 ? 1 : screenWidth.val
 @media (max-width: 768px) {
   .rss-logo {
     position: absolute;
-    right: -1rem;
-    top: -1rem;
+    right: 0.1rem;
+    top: 0.5rem;
     margin-top: 1rem;
+    width: 60px;
+    height: 40px;
+  }
+
+  .logo-image {
+    height: auto;
+    transition: transform 0.3s ease;
+    filter: brightness(var(--logo-brightness, 1));
   }
 
   .galactic-title {
