@@ -11,7 +11,7 @@ const language = ref<'en' | 'es'>(queryParams.get('lang') === 'en' ? 'en' : 'es'
 
 type LanguageKey = 'en' | 'es';
 
-const isEpicLanguage = ref<boolean>(true);
+const isEpicLanguage = ref<boolean>(false);
 
 const t = computed(() => translations[language.value as LanguageKey][isEpicLanguage.value ? 'epic' : 'common']);
 const links = computed(() => linkData[language.value as LanguageKey][isEpicLanguage.value ? 'epic' : 'common']);
