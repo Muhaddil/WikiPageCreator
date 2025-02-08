@@ -13,6 +13,7 @@ export const regions = {
   '0266CF95': 'Skitco',
   'F7EBFD24': 'Udrupi Shallows',
   'F7EBFD25': 'Jiessl Shallows',
+  'FF9B4CB0': 'Qudsor Void',
 } as const;
 
 export const galaxies = {
@@ -30,4 +31,5 @@ export const galaxies = {
   '0266CF95': 'Hilbert Dimension',
   'F7EBFD24': 'Euclid',
   'F7EBFD25': 'Euclid',
+  'FF9B4CB0': 'Eissentam',
 } as const;
