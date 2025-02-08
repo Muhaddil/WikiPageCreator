@@ -69,7 +69,7 @@ const openModal = (image: string) => {
           </div>
         </div>
 
-        <Carousel :value="bases" :numVisible="2" :numScroll="1" circular :autoplayInterval="6000"
+        <Carousel :value="bases" :numVisible="1" :numScroll="1" circular :autoplayInterval="6000"
           class="galactic-carousel">
           <template #item="slotProps">
             <div class="base-card relative">
