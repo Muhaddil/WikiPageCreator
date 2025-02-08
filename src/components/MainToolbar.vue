@@ -5,6 +5,13 @@ import NavBar from './NavBar.vue';
 import { pageformattedName } from '@/variables/route';
 import Presets from './Presets.vue';
 import Tools from './Tools.vue';
+
+const currentUrl = window.location.pathname;
+
+function isDestPage() {
+  return currentUrl.includes('basesdestacadas.html');
+}
+
 </script>
 
 <template>
@@ -15,7 +22,8 @@ import Tools from './Tools.vue';
     </template>
 
     <template #center>
-      <h1 class="title is-3">Royal Space Society Wiki Page Creator{{ pageformattedName === 'Home' ? '' : ` - ${pageformattedName}` }}</h1>
+      <h1 v-if="!isDestPage()" class="title is-3">Royal Space Society Wiki Page Creator{{ pageformattedName === 'Home' ? '' : ` - ${pageformattedName}` }}</h1>
+      <h1 v-if="isDestPage()" class="title is-3">Royal Space Society - {{ pageformattedName }}</h1>
     </template>
 
     <template #end>
