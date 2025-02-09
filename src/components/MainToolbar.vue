@@ -12,13 +12,16 @@ function isDestPage() {
   return currentUrl.includes('basesdestacadas.html') || currentUrl.includes('rsslinks.html');
 }
 
+function isLinksPage() {
+  return currentUrl.includes('rsslinks.html');
+}
+
 </script>
 
 <template>
-  <Toolbar class="is-borderless is-radiusless">
+  <Toolbar class="is-borderless is-radiusless" v-if="!isLinksPage()">
     <template #start>
       <NavBar />
-
     </template>
 
     <template #center>
