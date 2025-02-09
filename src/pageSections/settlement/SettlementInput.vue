@@ -82,13 +82,13 @@ const showDiscovered = computed(() => !discoveredlink.value);
   </SanitisedTextInput> -->
 
   <SanitisedTextInput v-model="populationammount" tooltip="Cantidad de población del asentamiento"
-    label="Cantidad de población del asentamiento" help-img="settlement/populationAmount" help-title="Industria"
+    label="Cantidad de población del asentamiento" help-img="settlement/populationAmount" help-title="Habitantes"
     :invalid="!isPopulationAmmountValid" error-message="Solo numeros" maxlength="3">La cantidad de población del
     asentamiento.</SanitisedTextInput>
 
   <SanitisedTextInput v-model="settlementproduction" tooltip="El producto que produce el asentamiento"
-    label="Cantidad de población del asentamiento" help-img="settlement/settlementProduction"
-    help-title="Cantidad de población del asentamiento">El producto que produce el asentamiento. <br />
+    label="Producción" help-img="settlement/settlementProduction"
+    help-title="Producción">El producto que produce el asentamiento. <br />
     <b>A poder ser mirar el recurso en la wiki inglesa o dejarlo en español y avisar a algun mod en discord para que os
       ayude.</b>
   </SanitisedTextInput>
