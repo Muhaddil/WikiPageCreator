@@ -36,6 +36,8 @@ const InEnglish = [
   'Basalt',
   'Quartzite',
   'Activated Quartzite',
+  'Crystallised Helium',
+  'Lithium',
 ] as const;
 
 const InSpanish = [
@@ -74,6 +76,8 @@ const InSpanish = [
   'Basalto',
   'Cuarcita',
   'Cuarcita Activada',
+  'Helio cristalizado',
+  'Litio',
 ] as const;
 
 
