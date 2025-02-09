@@ -256,6 +256,41 @@ const openModal = (image: string) => {
   flex: 1;
 }
 
+.custom-carousel :deep(.p-carousel-indicator button) {
+  width: 15px;
+  height: 15px;
+  border-radius: 50%;
+  background-color: rgba(103, 232, 249, 0.4);
+  transition: all 0.3s ease;
+}
+
+.custom-carousel :deep(.p-carousel-indicator.p-highlight button) {
+  background-color: #67e8f9;
+  transform: scale(1.3);
+}
+
+.close-modal {
+  background: transparent;
+  border: none;
+  font-size: 1.5rem;
+  color: #fff;
+  cursor: pointer;
+}
+
+.custom-carousel :deep(.p-carousel-indicators) {
+  padding: 1rem 0;
+}
+
+.custom-carousel :deep(.p-carousel-indicator button) {
+  background-color: #67e8f9;
+}
+
+.custom-tag {
+  background-color: rgba(103, 232, 249, 0.1) !important;
+  border: 1px solid #67e8f9 !important;
+}
+
+
 .image-container {
   height: auto;
   width: 100%;
@@ -297,10 +332,6 @@ const openModal = (image: string) => {
   @apply text-gray-200 text-lg max-w-2xl leading-relaxed;
 }
 
-.galactic-carousel {
-  background: transparent !important;
-}
-
 .galactic-carousel :deep(.p-carousel-viewport) {
   background: transparent !important;
   margin: 0;
@@ -326,7 +357,6 @@ const openModal = (image: string) => {
   width: 15px;
   height: 15px;
   border-radius: 50%;
-  background-color: rgba(var(--accent-color-rgb), 0.4);
   transition: all 0.3s ease;
 }
 

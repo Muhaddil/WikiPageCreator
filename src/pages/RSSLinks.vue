@@ -5,6 +5,7 @@ import Tag from 'primevue/tag';
 import Panel from 'primevue/panel';
 import Checkbox from 'primevue/checkbox';
 import { translations, linkData } from '@/variables/links';
+import ThemeSwitch from '@/components/ThemeSwitch.vue';
 
 const queryParams = new URLSearchParams(window.location.search);
 const language = ref<'en' | 'es'>(queryParams.get('lang') === 'en' ? 'en' : 'es');
@@ -42,48 +43,54 @@ const gridColumns = computed(() => screenWidth.value < 768 ? 1 : screenWidth.val
                 <img src="/assets/images/basesdestacadas/RSS-Logo.webp" class="logo-image" alt="RSS Logo" />
               </div>
             </a>
-            <h1 class="text-4xl font-bold galactic-title">{{ t.title }}</h1>
-            <p class="text-stellar-gray mt-2">{{ t.subtitle }}</p>
-            <br />
-            <div class="flex items-center gap-2 language-toggle">
-              <Checkbox v-model="isEpicLanguage" :binary="true" style="margin-right: 8px;" />
-              <label class="text-sm">{{ getLabel(language) }}</label>
+            <div class="header-container">
+              <div class="title-theme-container">
+                <h1 class="galactic-title">
+                  <span class="title-text">{{ t.title }}</span>
+                </h1>
+              </div>
+            </div>
+              <p class="text-stellar-gray mt-2"><ThemeSwitch style="margin-right: 2rem;"/>{{ t.subtitle }}</p>
+              <br />
+              <div class="flex items-center gap-2 language-toggle">
+                <Checkbox v-model="isEpicLanguage" :binary="true" style="margin-right: 8px;" />
+                <label class="text-sm" style="margin-right: 8px;">{{ getLabel(language) }}</label>
+              </div>
             </div>
           </div>
-        </div>
 
-        <div class="grid gap-4" :style="`grid-template-columns: repeat(${gridColumns}, 1fr)`">
-          <Card v-for="(link, index) in links" :key="index" class="link-card">
-            <template #content>
-              <a :href="link.url" target="_blank" class="link-content">
-                <div class="flex items-start gap-4 p-4">
-                  <i :class="link.icon" class="link-icon"></i>
-                  <div>
-                    <div class="flex items-center gap-2 mb-2">
-                      {{ link.title }}
-                      <Tag :value="link.category" class="category-tag" />
+          <div class="grid gap-4" :style="`grid-template-columns: repeat(${gridColumns}, 1fr)`">
+            <Card v-for="(link, index) in links" :key="index" class="link-card">
+              <template #content>
+                <a :href="link.url" target="_blank" class="link-content">
+                  <div class="flex items-start gap-4 p-4">
+                    <i :class="link.icon" class="link-icon"></i>
+                    <div>
+                      <div class="flex items-center gap-2 mb-2">
+                        {{ link.title }}
+                        <Tag :value="link.category" class="category-tag" />
+                      </div>
+                      <p class="link-description">{{ link.description }}</p>
                     </div>
-                    <p class="link-description">{{ link.description }}</p>
                   </div>
-                </div>
-              </a>
-            </template>
-          </Card>
-        </div>
+                </a>
+              </template>
+            </Card>
+          </div>
 
-        <Panel class="galactic-panel mt-6">
-          <template #header>
-            <h2 class="panel-title">
-              {{ t.accessTitle }}
-            </h2>
-          </template>
-          <p class="panel-content">
-            {{ t.accessText }}<br><br>
-            <span class="security-level">{{ t.securityLevel }}</span><br>
-            {{ t.systemUpdate }}
-          </p>
-        </Panel>
-      </div>
+          <Panel class="galactic-panel mt-6">
+            <template #header>
+              <h2 class="panel-title">
+                {{ t.accessTitle }}
+              </h2>
+            </template>
+            <p class="panel-content">
+              {{ t.accessText }}<br><br>
+              <span class="security-level">{{ t.securityLevel }}</span><br>
+              {{ t.systemUpdate }}
+            </p>
+          </Panel>
+        </div>
     </template>
   </Card>
 </template>
@@ -195,7 +202,7 @@ const gridColumns = computed(() => screenWidth.value < 768 ? 1 : screenWidth.val
 }
 
 .logo-image {
-  height: 80px;
+  height: 10rem;
   transition: transform 0.3s ease;
   filter: brightness(var(--logo-brightness, 1));
 }
