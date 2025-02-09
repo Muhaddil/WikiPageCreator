@@ -472,7 +472,7 @@ const InSpanish = [
   'Brisa refrescante',
   'Agradable',
   'Cálido',
-  'Suave',
+  'Apacible',
   'Hermoso',
   'Feliz',
   'Tormentas de polvo ondeantes',

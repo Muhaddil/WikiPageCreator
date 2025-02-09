@@ -578,7 +578,7 @@ const InSpanishMoon = [
   'Luna muerta',
   'Luna vacía',
   'Luna desolada',
-  'Luna sin vida',
+  'Luna yermo',
   'Luna olvidada',
   'Luna incompatible con la vida',
   'Luna de atmósfera baja',
