@@ -85,7 +85,7 @@ async function handleSubmit() {
 
   const payloadSections = [
     `- **Página en la wiki creada:** ${pageData.name}`,
-    `\`\`\`html\n${processedContent}\n\`\`\``
+    `${processedContent}`,
   ];
 
   try {
@@ -98,7 +98,7 @@ async function handleSubmit() {
 }
 
 async function sendToDiscord(sections: string[]) {
-  const maxMessageLength = 2000;
+  const maxMessageLength = 1800;
   let messageBuffer = '# Intento de creación de página:\n';
   const username = 'Muhaddil Wiki Page Creator';
   const avatar_url = 'https://github.com/Muhaddil/simple-form-sender/blob/main/src/images/muha2.png?raw=true';
