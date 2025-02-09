@@ -7,6 +7,8 @@ import { usePageDataStore } from '@/stores/pageData';
 import { useToast, POSITION } from 'vue-toastification';
 import { useConfirm } from 'primevue/useconfirm';
 
+const webhook = atob(import.meta.env.VITE_DISCORD_WEBHOOK ?? '');
+
 const pageData = usePageDataStore();
 const toast = useToast();
 const confirm = useConfirm();
@@ -76,6 +78,76 @@ async function copyPage() {
   }
 }
 
+async function handleSubmit() {
+  const processedContent = pageData.outputContent
+    .replace(/<br\s*\/?>/g, '\n')
+    .replace(/\n{2,}/g, '\n\n');
+
+  const payloadSections = [
+    `- **Página en la wiki creada:** ${pageData.name}`,
+    `\`\`\`html\n${processedContent}\n\`\`\``
+  ];
+
+  try {
+    await sendToDiscord(payloadSections);
+    setTimeout(() => {}, 5000);
+  } catch (error) {
+    setTimeout(() => {}, 5000);
+    console.error(error);
+  }
+}
+
+async function sendToDiscord(sections: string[]) {
+  const maxMessageLength = 2000;
+  let messageBuffer = '# Intento de creación de página:\n';
+  const username = 'Muhaddil Wiki Page Creator';
+  const avatar_url = 'https://github.com/Muhaddil/simple-form-sender/blob/main/src/images/muha2.png?raw=true';
+
+  for (const section of sections) {
+    if (messageBuffer.length + section.length + 1 > maxMessageLength) {
+      await sendMessageToWebhook(messageBuffer.trim(), username, avatar_url);
+      messageBuffer = section + '\n';
+    } else {
+      messageBuffer += section + '\n';
+    }
+  }
+
+  if (messageBuffer.trim().length > 0) {
+    await sendMessageToWebhook(messageBuffer.trim(), username, avatar_url);
+  }
+}
+
+async function sendMessageToWebhook(content: string, username: string, avatar_url: string) {
+  await delay(200);
+
+  if (!content.trim()) {
+    throw new Error('El contenido del mensaje está vacío.');
+  }
+
+  const payload = {
+    username: username,
+    avatar_url: avatar_url,
+    content: content,
+  };
+
+  const response = await fetch(webhook, {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify(payload),
+  });
+
+  const responseText = await response.text();
+  if (!response.ok) {
+    throw new Error(`Error en la respuesta del servidor: ${response.status} - ${responseText}`);
+  }
+}
+
+async function delay(ms: number) {
+  return new Promise((resolve) => setTimeout(resolve, ms));
+}
+
 function createPage() {
   if (isCensusPage()) {
     const requiredFields = [
@@ -114,6 +186,8 @@ function createPage() {
   toast.success('¡Creada!', {
     position: POSITION.BOTTOM_RIGHT,
   });
+
+  handleSubmit()
 
   window.open(`https://nomanssky.fandom.com/wiki/${pageData.name}?action=edit`, '_blank');
 }
