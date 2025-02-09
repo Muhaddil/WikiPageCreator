@@ -19,6 +19,7 @@ env:
     npm ci
     echo -n 'VITE_DISCORD_WEBHOOK=' > .env
     echo '${{ secrets.DISCORD_WEBHOOK }}' | base64 | tr -d "\n\r" >> .env
+    echo 'VITE_VERSION='"$npm_package_version" >> .env
     npm run build
   buildOutput: dist # optionally "dist" if build step is needed
 
