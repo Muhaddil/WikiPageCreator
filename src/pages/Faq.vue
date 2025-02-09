@@ -1,5 +1,6 @@
 <script lang="ts">
-import { defineComponent, reactive, ref, computed, watchEffect } from "vue";
+import { defineComponent, reactive, ref, computed, watchEffect, onMounted, nextTick } from "vue";
+import autoAnimate from "@formkit/auto-animate"
 
 export default defineComponent({
   name: "Faq",
@@ -105,12 +106,29 @@ export default defineComponent({
 
     const getStyle = (id: number) => activeStyles[id] || { height: "0", opacity: "0" };
 
+    const showStates = reactive<{ [key: number]: boolean }>({});
+    const toggleShow = (id: number) => {
+      showStates[id] = !showStates[id];
+    };
+
+    const dropdowns = ref<(HTMLElement | null)[]>([]);
+
+    onMounted(async () => {
+      await nextTick();
+      dropdowns.value.forEach((el) => {
+        if (el) autoAnimate(el);
+      });
+    });
+
     return {
       searchTerm,
       filteredFaqs,
       randomMessage,
       onToggle,
       getStyle,
+      showStates,
+      toggleShow,
+      dropdowns
     };
   },
 });
@@ -118,8 +136,7 @@ export default defineComponent({
 
 <template>
   <div>
-    <h1 class="title" style="text-align: center;">Preguntas Frecuentes</h1>
-
+    <!-- <h1 class="title" style="text-align: center;">Preguntas Frecuentes</h1> -->
     <div class="search-container">
       <input type="text" v-model="searchTerm" placeholder="Buscar preguntas..." />
       <i class="search-icon">🔍</i>
@@ -128,11 +145,14 @@ export default defineComponent({
     <div id="faqList">
       <p v-if="filteredFaqs.length === 0 && randomMessage" class="no-results-message">{{ randomMessage }}</p>
 
-      <div v-for="faq in filteredFaqs" :key="faq.id" class="box faq-item">
-        <details @toggle="onToggle" :data-id="faq.id">
-          <summary class="is-size-5">{{ faq.question }}</summary>
-          <p :style="getStyle(faq.id)" class="mt-2">{{ faq.answer }}</p>
-        </details>
+      <div v-for="(faq) in filteredFaqs" :key="faq.id" class="box faq-item">
+        <div ref="dropdowns" class="dropdown">
+          <strong class="dropdown-label" @click="toggleShow(faq.id)">
+            {{ faq.question }}
+          </strong>
+          <br />
+          <p class="dropdown-content" v-if="showStates[faq.id]">{{ faq.answer }}</p>
+        </div>
       </div>
     </div>
 
@@ -346,4 +366,29 @@ footer p {
 .no-results-message p {
   margin: 0;
 }
+.dropdown {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  background-color: transparent;
+}
+
+.dropdown-label {
+  font-size: 1.2rem;
+  font-weight: bold;
+  cursor: pointer;
+  color: var(--heading-color);
+}
+
+.dropdown-content {
+  font-size: 1rem;
+  color: var(--text-color);
+  background-color: var(--input-background);
+  padding: 15px;
+  /* margin-top: 5px; */
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
 </style>

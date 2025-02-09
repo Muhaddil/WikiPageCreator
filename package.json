@@ -1,7 +1,7 @@
 {
   "name": "wiki-page-creator",
   "private": true,
-  "version": "1.0.481",
+  "version": "1.0.482",
   "type": "module",
   "scripts": {
     "dev": "vite",
@@ -32,6 +32,7 @@
     "webdriverio": "^9.8.0"
   },
   "dependencies": {
+    "@formkit/auto-animate": "^0.8.2",
     "@primevue/themes": "^4.2.5",
     "bulma": "^1.0.3",
     "md5-hex": "^5.0.0",
