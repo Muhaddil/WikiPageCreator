@@ -103,37 +103,29 @@ async function sendToDiscord(sections: string[]): Promise<void> {
   const avatar_url = 'https://github.com/Muhaddil/simple-form-sender/blob/main/src/images/muha2.png?raw=true';
 
   for (const section of sections) {
-    // Si la sección es un bloque de código (por ejemplo, comienza con "```")
     if (section.startsWith('```') && section.endsWith('```')) {
-      // Detectamos la línea de apertura (puede incluir el lenguaje)
       const firstLineEnd = section.indexOf('\n');
-      const openingLine = section.slice(0, firstLineEnd); // por ejemplo: "```html"
-      const language = openingLine.replace('```', '').trim(); // extraemos el lenguaje (puede quedar vacío)
+      const openingLine = section.slice(0, firstLineEnd);
+      const language = openingLine.replace('```', '').trim();
 
-      // Extraemos el contenido del bloque (sin los delimitadores)
       const content = section.slice(firstLineEnd + 1, section.lastIndexOf('\n'));
 
-      // Calculamos el espacio que debemos reservar para los backticks y el lenguaje en cada fragmento
-      const reserved = language ? (openingLine.length + 4) : 6; // 6 equivale a 3 backticks de apertura y 3 de cierre sin lenguaje
+      const reserved = language ? (openingLine.length + 4) : 6;
 
       let index = 0;
       while (index < content.length) {
-        // Nos aseguramos de que el fragmento no exceda el límite
         const chunk = content.substring(index, index + (maxMessageLength - reserved));
         index += chunk.length;
-        // Reconstruimos el bloque de código en el fragmento
         const messageChunk = `${openingLine}\n${chunk}\n\`\`\``;
         await sendMessageToWebhook(messageChunk.trim(), username, avatar_url);
       }
     } else {
-      // Para secciones normales que no son bloques de código, usamos la lógica de partición
       let messageBuffer = '';
       let remainingSection = section + '\n';
 
       while (remainingSection.length > 0) {
         const available = maxMessageLength - messageBuffer.length;
 
-        // Si no hay espacio, enviamos lo acumulado y reiniciamos el buffer
         if (available <= 0) {
           await sendMessageToWebhook(messageBuffer.trim(), username, avatar_url);
           messageBuffer = '';
