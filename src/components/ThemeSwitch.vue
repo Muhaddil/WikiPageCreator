@@ -3,9 +3,16 @@ import { useDark, useToggle } from '@vueuse/core';
 import Button from 'primevue/button';
 import { computed } from 'vue';
 
-const isDark = useDark({ valueDark: 'theme-dark', valueLight: 'theme-light' });
-const toggleDark = useToggle(isDark);
+const isDark = useDark({
+  valueDark: 'theme-dark',
+  valueLight: 'theme-light',
+});
 
+if (!localStorage.getItem('vueuse-color-scheme')) {
+  isDark.value = true;
+}
+
+const toggleDark = useToggle(isDark);
 const icon = computed(() => (isDark.value ? 'pi-sun' : 'pi-moon'));
 </script>
 
