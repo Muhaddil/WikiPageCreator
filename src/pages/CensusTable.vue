@@ -307,8 +307,8 @@ onMounted(async () => {
     right: 0.1rem;
     top: 0.5rem;
     margin-top: 1rem;
-    width: 60px;
-    height: 40px;
+    width: 0px;
+    height: 0px;
   }
 
   .logo-image {
