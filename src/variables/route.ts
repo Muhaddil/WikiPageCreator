@@ -23,6 +23,7 @@ export const router: Record<string, string> = {
   census: 'Census',
   basesdestacadas: 'BasesDestacadas',
   rsslinks: 'RSSLinks',
+  censustable: 'CensusTable',
 };
 
 export const route = getCurrentRoute();

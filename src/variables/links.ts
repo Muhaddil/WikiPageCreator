@@ -70,6 +70,13 @@ export const linkData = {
         url: 'https://muhaddil.github.io/RSSWikiPageCreator/basesdestacadas.html',
         description: 'Base de datos con verificación holográfica de operaciones estelares destacadas',
         icon: 'pi pi-microchip'
+      },
+      {
+        "title": "Núcleo del Censo Cuántico",
+        "category": "Archivos de la Singularidad",
+        "url": "https://muhaddil.github.io/RSSWikiPageCreator/censustable.html",
+        "description": "Matriz holográfica de verificación biométrica para registro interdimensional de miembros RSS",
+        "icon": "pi pi-id-card"
       }
     ],
     common: [
@@ -142,6 +149,13 @@ export const linkData = {
         category: 'Logros',
         description: 'Directorio de bases destacadas de miembros RSS',
         icon: 'pi pi-microchip'
+      },
+      {
+        "title": "Registro de Miembros",
+        "category": "Censo Oficial",
+        "url": "https://muhaddil.github.io/RSSWikiPageCreator/censustable.html",
+        "description": "Sistema de verificación y registro actualizado de todos los miembros activos de la RSS",
+        "icon": "pi pi-id-card"
       }
     ]
   },
@@ -216,6 +230,13 @@ export const linkData = {
         category: 'Recognition of Singularity',
         description: 'Database with holographic verification of notable star operations',
         icon: 'pi pi-microchip'
+      },
+      {
+        "title": "Quantum Census Core",
+        "category": "Singularity Archives",
+        "url": "https://muhaddil.github.io/RSSWikiPageCreator/censustable.html",
+        "description": "Holographic biometric verification matrix for interdimensional RSS operatives registry",
+        "icon": "pi pi-id-card"
       }
     ],
     common: [
@@ -288,6 +309,13 @@ export const linkData = {
         category: 'Achievements',
         description: 'Directory of featured RSS member bases',
         icon: 'pi pi-microchip'
+      },
+      {
+        "title": "Member Registry",
+        "category": "Official Census",
+        "url": "https://muhaddil.github.io/RSSWikiPageCreator/censustable.html",
+        "description": "Updated verification and registration system for all active RSS members",
+        "icon": "pi pi-id-card"
       }
     ]
   }

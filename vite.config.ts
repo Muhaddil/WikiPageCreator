@@ -46,6 +46,7 @@ export default defineConfig({
         'census.html',
         'basesdestacadas.html',
         'rsslinks.html',
+        'censustable.html',
       ],
     },
   },
