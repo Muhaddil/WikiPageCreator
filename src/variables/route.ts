@@ -92,6 +92,9 @@ switch (route) {
   case 'rsslinks':
     exportName = 'Portal Comunidad';
     break;
+  case 'CensusTable':
+    exportName = 'Censo de Bases';
+    break;
   case '':
     exportName = 'Home';
     break;
