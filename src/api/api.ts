@@ -161,12 +161,12 @@ export const isCargoResponse = <T>(data: any): data is CargoQueryResponse<T> => 
 export const mapCensusData = (data: CensusApiResponse): CensusQueryData[] => {
   return data.cargoquery.map(({ title }) => ({
     Name: title.Name,
-    CensusPlayer: title.CensusPlayer,
-    System: title.System,
-    Platform: title.Platform,
-    Mode: title.Mode,
-    CensusArrival: title.CensusArrival,
-    CensusRenewal: title.CensusRenewal,
+    CensusPlayer: title.CensusPlayer || 'Desconocido',
+    System: title.System || 'Desconocido',
+    Platform: title.Platform || 'Desconocida',
+    Mode: title.Mode || 'Desconocido',
+    CensusArrival: title.CensusArrival || 'Desconocido',
+    CensusRenewal: title.CensusRenewal || 'Desconocido',
     Builderlink: title.Builderlink,
     CensusReddit: title.CensusReddit,
     CensusDiscord: title.CensusDiscord,
