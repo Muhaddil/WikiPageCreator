@@ -45,6 +45,15 @@ onMounted(async () => {
   window.addEventListener('resize', () => (screenWidth.value = window.innerWidth));
   await fetchBases(0, selectedYear.value);
 });
+
+const formatWikiLink = (name: string) => {
+  return name
+    .trim()
+    .replace(/\s+/g, '_')
+    .replace(/\//g, '_')
+    .replace(/:/g, ':')
+    .replace(/'/g, "'");
+};
 </script>
 
 <template>
@@ -71,15 +80,25 @@ onMounted(async () => {
 
         <div class="filter-container mb-4 flex items-center">
           <label for="yearInput" class="mr-2">Selecciona el año del censo:</label>
-          <InputText
-            id="yearInput"
-            type="number"
-            v-model="selectedYear"
-            placeholder="Ej. 2023"
-            class="p-inputtext"
-          />
+          <InputText id="yearInput" type="number" v-model="selectedYear" placeholder="Ej. 2023" class="p-inputtext" />
           <button @click="updateBases" class="p-button p-component ml-2">Filtrar</button>
         </div>
+
+        <Panel class="galactic-panel mt-6">
+          <template #header>
+            <h2 class="panel-title">Información del Censo</h2>
+          </template>
+          <div class="panel-content">
+            <p>Total de bases registradas: <strong>{{ bases.length }}</strong></p>
+            <p class="security-level mt-2">
+              Nivel de seguridad:
+              <Tag value="Clasificado RSS" severity="info" class="category-tag" />
+            </p>
+            <p class="update-info">Última actualización: {{ new Date().toLocaleDateString() }}</p>
+          </div>
+        </Panel>
+
+        <br />
 
         <div v-if="isLoading" class="loading-message">
           <i class="pi pi-spinner pi-spin"></i> Cargando bases espaciales...
@@ -120,7 +139,8 @@ onMounted(async () => {
                     <template #header>
                       <span class="builder-link-header">Enlaces de la Base</span>
                     </template>
-                    <a :href="`https://nomanssky.fandom.com/wiki/${base.Name}`" target="_blank" class="builder-link">
+                    <a :href="`https://nomanssky.fandom.com/wiki/${formatWikiLink(base._pageName)}`" target="_blank"
+                      class="builder-link">
                       <i class="pi pi-external-link"></i> Ver detalles de construcción
                     </a>
                   </Panel>
@@ -129,20 +149,6 @@ onMounted(async () => {
             </template>
           </Card>
         </div>
-
-        <Panel class="galactic-panel mt-6">
-          <template #header>
-            <h2 class="panel-title">Información del Censo</h2>
-          </template>
-          <div class="panel-content">
-            <p>Total de bases registradas: <strong>{{ bases.length }}</strong></p>
-            <p class="security-level mt-2">
-              Nivel de seguridad:
-              <Tag value="Clasificado RSS" severity="info" class="category-tag" />
-            </p>
-            <p class="update-info">Última actualización: {{ new Date().toLocaleDateString() }}</p>
-          </div>
-        </Panel>
       </div>
     </template>
   </Card>

@@ -16,6 +16,7 @@ export type BasicQueryApiData = BasicQueryData & {
 
 export interface CensusQueryData {
   Name: string;
+  _pageName: string;
   CensusPlayer: string;
   System: string;
   Platform: string;
@@ -82,6 +83,8 @@ export const getCensusQueryDataUrl = (civilized: string, offset: number, year?: 
     limit: 500,
     offset
   };
+
+  console.log(queryObject)
 
   return buildQueryUrl(queryObject);
 };
@@ -161,6 +164,7 @@ export const isCargoResponse = <T>(data: any): data is CargoQueryResponse<T> => 
 export const mapCensusData = (data: CensusApiResponse): CensusQueryData[] => {
   return data.cargoquery.map(({ title }) => ({
     Name: title.Name,
+    _pageName: title._pageName || title.Name,
     CensusPlayer: title.CensusPlayer || 'Desconocido',
     System: title.System || 'Desconocido',
     Platform: title.Platform || 'Desconocida',
